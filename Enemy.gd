@@ -29,20 +29,19 @@ func _process(delta):
 	pass
 
 func _chase(delta):
-	var player = get_parent().get_node("Player")
-	look_at(player.position)
-	motion = move_and_collide((player.position - position).normalized() * delta * velocity)
+	look_at(get_node("%Player").position)
+	motion = move_and_collide((get_node("%Player").position - position).normalized() * delta * velocity)
 	pass
 
 
 func _on_FOV_body_entered(body):
-	if(body == get_parent().get_node("Player")):
+	if(body == get_node("%Player")):
 		state = CHASE
 	pass
 
 
 func _on_FOV_body_exited(body):
-	if(body == get_parent().get_node("Player")):
+	if(body == get_node("%Player")):
 		state = IDLE
 	pass # Replace with function body.
 
