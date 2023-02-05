@@ -47,7 +47,6 @@ position = Vector2( 13, 6 )
 
 [node name="Fists" parent="." instance=ExtResource( 3 )]
 modulate = Color( 0.913725, 0.709804, 0.639216, 1 )
-show_behind_parent = true
 position = Vector2( 6, 0 )
 rotation = 1.5708
 
