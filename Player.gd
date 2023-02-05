@@ -41,7 +41,7 @@ func input_movement():
 		direction.y = 0;
 
 func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_released("shoot"):
+	if event.is_action_released("primaryFire"):
 		shoot();
 
 func shoot():

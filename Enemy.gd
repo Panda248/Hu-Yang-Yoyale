@@ -4,6 +4,7 @@ extends KinematicBody2D
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
+
 export var velocity = 50
 export var health = 10
 
@@ -45,3 +46,6 @@ func _on_FOV_body_exited(body):
 		state = IDLE
 	pass # Replace with function body.
 
+func takeDamage(damage : int):
+	get_node("damageFlash").play("damageFlash")
+	health -= damage
