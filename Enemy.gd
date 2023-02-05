@@ -13,7 +13,7 @@ var motion = Vector2()
 var state = IDLE
 
 enum	{
-	IDLE, CHASE
+	IDLE, CHASE, ATTACK
 }
 
 func _dead() ->bool:
@@ -26,10 +26,14 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	get_node("Label").text = var2str(health)
 	#State machine
 	match state:
 		CHASE:
 			_chase(delta)
+		ATTACK:
+			look_at(get_node("%Player").position)
+			get_node("Fists").primaryFire()
 	pass
 
 func _chase(delta):
@@ -52,3 +56,15 @@ func _on_FOV_body_exited(body):
 func takeDamage(damage : int):
 	get_node("damageFlash").play("damageFlash")
 	health -= damage
+
+
+func _on_Range_body_entered(body):
+	if(body == get_node("%Player")):
+		state = ATTACK
+	pass # Replace with function body.
+
+
+func _on_Range_body_exited(body):
+	if(body == get_node("%Player")):
+		state = CHASE
+	pass # Replace with function body.

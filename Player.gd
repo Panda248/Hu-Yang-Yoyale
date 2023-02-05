@@ -3,8 +3,9 @@ extends KinematicBody2D
 signal player_shot(bullet, position, direction);
 
 var direction;
-
+export var health = 10;
 export var velocity = 100;
+
 export (PackedScene) var Bullet;
 
 onready var end_of_barrel = $BarrelEnd;
@@ -17,9 +18,11 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	get_node("Label").text = var2str(health)
 	var _motion = Vector2();
 	look_at(get_global_mouse_position());
 	input_movement()
+	input_action()
 	direction = direction.normalized();
 	_motion = move_and_collide(direction * velocity * delta);
 	pass
@@ -44,6 +47,10 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_released("primaryFire"):
 		shoot();
 
+func input_action():
+	if Input.is_action_just_pressed("primaryFire"):
+		get_node("Fists").primaryFire();
+
 func shoot():
 	var bullet_instance = Bullet.instance();
 	var target = get_global_mouse_position();
@@ -51,4 +58,6 @@ func shoot():
 
 	emit_signal("player_shot", bullet_instance, end_of_barrel.global_position, direction_to_mouse);
 	
-							
+func takeDamage(damage : int):
+	get_node("damageFlash").play("damageFlash")
+	health -= damage

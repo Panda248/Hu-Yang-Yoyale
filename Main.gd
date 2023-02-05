@@ -9,8 +9,8 @@ func _ready():
 
 func _process(delta):
 	for item in get_children():
-		if item.has_method("isDead"):
-			if item.isDead:
+		if item.has_method("_dead"):
+			if item._dead():
 				remove_child(item)
 	
 	pass

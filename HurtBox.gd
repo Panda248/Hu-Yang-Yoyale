@@ -11,8 +11,9 @@ func _ready() -> void:
 	pass
 
 func _on_area_entered(hitbox : HitBox) -> void:
-	if hitbox == null:
+	if get_parent().is_a_parent_of(hitbox):
 		return
-	
+	if hitbox ==  null:
+		return
 	if owner.has_method("takeDamage"):
 		owner.takeDamage(hitbox.damage)
