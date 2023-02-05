@@ -1,11 +1,15 @@
-extends Area2D
+extends Node2D
 
-onready var animationPlayer = get_node("%AnimationPlayer")
+export var damage = 1
+export var firerate = 1
+
+func _enter_tree():
+	$HitBox.damage = damage
 
 func primaryFire():
-	if !animationPlayer.is_playing():
+	if !$AnimationPlayer.is_playing():
 		if(randf() > 0.5):
-			animationPlayer.play("attackLeft")
+			$AnimationPlayer.play("attackLeft")
 		else:
-			animationPlayer.play("attackRight")
+			$AnimationPlayer.play("attackRight")
 	pass

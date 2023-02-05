@@ -18,10 +18,16 @@ _global_script_classes=[ {
 "class": "HurtBox",
 "language": "GDScript",
 "path": "res://HurtBox.gd"
+}, {
+"base": "Node2D",
+"class": "Weapon",
+"language": "GDScript",
+"path": "res://Weapon.gd"
 } ]
 _global_script_class_icons={
 "HitBox": "",
-"HurtBox": ""
+"HurtBox": "",
+"Weapon": ""
 }
 
 [application]

@@ -8,7 +8,6 @@ export var velocity = 100;
 
 export (PackedScene) var Bullet;
 
-onready var end_of_barrel = $BarrelEnd;
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -43,21 +42,14 @@ func input_movement():
 	else:
 		direction.y = 0;
 
-func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_released("primaryFire"):
-		shoot();
-
 func input_action():
 	if Input.is_action_just_pressed("primaryFire"):
-		get_node("Fists").primaryFire();
+		#$Fists.primaryFire();
+		$Pistol.primaryFire()
+		
+		
+		pass
 
-func shoot():
-	var bullet_instance = Bullet.instance();
-	var target = get_global_mouse_position();
-	var direction_to_mouse = end_of_barrel.global_position.direction_to(target).normalized();
-
-	emit_signal("player_shot", bullet_instance, end_of_barrel.global_position, direction_to_mouse);
-	
 func takeDamage(damage : int):
 	get_node("damageFlash").play("damageFlash")
 	health -= damage
