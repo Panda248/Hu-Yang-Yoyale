@@ -13,7 +13,7 @@
 radius = 71.33
 
 [sub_resource type="CircleShape2D" id=4]
-radius = 32.02
+radius = 25.02
 
 [sub_resource type="Animation" id=5]
 resource_name = "damageFlash"
@@ -28,7 +28,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.1 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ Color( 1, 0, 0, 1 ), Color( 0.231373, 0.760784, 0.45098, 0 ) ]
+"values": [ Color( 1, 0, 0, 1 ), Color( 1, 1, 1, 1 ) ]
 }
 
 [node name="Enemy" type="KinematicBody2D"]
