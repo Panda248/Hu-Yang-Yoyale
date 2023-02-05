@@ -1,12 +1,13 @@
 extends KinematicBody2D
 
+signal player_shot(bullet, position, direction);
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
 var direction;
 
 export var velocity = 100;
+export (PackedScene) var Bullet;
+
+onready var end_of_barrel = $BarrelEnd;
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -39,5 +40,15 @@ func input_movement():
 	else:
 		direction.y = 0;
 
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_released("shoot"):
+		shoot();
 
+func shoot():
+	var bullet_instance = Bullet.instance();
+	var target = get_global_mouse_position();
+	var direction_to_mouse = end_of_barrel.global_position.direction_to(target).normalized();
+
+	emit_signal("player_shot", bullet_instance, end_of_barrel.global_position, direction_to_mouse);
+	
 							
