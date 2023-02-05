@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://HitBox.gd" type="Script" id=1]
 [ext_resource path="res://Fists.gd" type="Script" id=2]
+[ext_resource path="res://res/exported/Hand.png" type="Texture" id=3]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 5.0
@@ -12,6 +13,10 @@ radius = 5.0
 [sub_resource type="CapsuleShape2D" id=7]
 radius = 8.0
 height = 6.0
+
+[sub_resource type="CapsuleShape2D" id=3]
+radius = 8.0
+height = 0.0
 
 [sub_resource type="Animation" id=4]
 resource_name = "attackLeft"
@@ -51,7 +56,7 @@ tracks/2/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ SubResource( 7 ) ]
+"values": [ SubResource( 3 ) ]
 }
 tracks/3/type = "value"
 tracks/3/path = NodePath("HitBox/CollisionShape2D:disabled")
@@ -75,19 +80,7 @@ tracks/4/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( -10, -11 ) ]
-}
-tracks/5/type = "value"
-tracks/5/path = NodePath("HitBox/CollisionShape2D:position")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/keys = {
-"times": PoolRealArray(  ),
-"transitions": PoolRealArray(  ),
-"update": 0,
-"values": [  ]
+"values": [ Vector2( -10, -14 ) ]
 }
 
 [sub_resource type="Animation" id=5]
@@ -128,7 +121,7 @@ tracks/2/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ SubResource( 7 ) ]
+"values": [ SubResource( 3 ) ]
 }
 tracks/3/type = "value"
 tracks/3/path = NodePath("HitBox/CollisionShape2D:disabled")
@@ -152,19 +145,28 @@ tracks/4/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 10, -11 ) ]
+"values": [ Vector2( 10, -14 ) ]
 }
 
 [node name="Fists" type="Area2D"]
+show_behind_parent = true
 script = ExtResource( 2 )
 
 [node name="RightFIst" type="CollisionShape2D" parent="."]
 position = Vector2( 10, 0 )
 shape = SubResource( 1 )
 
+[node name="Sprite" type="Sprite" parent="RightFIst"]
+scale = Vector2( 0.403271, 0.383996 )
+texture = ExtResource( 3 )
+
 [node name="LeftFist" type="CollisionShape2D" parent="."]
 position = Vector2( -10, 0 )
 shape = SubResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="LeftFist"]
+scale = Vector2( 0.4, 0.4 )
+texture = ExtResource( 3 )
 
 [node name="HitBox" type="Area2D" parent="."]
 unique_name_in_owner = true
