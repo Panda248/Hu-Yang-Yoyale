@@ -10,6 +10,7 @@ texture = ExtResource( 2 )
 centered = false
 offset = Vector2( -15, -6 )
 script = ExtResource( 1 )
+fireRate = 60
 Bullet = ExtResource( 3 )
 
 [node name="BarrelEnd" type="Position2D" parent="."]
