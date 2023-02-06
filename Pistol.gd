@@ -1,4 +1,4 @@
-extends Weapon
+extends "res://Weapon.gd"
 
 export (PackedScene) var Bullet
 
