@@ -43,12 +43,31 @@ func input_movement():
 		direction.y = 0;
 
 func input_action():
-	if Input.is_action_just_pressed("primaryFire"):
-		#$Fists.primaryFire();
-		$Pistol.primaryFire()
+	if Input.is_action_just_pressed("game_primary_fire"):
+		if($Equipped.get_child(0).has_method("primaryFire")):
+			$Equipped.get_child(0).primaryFire()
+			
+	elif Input.is_action_just_pressed("game_secondary_fire"):
+		if($Equipped.get_child(0).has_method("secondaryFire")):
+			$Equipped.get_child(0).secondaryFire()
+			
+	elif Input.is_action_just_pressed("game_switch_weapon_left"):
+		var nextWeapon = $Weapons.get_child(0)
+		var prevWeapon = $Equipped.get_child(0)
+		$Equipped.remove_child(prevWeapon)
+		$Weapons.add_child(prevWeapon)
+		$Weapons.remove_child(nextWeapon)
+		$Equipped.add_child(nextWeapon)
 		
+	elif Input.is_action_just_pressed("game_switch_weapon_right"):
+		var nextWeapon = $Weapons.get_child($Weapons.get_child_count()-1)
+		var prevWeapon = $Equipped.get_child(0)
+		$Equipped.remove_child(prevWeapon)
+		$Weapons.add_child(prevWeapon)
+		$Weapons.remove_child(nextWeapon)
+		$Equipped.add_child(nextWeapon)
 		
-		pass
+	
 
 func takeDamage(damage : int):
 	get_node("damageFlash").play("damageFlash")

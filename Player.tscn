@@ -31,22 +31,17 @@ tracks/0/keys = {
 script = ExtResource( 1 )
 Bullet = ExtResource( 2 )
 
+[node name="Camera2D" type="Camera2D" parent="."]
+scale = Vector2( 0.995347, 0.978982 )
+current = true
+zoom = Vector2( 0.5, 0.5 )
+
 [node name="Body" type="CollisionShape2D" parent="."]
 scale = Vector2( 1.00233, 1 )
 shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="Body"]
 texture = ExtResource( 4 )
-
-[node name="Camera2D" type="Camera2D" parent="."]
-scale = Vector2( 0.995347, 0.978982 )
-current = true
-zoom = Vector2( 0.5, 0.5 )
-
-[node name="Fists" parent="." instance=ExtResource( 3 )]
-modulate = Color( 0.913725, 0.709804, 0.639216, 1 )
-position = Vector2( 6, 0 )
-rotation = 1.5708
 
 [node name="HurtBox" type="Area2D" parent="."]
 visible = false
@@ -64,5 +59,15 @@ margin_bottom = 14.0
 [node name="damageFlash" type="AnimationPlayer" parent="."]
 anims/damageFlash = SubResource( 3 )
 
-[node name="Pistol" parent="." instance=ExtResource( 6 )]
+[node name="Weapons" type="Node2D" parent="."]
+visible = false
+
+[node name="Fists" parent="Weapons" instance=ExtResource( 3 )]
+modulate = Color( 0.913725, 0.709804, 0.639216, 1 )
+position = Vector2( 6, 0 )
+rotation = 1.5708
+
+[node name="Equipped" type="Node2D" parent="."]
+
+[node name="Pistol" parent="Equipped" instance=ExtResource( 6 )]
 position = Vector2( 6, 12 )

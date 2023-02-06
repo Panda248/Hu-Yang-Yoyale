@@ -8,8 +8,8 @@ func _enter_tree():
 
 func primaryFire():
 	if !$AnimationPlayer.is_playing():
-		if(randf() > 0.5):
-			$AnimationPlayer.play("attackLeft")
-		else:
-			$AnimationPlayer.play("attackRight")
-	pass
+		$AnimationPlayer.play("attackLeft")
+
+func secondaryFire():
+	if !$AnimationPlayer.is_playing():
+		$AnimationPlayer.play("attackRight")
