@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Pistol.gd" type="Script" id=1]
+[ext_resource path="res://res/exported/pistol.png" type="Texture" id=2]
+[ext_resource path="res://Bullet.tscn" type="PackedScene" id=3]
+
+[node name="Pistol" type="Sprite"]
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 2 )
+centered = false
+offset = Vector2( -15, -6 )
+script = ExtResource( 1 )
+Bullet = ExtResource( 3 )
+
+[node name="BarrelEnd" type="Position2D" parent="."]
+position = Vector2( 26, 0 )
