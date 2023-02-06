@@ -33,7 +33,10 @@ func _process(delta):
 			_chase(delta)
 		ATTACK:
 			look_at(get_node("%Player").position)
-			get_node("Fists").primaryFire()
+			if randf() > 0.5:
+				get_node("Fists").primaryFire()
+				
+				get_node("Fists").secondaryFire()
 	pass
 
 func _chase(delta):

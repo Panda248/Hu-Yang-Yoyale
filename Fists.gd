@@ -1,15 +1,18 @@
-extends Node2D
-
-export var damage = 1
-export var firerate = 1
+extends Weapon
 
 func _enter_tree():
 	$HitBox.damage = damage
+func _process(delta):
+	if(self.reloadAndShootDelay > 0):
+		self.reloadAndShootDelay-=1
+	$Label.text = String(reloadAndShootDelay)
 
 func primaryFire():
-	if !$AnimationPlayer.is_playing():
+	if reloadAndShootDelay == 0:
 		$AnimationPlayer.play("attackLeft")
+		self.reloadAndShootDelay = fireRate
 
 func secondaryFire():
-	if !$AnimationPlayer.is_playing():
+	if reloadAndShootDelay == 0:
 		$AnimationPlayer.play("attackRight")
+		self.reloadAndShootDelay = fireRate

@@ -5,7 +5,7 @@ export (PackedScene) var Bullet
 func _process(delta):
 	if(self.reloadAndShootDelay > 0):
 		self.reloadAndShootDelay-=1
-	$Label.text = String(reloadAndShootDelay)
+
 	look_at(get_global_mouse_position())
 
 func primaryFire():
