@@ -70,6 +70,8 @@ func takeDamage(damage : int):
 	get_node("damageFlash").play("damageFlash")
 	health -= damage
 
+func takeKnockback(hitbox : HitBox):
+	move_and_collide((hitbox.position+self.position).normalized()*hitbox.knockback)
 
 func _on_Range_body_entered(body):
 	if(body == get_node("%Player")):

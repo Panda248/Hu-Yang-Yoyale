@@ -17,3 +17,5 @@ func _on_area_entered(hitbox : HitBox) -> void:
 		return
 	if owner.has_method("takeDamage"):
 		owner.takeDamage(hitbox.damage)
+	if owner.has_method("takeKnockback"):
+		owner.takeKnockback(hitbox)
