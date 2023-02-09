@@ -39,7 +39,7 @@ func _process(delta):
 			look_at(get_node("%Player").position)
 			if randf() > 0.5:
 				get_node("Fists").primaryFire()
-				
+			else:
 				get_node("Fists").secondaryFire()
 	pass
 
@@ -71,7 +71,7 @@ func takeDamage(damage : int):
 	health -= damage
 
 func takeKnockback(hitbox : HitBox):
-	move_and_collide((hitbox.get_parent().position.direction_to(self.position)).normalized()*hitbox.knockback)
+	move_and_collide((hitbox.global_position.direction_to(self.global_position)).normalized()*hitbox.knockback)
 
 func _on_Range_body_entered(body):
 	if(body == get_node("%Player")):

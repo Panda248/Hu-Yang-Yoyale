@@ -119,6 +119,7 @@ script = ExtResource( 2 )
 currentClip = -1
 clip = -1
 reloadTimeFrames = -1
+fireRate = 100
 reserveClips = -1
 knockback = 5
 
