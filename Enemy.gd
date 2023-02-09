@@ -15,7 +15,7 @@ var state = IDLE
 var destination : Vector2;
 
 enum	{
-	IDLE, CHASE, ATTACK
+	IDLE, CHASE, INVESTIGATE, ATTACK
 }
 
 func _dead() ->bool:
@@ -33,6 +33,8 @@ func _process(delta):
 	match state:
 		CHASE:
 			_chase(delta)
+		INVESTIGATE:
+			_investigate(delta)
 		ATTACK:
 			look_at(get_node("%Player").position)
 			if randf() > 0.5:
@@ -42,23 +44,26 @@ func _process(delta):
 	pass
 
 func _chase(delta):
+	look_at(get_node("%Player").position)
+	motion = move_and_collide((get_node("%Player").position - position).normalized() * delta * velocity)
+	pass
+func _investigate(delta):
 	look_at(destination)
 	motion = move_and_collide((destination - position).normalized() * delta * velocity)
 	if position.distance_to(destination) < 10:
 		state = IDLE
 	pass
 
-
 func _on_FOV_body_entered(body):
 	if(body == get_node("%Player")):
-		destination = get_node("%Player").position
 		state = CHASE
 	pass
 
 
 func _on_FOV_body_exited(body):
-#	if(body == get_node("%Player")):
-#		state = IDLE
+	if(body == get_node("%Player")):
+		destination = get_node("%Player").position
+		state = INVESTIGATE
 	pass # Replace with function body.
 
 func takeDamage(damage : int):
