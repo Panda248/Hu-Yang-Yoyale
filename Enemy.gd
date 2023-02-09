@@ -71,7 +71,7 @@ func takeDamage(damage : int):
 	health -= damage
 
 func takeKnockback(hitbox : HitBox):
-	move_and_collide((hitbox.get_owner().position.direction_to(self.position))*hitbox.knockback)
+	move_and_collide((hitbox.get_parent().position.direction_to(self.position)).normalized()*hitbox.knockback)
 
 func _on_Range_body_entered(body):
 	if(body == get_node("%Player")):
