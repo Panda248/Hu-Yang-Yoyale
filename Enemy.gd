@@ -1,12 +1,11 @@
-extends KinematicBody2D
+extends Entity
 
 
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
 
-export var velocity = 50
-export var health = 10
+
 
 var motion = Vector2()
 
@@ -70,8 +69,7 @@ func takeDamage(damage : int):
 	get_node("damageFlash").play("damageFlash")
 	health -= damage
 
-func takeKnockback(hitbox : HitBox):
-	move_and_collide((hitbox.global_position.direction_to(self.global_position)).normalized()*hitbox.knockback)
+
 
 func _on_Range_body_entered(body):
 	if(body == get_node("%Player")):

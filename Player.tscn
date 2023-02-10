@@ -41,6 +41,7 @@ tracks/1/keys = {
 
 [node name="Player" type="KinematicBody2D"]
 script = ExtResource( 1 )
+velocity = 100
 Bullet = ExtResource( 2 )
 
 [node name="Camera2D" type="Camera2D" parent="."]

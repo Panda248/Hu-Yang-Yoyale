@@ -1,10 +1,8 @@
-extends KinematicBody2D
+extends Entity
 
 signal player_shot(bullet, position, direction);
 
 var direction;
-export var health = 10;
-export var velocity = 100;
 
 export (PackedScene) var Bullet;
 
@@ -69,6 +67,4 @@ func input_action():
 		
 	
 
-func takeDamage(damage : int):
-	get_node("damageFlash").play("damageFlash")
-	health -= damage
+
