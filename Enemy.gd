@@ -1,19 +1,20 @@
-extends KinematicBody2D
+extends Entity
 
 
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
 
-export var velocity = 50
-export var health = 10
+
 
 var motion = Vector2()
 
 var state = IDLE
 
+var destination : Vector2;
+
 enum	{
-	IDLE, CHASE, ATTACK
+	IDLE, CHASE, INVESTIGATE, ATTACK
 }
 
 func _dead() ->bool:
@@ -31,16 +32,26 @@ func _process(delta):
 	match state:
 		CHASE:
 			_chase(delta)
+		INVESTIGATE:
+			_investigate(delta)
 		ATTACK:
 			look_at(get_node("%Player").position)
-			get_node("Fists").primaryFire()
+			if randf() > 0.5:
+				get_node("Fists").primaryFire()
+			else:
+				get_node("Fists").secondaryFire()
 	pass
 
 func _chase(delta):
 	look_at(get_node("%Player").position)
 	motion = move_and_collide((get_node("%Player").position - position).normalized() * delta * velocity)
 	pass
-
+func _investigate(delta):
+	look_at(destination)
+	motion = move_and_collide((destination - position).normalized() * delta * velocity)
+	if position.distance_to(destination) < 10:
+		state = IDLE
+	pass
 
 func _on_FOV_body_entered(body):
 	if(body == get_node("%Player")):
@@ -50,12 +61,14 @@ func _on_FOV_body_entered(body):
 
 func _on_FOV_body_exited(body):
 	if(body == get_node("%Player")):
-		state = IDLE
+		destination = get_node("%Player").position
+		state = INVESTIGATE
 	pass # Replace with function body.
 
 func takeDamage(damage : int):
 	get_node("damageFlash").play("damageFlash")
 	health -= damage
+
 
 
 func _on_Range_body_entered(body):

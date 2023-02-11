@@ -1,14 +1,10 @@
-[gd_scene load_steps=10 format=2]
+
+[gd_scene load_steps=7 format=2]
+
 
 [ext_resource path="res://HitBox.gd" type="Script" id=1]
 [ext_resource path="res://Fists.gd" type="Script" id=2]
 [ext_resource path="res://res/exported/Hand.png" type="Texture" id=3]
-
-[sub_resource type="CircleShape2D" id=1]
-radius = 5.0
-
-[sub_resource type="CircleShape2D" id=2]
-radius = 5.0
 
 [sub_resource type="CapsuleShape2D" id=8]
 height = 8.0
@@ -19,169 +15,154 @@ height = 0.0
 
 [sub_resource type="Animation" id=4]
 resource_name = "attackLeft"
-length = 0.333333
+length = 0.208334
 step = 0.0416667
 tracks/0/type = "value"
-tracks/0/path = NodePath("RightFIst:position")
+tracks/0/path = NodePath("HitBox/CollisionShape2D:disabled")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.0833333, 0.208333 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 0,
-"values": [ Vector2( 10, 0 ), Vector2( 10, 3 ), Vector2( 10, 0 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("LeftFist:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 0.0833333, 0.208333 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 0,
-"values": [ Vector2( -10, 0 ), Vector2( -10, -14 ), Vector2( -10, 0 ) ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("HitBox/CollisionShape2D:shape")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ SubResource( 3 ) ]
-}
-tracks/3/type = "value"
-tracks/3/path = NodePath("HitBox/CollisionShape2D:disabled")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
 "times": PoolRealArray( 0, 0.0416667, 0.0833333 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
 "values": [ true, false, true ]
 }
-tracks/4/type = "value"
-tracks/4/path = NodePath("HitBox/CollisionShape2D:position")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/keys = {
+tracks/1/type = "value"
+tracks/1/path = NodePath("HitBox/CollisionShape2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( -10, -14 ) ]
+"values": [ Vector2( -10, -12 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("RightFist:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+
+"times": PoolRealArray( 0, 0.0416667, 0.208333 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 10, 0 ), Vector2( 10, 5 ), Vector2( 10, 0 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("LeftFist:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.0416667, 0.208333 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+
+"values": [ Vector2( -10, 0 ), Vector2( -10, -15 ), Vector2( -10, 0 ) ]
+
 }
 
 [sub_resource type="Animation" id=5]
 resource_name = "attackRight"
-length = 0.333333
+length = 0.208334
 step = 0.0416667
 tracks/0/type = "value"
-tracks/0/path = NodePath("RightFIst:position")
+tracks/0/path = NodePath("HitBox/CollisionShape2D:disabled")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.0833333, 0.208333 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 0,
-"values": [ Vector2( 10, 0 ), Vector2( 10, -14 ), Vector2( 10, 0 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("LeftFist:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 0.0833333, 0.208333 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 0,
-"values": [ Vector2( -10, 0 ), Vector2( -10, 3 ), Vector2( -10, 0 ) ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("HitBox/CollisionShape2D:shape")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ SubResource( 3 ) ]
-}
-tracks/3/type = "value"
-tracks/3/path = NodePath("HitBox/CollisionShape2D:disabled")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
 "times": PoolRealArray( 0, 0.0416667, 0.0833333 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
 "values": [ true, false, true ]
 }
-tracks/4/type = "value"
-tracks/4/path = NodePath("HitBox/CollisionShape2D:position")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/keys = {
+tracks/1/type = "value"
+tracks/1/path = NodePath("HitBox/CollisionShape2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 10, -14 ) ]
+"values": [ Vector2( 10, -12 ) ]
+}
+tracks/2/type = "value"
+
+tracks/2/path = NodePath("RightFist:position")
+
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+
+"times": PoolRealArray( 0, 0.0416667, 0.208333 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 10, 0 ), Vector2( 10, -15 ), Vector2( 10, 0 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("LeftFist:position")
+
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+
+"times": PoolRealArray( 0, 0.0416667, 0.208333 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -10, 0 ), Vector2( -10, 5 ), Vector2( -10, 0 ) ]
+
 }
 
-[node name="Fists" type="Area2D"]
+[node name="Fists" type="Node2D"]
 show_behind_parent = true
 script = ExtResource( 2 )
-
-[node name="RightFIst" type="CollisionShape2D" parent="."]
-position = Vector2( 10, 0 )
-shape = SubResource( 1 )
-
-[node name="Sprite" type="Sprite" parent="RightFIst"]
-scale = Vector2( 0.403271, 0.383996 )
-texture = ExtResource( 3 )
-
-[node name="LeftFist" type="CollisionShape2D" parent="."]
-position = Vector2( -10, 0 )
-shape = SubResource( 2 )
-
-[node name="Sprite" type="Sprite" parent="LeftFist"]
-scale = Vector2( 0.4, 0.4 )
-texture = ExtResource( 3 )
+currentClip = -1
+clip = -1
+reloadTimeFrames = -1
+fireRate = 120
+reserveClips = -1
+knockback = 5
 
 [node name="HitBox" type="Area2D" parent="."]
-unique_name_in_owner = true
 script = ExtResource( 1 )
-damage = 1
+knockback = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
 modulate = Color( 1, 1, 1, 0.207843 )
-position = Vector2( 10, -11 )
+position = Vector2( 10, -12 )
 rotation = 1.5708
 shape = SubResource( 8 )
 disabled = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-unique_name_in_owner = true
 anims/attackLeft = SubResource( 4 )
 anims/attackRight = SubResource( 5 )
 
-[connection signal="input_event" from="." to="." method="_on_Fists_input_event"]
+[node name="RightFist" type="Sprite" parent="."]
+position = Vector2( 10, 0 )
+scale = Vector2( 0.403271, 0.383996 )
+texture = ExtResource( 3 )
+
+[node name="LeftFist" type="Sprite" parent="."]
+position = Vector2( -10, 0 )
+scale = Vector2( 0.4, 0.4 )
+texture = ExtResource( 3 )
+
+[node name="Label" type="Label" parent="."]
+margin_right = 40.0
+margin_bottom = 14.0

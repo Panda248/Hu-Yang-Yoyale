@@ -10,7 +10,10 @@ func _ready():
 #func _process(delta):
 #	pass
 
-func bullet_shot(bullet, position, direction):
+func bullet_shot(bullet, position, direction, damage, knockback):
 	add_child(bullet);
+	bullet.get_node("HitBox").damage = damage
+	bullet.get_node("HitBox").knockback = knockback
 	bullet.global_position = position;
 	bullet.set_direction(direction);
+

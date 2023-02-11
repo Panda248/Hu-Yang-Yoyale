@@ -14,4 +14,5 @@ func _physics_process(delta: float) -> void:
 	
 func set_direction(direction: Vector2):
 	self.direction = direction;
+	look_at(position+direction)
 	
