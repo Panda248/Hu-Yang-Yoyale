@@ -19,7 +19,7 @@ func primaryFire():
 												bullet_instance,
 												$BarrelEnd.global_position, 
 												direction_to_mouse,
-												damage, knockback);
+												damage, knockbackMultiplier);
 			currentClip -=1
 			if(self.currentClip > 0):
 				self.reloadAndShootDelay = fireRate

@@ -1,18 +1,21 @@
 extends Weapon
 
 func _enter_tree():
-	$HitBox.damage = damage
+	$HitBox.knockbackMultiplier = self.knockbackMultiplier
+
 func _process(delta):
-	if(self.reloadAndShootDelay > 0):
-		self.reloadAndShootDelay-=1
-	$Label.text = String(reloadAndShootDelay)
+	$Label.text = var2str($HitBox.knockbackDirection)
+	
 
 func primaryFire():
 	if reloadAndShootDelay == 0:
+		$HitBox.knockbackDirection = $HitBox.knockbackDirection.rotated(global_rotation-$HitBox.knockbackDirection.angle())
+		print(var2str($HitBox.knockbackDirection))
 		$AnimationPlayer.play("attackLeft")
 		self.reloadAndShootDelay = fireRate
 
 func secondaryFire():
 	if reloadAndShootDelay == 0:
+		$HitBox.knockbackDirection = $HitBox.knockbackDirection.rotated(global_rotation-$HitBox.knockbackDirection.angle())
 		$AnimationPlayer.play("attackRight")
 		self.reloadAndShootDelay = fireRate

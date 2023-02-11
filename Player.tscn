@@ -80,7 +80,6 @@ visible = false
 [node name="Fists" parent="Weapons" instance=ExtResource( 3 )]
 modulate = Color( 0.913725, 0.709804, 0.639216, 1 )
 position = Vector2( 6, 0 )
-rotation = 1.5708
 
 [node name="Equipped" type="Node2D" parent="."]
 

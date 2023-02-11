@@ -15,15 +15,17 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	get_node("Label").text = var2str(health)
 	var _motion = Vector2();
+	
+	get_node("Label").text = var2str(health)
 	look_at(get_global_mouse_position());
+	
 	input_movement()
 	input_action()
+	
 	direction = direction.normalized();
-	_motion = move_and_collide(direction * velocity * delta);
+	move_and_collide(direction * velocity * delta);
 	pass
-
 
 func input_movement():
 	if(Input.is_action_pressed("ui_left")):
