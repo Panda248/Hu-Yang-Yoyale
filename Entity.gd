@@ -9,4 +9,4 @@ func takeDamage(damage : int):
 	health -= damage
 	
 func takeKnockback(hitbox : HitBox):
-	move_and_collide((hitbox.get_owner().position.direction_to(self.position)).normalized()*hitbox.knockback)
+	move_and_collide((hitbox.get_owner().global_position.direction_to(global_position)).normalized()*hitbox.knockback)

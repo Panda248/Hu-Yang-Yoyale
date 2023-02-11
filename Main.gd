@@ -1,5 +1,6 @@
 extends Node2D
 
+
 onready var bullet_manager = $BulletManager;
 var ticks = 0
 var tickRate = 1
@@ -14,4 +15,9 @@ func _process(delta):
 		if item.has_method("_dead"):
 			if item._dead():
 				remove_child(item)
+
+#	if tick%60 == 0:
+#		add_child($Enemy.instance())
+
+
 	pass

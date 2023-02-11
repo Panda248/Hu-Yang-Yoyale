@@ -9,6 +9,7 @@ radius = 4.47214
 
 [sub_resource type="CapsuleShape2D" id=2]
 
+
 [node name="Bullet" type="Area2D"]
 scale = Vector2( 0.25, 0.25 )
 script = ExtResource( 1 )
@@ -21,6 +22,8 @@ shape = SubResource( 1 )
 rotation = 1.5708
 texture = ExtResource( 2 )
 
+
+[connection signal="body_shape_entered" from="." to="." method="_on_Bullet_body_shape_entered"]
 [node name="HitBox" type="Area2D" parent="."]
 script = ExtResource( 3 )
 
@@ -28,3 +31,4 @@ script = ExtResource( 3 )
 modulate = Color( 1, 1, 1, 0.196078 )
 rotation = 1.57231
 shape = SubResource( 2 )
+
