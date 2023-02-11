@@ -12,22 +12,22 @@ _global_script_classes=[ {
 "base": "KinematicBody2D",
 "class": "Entity",
 "language": "GDScript",
-"path": "res://Entity.gd"
+"path": "res://scripts/Entity.gd"
 }, {
 "base": "Area2D",
 "class": "HitBox",
 "language": "GDScript",
-"path": "res://HitBox.gd"
+"path": "res://scripts/HitBox.gd"
 }, {
 "base": "Area2D",
 "class": "HurtBox",
 "language": "GDScript",
-"path": "res://HurtBox.gd"
+"path": "res://scripts/HurtBox.gd"
 }, {
 "base": "Node2D",
 "class": "Weapon",
 "language": "GDScript",
-"path": "res://Weapon.gd"
+"path": "res://scripts/Weapon.gd"
 } ]
 _global_script_class_icons={
 "Entity": "",

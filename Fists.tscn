@@ -1,10 +1,9 @@
-
 [gd_scene load_steps=7 format=2]
 
-
-[ext_resource path="res://HitBox.gd" type="Script" id=1]
-[ext_resource path="res://Fists.gd" type="Script" id=2]
+[ext_resource path="res://scripts/HitBox.gd" type="Script" id=1]
+[ext_resource path="res://scripts/Fists.gd" type="Script" id=2]
 [ext_resource path="res://res/exported/Hand.png" type="Texture" id=3]
+
 
 [sub_resource type="CapsuleShape2D" id=8]
 height = 8.0
