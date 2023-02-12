@@ -26,7 +26,7 @@ func _process(delta):
 	input_action()
 	
 	direction = direction.normalized();
-	move_and_slide(direction * velocity);
+	move_and_slide(direction * velocity * delta*60);
 	pass
 
 func input_movement():

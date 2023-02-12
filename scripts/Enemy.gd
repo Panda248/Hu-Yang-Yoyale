@@ -47,11 +47,11 @@ func _process(delta):
 
 func _chase(delta):
 	look_at(player.position)
-	motion = move_and_slide((player.position - position).normalized() * velocity)
+	motion = move_and_slide((player.position - position).normalized() * velocity * delta*60)
 	pass
 func _investigate(delta):
 	look_at(destination)
-	motion = move_and_slide((destination - position).normalized() * velocity)
+	motion = move_and_slide((destination - position).normalized() * velocity * delta*60)
 	if position.distance_to(destination) < 10:
 		state = IDLE
 	pass
