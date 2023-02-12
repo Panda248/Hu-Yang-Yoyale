@@ -12,6 +12,7 @@ var motion = Vector2()
 var state = IDLE
 
 var destination : Vector2;
+var player
 
 enum	{
 	IDLE, CHASE, INVESTIGATE, ATTACK
@@ -22,6 +23,7 @@ func _dead() ->bool:
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	player = get_tree().get_root().get_node("World").get_node("Player")
 	pass # Replace with function body.
 
 
@@ -35,7 +37,7 @@ func _process(delta):
 		INVESTIGATE:
 			_investigate(delta)
 		ATTACK:
-			look_at(get_node("%Player").position)
+			look_at(player.position)
 			if randf() > 0.5:
 				get_node("Fists").primaryFire()
 			else:
@@ -43,8 +45,8 @@ func _process(delta):
 	pass
 
 func _chase(delta):
-	look_at(get_node("%Player").position)
-	motion = move_and_collide((get_node("%Player").position - position).normalized() * delta * velocity)
+	look_at(player.position)
+	motion = move_and_collide((player.position - position).normalized() * delta * velocity)
 	pass
 func _investigate(delta):
 	look_at(destination)
@@ -54,14 +56,14 @@ func _investigate(delta):
 	pass
 
 func _on_FOV_body_entered(body):
-	if(body == get_node("%Player")):
+	if(body == player):
 		state = CHASE
 	pass
 
 
 func _on_FOV_body_exited(body):
-	if(body == get_node("%Player")):
-		destination = get_node("%Player").position
+	if(body == player):
+		destination = player.position
 		state = INVESTIGATE
 	pass # Replace with function body.
 
@@ -72,12 +74,12 @@ func takeDamage(damage : int):
 
 
 func _on_Range_body_entered(body):
-	if(body == get_node("%Player")):
+	if(body == player):
 		state = ATTACK
 	pass # Replace with function body.
 
 
 func _on_Range_body_exited(body):
-	if(body == get_node("%Player")):
+	if(body == player):
 		state = CHASE
 	pass # Replace with function body.

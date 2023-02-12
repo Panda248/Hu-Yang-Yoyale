@@ -45,8 +45,6 @@ tracks/1/keys = {
 
 [node name="Enemy" type="KinematicBody2D"]
 script = ExtResource( 1 )
-velocity = null
-health = null
 
 [node name="Body" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
