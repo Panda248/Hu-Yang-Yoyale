@@ -12,7 +12,7 @@ texture = ExtResource( 2 )
 centered = false
 offset = Vector2( -15, -6 )
 script = ExtResource( 1 )
-reloadTimeFrames = 120
+reloadTimeFrames = 90
 knockbackMultiplier = 100
 Bullet = ExtResource( 3 )
 

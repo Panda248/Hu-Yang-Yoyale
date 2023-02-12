@@ -118,10 +118,11 @@ show_behind_parent = true
 script = ExtResource( 2 )
 currentClip = -1
 clip = -1
-reloadTimeFrames = -1
-fireRate = 60
+reloadTimeFrames = 30
+fireRate = 30
 reserveClips = -1
 knockbackMultiplier = 100
+alertRadius = 100
 
 [node name="HitBox" type="Area2D" parent="."]
 script = ExtResource( 1 )
@@ -148,6 +149,7 @@ scale = Vector2( 0.4, 0.4 )
 texture = ExtResource( 3 )
 
 [node name="Label" type="Label" parent="."]
-visible = false
-margin_right = 40.0
-margin_bottom = 14.0
+margin_left = 1.0
+margin_top = 25.0
+margin_right = 41.0
+margin_bottom = 39.0

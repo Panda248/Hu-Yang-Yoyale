@@ -1,6 +1,8 @@
+class_name Player
 extends Entity
 
 signal player_shot(bullet, position, direction);
+signal alert_enemies(alertRadius);
 
 var direction;
 
@@ -24,7 +26,7 @@ func _process(delta):
 	input_action()
 	
 	direction = direction.normalized();
-	move_and_collide(direction * velocity * delta);
+	move_and_slide(direction * velocity);
 	pass
 
 func input_movement():
@@ -58,6 +60,8 @@ func input_action():
 		$Weapons.add_child(prevWeapon)
 		$Weapons.remove_child(nextWeapon)
 		$Equipped.add_child(nextWeapon)
+		prevWeapon.set_owner(self)
+		nextWeapon.set_owner(self)
 		
 	elif Input.is_action_just_pressed("game_switch_weapon_right"):
 		var nextWeapon = $Weapons.get_child($Weapons.get_child_count()-1)
@@ -66,6 +70,8 @@ func input_action():
 		$Weapons.add_child(prevWeapon)
 		$Weapons.remove_child(nextWeapon)
 		$Equipped.add_child(nextWeapon)
+		prevWeapon.set_owner(self)
+		nextWeapon.set_owner(self)
 		
 	
 

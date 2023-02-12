@@ -1,3 +1,4 @@
+class_name Enemy
 extends Entity
 
 
@@ -46,11 +47,11 @@ func _process(delta):
 
 func _chase(delta):
 	look_at(player.position)
-	motion = move_and_collide((player.position - position).normalized() * delta * velocity)
+	motion = move_and_slide((player.position - position).normalized() * velocity)
 	pass
 func _investigate(delta):
 	look_at(destination)
-	motion = move_and_collide((destination - position).normalized() * delta * velocity)
+	motion = move_and_slide((destination - position).normalized() * velocity)
 	if position.distance_to(destination) < 10:
 		state = IDLE
 	pass
@@ -63,8 +64,7 @@ func _on_FOV_body_entered(body):
 
 func _on_FOV_body_exited(body):
 	if(body == player):
-		destination = player.position
-		state = INVESTIGATE
+		alert(body.position)
 	pass # Replace with function body.
 
 func takeDamage(damage : int):
@@ -83,3 +83,7 @@ func _on_Range_body_exited(body):
 	if(body == player):
 		state = CHASE
 	pass # Replace with function body.
+
+func alert(position):
+	destination = position
+	state = INVESTIGATE
