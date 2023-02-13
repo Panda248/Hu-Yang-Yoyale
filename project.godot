@@ -9,7 +9,7 @@
 config_version=4
 
 _global_script_classes=[ {
-"base": "Entity",
+"base": "NPC",
 "class": "Enemy",
 "language": "GDScript",
 "path": "res://scripts/Enemy.gd"
@@ -30,6 +30,11 @@ _global_script_classes=[ {
 "path": "res://scripts/HurtBox.gd"
 }, {
 "base": "Entity",
+"class": "NPC",
+"language": "GDScript",
+"path": "res://scripts/NPC.gd"
+}, {
+"base": "Entity",
 "class": "Player",
 "language": "GDScript",
 "path": "res://scripts/Player.gd"
@@ -44,6 +49,7 @@ _global_script_class_icons={
 "Entity": "",
 "HitBox": "",
 "HurtBox": "",
+"NPC": "",
 "Player": "",
 "Weapon": ""
 }

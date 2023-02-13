@@ -1,5 +1,5 @@
 class_name Enemy
-extends Entity
+extends NPC
 
 
 # Declare member variables here. Examples:
@@ -8,19 +8,6 @@ extends Entity
 
 
 
-var motion = Vector2()
-
-var state = IDLE
-
-var destination : Vector2;
-var player
-
-enum	{
-	IDLE, CHASE, INVESTIGATE, ATTACK
-}
-
-func _dead() ->bool:
-	return health <= 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
