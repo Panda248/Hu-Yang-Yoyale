@@ -5,8 +5,12 @@ extends Entity
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
-
-
+export var rotationSpeedDegrees := 30
+export var angleOfVisionDegrees := 30
+export var maxViewDistance := 800.0
+export var angleBetweenRaysDegrees := 5.0
+var angleOfVision := deg2rad(angleOfVisionDegrees)
+var angleBetweenRays := deg2rad(angleBetweenRaysDegrees)
 
 var motion = Vector2()
 
@@ -25,11 +29,13 @@ func _dead() ->bool:
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	player = get_tree().get_root().get_node("World").get_node("Player")
+	$FOV/RayCast2D.cast_to = Vector2(maxViewDistance, 0)
 	pass # Replace with function body.
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	raycast_sweep()
 	get_node("Label").text = var2str(health)
 	#State machine
 	match state:
@@ -46,11 +52,15 @@ func _process(delta):
 	pass
 
 func _chase(delta):
-	look_at(player.position)
-	motion = move_and_slide((player.position - position).normalized() * velocity * delta*60)
+	slowly_rotate_to(player, delta)
+	#motion = move_and_slide((player.position - position).normalized() * velocity * delta*60)
+	move_forward(delta)
+	if(position.distance_to(player.position) > maxViewDistance):
+		destination = player.position
+		state = INVESTIGATE
 	pass
 func _investigate(delta):
-	look_at(destination)
+	slowly_rotate_to(player, delta)
 	motion = move_and_slide((destination - position).normalized() * velocity * delta*60)
 	if position.distance_to(destination) < 10:
 		state = IDLE
@@ -87,3 +97,28 @@ func _on_Range_body_exited(body):
 func alert(position):
 	destination = position
 	state = INVESTIGATE
+
+func raycast_sweep() -> void:
+	var castCount := angleOfVision / angleBetweenRays
+	
+	for index in castCount:
+		var cast_vector := (
+			maxViewDistance * Vector2.RIGHT.rotated(angleBetweenRays * (index - castCount / 2.0))
+		)
+		$FOV/RayCast2D.cast_to = cast_vector
+		$FOV/RayCast2D.force_raycast_update()
+		if $FOV/RayCast2D.is_colliding() and $FOV/RayCast2D.get_collider() is Player:
+			if state != ATTACK:
+				state = CHASE
+			break
+
+func slowly_rotate_to(target, delta):
+	var direction = (target.global_position - global_position)
+	var angleTo = direction.angle()
+	var maxRotation = deg2rad(rotationSpeedDegrees)*delta
+	var rotationToTarget = lerp_angle(global_rotation, angleTo, 1)
+	angleTo = clamp(angleTo, global_rotation - maxRotation, global_rotation + maxRotation)
+	global_rotation = angleTo
+	pass
+func move_forward(delta):
+	move_and_slide(Vector2(velocity*delta*60,0).rotated(global_rotation))
