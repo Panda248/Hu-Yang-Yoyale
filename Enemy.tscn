@@ -45,7 +45,7 @@ tracks/1/keys = {
 
 [node name="Enemy" type="KinematicBody2D"]
 script = ExtResource( 1 )
-rotationSpeedDegrees = 360
+rotationSpeedDegrees = 180
 maxViewDistance = 200.0
 
 [node name="Body" type="CollisionShape2D" parent="."]

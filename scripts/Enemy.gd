@@ -60,8 +60,12 @@ func _chase(delta):
 		state = INVESTIGATE
 	pass
 func _investigate(delta):
-	slowly_rotate_to(player, delta)
-	motion = move_and_slide((destination - position).normalized() * velocity * delta*60)
+	slowly_rotate_to(destination, delta)
+	if(can_see_player()):
+		state = CHASE
+		pass
+	if(abs(get_angle_to(destination)) < deg2rad(10)):
+		motion = move_and_slide((destination - position).normalized() * velocity * delta*60)
 	if position.distance_to(destination) < 10:
 		state = IDLE
 	pass
@@ -98,7 +102,7 @@ func alert(position):
 	destination = position
 	state = INVESTIGATE
 
-func raycast_sweep() -> void:
+func can_see_player() -> bool:
 	var castCount := angleOfVision / angleBetweenRays
 	
 	for index in castCount:
@@ -108,17 +112,23 @@ func raycast_sweep() -> void:
 		$FOV/RayCast2D.cast_to = cast_vector
 		$FOV/RayCast2D.force_raycast_update()
 		if $FOV/RayCast2D.is_colliding() and $FOV/RayCast2D.get_collider() is Player:
-			if state != ATTACK:
-				state = CHASE
-			break
+			return true
+	return false
+
+func raycast_sweep() -> void:
+	if(can_see_player()):
+		if state != ATTACK:
+			state = CHASE
 
 func slowly_rotate_to(target, delta):
-	var direction = (target.global_position - global_position)
+	var targetPosition = (target if target is Vector2 else target.global_position)
+	var direction = global_position.direction_to(targetPosition)
 	var angleTo = direction.angle()
 	var maxRotation = deg2rad(rotationSpeedDegrees)*delta
-	var rotationToTarget = lerp_angle(global_rotation, angleTo, 1)
+	angleTo = lerp_angle(global_rotation, angleTo, 1.0)
 	angleTo = clamp(angleTo, global_rotation - maxRotation, global_rotation + maxRotation)
 	global_rotation = angleTo
 	pass
+
 func move_forward(delta):
 	move_and_slide(Vector2(velocity*delta*60,0).rotated(global_rotation))
