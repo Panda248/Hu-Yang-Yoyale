@@ -123,6 +123,7 @@ fireRate = 30
 reserveClips = -1
 knockbackMultiplier = 100
 alertRadius = 100
+weaponPen = 0
 
 [node name="HitBox" type="Area2D" parent="."]
 script = ExtResource( 1 )

@@ -18,6 +18,7 @@ clip = 17
 reloadTimeFrames = 260
 fireRate = 55
 knockbackMultiplier = 100
+weaponWeight = 1
 Bullet = ExtResource( 3 )
 
 [node name="BarrelEnd" type="Position2D" parent="."]

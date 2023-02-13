@@ -10,6 +10,17 @@ export var reserveClips := 2
 export var knockbackMultiplier := 0
 export var alertRadius := 1000
 
+enum WEAPON_WEIGHT {
+	NONE = 0, LIGHT = 1, MEDIUM = 2, HEAVY = 3
+}
+
+enum WEAPON_PENETRATION {
+	NONE = 0, LOW = 1, NORMAL = 2, HIGH = 3
+}
+
+export var weaponWeight = WEAPON_WEIGHT.NONE;
+export var weaponPen = WEAPON_PENETRATION.LOW;
+
 var shotTimeStamp = fireRate*-1
 var reloadAndShootDelay = 0
 
@@ -19,6 +30,9 @@ func _process(delta):
 	elif(currentClip == 0 && reserveClips > 0):
 		currentClip = clip
 		reserveClips -= 1
+
+func getWeight():
+	return weaponWeight;
 
 func primaryFire():
 	pass
@@ -35,4 +49,3 @@ func alert():
 	else:
 		#print(var2str(get_owner()))
 		pass
-
