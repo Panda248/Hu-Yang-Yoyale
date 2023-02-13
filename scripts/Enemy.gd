@@ -38,7 +38,7 @@ func _process(delta):
 		INVESTIGATE:
 			_investigate(delta)
 		ATTACK:
-			look_at(player.position)
+			_chase(delta)
 			if randf() > 0.5:
 				get_node("Fists").primaryFire()
 			else:
