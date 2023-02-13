@@ -21,12 +21,20 @@ func primaryFire():
 												$BarrelEnd.global_position, 
 												direction_to_mouse,
 												damage, knockbackMultiplier);
-			currentClip -=1
+			currentClip -= 1
 			if(self.currentClip > 0):
 				self.reloadAndShootDelay = fireRate
-			else:
+				
+			elif (reserveClips > 0):
 				self.reloadAndShootDelay = reloadTimeFrames
 				$ReloadSFX.play(0)
 
 func secondaryFire():
 	pass
+
+func reload():
+	if (currentClip < clip && self.reloadAndShootDelay <= 0 && reserveClips > 0):
+		currentClip = clip
+		reserveClips -= 1
+		self.reloadAndShootDelay = reloadTimeFrames
+		$ReloadSFX.play(0)

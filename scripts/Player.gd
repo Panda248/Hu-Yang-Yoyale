@@ -48,7 +48,11 @@ func input_action():
 	if Input.is_action_just_pressed("game_primary_fire"):
 		if($Equipped.get_child(0).has_method("primaryFire")):
 			$Equipped.get_child(0).primaryFire()
-			
+		
+	elif Input.is_action_just_pressed("reload"):
+		if($Equipped.get_child(0).has_method("reload")):
+			$Equipped.get_child(0).reload()
+		
 	elif Input.is_action_just_pressed("game_secondary_fire"):
 		if($Equipped.get_child(0).has_method("secondaryFire")):
 			$Equipped.get_child(0).secondaryFire()
@@ -73,6 +77,5 @@ func input_action():
 		prevWeapon.set_owner(self)
 		nextWeapon.set_owner(self)
 		
-	
 
 

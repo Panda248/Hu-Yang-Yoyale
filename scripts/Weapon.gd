@@ -18,13 +18,15 @@ func _process(delta):
 		self.reloadAndShootDelay-= delta*60
 	elif(currentClip == 0 && reserveClips > 0):
 		currentClip = clip
-		reserveClips-= delta*60
+		reserveClips -= 1
 
 func primaryFire():
-	
 	pass
 
 func secondaryFire():
+	pass
+
+func reload():
 	pass
 
 func alert():
