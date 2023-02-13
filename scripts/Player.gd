@@ -27,8 +27,10 @@ func _process(delta):
 	
 	direction = direction.normalized();
 	
-	velocity = 200 - 40 * $Equipped.get_child(0).getWeight()
+	velocity = (200 - 40 * $Equipped.get_child(0).getWeight()) * (health+5)/15
+	
 	print(velocity)
+	
 	move_and_slide(direction * velocity * delta*60);
 	pass
 
