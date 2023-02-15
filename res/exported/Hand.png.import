@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/ZombieHands.png-f89720e0a827bc1939984d549f3c5dca.stex"
+path="res://.import/Hand.png-4d637eb47e438094761812d9b8d74b76.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://res/exported/sound/ZombieHands.png"
-dest_files=[ "res://.import/ZombieHands.png-f89720e0a827bc1939984d549f3c5dca.stex" ]
+source_file="res://res/exported/Hand.png"
+dest_files=[ "res://.import/Hand.png-4d637eb47e438094761812d9b8d74b76.stex" ]
 
 [params]
 

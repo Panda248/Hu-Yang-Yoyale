@@ -3,6 +3,7 @@ extends Entity
 
 signal player_shot(bullet, position, direction);
 signal alert_enemies(alertRadius);
+signal interact(interactable);
 
 var direction;
 
@@ -29,7 +30,6 @@ func _process(delta):
 	
 	velocity = (200 - 40 * $Equipped.get_child(0).getWeight()) * (health+5)/15
 	
-	print(velocity)
 	
 	move_and_slide(direction * velocity * delta*60);
 	pass
@@ -81,6 +81,8 @@ func input_action():
 		$Equipped.add_child(nextWeapon)
 		prevWeapon.set_owner(self)
 		nextWeapon.set_owner(self)
-		
-
+	elif Input.is_action_just_pressed("interact"):
+		if($Interactable.canInteract):
+			$Interactable.interactable.get_owner().interact()
+		pass
 
