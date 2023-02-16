@@ -5,17 +5,12 @@ extends NPC
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
-export var rotationSpeedDegrees := 30
-export var angleOfVisionDegrees := 30
-export var maxViewDistance := 800.0
-export var angleBetweenRaysDegrees := 5.0
-var angleOfVision := deg2rad(angleOfVisionDegrees)
-var angleBetweenRays := deg2rad(angleBetweenRaysDegrees)
+
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	player = get_tree().get_root().get_node("World").get_node("Player")
+	
 	$FOV/RayCast2D.cast_to = Vector2(maxViewDistance, 0)
 	pass # Replace with function body.
 
@@ -52,7 +47,7 @@ func _investigate(delta):
 		state = CHASE
 		pass
 	if(abs(get_angle_to(destination)) < deg2rad(10)):
-		motion = move_and_slide((destination - position).normalized() * velocity * delta*60)
+		motion = move_and_slide((destination - position).normalized() * velocity * delta * Engine.get_iterations_per_second())
 	if position.distance_to(destination) < 10:
 		state = IDLE
 	pass
@@ -107,15 +102,4 @@ func raycast_sweep() -> void:
 		if state != ATTACK:
 			state = CHASE
 
-func slowly_rotate_to(target, delta):
-	var targetPosition = (target if target is Vector2 else target.global_position)
-	var direction = global_position.direction_to(targetPosition)
-	var angleTo = direction.angle()
-	var maxRotation = deg2rad(rotationSpeedDegrees)*delta
-	angleTo = lerp_angle(global_rotation, angleTo, 1.0)
-	angleTo = clamp(angleTo, global_rotation - maxRotation, global_rotation + maxRotation)
-	global_rotation = angleTo
-	pass
 
-func move_forward(delta):
-	move_and_slide(Vector2(velocity*delta*60,0).rotated(global_rotation))

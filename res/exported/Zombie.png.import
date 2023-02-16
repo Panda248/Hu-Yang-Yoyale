@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/pistol.png-ef6009fd7503bed9afcebc96d059af11.stex"
+path="res://.import/Zombie.png-a45e4e476f545e35169aac5402aefef1.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://res/exported/sound/pistol.png"
-dest_files=[ "res://.import/pistol.png-ef6009fd7503bed9afcebc96d059af11.stex" ]
+source_file="res://res/exported/Zombie.png"
+dest_files=[ "res://.import/Zombie.png-a45e4e476f545e35169aac5402aefef1.stex" ]
 
 [params]
 
