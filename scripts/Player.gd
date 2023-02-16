@@ -7,6 +7,8 @@ signal interact(interactable);
 
 var direction;
 
+var targetNPC : InteractableNPC
+
 export (PackedScene) var Bullet;
 
 
@@ -28,10 +30,10 @@ func _process(delta):
 	
 	direction = direction.normalized();
 	
-	velocity = (200 - 40 * $Equipped.get_child(0).getWeight()) * (health+5)/15
+	var modifiedVelocity = (velocity - 40 * $Equipped.get_child(0).getWeight()) * (health+5)/15
 	
 	
-	move_and_slide(direction * velocity * delta*60);
+	move_and_slide(direction * modifiedVelocity * delta * Engine.get_iterations_per_second());
 	pass
 
 func input_movement():
@@ -50,6 +52,7 @@ func input_movement():
 		direction.y = 0;
 
 func input_action():
+	
 	if Input.is_action_just_pressed("game_primary_fire"):
 		if($Equipped.get_child(0).has_method("primaryFire")):
 			$Equipped.get_child(0).primaryFire()
@@ -81,8 +84,20 @@ func input_action():
 		$Equipped.add_child(nextWeapon)
 		prevWeapon.set_owner(self)
 		nextWeapon.set_owner(self)
-	elif Input.is_action_just_pressed("interact"):
-		if($Interactable.canInteract):
-			$Interactable.interactable.get_owner().interact()
+	elif Input.is_action_just_pressed("game_interact"):
+		if(targetNPC != null and targetNPC.canInteract):
+			targetNPC.interact()
 		pass
 
+func _on_InteractBox_body_entered(body):
+	if(body is InteractableNPC):
+		if(targetNPC == null || 
+		self.global_positon.distance_to(body.global_position) 
+		< self.global_position.distance_to(targetNPC.global_position)):
+			targetNPC = body
+		targetNPC.canInteract = true
+	
+func _on_InteractBox_body_exited(body):
+	if(body is InteractableNPC):
+		targetNPC.canInteract = false
+		targetNPC = null

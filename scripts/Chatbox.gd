@@ -1,7 +1,10 @@
 extends Label
+class_name ChatBox
 
-export var drawSpeed := 1
-var show : bool = false
+export var charactersPerSecond : float = 10
+var displayCharacterCooldown : float = 1/charactersPerSecond
+var curCharacterCooldown = displayCharacterCooldown
+var display : bool = false
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
@@ -9,20 +12,24 @@ var show : bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	self.visible_characters = 0
+	visible_characters = 0
 	pass # Replace with function body.
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if(show):
-		if (get_total_character_count() < get_total_character_count()):
-			self.visible_characters += drawSpeed
+	if(display):
+		if (get_visible_characters() < get_total_character_count() && curCharacterCooldown <= 0):
+			print("hello")
+			visible_characters += 1
+			curCharacterCooldown = displayCharacterCooldown
+			
 	else:
-		self.visible_characters = 0
+		visible_characters = 0
+	curCharacterCooldown -= delta
 	pass
 
 func show():
-	show = true
+	display = true
 func hide():
-	show = false
+	display = false

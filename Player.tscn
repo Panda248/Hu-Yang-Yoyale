@@ -6,7 +6,7 @@
 [ext_resource path="res://res/exported/Player.png" type="Texture" id=4]
 [ext_resource path="res://scripts/HurtBox.gd" type="Script" id=5]
 [ext_resource path="res://Pistol.tscn" type="PackedScene" id=6]
-[ext_resource path="res://Interactable.tscn" type="PackedScene" id=7]
+[ext_resource path="res://icon.png" type="Texture" id=7]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 14.0
@@ -41,12 +41,12 @@ tracks/1/keys = {
 "values": [ true, false ]
 }
 
-[sub_resource type="CircleShape2D" id=4]
-radius = 30.0
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 20, 25 )
 
 [node name="Player" type="KinematicBody2D"]
 script = ExtResource( 1 )
-velocity = 100
+velocity = 600
 Bullet = ExtResource( 2 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -95,8 +95,19 @@ position = Vector2( 6, 12 )
 [node name="Listener2D" type="Listener2D" parent="."]
 current = true
 
-[node name="Interactable" parent="." instance=ExtResource( 7 )]
+[node name="InteractBox" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable"]
-modulate = Color( 1, 1, 1, 0.0627451 )
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractBox"]
+self_modulate = Color( 1, 1, 1, 0.105882 )
+position = Vector2( 25, 0 )
+rotation = 1.5708
 shape = SubResource( 4 )
+
+[node name="Sprite" type="Sprite" parent="."]
+visible = false
+position = Vector2( 48, 0 )
+scale = Vector2( 0.203125, 0.203125 )
+texture = ExtResource( 7 )
+
+[connection signal="body_entered" from="InteractBox" to="." method="_on_InteractBox_body_entered"]
+[connection signal="body_exited" from="InteractBox" to="." method="_on_InteractBox_body_exited"]

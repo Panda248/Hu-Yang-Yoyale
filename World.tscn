@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Enemy.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Player.tscn" type="PackedScene" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://scripts/AlertManager.gd" type="Script" id=8]
 [ext_resource path="res://Alert.tscn" type="PackedScene" id=9]
 [ext_resource path="res://InteractableNPC.tscn" type="PackedScene" id=10]
+[ext_resource path="res://ChatBoxManager.gd" type="Script" id=11]
 
 [sub_resource type="OccluderPolygon2D" id=3]
 cull_mode = 2
@@ -138,7 +139,6 @@ texture = ExtResource( 3 )
 position = Vector2( 148, 51 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
-velocity = 200
 
 [node name="Light2D" type="Light2D" parent="Player"]
 scale = Vector2( 9.75, 9.46875 )
@@ -172,3 +172,6 @@ occluder = SubResource( 4 )
 
 [node name="InteractableNPC" parent="." instance=ExtResource( 10 )]
 position = Vector2( 330, -44 )
+
+[node name="ChatBoxManager" type="Node2D" parent="."]
+script = ExtResource( 11 )
