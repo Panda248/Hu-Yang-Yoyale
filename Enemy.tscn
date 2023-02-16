@@ -47,8 +47,6 @@ tracks/1/keys = {
 script = ExtResource( 1 )
 rotationSpeedDegrees = 180
 maxViewDistance = 200.0
-rotationSpeedDegrees = 180
-maxViewDistance = 200.0
 
 [node name="Body" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )

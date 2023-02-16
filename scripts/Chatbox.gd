@@ -20,7 +20,6 @@ func _ready():
 func _process(delta):
 	if(display):
 		if (get_visible_characters() < get_total_character_count() && curCharacterCooldown <= 0):
-			print("hello")
 			visible_characters += 1
 			curCharacterCooldown = displayCharacterCooldown
 			

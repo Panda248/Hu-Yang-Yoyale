@@ -10,7 +10,7 @@
 [ext_resource path="res://scripts/AlertManager.gd" type="Script" id=8]
 [ext_resource path="res://Alert.tscn" type="PackedScene" id=9]
 [ext_resource path="res://InteractableNPC.tscn" type="PackedScene" id=10]
-[ext_resource path="res://ChatBoxManager.gd" type="Script" id=11]
+[ext_resource path="res://scripts/ChatBoxManager.gd" type="Script" id=11]
 
 [sub_resource type="OccluderPolygon2D" id=3]
 cull_mode = 2
