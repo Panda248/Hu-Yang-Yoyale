@@ -16,7 +16,9 @@ func takeDamage(damage : int):
 func takeKnockback(hitbox : HitBox):
 	knockback = hitbox.knockbackDirection * hitbox.knockbackMultiplier
 	
-
+func _dead() ->bool:
+	return health <= 0
+	return health <= 0
 
 func move_forward(delta):
 	move_and_slide(Vector2(velocity*delta*60,0).rotated(global_rotation))

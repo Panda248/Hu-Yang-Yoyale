@@ -4,6 +4,7 @@ extends Entity
 signal player_shot(bullet, position, direction);
 signal alert_enemies(alertRadius);
 signal interact(interactable);
+signal death_screen();
 
 var direction;
 
@@ -34,6 +35,9 @@ func _process(delta):
 	
 	
 	move_and_slide(direction * modifiedVelocity * delta * Engine.get_iterations_per_second());
+	
+	if _dead():
+		emit_signal("death_screen")
 	pass
 
 func input_movement():

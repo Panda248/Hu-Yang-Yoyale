@@ -22,8 +22,7 @@ var destination : Vector2;
 var player
 
 
-func _dead() ->bool:
-	return health <= 0
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
