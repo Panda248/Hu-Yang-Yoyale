@@ -140,6 +140,7 @@ position = Vector2( 148, 51 )
 velocity = 100
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
+velocity = 200
 
 [node name="Light2D" type="Light2D" parent="Player"]
 visible = false

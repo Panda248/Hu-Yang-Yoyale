@@ -81,8 +81,10 @@ func _on_Range_body_exited(body):
 	pass # Replace with function body.
 
 func alert(position):
-	destination = position
-	state = INVESTIGATE
+	if(state != ATTACK or state != CHASE):
+		destination = position
+		state = INVESTIGATE
+	
 
 func can_see_player() -> bool:
 	var castCount := angleOfVision / angleBetweenRays

@@ -20,7 +20,7 @@ func _process(delta):
 			if item._dead():
 				remove_child(item)
 
-	if Engine.get_iterations_per_second()%600 == 0:
+	if Engine.get_physics_frames()%600 == 0:
 		add_child(Enemy.instance())
 
 
