@@ -142,11 +142,11 @@ velocity = 100
 [node name="Player" parent="." instance=ExtResource( 2 )]
 
 [node name="Light2D" type="Light2D" parent="Player"]
+visible = false
 scale = Vector2( 9.75, 9.46875 )
-enabled = false
 texture = ExtResource( 4 )
-offset = Vector2( 0, 2 )
 texture_scale = 0.2
+energy = 0.5
 range_height = 10.0
 shadow_enabled = true
 shadow_gradient_length = 1.0

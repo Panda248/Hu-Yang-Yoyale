@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://scripts/Enemy.gd" type="Script" id=1]
 [ext_resource path="res://scripts/HurtBox.gd" type="Script" id=2]
@@ -42,6 +42,9 @@ tracks/1/keys = {
 "update": 1,
 "values": [ true, false ]
 }
+
+[sub_resource type="OccluderPolygon2D" id=6]
+polygon = PoolVector2Array( -8, -8, -2, -11, 2, -11, 8, -8, 11, -2, 11, 2, 8, 8, 2, 11, -2, 11, -8, 8, -11, 3, -11, -2 )
 
 [node name="Enemy" type="KinematicBody2D"]
 script = ExtResource( 1 )
@@ -91,6 +94,9 @@ anims/damageFlash = SubResource( 5 )
 [node name="Label" type="Label" parent="."]
 margin_right = 40.0
 margin_bottom = 14.0
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+occluder = SubResource( 6 )
 
 [connection signal="body_entered" from="FOV" to="." method="_on_FOV_body_entered"]
 [connection signal="body_exited" from="FOV" to="." method="_on_FOV_body_exited"]

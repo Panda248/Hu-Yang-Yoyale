@@ -8,7 +8,7 @@
 [ext_resource path="res://res/exported/light.png" type="Texture" id=6]
 
 [sub_resource type="OccluderPolygon2D" id=1]
-polygon = PoolVector2Array( 36, -2, 40, -2, 40, 2, 36, 2 )
+polygon = PoolVector2Array( 44, -2, 48, -6, -16, -6, -16, 6, 48, 6, 44, 2 )
 
 [node name="Pistol" type="Sprite"]
 scale = Vector2( 0.5, 0.5 )
@@ -44,14 +44,18 @@ stream = ExtResource( 4 )
 stream = ExtResource( 5 )
 
 [node name="MuzzleFlash" type="Light2D" parent="."]
-position = Vector2( 48, 0 )
+position = Vector2( 44, 0 )
 texture = ExtResource( 6 )
+texture_scale = 0.5
 color = Color( 0.866667, 1, 0.533333, 1 )
-range_height = 10.0
+range_item_cull_mask = 3
 shadow_enabled = true
 shadow_gradient_length = 300.0
 shadow_filter = 5
 shadow_filter_smooth = 64.0
+shadow_item_cull_mask = 3
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+light_mask = 2
 occluder = SubResource( 1 )
+light_mask = 2
