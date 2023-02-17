@@ -17,6 +17,8 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	if _dead():
+		queue_free()
 	raycast_sweep()
 	get_node("Label").text = var2str(health)
 	#State machine
@@ -35,8 +37,10 @@ func _process(delta):
 
 func _chase(delta):
 	slowly_rotate_to(player, delta)
+	if(can_see_player()):
+		move_forward(delta)
 	#motion = move_and_slide((player.position - position).normalized() * velocity * delta*60)
-	move_forward(delta)
+	
 	if(position.distance_to(player.position) > maxViewDistance):
 		destination = player.position
 		state = INVESTIGATE
