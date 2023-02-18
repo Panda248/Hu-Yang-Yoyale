@@ -8,7 +8,7 @@ signal death_screen();
 
 var direction;
 
-var targetNPC : InteractableNPC
+var targetInteractable
 
 export (PackedScene) var Bullet;
 
@@ -89,19 +89,19 @@ func input_action():
 		prevWeapon.set_owner(self)
 		nextWeapon.set_owner(self)
 	elif Input.is_action_just_pressed("game_interact"):
-		if(targetNPC != null and targetNPC.canInteract):
-			targetNPC.interact()
+		if(targetInteractable != null and targetInteractable.canInteract):
+			targetInteractable.interact()
 		pass
 
 func _on_InteractBox_body_entered(body):
-	if(body is InteractableNPC):
-		if(targetNPC == null || 
+	if(body.has_method("interact")):
+		if(targetInteractable == null || 
 		self.global_positon.distance_to(body.global_position) 
-		< self.global_position.distance_to(targetNPC.global_position)):
-			targetNPC = body
-		targetNPC.canInteract = true
+		< self.global_position.distance_to(targetInteractable.global_position)):
+			targetInteractable = body
+		targetInteractable.canInteract = true
 	
 func _on_InteractBox_body_exited(body):
-	if(body is InteractableNPC):
-		targetNPC.canInteract = false
-		targetNPC = null
+	if(body.has_method("interact")):
+		targetInteractable.canInteract = false
+		targetInteractable = null

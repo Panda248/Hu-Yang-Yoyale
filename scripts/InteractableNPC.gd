@@ -7,8 +7,7 @@ signal send_message(chatbox)
 # var b = "text"
 
 var canInteract : bool = false
-var interactable
-var message : String = "La Pepe"
+export var message : String = "La Pepe"
 export var chatYDisplacement : = 50
 export (PackedScene) var ChatBox
 # Called when the node enters the scene tree for the first time.

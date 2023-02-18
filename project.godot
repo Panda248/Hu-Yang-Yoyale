@@ -14,6 +14,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://scripts/Chatbox.gd"
 }, {
+"base": "Entity",
+"class": "Crate",
+"language": "GDScript",
+"path": "res://Crate.gd"
+}, {
 "base": "CanvasLayer",
 "class": "DeathScreen",
 "language": "GDScript",
@@ -44,6 +49,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://scripts/InteractableNPC.gd"
 }, {
+"base": "Entity",
+"class": "Item",
+"language": "GDScript",
+"path": "res://Item.gd"
+}, {
 "base": "CanvasLayer",
 "class": "MainMenu",
 "language": "GDScript",
@@ -66,12 +76,14 @@ _global_script_classes=[ {
 } ]
 _global_script_class_icons={
 "ChatBox": "",
+"Crate": "",
 "DeathScreen": "",
 "Enemy": "",
 "Entity": "",
 "HitBox": "",
 "HurtBox": "",
 "InteractableNPC": "",
+"Item": "",
 "MainMenu": "",
 "NPC": "",
 "Player": "",
