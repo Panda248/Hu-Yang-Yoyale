@@ -8,8 +8,8 @@ export var rotationSpeedDegrees := 30
 export var angleOfVisionDegrees := 30
 export var maxViewDistance := 800.0
 export var angleBetweenRaysDegrees := 5.0
-var angleOfVision := deg2rad(angleOfVisionDegrees)
-var angleBetweenRays := deg2rad(angleBetweenRaysDegrees)
+onready var angleOfVision := deg2rad(angleOfVisionDegrees)
+onready var angleBetweenRays := deg2rad(angleBetweenRaysDegrees)
 
 enum	{
 	IDLE, CHASE, INVESTIGATE, ATTACK

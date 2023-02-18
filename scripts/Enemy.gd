@@ -36,8 +36,9 @@ func _process(delta):
 	pass
 
 func _chase(delta):
-	slowly_rotate_to(player, delta)
+	
 	if(can_see_player()):
+		slowly_rotate_to(player, delta)
 		move_forward(delta)
 	#motion = move_and_slide((player.position - position).normalized() * velocity * delta*60)
 	
