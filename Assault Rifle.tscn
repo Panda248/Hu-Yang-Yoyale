@@ -1,0 +1,60 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://scripts/AssaultRifle.gd" type="Script" id=1]
+[ext_resource path="res://res/exported/sprites/ak47top.png" type="Texture" id=2]
+[ext_resource path="res://res/exported/sound/pistol shoot.wav" type="AudioStream" id=3]
+[ext_resource path="res://res/exported/sound/pistol reload.wav" type="AudioStream" id=4]
+[ext_resource path="res://res/exported/sprites/light.png" type="Texture" id=5]
+[ext_resource path="res://Bullet.tscn" type="PackedScene" id=6]
+
+[sub_resource type="OccluderPolygon2D" id=1]
+polygon = PoolVector2Array( 44, -2, 48, -6, -16, -6, -16, 6, 48, 6, 44, 2 )
+
+[node name="Assault Rifle" type="Sprite"]
+scale = Vector2( 0.25, 0.25 )
+texture = ExtResource( 2 )
+offset = Vector2( 50, 2 )
+script = ExtResource( 1 )
+currentClip = 30
+reloadTimeFrames = 240
+fireRate = 5
+knockbackMultiplier = 200
+alertRadius = 2000
+weaponWeight = 1
+Bullet = ExtResource( 6 )
+
+[node name="BarrelEnd" type="Position2D" parent="."]
+position = Vector2( 174, 0 )
+
+[node name="Label" type="Label" parent="."]
+margin_right = 40.0
+margin_bottom = 14.0
+
+[node name="Label2" type="Label" parent="."]
+margin_top = 16.0
+margin_right = 40.0
+margin_bottom = 30.0
+
+[node name="ShootSFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 3 )
+
+[node name="ReloadSFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 4 )
+
+[node name="MuzzleFlash" type="Light2D" parent="."]
+position = Vector2( 176, 0 )
+texture = ExtResource( 5 )
+texture_scale = 0.5
+color = Color( 0.866667, 1, 0.533333, 1 )
+range_item_cull_mask = 3
+shadow_enabled = true
+shadow_gradient_length = 300.0
+shadow_filter = 5
+shadow_filter_smooth = 64.0
+shadow_item_cull_mask = 3
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+light_mask = 2
+position = Vector2( 129, 0 )
+occluder = SubResource( 1 )
+light_mask = 2

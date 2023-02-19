@@ -57,38 +57,29 @@ func input_movement():
 		direction.y = 0;
 
 func input_action():
-	
-	if Input.is_action_just_pressed("game_primary_fire"):
-		if($Equipped.get_child(0).has_method("primaryFire")):
-			$Equipped.get_child(0).primaryFire()
-		
-	elif Input.is_action_just_pressed("reload"):
-		if($Equipped.get_child(0).has_method("reload")):
-			$Equipped.get_child(0).reload()
-		
-	elif Input.is_action_just_pressed("game_secondary_fire"):
-		if($Equipped.get_child(0).has_method("secondaryFire")):
-			$Equipped.get_child(0).secondaryFire()
-			
-	elif Input.is_action_just_pressed("game_switch_weapon_left"):
-		var nextWeapon = $Weapons.get_child(0)
-		var prevWeapon = $Equipped.get_child(0)
-		$Equipped.remove_child(prevWeapon)
-		$Weapons.add_child(prevWeapon)
-		$Weapons.remove_child(nextWeapon)
-		$Equipped.add_child(nextWeapon)
-		prevWeapon.set_owner(self)
-		nextWeapon.set_owner(self)
+	if($Equipped.get_child(0).has_method("input_action")):
+		$Equipped.get_child(0).input_action()
+	if Input.is_action_just_pressed("game_switch_weapon_left"):
+		if($Weapons.get_child_count() > 0):
+			var nextWeapon = $Weapons.get_child(0)
+			var prevWeapon = $Equipped.get_child(0)
+			$Equipped.remove_child(prevWeapon)
+			$Weapons.add_child(prevWeapon)
+			$Weapons.remove_child(nextWeapon)
+			$Equipped.add_child(nextWeapon)
+			prevWeapon.set_owner(self)
+			nextWeapon.set_owner(self)
 		
 	elif Input.is_action_just_pressed("game_switch_weapon_right"):
-		var nextWeapon = $Weapons.get_child($Weapons.get_child_count()-1)
-		var prevWeapon = $Equipped.get_child(0)
-		$Equipped.remove_child(prevWeapon)
-		$Weapons.add_child(prevWeapon)
-		$Weapons.remove_child(nextWeapon)
-		$Equipped.add_child(nextWeapon)
-		prevWeapon.set_owner(self)
-		nextWeapon.set_owner(self)
+		if($Weapons.get_child_count() > 0):
+			var nextWeapon = $Weapons.get_child($Weapons.get_child_count()-1)
+			var prevWeapon = $Equipped.get_child(0)
+			$Equipped.remove_child(prevWeapon)
+			$Weapons.add_child(prevWeapon)
+			$Weapons.remove_child(nextWeapon)
+			$Equipped.add_child(nextWeapon)
+			prevWeapon.set_owner(self)
+			nextWeapon.set_owner(self)
 	elif Input.is_action_just_pressed("game_interact"):
 		if(is_instance_valid(targetInteractable) and targetInteractable.canInteract):
 			targetInteractable.interact()

@@ -34,6 +34,9 @@ func _process(delta):
 func getWeight():
 	return weaponWeight;
 
+func input_action():
+	pass
+
 func primaryFire():
 	pass
 

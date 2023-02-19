@@ -15,7 +15,7 @@ func _process(delta):
 			$MuzzleFlash.set_visible(false)
 
 func input_action():
-	if Input.is_action_just_pressed("game_primary_fire"):
+	if Input.is_action_pressed("game_primary_fire"):
 		primaryFire()
 	elif Input.is_action_just_pressed("reload"):
 		reload()

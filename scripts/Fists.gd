@@ -8,7 +8,13 @@ func _enter_tree():
 func _process(delta):
 	._process(delta)
 	$Label.text = var2str(reloadAndShootDelay)
-	
+
+func input_action():
+	if Input.is_action_just_pressed("game_primary_fire"):
+		primaryFire()
+	elif Input.is_action_just_pressed("game_secondary_fire"):
+		secondaryFire()
+	pass
 
 func primaryFire():
 	if reloadAndShootDelay <= 0:
