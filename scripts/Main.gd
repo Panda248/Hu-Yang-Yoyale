@@ -4,6 +4,7 @@ extends Node2D
 onready var bullet_manager = $BulletManager;
 onready var alert_manager = $AlertManager;
 onready var chatbox_manager = $ChatBoxManager
+onready var notification_manager = $NotificationManager
 export (PackedScene) var Enemy
 export (PackedScene) var DeathScreen;
 
@@ -27,3 +28,4 @@ func game_over():
 
 func spawn_item(item : Item):
 	add_child(item)
+	item.connect("notify_picked_up", notification_manager, "notify")

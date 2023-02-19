@@ -119,8 +119,6 @@ func closest_node(node1, node2) -> Node:
 
 func pick_up_nearby_items() -> void:
 	var overlappingAreas = $InteractBox.get_overlapping_areas()
-	print(overlappingAreas)
-	var overlappingItems = []
 	for area in overlappingAreas:
 		if(area.has_method("pick_up")):
 			area.pick_up(self)
