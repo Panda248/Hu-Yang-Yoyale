@@ -1,9 +1,9 @@
 extends Area2D
 class_name Item
 
-
+export var messageOffsetY = 50
 var canInteract : bool = false
-var messageOffsetY = 50
+
 
 signal notify_picked_up(message, position, scale)
 

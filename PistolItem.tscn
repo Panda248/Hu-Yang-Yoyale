@@ -1,13 +1,16 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://scripts/Item.gd" type="Script" id=1]
-[ext_resource path="res://res/exported/sprites/Bullet.png" type="Texture" id=2]
+[ext_resource path="res://scripts/PistolItem.gd" type="Script" id=1]
+[ext_resource path="res://res/exported/sprites/m9.png" type="Texture" id=2]
+[ext_resource path="res://Pistol.tscn" type="PackedScene" id=3]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 18.0278
 
-[node name="Item" type="Area2D"]
+[node name="PistolItem" type="Area2D"]
+scale = Vector2( 0.25, 0.25 )
 script = ExtResource( 1 )
+pistol = ExtResource( 3 )
 
 [node name="TextureRect" type="TextureRect" parent="."]
 margin_right = 40.0

@@ -69,6 +69,16 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://scripts/Notification.gd"
 }, {
+"base": "Weapon",
+"class": "Pistol",
+"language": "GDScript",
+"path": "res://scripts/Pistol.gd"
+}, {
+"base": "Item",
+"class": "PistolItem",
+"language": "GDScript",
+"path": "res://scripts/PistolItem.gd"
+}, {
 "base": "Entity",
 "class": "Player",
 "language": "GDScript",
@@ -92,6 +102,8 @@ _global_script_class_icons={
 "MainMenu": "",
 "NPC": "",
 "Notification": "",
+"Pistol": "",
+"PistolItem": "",
 "Player": "",
 "Weapon": ""
 }
