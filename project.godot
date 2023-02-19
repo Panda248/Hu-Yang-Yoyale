@@ -14,7 +14,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://scripts/Chatbox.gd"
 }, {
-"base": "StaticBody2D",
+"base": "Entity",
 "class": "Crate",
 "language": "GDScript",
 "path": "res://Crate.gd"
@@ -49,7 +49,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://scripts/InteractableNPC.gd"
 }, {
-"base": "Area2D",
+"base": "Entity",
 "class": "Item",
 "language": "GDScript",
 "path": "res://Item.gd"
