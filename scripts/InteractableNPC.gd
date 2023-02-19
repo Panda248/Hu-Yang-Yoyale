@@ -22,7 +22,7 @@ func interact():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if(canInteract):
-		look_at(player.position)
+		slowly_rotate_to(player, delta*4)
 		$Indicator.set_visible(true);
 	else:
 		$Indicator.set_visible(false);
