@@ -21,6 +21,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	
 	var _motion = Vector2();
 	
 	get_node("Label").text = var2str(health)
@@ -89,19 +90,38 @@ func input_action():
 		prevWeapon.set_owner(self)
 		nextWeapon.set_owner(self)
 	elif Input.is_action_just_pressed("game_interact"):
-		if(targetInteractable != null and targetInteractable.canInteract):
+		if(is_instance_valid(targetInteractable) and targetInteractable.canInteract):
 			targetInteractable.interact()
-		pass
+		else:
+			pick_up_nearby_items()
+			pass
 
 func _on_InteractBox_body_entered(body):
 	if(body.has_method("interact")):
-		if(targetInteractable == null || 
-		self.global_positon.distance_to(body.global_position) 
-		< self.global_position.distance_to(targetInteractable.global_position)):
+		if(closest_node(body, targetInteractable) == body):
 			targetInteractable = body
-		targetInteractable.canInteract = true
+			targetInteractable.canInteract = true
 	
 func _on_InteractBox_body_exited(body):
-	if(body.has_method("interact")):
+	if(targetInteractable == body):
 		targetInteractable.canInteract = false
 		targetInteractable = null
+
+func closest_node(node1, node2) -> Node:
+	if(!is_instance_valid(node1)):
+		return node2
+	if(!is_instance_valid(node2)):
+		return node1
+	if(self.global_position.distance_to(node1.global_position) 
+		< self.global_position.distance_to(node2.global_position)):
+			return node1
+	return node2
+
+func pick_up_nearby_items() -> void:
+	var overlappingAreas = $InteractBox.get_overlapping_areas()
+	print(overlappingAreas)
+	var overlappingItems = []
+	for area in overlappingAreas:
+		if(area.has_method("pick_up")):
+			area.pick_up(self)
+	pass

@@ -7,7 +7,7 @@
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 63, 63 )
 
-[node name="Crate" type="KinematicBody2D"]
+[node name="Crate" type="StaticBody2D"]
 scale = Vector2( 0.25, 0.25 )
 script = ExtResource( 2 )
 itemScene = ExtResource( 3 )

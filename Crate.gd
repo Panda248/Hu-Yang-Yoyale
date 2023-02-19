@@ -1,4 +1,4 @@
-extends Entity
+extends StaticBody2D
 class_name Crate
 
 export var lootAmount := 3
@@ -11,6 +11,8 @@ func onready():
 	randomize()
 
 func process():
+	if(canInteract):
+		print("hi")
 	pass
 
 func interact():

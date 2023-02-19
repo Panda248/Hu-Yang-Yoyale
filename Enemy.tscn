@@ -50,7 +50,7 @@ polygon = PoolVector2Array( -8, -8, -2, -11, 2, -11, 8, -8, 11, -2, 11, 2, 8, 8,
 script = ExtResource( 1 )
 velocity = 100
 rotationSpeedDegrees = 180
-angleOfVisionDegrees = 90
+angleOfVisionDegrees = 60
 maxViewDistance = 200.0
 
 [node name="Body" type="CollisionShape2D" parent="."]

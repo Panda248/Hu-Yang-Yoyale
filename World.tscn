@@ -138,7 +138,6 @@ texture = ExtResource( 3 )
 
 [node name="Enemy" parent="." instance=ExtResource( 1 )]
 position = Vector2( 148, 51 )
-angleOfVisionDegrees = 180
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
 
