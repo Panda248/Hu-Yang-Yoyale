@@ -3,12 +3,10 @@ class_name WeaponItem
 
 export (PackedScene) var weapon
 export var weaponName = "WeaponItem"
-
 onready var weaponInstance = weapon.instance()
 
 
-func pick_up(player: Player):
-	
+func pick_up(player):
 	if(player_has_self(player) == null):
 		player.pick_up_weapon(weaponInstance)
 		emit_signal("notify_picked_up", "Picked Up " + weaponName, global_position + Vector2.UP*messageOffsetY, 0.5)
@@ -19,11 +17,11 @@ func pick_up(player: Player):
 
 func player_has_self(player : Player):
 	var equipped = player.equipped.get_child(0)
-	if(equipped.get_class() == get_class()):
+	if equipped.get_class() == weaponInstance.get_class():
 		return equipped
-	var weapons = player.weapons.get_children()
-	for weapon in weapons:
-		if weapon.get_class() == get_class():
+	var weapons = player.weaponInstance.get_class()
+	for w in weapons:
+		if w.get_class() == weaponInstance.get_class():
 			return equipped
 	return null
 	pass

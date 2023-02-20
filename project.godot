@@ -19,6 +19,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://scripts/Crate.gd"
 }, {
+"base": "Label",
+"class": "DamageNumber",
+"language": "GDScript",
+"path": "res://scripts/DamageNumber.gd"
+}, {
 "base": "CanvasLayer",
 "class": "DeathScreen",
 "language": "GDScript",
@@ -92,6 +97,7 @@ _global_script_classes=[ {
 _global_script_class_icons={
 "ChatBox": "",
 "Crate": "",
+"DamageNumber": "",
 "DeathScreen": "",
 "Enemy": "",
 "Entity": "",
@@ -111,7 +117,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Hu Yang Yoyale"
-run/main_scene="res://Main Menu.tscn"
+run/main_scene="res://MainMenu.tscn"
 config/icon="res://icon.png"
 
 [debug]
