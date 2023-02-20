@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://Enemy.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Player.tscn" type="PackedScene" id=2]
@@ -17,6 +17,7 @@
 [ext_resource path="res://scripts/DmgNumberManager.gd" type="Script" id=15]
 [ext_resource path="res://DamageNumber.tscn" type="PackedScene" id=16]
 [ext_resource path="res://Death.tscn" type="PackedScene" id=17]
+[ext_resource path="res://Inventory.tscn" type="PackedScene" id=18]
 
 [sub_resource type="OccluderPolygon2D" id=3]
 cull_mode = 2
@@ -185,3 +186,5 @@ Notification = ExtResource( 14 )
 [node name="DmgNumberManager" type="Node2D" parent="."]
 script = ExtResource( 15 )
 DamageNumber = ExtResource( 16 )
+
+[node name="Inventory" parent="." instance=ExtResource( 18 )]

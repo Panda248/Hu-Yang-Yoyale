@@ -9,6 +9,10 @@ func _ready():
 		inv_slot.connect("gui_input", self, "slot_gui_input", [inv_slot])
 	
 
+func _process(delta):
+	position = get_tree().current_scene.get_node("Player").position
+	position += Vector2(30, 30)
+
 func slot_gui_input(event: InputEvent, slot: SlotClass):
 	if event is InputEventMouseButton:
 		if event.button_index == BUTTON_LEFT && event.pressed:

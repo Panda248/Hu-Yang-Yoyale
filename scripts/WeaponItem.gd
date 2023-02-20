@@ -19,7 +19,7 @@ func player_has_self(player : Player):
 	var equipped = player.equipped.get_child(0)
 	if equipped.get_class() == weaponInstance.get_class():
 		return equipped
-	var weapons = player.weaponInstance.get_class()
+	var weapons = player.weapons.get_children()
 	for w in weapons:
 		if w.get_class() == weaponInstance.get_class():
 			return equipped
