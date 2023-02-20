@@ -1,4 +1,5 @@
 extends Weapon
+class_name Pistol
 
 export (PackedScene) var Bullet
 export var shootTimeMS = 100

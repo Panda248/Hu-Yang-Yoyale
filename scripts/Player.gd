@@ -1,13 +1,18 @@
-class_name Player
+
 extends Entity
+class_name Player
 
 signal player_shot(bullet, position, direction);
 signal alert_enemies(alertRadius);
 signal interact(interactable);
 signal death_screen();
 
-var direction;
+onready var equipped = $Equipped
+onready var weapons = $Weapons
 
+export var weaponOffset = 12
+
+var direction;
 var targetInteractable
 
 export (PackedScene) var Bullet;
@@ -57,29 +62,12 @@ func input_movement():
 		direction.y = 0;
 
 func input_action():
-	if($Equipped.get_child(0).has_method("input_action")):
-		$Equipped.get_child(0).input_action()
+	if(equipped.get_child(0).has_method("input_action")):
+		equipped.get_child(0).input_action()
 	if Input.is_action_just_pressed("game_switch_weapon_left"):
-		if($Weapons.get_child_count() > 0):
-			var nextWeapon = $Weapons.get_child(0)
-			var prevWeapon = $Equipped.get_child(0)
-			$Equipped.remove_child(prevWeapon)
-			$Weapons.add_child(prevWeapon)
-			$Weapons.remove_child(nextWeapon)
-			$Equipped.add_child(nextWeapon)
-			prevWeapon.set_owner(self)
-			nextWeapon.set_owner(self)
-		
+		swap_weapon_left()
 	elif Input.is_action_just_pressed("game_switch_weapon_right"):
-		if($Weapons.get_child_count() > 0):
-			var nextWeapon = $Weapons.get_child($Weapons.get_child_count()-1)
-			var prevWeapon = $Equipped.get_child(0)
-			$Equipped.remove_child(prevWeapon)
-			$Weapons.add_child(prevWeapon)
-			$Weapons.remove_child(nextWeapon)
-			$Equipped.add_child(nextWeapon)
-			prevWeapon.set_owner(self)
-			nextWeapon.set_owner(self)
+		swap_weapon_right()
 	elif Input.is_action_just_pressed("game_interact"):
 		if(is_instance_valid(targetInteractable) and targetInteractable.canInteract):
 			targetInteractable.interact()
@@ -114,3 +102,30 @@ func pick_up_nearby_items() -> void:
 		if(area.has_method("pick_up")):
 			area.pick_up(self)
 	pass
+
+func swap_weapon_left() -> void:
+	if(weapons.get_child_count() > 0):
+			var nextWeapon = weapons.get_child(0)
+			var prevWeapon = equipped.get_child(0)
+			equipped.remove_child(prevWeapon)
+			weapons.add_child(prevWeapon)
+			weapons.remove_child(nextWeapon)
+			equipped.add_child(nextWeapon)
+			prevWeapon.set_owner(self)
+			nextWeapon.set_owner(self)
+
+func swap_weapon_right() -> void:
+	if(weapons.get_child_count() > 0):
+			var nextWeapon = weapons.get_child(weapons.get_child_count()-1)
+			var prevWeapon = equipped.get_child(0)
+			equipped.remove_child(prevWeapon)
+			weapons.add_child(prevWeapon)
+			weapons.remove_child(nextWeapon)
+			equipped.add_child(nextWeapon)
+			prevWeapon.set_owner(self)
+			nextWeapon.set_owner(self)
+
+func pick_up_weapon(weapon : Weapon):
+	weapons.add_child(weapon)
+	swap_weapon_right()
+	equipped.get_child(0).position += Vector2.DOWN * weaponOffset

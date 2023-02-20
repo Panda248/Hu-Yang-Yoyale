@@ -68,12 +68,6 @@ func _on_FOV_body_exited(body):
 		alert(body.position)
 	pass # Replace with function body.
 
-func takeDamage(damage : int):
-	get_node("damageFlash").play("damageFlash")
-	health -= damage
-
-
-
 func _on_Range_body_entered(body):
 	if(body == player):
 		state = ATTACK
