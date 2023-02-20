@@ -18,6 +18,7 @@
 [ext_resource path="res://DamageNumber.tscn" type="PackedScene" id=16]
 [ext_resource path="res://Death.tscn" type="PackedScene" id=17]
 
+
 [sub_resource type="OccluderPolygon2D" id=3]
 cull_mode = 2
 polygon = PoolVector2Array( 64, 64, 0, 64, 0, 0, 64, 0 )
@@ -133,13 +134,13 @@ points = PoolVector2Array( 0, 0, 64, 0, 64, 64, 0, 64 )
 [node name="World" type="Node2D"]
 script = ExtResource( 6 )
 Enemy = ExtResource( 1 )
-DeathScreen = ExtResource( 17 )
+DeathScreen = ExtResource( 16 )
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 3 )
 
 [node name="Enemy" parent="." instance=ExtResource( 1 )]
-position = Vector2( 148, 51 )
+position = Vector2( -23, 73 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
 
@@ -185,3 +186,6 @@ Notification = ExtResource( 14 )
 [node name="DmgNumberManager" type="Node2D" parent="."]
 script = ExtResource( 15 )
 DamageNumber = ExtResource( 16 )
+[node name="Inventory" parent="." instance=ExtResource( 15 )]
+visible = false
+position = Vector2( 47, 41 )
