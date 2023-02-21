@@ -3,7 +3,7 @@ class_name Item
 
 export var messageOffsetY = 50
 var canInteract : bool = false
-
+onready var rect_size = $TextureRect.rect_size * $TextureRect.rect_scale
 
 signal notify_picked_up(message, position, scale)
 

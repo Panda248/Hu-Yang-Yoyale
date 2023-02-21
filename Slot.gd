@@ -12,14 +12,15 @@ func _process(delta):
 	pass
 
 func remove():
+	print("reoved")
 	remove_child(item)
 	var inventoryNode = find_parent("Inventory")
 	inventoryNode.add_child(item)
 	item = null
 
 func add(new_item):
+	print("sdf")
 	item = new_item
-	item.position = rect_position + ((rect_size)/2)
-	item.position.x += rect_size.x/4
 	var inventoryNode = find_parent("Inventory")
-	add_child(item)
+	var itemParent = item.get_parent()
+	item.position = rect_position + ((rect_size)/2)
