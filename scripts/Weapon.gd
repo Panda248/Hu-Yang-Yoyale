@@ -48,8 +48,8 @@ func reload():
 	pass
 
 func alert():
-	if(get_owner().get_class() == "Player"):
-		get_owner().emit_signal("alert_enemies", global_position, alertRadius);
+	if(owner.get_class() == "Player"):
+		owner.emit_signal("alert_enemies", global_position, alertRadius);
 	else:
 		#print(var2str(get_owner()))
 		pass

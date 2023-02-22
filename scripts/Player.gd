@@ -121,6 +121,7 @@ func swap_weapon_right() -> void:
 			equipped.remove_child(prevWeapon)
 			weapons.add_child(prevWeapon)
 			weapons.remove_child(nextWeapon)
+			weapons.move_child(prevWeapon, 0)
 			equipped.add_child(nextWeapon)
 			prevWeapon.set_owner(self)
 			nextWeapon.set_owner(self)
