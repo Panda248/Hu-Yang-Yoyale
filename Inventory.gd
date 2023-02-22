@@ -10,6 +10,8 @@ func _ready():
 	
 
 func _process(delta):
+	if(Input.is_action_just_pressed("open_inv")):
+		visible = !visible
 	position = get_tree().current_scene.get_node("Player").position
 	position += Vector2(30, 30)
 	if(is_instance_valid(holding_item)):
@@ -19,16 +21,20 @@ func slot_gui_input(event: InputEvent, slot: SlotClass):
 	if event is InputEventMouseButton:
 		if event.button_index == BUTTON_LEFT && event.pressed:
 			if is_instance_valid(holding_item):
-				if !slot.item:
-					slot.add(holding_item)
-					holding_item = null
-				else:
+				if is_instance_valid(slot.item):
+					print("!")
 					var temp_item = slot.item
 					slot.remove()
-					temp_item.global_position = get_global_mouse_position()
+					temp_item.position = get_global_mouse_position()
 					slot.add(holding_item)
 					holding_item = temp_item
+				else:
+					print("?")
+					slot.add(holding_item)
+					holding_item = null
 			elif is_instance_valid(slot.item):
+				print("...")
+				
 				holding_item = slot.item
+				holding_item.position = get_global_mouse_position()
 				slot.remove()
-				holding_item.global_position = get_global_mouse_position()

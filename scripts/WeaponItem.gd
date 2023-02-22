@@ -12,7 +12,7 @@ func pick_up(player):
 		emit_signal("notify_picked_up", "Picked Up " + weaponName, global_position + Vector2.UP*messageOffsetY, 0.5)
 	else:
 		player_has_self(player).reserveClips += (weaponInstance.reserveClips + 1)
-		emit_signal("notify_picked_up", "Picked Up " + var2str(weaponInstance.reserveClips + 1) + weaponName + " clips", self.global_position + Vector2.UP*messageOffsetY, 0.5)
+		emit_signal("notify_picked_up", "Picked Up " + var2str(weaponInstance.reserveClips + 1) + " " +  weaponName + " clips", self.global_position + Vector2.UP*messageOffsetY, 0.5)
 	queue_free()
 
 func player_has_self(player : Player):

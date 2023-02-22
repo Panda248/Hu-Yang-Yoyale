@@ -6,7 +6,9 @@ var item = null
 func _ready():
 	if randi() % 2 == 0:
 		item = ItemClass.instance()
+		item.canInteract = false
 		add_child(item)
+		item.global_position = rect_global_position + rect_size*rect_scale/2
 
 func _process(delta):
 	pass
@@ -22,5 +24,6 @@ func add(new_item):
 	print("sdf")
 	item = new_item
 	var inventoryNode = find_parent("Inventory")
-	var itemParent = item.get_parent()
-	item.position = rect_position + ((rect_size)/2)
+	inventoryNode.remove_child(new_item)
+	add_child(item)
+	item.global_position = rect_global_position + rect_size*rect_scale/2
