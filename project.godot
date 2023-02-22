@@ -9,6 +9,11 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Weapon",
+"class": "AssaultRifle",
+"language": "GDScript",
+"path": "res://scripts/AssaultRifle.gd"
+}, {
 "base": "Label",
 "class": "ChatBox",
 "language": "GDScript",
@@ -95,6 +100,7 @@ _global_script_classes=[ {
 "path": "res://scripts/WeaponItem.gd"
 } ]
 _global_script_class_icons={
+"AssaultRifle": "",
 "ChatBox": "",
 "Crate": "",
 "DamageNumber": "",

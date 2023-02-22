@@ -5,6 +5,9 @@ export (PackedScene) var Bullet
 export var shootTimeMS = 100
 var timer = shootTimeMS
 
+func get_class():
+	return "Pistol"
+
 func _process(delta):
 	._process(delta)
 	$Label.text = var2str(currentClip) + "/" + var2str(clip)

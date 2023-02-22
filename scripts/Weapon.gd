@@ -10,6 +10,7 @@ export var reserveClips := 2
 export var knockbackMultiplier := 0
 export var alertRadius := 1000
 
+
 enum WEAPON_WEIGHT {
 	NONE = 0, LIGHT = 1, MEDIUM = 2, HEAVY = 3
 }

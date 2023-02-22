@@ -16,12 +16,10 @@ func pick_up(player):
 	queue_free()
 
 func player_has_self(player : Player):
-	var equipped = player.equipped.get_child(0)
-	if equipped.get_class() == weaponInstance.get_class():
-		return equipped
-	var weapons = player.weapons.get_children()
-	for w in weapons:
+	var playerWeapons = player.get_weapons()
+	if playerWeapons.empty():
+		return null
+	for w in playerWeapons:
 		if w.get_class() == weaponInstance.get_class():
-			return equipped
+			return w
 	return null
-	pass

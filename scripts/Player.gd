@@ -129,3 +129,8 @@ func pick_up_weapon(weapon : Weapon):
 	weapons.add_child(weapon)
 	swap_weapon_right()
 	equipped.get_child(0).position += Vector2.DOWN * weaponOffset
+
+func get_weapons() -> Array:
+	var weaponArr = weapons.get_children()
+	weaponArr += equipped.get_children()
+	return weaponArr
