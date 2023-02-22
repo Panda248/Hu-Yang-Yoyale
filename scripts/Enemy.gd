@@ -5,7 +5,7 @@ extends NPC
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
-
+var playerInMeleeRange = false
 
 
 # Called when the node enters the scene tree for the first time.
@@ -20,7 +20,7 @@ func _process(delta):
 	if _dead():
 		queue_free()
 	raycast_sweep()
-	get_node("Label").text = var2str(health)
+	get_node("Label").text = var2str(state)
 	#State machine
 	match state:
 		CHASE:
@@ -36,13 +36,11 @@ func _process(delta):
 	pass
 
 func _chase(delta):
-	
 	if(can_see_player()):
 		slowly_rotate_to(player, delta)
 		move_forward(delta)
 	#motion = move_and_slide((player.position - position).normalized() * velocity * delta*60)
-	
-	if(position.distance_to(player.position) > maxViewDistance):
+	else :
 		destination = player.position
 		state = INVESTIGATE
 	pass
@@ -70,13 +68,13 @@ func _on_FOV_body_exited(body):
 
 func _on_Range_body_entered(body):
 	if(body == player):
-		state = ATTACK
+		playerInMeleeRange = true
 	pass # Replace with function body.
 
 
 func _on_Range_body_exited(body):
 	if(body == player):
-		state = CHASE
+		playerInMeleeRange = true
 	pass # Replace with function body.
 
 func alert(position):
@@ -100,6 +98,9 @@ func can_see_player() -> bool:
 
 func raycast_sweep() -> void:
 	if(can_see_player()):
+		if(playerInMeleeRange):
+			state = ATTACK
+			return
 		if state != ATTACK:
 			state = CHASE
 
