@@ -18,7 +18,7 @@ script = ExtResource( 1 )
 currentClip = 30
 reloadTimeFrames = 240
 knockbackMultiplier = 200
-alertRadius = 2000
+alertRadius = 500
 weaponWeight = 1
 Bullet = ExtResource( 6 )
 

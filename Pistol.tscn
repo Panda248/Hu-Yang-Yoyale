@@ -22,6 +22,7 @@ clip = 17
 reloadTimeFrames = 260
 fireRate = 50
 knockbackMultiplier = 100
+alertRadius = 500
 weaponWeight = 1
 Bullet = ExtResource( 3 )
 
