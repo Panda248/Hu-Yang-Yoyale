@@ -1,11 +1,11 @@
 extends Weapon
-class_name Pistol
+class_name Sniper
+
 
 export (PackedScene) var Bullet
 
-
 func get_class():
-	return "Pistol"
+	return "Sniper"
 
 func _process(delta):
 	._process(delta)
@@ -13,8 +13,8 @@ func _process(delta):
 	$Label2.text = var2str(reloadAndShootDelay)
 	look_at(get_global_mouse_position())
 	if($MuzzleFlash.is_visible()):
-		timer-=delta*1000
-		if(timer <= 0):
+		self.timer-=delta*1000
+		if(self.timer <= 0):
 			$MuzzleFlash.set_visible(false)
 
 func input_action():
@@ -32,7 +32,7 @@ func primaryFire():
 			var direction_to_mouse = $BarrelEnd.global_position.direction_to(target).normalized();
 			$ShootSFX.play(0)
 			$MuzzleFlash.set_visible(true)
-			timer = shootTimeMS
+			self.timer = self.shootTimeMS
 			alert()
 			get_parent().get_parent().emit_signal("player_shot", 
 												bullet_instance,

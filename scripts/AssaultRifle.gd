@@ -2,8 +2,7 @@ extends Weapon
 class_name AssaultRifle
 
 export (PackedScene) var Bullet
-export var shootTimeMS = 100
-var timer = shootTimeMS
+
 
 func get_class():
 	return "AssaultRifle"

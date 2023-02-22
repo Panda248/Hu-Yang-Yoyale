@@ -9,8 +9,8 @@ export var fireRate := 10
 export var reserveClips := 2
 export var knockbackMultiplier := 0
 export var alertRadius := 1000
-
-
+export var shootTimeMS = 100
+onready var timer = self.shootTimeMS
 enum WEAPON_WEIGHT {
 	NONE = 0, LIGHT = 1, MEDIUM = 2, HEAVY = 3
 }
@@ -48,8 +48,5 @@ func reload():
 	pass
 
 func alert():
-	if(owner.get_class() == "Player"):
+	if(owner.has_signal("alert_enemies")):
 		owner.emit_signal("alert_enemies", global_position, alertRadius);
-	else:
-		#print(var2str(get_owner()))
-		pass

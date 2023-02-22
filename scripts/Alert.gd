@@ -3,6 +3,7 @@ extends Area2D
 var maxRadius := 0
 export var speedOfSound = 10
 
+
 func _process(delta):
 	if($CollisionShape2D.shape.radius < maxRadius):
 		$CollisionShape2D.shape.radius += speedOfSound
