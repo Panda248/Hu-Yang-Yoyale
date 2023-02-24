@@ -1,3 +1,3 @@
 extends Node
 
-onready var screenShakeIntensity = 0.0
+onready var screenShakeIntensity = 1.0
