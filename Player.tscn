@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://Bullet.tscn" type="PackedScene" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://scripts/HurtBox.gd" type="Script" id=5]
 [ext_resource path="res://Sniper.tscn" type="PackedScene" id=6]
 [ext_resource path="res://icon.png" type="Texture" id=7]
+[ext_resource path="res://ShakeCamera.gd" type="Script" id=8]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 14.0
@@ -42,6 +43,7 @@ scale = Vector2( 0.995347, 0.978982 )
 current = true
 zoom = Vector2( 0.5, 0.5 )
 smoothing_enabled = true
+script = ExtResource( 8 )
 
 [node name="Body" type="CollisionShape2D" parent="."]
 self_modulate = Color( 0, 0, 0, 0 )

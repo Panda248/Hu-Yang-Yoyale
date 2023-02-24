@@ -132,6 +132,10 @@ config/name="Hu Yang Yoyale"
 run/main_scene="res://Main Menu.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+GlobalVariables="*res://scripts/GlobalVariables.gd"
+
 [debug]
 
 shapes/collision/shape_color=Color( 1, 1, 1, 1 )

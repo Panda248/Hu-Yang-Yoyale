@@ -85,6 +85,10 @@ func _on_InteractBox_body_exited(body):
 		targetInteractable.canInteract = false
 		targetInteractable = null
 
+func takeDamage(damage):
+	.takeDamage(damage)
+	$Camera2D.add_trauma(damage)
+
 func closest_node(node1, node2) -> Node:
 	if(!is_instance_valid(node1)):
 		return node2
