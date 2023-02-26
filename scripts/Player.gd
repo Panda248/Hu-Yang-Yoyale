@@ -8,6 +8,7 @@ signal death_screen();
 
 onready var equipped = $Equipped
 onready var weapons = $Weapons
+onready var heartbeat = $HeartBeat
 
 export var weaponOffset = 12
 
@@ -15,6 +16,7 @@ var direction;
 var targetInteractable
 
 export (PackedScene) var Bullet;
+
 
 
 # Called when the node enters the scene tree for the first time.
@@ -25,7 +27,9 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	
+	if(!heartbeat.is_playing() and health < maxHealth):
+		heartbeat.play()
+		heartbeat.volume_db = -50 * health/maxHealth
 	var _motion = Vector2();
 	
 	get_node("Label").text = var2str(health)

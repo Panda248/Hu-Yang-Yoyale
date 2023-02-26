@@ -4,7 +4,8 @@ extends KinematicBody2D
 signal emit_damage_number(damage, position)
 
 export var velocity := 50
-export var health := 10
+export var maxHealth := 10
+export var health : int = maxHealth
 var knockback = Vector2.ZERO
 
 func _ready():
