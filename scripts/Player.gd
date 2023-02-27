@@ -29,7 +29,7 @@ func _ready():
 func _process(delta):
 	if(!heartbeat.is_playing() and health < maxHealth):
 		heartbeat.play()
-		heartbeat.volume_db = -50 * health/maxHealth
+		heartbeat.volume_db = 20 -50 * health/maxHealth
 	var _motion = Vector2();
 	
 	get_node("Label").text = var2str(health)
