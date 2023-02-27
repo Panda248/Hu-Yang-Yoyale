@@ -27,10 +27,13 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	var _motion = Vector2();
+	
+	get_parent().get_node("UI/ColorRect").color = Color(1,0,0,percent_health())
 	if(!heartbeat.is_playing() and health < maxHealth):
 		heartbeat.play()
 		heartbeat.volume_db = 20 -50 * health/maxHealth
-	var _motion = Vector2();
+	
 	
 	get_node("Label").text = var2str(health)
 	look_at(get_global_mouse_position());
@@ -142,3 +145,6 @@ func get_weapons() -> Array:
 	var weaponArr = weapons.get_children()
 	weaponArr += equipped.get_children()
 	return weaponArr
+
+func percent_health() -> float:
+	return float(maxHealth-health)/float(maxHealth)
