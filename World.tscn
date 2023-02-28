@@ -154,6 +154,16 @@ range_height = 10.0
 shadow_enabled = true
 shadow_gradient_length = 1.0
 
+[node name="UI" type="CanvasLayer" parent="Player"]
+
+[node name="ColorRect" type="ColorRect" parent="Player/UI"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -258.0
+margin_top = -151.0
+margin_right = 257.0
+margin_bottom = 151.0
+
 [node name="BulletManager" type="Node2D" parent="."]
 script = ExtResource( 5 )
 
@@ -188,9 +198,4 @@ script = ExtResource( 15 )
 DamageNumber = ExtResource( 16 )
 
 [node name="Inventory" parent="." instance=ExtResource( 18 )]
-
-[node name="UI" type="CanvasLayer" parent="."]
-
-[node name="ColorRect" type="ColorRect" parent="UI"]
-margin_right = 40.0
-margin_bottom = 40.0
+visible = false

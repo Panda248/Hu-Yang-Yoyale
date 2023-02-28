@@ -9,8 +9,8 @@ layer = 2
 script = ExtResource( 2 )
 
 [node name="SplashScreen" type="Sprite" parent="."]
-position = Vector2( 248, 302 )
-scale = Vector2( 0.948438, 0.558333 )
+position = Vector2( 513, 314 )
+scale = Vector2( 0.6, 0.7 )
 texture = ExtResource( 3 )
 
 [node name="Title" type="Label" parent="."]

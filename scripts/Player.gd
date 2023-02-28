@@ -29,7 +29,7 @@ func _ready():
 func _process(delta):
 	var _motion = Vector2();
 	
-	get_parent().get_node("UI/ColorRect").color = Color(1,0,0,percent_health())
+	get_node("UI/ColorRect").color = Color(1,0,0,percent_health())
 	if(!heartbeat.is_playing() and health < maxHealth):
 		heartbeat.play()
 		heartbeat.volume_db = 20 -50 * health/maxHealth
