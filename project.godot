@@ -124,7 +124,11 @@ _global_script_class_icons={
 
 config/name="Hu Yang Yoyale"
 run/main_scene="res://Main Menu.tscn"
-config/icon="res://icon.png"
+config/icon="res://res/exported/sprites/icon.png"
+
+[autoload]
+
+GlobalVariables="*res://scripts/GlobalVariables.gd"
 
 [debug]
 

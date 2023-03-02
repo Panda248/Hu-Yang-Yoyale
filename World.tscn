@@ -1,4 +1,6 @@
-[gd_scene load_steps=20 format=2]
+
+[gd_scene load_steps=32 format=2]
+
 
 [ext_resource path="res://Enemy.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Player.tscn" type="PackedScene" id=2]
@@ -18,6 +20,7 @@
 [ext_resource path="res://DamageNumber.tscn" type="PackedScene" id=16]
 [ext_resource path="res://Death.tscn" type="PackedScene" id=17]
 [ext_resource path="res://Inventory.tscn" type="PackedScene" id=18]
+[ext_resource path="res://maps/breakablewood.png" type="Texture" id=19]
 
 [sub_resource type="TileSet" id=1]
 0/name = "grass.png 0"
@@ -44,6 +47,120 @@
 0/shapes = [  ]
 0/z_index = 0
 
+[sub_resource type="OccluderPolygon2D" id=5]
+polygon = PoolVector2Array( 0, 0, 64, 0, 64, 64, 0, 64 )
+
+[sub_resource type="ConvexPolygonShape2D" id=6]
+points = PoolVector2Array( 0, 0, 64, 0, 64, 64, 0, 64 )
+
+[sub_resource type="OccluderPolygon2D" id=7]
+polygon = PoolVector2Array( 0, 0, 64, 0, 64, 64, 0, 64 )
+
+[sub_resource type="ConvexPolygonShape2D" id=8]
+points = PoolVector2Array( 0, 0, 64, 0, 64, 64, 0, 64 )
+
+[sub_resource type="OccluderPolygon2D" id=9]
+polygon = PoolVector2Array( 0, 0, 64, 0, 64, 64, 0, 64 )
+
+[sub_resource type="ConvexPolygonShape2D" id=10]
+points = PoolVector2Array( 0, 0, 64, 0, 64, 64, 0, 64 )
+
+[sub_resource type="OccluderPolygon2D" id=11]
+polygon = PoolVector2Array( 0, 0, 64, 0, 64, 64, 0, 64 )
+
+[sub_resource type="ConvexPolygonShape2D" id=12]
+points = PoolVector2Array( 0, 0, 64, 0, 64, 64, 0, 64 )
+
+[sub_resource type="TileSet" id=4]
+0/name = "breakwood4"
+0/texture = ExtResource( 19 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 0, 0, 64, 64 )
+0/tile_mode = 0
+0/occluder_offset = Vector2( 0, 0 )
+0/occluder = SubResource( 5 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape = SubResource( 6 )
+0/shape_one_way = false
+0/shape_one_way_margin = 1.0
+0/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 6 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+0/z_index = 0
+1/name = "breakwood3"
+1/texture = ExtResource( 19 )
+1/tex_offset = Vector2( 0, 0 )
+1/modulate = Color( 1, 1, 1, 1 )
+1/region = Rect2( 64, 0, 64, 64 )
+1/tile_mode = 0
+1/occluder_offset = Vector2( 0, 0 )
+1/occluder = SubResource( 7 )
+1/navigation_offset = Vector2( 0, 0 )
+1/shape_offset = Vector2( 0, 0 )
+1/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+1/shape = SubResource( 8 )
+1/shape_one_way = false
+1/shape_one_way_margin = 1.0
+1/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 8 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+1/z_index = 0
+2/name = "breakwood2"
+2/texture = ExtResource( 19 )
+2/tex_offset = Vector2( 0, 0 )
+2/modulate = Color( 1, 1, 1, 1 )
+2/region = Rect2( 0, 64, 64, 64 )
+2/tile_mode = 0
+2/occluder_offset = Vector2( 0, 0 )
+2/occluder = SubResource( 9 )
+2/navigation_offset = Vector2( 0, 0 )
+2/shape_offset = Vector2( 0, 0 )
+2/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+2/shape = SubResource( 10 )
+2/shape_one_way = false
+2/shape_one_way_margin = 1.0
+2/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 10 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+2/z_index = 0
+3/name = "breakwood1"
+3/texture = ExtResource( 19 )
+3/tex_offset = Vector2( 0, 0 )
+3/modulate = Color( 1, 1, 1, 1 )
+3/region = Rect2( 64, 64, 64, 64 )
+3/tile_mode = 0
+3/occluder_offset = Vector2( 0, 0 )
+3/occluder = SubResource( 11 )
+3/navigation_offset = Vector2( 0, 0 )
+3/shape_offset = Vector2( 0, 0 )
+3/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+3/shape = SubResource( 12 )
+3/shape_one_way = false
+3/shape_one_way_margin = 1.0
+3/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 12 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+3/z_index = 0
+
 [node name="World" type="Node2D"]
 script = ExtResource( 6 )
 Enemy = ExtResource( 1 )
@@ -54,6 +171,9 @@ texture = ExtResource( 3 )
 
 [node name="Enemy" parent="." instance=ExtResource( 1 )]
 position = Vector2( 148, 51 )
+
+[node name="Inventory" parent="." instance=ExtResource( 18 )]
+process_priority = 1
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
 
@@ -67,6 +187,19 @@ range_height = 10.0
 shadow_enabled = true
 shadow_gradient_length = 1.0
 
+[node name="UI" type="CanvasLayer" parent="Player"]
+layer = 0
+
+[node name="ColorRect" type="ColorRect" parent="Player/UI"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -258.0
+margin_top = -151.0
+margin_right = 257.0
+margin_bottom = 151.0
+mouse_filter = 2
+color = Color( 1, 1, 1, 0 )
+
 [node name="BulletManager" type="Node2D" parent="."]
 script = ExtResource( 5 )
 
@@ -77,11 +210,15 @@ collision_friction = 0.0
 format = 1
 tile_data = PoolIntArray( -262148, 0, 131074, -262147, 0, 65538, -262146, 0, 65538, -262145, 0, 65538, -327680, 0, 65538, -327679, 0, 196608, -327676, 0, 131074, -327675, 0, 65538, -327674, 0, 65538, -327673, 0, 65538, -327672, 0, 65538, -327671, 0, 65538, -327670, 0, 65538, -327669, 0, 65538, -327668, 0, 65538, -327667, 0, 196608, -196612, 0, 65537, -196611, 0, 2, -196610, 0, 1, -196609, 0, 1, -262144, 0, 0, -262143, 0, 196610, -262140, 0, 196609, -262139, 0, 0, -262138, 0, 65536, -262137, 0, 1, -262136, 0, 2, -262135, 0, 2, -262134, 0, 65536, -262133, 0, 1, -262132, 0, 65536, -262131, 0, 131072, -131076, 0, 65537, -131075, 0, 1, -131074, 0, 0, -131073, 0, 2, -196608, 0, 131072, -196603, 0, 65537, -196602, 0, 0, -196601, 0, 65536, -196600, 0, 0, -196599, 0, 1, -196598, 0, 65536, -196597, 0, 2, -196596, 0, 2, -196595, 0, 131072, -65540, 0, 65537, -65539, 0, 65536, -65538, 0, 1, -65537, 0, 0, -131072, 0, 196610, -131068, 0, 131074, -131067, 0, 0, -131066, 0, 65536, -131065, 0, 1, -131064, 0, 2, -131063, 0, 2, -131062, 0, 0, -131061, 0, 65536, -131060, 0, 1, -131059, 0, 0, -131058, 0, 196608, -4, 0, 65537, -3, 0, 1, -2, 0, 0, -1, 0, 196610, -65532, 0, 65537, -65531, 0, 0, -65530, 0, 0, -65529, 0, 2, -65528, 0, 0, -65527, 0, 1, -65526, 0, 1, -65525, 0, 65536, -65524, 0, 0, -65523, 0, 65536, -65522, 0, 131072, 65532, 0, 65537, 65533, 0, 2, 65534, 0, 131072, 0, 0, 0, 3, 0, 131074, 4, 0, 0, 5, 0, 1, 6, 0, 65536, 7, 0, 0, 8, 0, 65536, 9, 0, 65536, 10, 0, 65536, 11, 0, 2, 12, 0, 0, 13, 0, 0, 14, 0, 0, 15, 0, 196608, 131068, 0, 65537, 131069, 0, 1, 131070, 0, 131072, 65539, 0, 65537, 65540, 0, 2, 65541, 0, 2, 65542, 0, 2, 65543, 0, 0, 65544, 0, 1, 65545, 0, 1, 65546, 0, 0, 65547, 0, 0, 65548, 0, 65536, 65549, 0, 2, 65550, 0, 0, 65551, 0, 131072, 196604, 0, 65537, 196605, 0, 65536, 196606, 0, 131072, 131075, 0, 65537, 131076, 0, 65536, 131077, 0, 65536, 131078, 0, 0, 131079, 0, 0, 131080, 0, 65536, 131081, 0, 0, 131082, 0, 65536, 131083, 0, 65536, 131084, 0, 0, 131085, 0, 0, 131086, 0, 2, 131087, 0, 131072, 262140, 0, 65537, 262141, 0, 0, 262142, 0, 131072, 196610, 0, 131074, 196611, 0, 0, 196612, 0, 0, 196613, 0, 2, 196614, 0, 0, 196615, 0, 1, 196616, 0, 1, 196617, 0, 0, 196618, 0, 65536, 196619, 0, 65536, 196620, 0, 2, 196621, 0, 1, 196622, 0, 0, 196623, 0, 131072, 327676, 0, 65537, 327677, 0, 65536, 327678, 0, 131072, 262145, 0, 131074, 262146, 0, 0, 262147, 0, 1, 262148, 0, 65536, 262149, 0, 1, 262150, 0, 2, 262151, 0, 2, 262152, 0, 0, 262153, 0, 0, 262154, 0, 1, 262155, 0, 0, 262156, 0, 1, 262157, 0, 1, 262158, 0, 0, 262159, 0, 196610, 393212, 0, 65537, 393213, 0, 2, 393214, 0, 0, 393215, 0, 65538, 327680, 0, 65538, 327681, 0, 0, 327682, 0, 1, 327683, 0, 0, 327684, 0, 131073, 327685, 0, 131073, 327686, 0, 131073, 327687, 0, 131073, 327688, 0, 131073, 327689, 0, 0, 327690, 0, 0, 327691, 0, 131073, 327692, 0, 0, 327693, 0, 0, 327694, 0, 196610, 458748, 0, 196609, 458749, 0, 131073, 458750, 0, 131073, 458751, 0, 131073, 393216, 0, 131073, 393217, 0, 131073, 393218, 0, 131073, 393219, 0, 196610, 393225, 0, 196609, 393226, 0, 196610, 393228, 0, 196609, 393229, 0, 196610 )
 
+[node name="Destructibles" type="TileMap" parent="."]
+unique_name_in_owner = true
+tile_set = SubResource( 4 )
+format = 1
+tile_data = PoolIntArray( 8, 3, 0, 65544, 3, 0 )
+
 [node name="AlertManager" type="Node2D" parent="."]
 script = ExtResource( 8 )
 Alert = ExtResource( 9 )
-
-[node name="Alert" parent="." instance=ExtResource( 9 )]
 
 [node name="InteractableNPC" parent="." instance=ExtResource( 10 )]
 position = Vector2( 330, -44 )
@@ -99,5 +236,3 @@ Notification = ExtResource( 14 )
 [node name="DmgNumberManager" type="Node2D" parent="."]
 script = ExtResource( 15 )
 DamageNumber = ExtResource( 16 )
-
-[node name="Inventory" parent="." instance=ExtResource( 18 )]

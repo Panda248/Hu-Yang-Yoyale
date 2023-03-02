@@ -2,15 +2,15 @@
 
 [ext_resource path="res://res/exported/fonts/GajrajOne.tres" type="DynamicFont" id=1]
 [ext_resource path="res://scripts/Main Menu.gd" type="Script" id=2]
-[ext_resource path="res://icon.png" type="Texture" id=3]
+[ext_resource path="res://res/exported/sprites/kid named finger.png" type="Texture" id=3]
 
 [node name="Main Menu" type="CanvasLayer"]
 layer = 2
 script = ExtResource( 2 )
 
-[node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 510.5, 300.5 )
-scale = Vector2( 16.0156, 9.42188 )
+[node name="SplashScreen" type="Sprite" parent="."]
+position = Vector2( 513, 314 )
+scale = Vector2( 0.6, 0.7 )
 texture = ExtResource( 3 )
 
 [node name="Title" type="Label" parent="."]

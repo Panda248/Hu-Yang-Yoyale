@@ -8,6 +8,7 @@ signal death_screen();
 
 onready var equipped = $Equipped
 onready var weapons = $Weapons
+onready var heartbeat = $HeartBeat
 
 export var weaponOffset = 12
 
@@ -15,6 +16,7 @@ var direction;
 var targetInteractable
 
 export (PackedScene) var Bullet;
+
 
 
 # Called when the node enters the scene tree for the first time.
@@ -25,8 +27,13 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	
 	var _motion = Vector2();
+	
+	get_node("UI/ColorRect").color = Color(1,0,0,percent_health())
+	if(!heartbeat.is_playing() and health < maxHealth):
+		heartbeat.play()
+		heartbeat.volume_db = 20 -50 * health/maxHealth
+	
 	
 	get_node("Label").text = var2str(health)
 	look_at(get_global_mouse_position());
@@ -85,6 +92,10 @@ func _on_InteractBox_body_exited(body):
 		targetInteractable.canInteract = false
 		targetInteractable = null
 
+func takeDamage(damage):
+	.takeDamage(damage)
+	$Camera2D.add_trauma(damage)
+
 func closest_node(node1, node2) -> Node:
 	if(!is_instance_valid(node1)):
 		return node2
@@ -134,3 +145,6 @@ func get_weapons() -> Array:
 	var weaponArr = weapons.get_children()
 	weaponArr += equipped.get_children()
 	return weaponArr
+
+func percent_health() -> float:
+	return float(maxHealth-health)/float(maxHealth)
