@@ -94,6 +94,7 @@ func _on_InteractBox_body_exited(body):
 
 func takeDamage(damage):
 	.takeDamage(damage)
+	get_node("UI/BloodSplatter").modulate.a = 1
 	$Camera2D.add_trauma(damage)
 
 func closest_node(node1, node2) -> Node:
@@ -148,3 +149,4 @@ func get_weapons() -> Array:
 
 func percent_health() -> float:
 	return float(maxHealth-health)/float(maxHealth)
+
