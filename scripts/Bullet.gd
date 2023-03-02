@@ -4,11 +4,15 @@ var direction := Vector2.ZERO;
 
 export (int) var speed = 15;
 var penetration = 0;
-var breakableMap
+onready var breakableMap : TileMap = get_node("/root/World/Destructibles")
 
 
 func _on_Bullet_body_shape_entered(body_rid: RID, body: Node, body_shape_index: int, local_shape_index: int):
-	if(penetration >= 0):
+	if(body == breakableMap):
+		var collidedTilePos = breakableMap.world_to_map(global_position)
+		var collidedTileIndex = breakableMap.get_cell(collidedTilePos.x, collidedTilePos.y)
+		breakableMap.set_cell(collidedTilePos.x, collidedTilePos.y, collidedTileIndex-1)
+	if(penetration <= 0):
 		queue_free()
 	
 
