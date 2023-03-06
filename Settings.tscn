@@ -19,24 +19,30 @@ pause_mode = 2
 script = ExtResource( 2 )
 
 [node name="Title" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
 margin_right = 40.0
 margin_bottom = 40.0
 
 [node name="Label" type="Label" parent="Title"]
+margin_left = 50.0
+margin_top = 50.0
 margin_right = 233.0
 margin_bottom = 72.0
 custom_fonts/font = ExtResource( 1 )
 text = "Settings"
 
 [node name="Label2" type="Label" parent="Title"]
-margin_left = 12.0
-margin_top = 61.0
+margin_left = 50.0
+margin_top = 120.0
 margin_right = 125.0
 margin_bottom = 92.0
 text = "Hit Escape To Exit
 "
 
-[node name="ScreenShake" type="Node" parent="."]
+[node name="ScreenShake" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
 
 [node name="Slider" type="HSlider" parent="ScreenShake"]
 anchor_left = 0.5
@@ -56,9 +62,9 @@ text = "Shiqi Yang Nausea Intensity"
 
 [node name="Label2" type="Label" parent="ScreenShake"]
 anchor_left = 0.1
-anchor_top = 0.23
+anchor_top = 0.202
 anchor_right = 0.2
-anchor_bottom = 0.25
+anchor_bottom = 0.213
 margin_right = 40.0
 margin_bottom = 14.0
 custom_fonts/font = SubResource( 2 )
@@ -73,3 +79,27 @@ margin_right = 40.0
 margin_bottom = 14.0
 custom_fonts/font = SubResource( 3 )
 text = ":)"
+
+[node name="FullScreen" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = 40.0
+margin_bottom = 40.0
+mouse_filter = 2
+
+[node name="Label" type="Label" parent="FullScreen"]
+anchor_left = 0.1
+anchor_top = 0.263
+anchor_right = 0.4
+anchor_bottom = 0.263
+custom_fonts/font = SubResource( 1 )
+text = "Full Screen"
+
+[node name="CheckButton" type="CheckButton" parent="FullScreen"]
+anchor_left = 0.76
+anchor_top = 0.263
+anchor_right = 0.8
+anchor_bottom = 0.3
+action_mode = 0
+
+[connection signal="pressed" from="FullScreen/CheckButton" to="." method="_on_CheckButton_pressed"]

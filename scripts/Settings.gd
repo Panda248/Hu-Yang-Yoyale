@@ -18,3 +18,8 @@ func _process(delta):
 
 func exit():
 	get_tree().change_scene("res://Main Menu.tscn")
+
+
+func _on_CheckButton_pressed():
+	OS.window_fullscreen = $FullScreen/CheckButton.pressed
+	pass # Replace with function body.
