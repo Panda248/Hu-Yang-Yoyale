@@ -83,6 +83,7 @@ shape = SubResource( 4 )
 anims/damageFlash = SubResource( 5 )
 
 [node name="Label" type="Label" parent="."]
+visible = false
 margin_right = 40.0
 margin_bottom = 14.0
 custom_fonts/font = ExtResource( 4 )
