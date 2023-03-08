@@ -32,6 +32,9 @@ func _process(delta):
 		currentClip = clip
 		reserveClips -= 1
 
+func get_item_class():
+	return 
+
 func getWeight():
 	return weaponWeight;
 

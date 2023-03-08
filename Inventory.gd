@@ -19,7 +19,7 @@ func _process(delta):
 
 func slot_gui_input(event: InputEvent, slot: SlotClass):
 	if event is InputEventMouseButton:
-		if event.button_index == BUTTON_LEFT && event.pressed:
+		if event.button_index == BUTTON_LEFT && event.pressed: 
 			if is_instance_valid(holding_item):
 				if is_instance_valid(slot.item):
 					var stack_size = 99

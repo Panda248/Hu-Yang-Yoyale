@@ -18,7 +18,9 @@ func _ready():
 
 func _process(delta):
 	if Engine.get_physics_frames()%600 == 0:
-		add_child(Enemy.instance())
+		var enemy = Enemy.instance()
+		enemy.position = $Spawn.position
+		add_child(enemy)
 	pass
 
 func game_over():

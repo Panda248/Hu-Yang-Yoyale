@@ -39,7 +39,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://scripts/DeathScene.gd"
 }, {
-"base": "NPC",
+"base": "Entity",
 "class": "Enemy",
 "language": "GDScript",
 "path": "res://scripts/Enemy.gd"
