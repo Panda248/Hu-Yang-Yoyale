@@ -37,7 +37,7 @@ valign = 1
 anchor_right = 1.0
 anchor_bottom = 1.0
 
-[node name="Main Menu" type="Button" parent="Control"]
+[node name="Menu" type="Button" parent="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 500.0
@@ -62,5 +62,5 @@ custom_fonts/font = SubResource( 3 )
 text = "Respawn"
 icon_align = 1
 
-[connection signal="pressed" from="Control/Main Menu" to="." method="_on_Main_Menu_pressed"]
+[connection signal="pressed" from="Control/Menu" to="." method="_on_Main_Menu_pressed"]
 [connection signal="pressed" from="Control/Respawn" to="." method="_on_Respawn_pressed"]

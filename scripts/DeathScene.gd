@@ -4,8 +4,8 @@ class_name DeathScreen
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
-onready var respawn = $Respawn
-onready var mainMenu = $"Main Menu"
+onready var respawn = $Control/Respawn
+onready var mainMenu = $Control/Menu
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
