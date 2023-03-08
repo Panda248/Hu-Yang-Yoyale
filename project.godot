@@ -9,6 +9,11 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Area2D",
+"class": "Alert",
+"language": "GDScript",
+"path": "res://scripts/Alert.gd"
+}, {
 "base": "Weapon",
 "class": "AssaultRifle",
 "language": "GDScript",
@@ -105,6 +110,7 @@ _global_script_classes=[ {
 "path": "res://scripts/WeaponItem.gd"
 } ]
 _global_script_class_icons={
+"Alert": "",
 "AssaultRifle": "",
 "ChatBox": "",
 "Crate": "",

@@ -11,11 +11,11 @@ onready var weapons = $Weapons
 onready var heartbeat = $HeartBeat
 
 export var weaponOffset = 12
-
+export var sneakMovementDebuff = 0.5
+export var sneakAlertRadius = 50
+export var runAlertRadius = 300
 var direction;
 var targetInteractable
-
-export (PackedScene) var Bullet;
 
 
 
@@ -32,7 +32,7 @@ func _process(delta):
 	get_node("UI/ColorRect").color = Color(1,0,0,percent_health())
 	if(!heartbeat.is_playing() and health < maxHealth):
 		heartbeat.play()
-		heartbeat.volume_db = 20 -50 * health/maxHealth
+		heartbeat.volume_db = 10 - 50 * health/maxHealth
 	
 	
 	get_node("Label").text = var2str(health)
@@ -41,7 +41,7 @@ func _process(delta):
 	input_movement()
 	input_action()
 	
-	direction = direction.normalized();
+	
 	
 	var modifiedVelocity = (velocity - 40 * $Equipped.get_child(0).getWeight()) * (health+5)/15
 	
@@ -66,6 +66,23 @@ func input_movement():
 		direction.y = 1;
 	else:
 		direction.y = 0;
+	
+	direction = direction.normalized();
+	if(direction == Vector2.ZERO):
+		$Run.stop()
+		$Sneak.stop()
+	else:
+		if(Input.is_action_pressed("game_sneak")):
+			$Run.stop()
+			direction*=sneakMovementDebuff
+			if(!$Sneak.is_playing()):
+				$Sneak.play()
+				emit_signal("alert_enemies", global_position, sneakAlertRadius)
+		else:
+			$Sneak.stop()
+			if(!$Run.is_playing()):
+				$Run.play()
+				emit_signal("alert_enemies", global_position, runAlertRadius)
 
 func input_action():
 	if(equipped.get_child(0).has_method("input_action")):

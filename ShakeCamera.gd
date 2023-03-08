@@ -34,3 +34,6 @@ func shake():
 	rotation = maxRoll * amount * noise.get_noise_2d(noise.seed, noise_y)
 	offset.x = maxOffsetVector.x * amount * noise.get_noise_2d(noise.seed*2, noise_y)
 	offset.y = maxOffsetVector.y * amount * noise.get_noise_2d(noise.seed*3, noise_y)
+
+func breathe():
+	pass

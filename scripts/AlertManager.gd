@@ -4,6 +4,9 @@ export (PackedScene) var Alert
 
 func alertEnemies(position, alertRadius):
 	var alert = Alert.instance()
-	alert.global_position = position;
+	initializeAlert(alert, position,alertRadius)
+	
+func initializeAlert(alert, position, alertRadius):
+	add_child(alert)
+	alert.position = position
 	alert.maxRadius = alertRadius
-	add_child(alert);
