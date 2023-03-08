@@ -6,15 +6,19 @@ class_name DeathScreen
 # var b = "text"
 onready var respawn = $Control/Respawn
 onready var mainMenu = $Control/Menu
+onready var jumpscare = $Jumpscare
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	jumpscare.play()
 	pass # Replace with function body.
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+func _process(delta):
+	if(!jumpscare.is_playing()):
+		jumpscare.visible = false;
+	pass
 
 
 func _on_Main_Menu_pressed():
