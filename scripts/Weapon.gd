@@ -48,5 +48,5 @@ func reload():
 	pass
 
 func alert():
-	if(owner.has_signal("alert_enemies")):
-		owner.emit_signal("alert_enemies", global_position, alertRadius);
+	if(owner.has_method("alertEnemies")):
+		owner.alertEnemies(alertRadius)

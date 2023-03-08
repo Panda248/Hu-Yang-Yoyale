@@ -14,6 +14,7 @@ export var weaponOffset = 12
 export var sneakMovementDebuff = 0.5
 export var sneakAlertRadius = 50
 export var runAlertRadius = 300
+export  (PackedScene) var Alert
 var direction;
 var targetInteractable
 
@@ -77,12 +78,12 @@ func input_movement():
 			direction*=sneakMovementDebuff
 			if(!$Sneak.is_playing()):
 				$Sneak.play()
-				emit_signal("alert_enemies", global_position, sneakAlertRadius)
+				alertEnemies(sneakAlertRadius)
 		else:
 			$Sneak.stop()
 			if(!$Run.is_playing()):
 				$Run.play()
-				emit_signal("alert_enemies", global_position, runAlertRadius)
+				alertEnemies(runAlertRadius)
 
 func input_action():
 	if(equipped.get_child(0).has_method("input_action")):
@@ -167,3 +168,6 @@ func get_weapons() -> Array:
 func percent_health() -> float:
 	return float(maxHealth-health)/float(maxHealth)
 
+func alertEnemies(radius):
+	var alert = get_node("/root/GlobalVariables").alert.instance()
+	emit_signal("alert_enemies", alert, global_position, radius)
