@@ -7,18 +7,17 @@ onready var chatbox_manager = $ChatBoxManager
 onready var notification_manager = $NotificationManager
 export (PackedScene) var Enemy
 export (PackedScene) var DeathScreen;
+var playerInSafeZone = false
 
 func _ready():
-	
-	$InteractableNPC.connect("send_message", chatbox_manager, "send_chat")
+	$Player/UI.visible = true
+	$InteractableNPCs/InteractableNPC.connect("send_message", chatbox_manager, "send_chat")
 	$Player.connect("player_shot", bullet_manager, "bullet_shot");
 	$Player.connect("alert_enemies", alert_manager, "alertEnemies");
 	$Player.connect("death_screen", self, "game_over")
 	$Crate.connect("spawn_item", self, "spawn_item")
 
 func _process(delta):
-	if Engine.get_physics_frames()%600 == 0:
-		add_child(Enemy.instance())
 	pass
 
 func game_over():
@@ -29,3 +28,15 @@ func game_over():
 func spawn_item(item : Item):
 	add_child(item)
 	item.connect("notify_picked_up", notification_manager, "notify")
+
+
+func _on_SafeZone_body_entered(body):
+	if body is Player:
+		playerInSafeZone = true
+	pass # Replace with function body.
+
+
+func _on_SafeZone_body_exited(body):
+	if body is Player:
+		playerInSafeZone = false
+	pass # Replace with function body.

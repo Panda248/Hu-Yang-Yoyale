@@ -10,7 +10,6 @@ var playerInMeleeRange = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	
 	$FOV/RayCast2D.cast_to = Vector2(maxViewDistance, 0)
 	pass # Replace with function body.
 
@@ -21,6 +20,8 @@ func _process(delta):
 		queue_free()
 	raycast_sweep()
 	get_node("Label").text = var2str(state)
+	if(get_parent().playerInSafeZone):
+		state = IDLE
 	#State machine
 	match state:
 		CHASE:

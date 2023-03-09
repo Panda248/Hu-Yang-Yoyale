@@ -10,7 +10,6 @@ func get_class():
 func _process(delta):
 	._process(delta)
 	$Label.text = var2str(currentClip) + "/" + var2str(clip)
-	$Label2.text = var2str(reloadAndShootDelay)
 	look_at(get_global_mouse_position())
 	if($MuzzleFlash.is_visible()):
 		self.timer-=delta*1000

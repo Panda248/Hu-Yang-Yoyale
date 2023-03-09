@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Sniper.gd" type="Script" id=1]
 [ext_resource path="res://res/exported/sprites/light.png" type="Texture" id=2]
@@ -6,12 +6,16 @@
 [ext_resource path="res://res/exported/sound/pistol shoot.wav" type="AudioStream" id=4]
 [ext_resource path="res://res/exported/sprites/kennys.png" type="Texture" id=5]
 [ext_resource path="res://Bullet.tscn" type="PackedScene" id=6]
+[ext_resource path="res://res/exported/fonts/GajrajOne-Regular.ttf" type="DynamicFontData" id=7]
+
+[sub_resource type="DynamicFont" id=2]
+font_data = ExtResource( 7 )
 
 [sub_resource type="OccluderPolygon2D" id=1]
 polygon = PoolVector2Array( 44, -2, 51, -6, -77, -17, -73, 31, 51, 19, 44, 10 )
 
 [node name="Sniper" type="Sprite"]
-scale = Vector2( 0.2, 0.2 )
+scale = Vector2( 0.12, 0.12 )
 texture = ExtResource( 5 )
 offset = Vector2( 100, 10 )
 script = ExtResource( 1 )
@@ -21,7 +25,7 @@ clip = 5
 reloadTimeFrames = 240
 fireRate = 100
 knockbackMultiplier = 1000
-weaponWeight = 3
+weaponWeight = 2
 Bullet = ExtResource( 6 )
 
 [node name="BarrelEnd" type="Position2D" parent="."]
@@ -31,13 +35,11 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="."]
+margin_top = 30.0
 margin_right = 40.0
 margin_bottom = 14.0
-
-[node name="Label2" type="Label" parent="."]
-margin_top = 16.0
-margin_right = 40.0
-margin_bottom = 30.0
+custom_fonts/font = SubResource( 2 )
+text = "test"
 
 [node name="ShootSFX" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 4 )

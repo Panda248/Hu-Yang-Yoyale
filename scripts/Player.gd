@@ -10,14 +10,22 @@ onready var equipped = $Equipped
 onready var weapons = $Weapons
 onready var heartbeat = $HeartBeat
 
+export var maxStamina = 100
+export var staminaConsumption = .5
+export var staminaRegeneration = 0.3
 export var weaponOffset = 12
 export var sneakMovementDebuff = 0.5
-export var sneakAlertRadius = 50
+export var runMovementMultiplier = 1.5
+export var sneakAlertRadius = 25
+export var walkAlertRadius = 50
 export var runAlertRadius = 300
+export var timeToHeal = 3
 export  (PackedScene) var Alert
+var curStamina = maxStamina
 var direction;
 var targetInteractable
-
+var canHeal = false
+var canSprint = true
 
 
 # Called when the node enters the scene tree for the first time.
@@ -28,18 +36,21 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	if($Equipped.get_child(0) is Sniper):
+		$Camera2D.zoom = Vector2(.4,.4)
+	else:
+		$Camera2D.zoom = Vector2(.25,.25)
 	var _motion = Vector2();
 	
 	get_node("UI/ColorRect").color = Color(1,0,0,percent_health())
-	if(!heartbeat.is_playing() and health < maxHealth):
-		heartbeat.play()
-		heartbeat.volume_db = 10 - 50 * health/maxHealth
-	
-	
-	get_node("Label").text = var2str(health)
+	if(health < maxHealth):
+		if(!heartbeat.is_playing()):
+			heartbeat.play()
+			heartbeat.volume_db = 10 - 50 * health/maxHealth
+
 	look_at(get_global_mouse_position());
 	
-	input_movement()
+	input_movement(delta)
 	input_action()
 	
 	
@@ -53,7 +64,7 @@ func _process(delta):
 		emit_signal("death_screen")
 	pass
 
-func input_movement():
+func input_movement(delta):
 	if(Input.is_action_pressed("ui_left")):
 		direction.x = -1;
 	elif(Input.is_action_pressed("ui_right")):
@@ -73,17 +84,36 @@ func input_movement():
 		$Run.stop()
 		$Sneak.stop()
 	else:
-		if(Input.is_action_pressed("game_sneak")):
-			$Run.stop()
-			direction*=sneakMovementDebuff
-			if(!$Sneak.is_playing()):
-				$Sneak.play()
-				alertEnemies(sneakAlertRadius)
-		else:
+		if(Input.is_action_pressed("game_run") and canSprint):
+			curStamina-=staminaConsumption*delta*Engine.get_iterations_per_second()
+			if(curStamina <= 0):
+				curStamina = 0
+				canSprint = false
+			$Walk.stop()
 			$Sneak.stop()
+			direction*=runMovementMultiplier
 			if(!$Run.is_playing()):
 				$Run.play()
-				alertEnemies(runAlertRadius)
+				alertEnemies(sneakAlertRadius)
+		else:
+			if(curStamina > maxStamina):
+				curStamina = maxStamina
+				canSprint = true
+			else:
+				curStamina+=staminaRegeneration*delta*Engine.get_iterations_per_second()
+			if(Input.is_action_pressed("game_sneak")):
+				$Run.stop()
+				$Walk.stop()
+				direction*=sneakMovementDebuff
+				if(!$Sneak.is_playing()):
+					$Sneak.play()
+					alertEnemies(sneakAlertRadius)
+			else:
+				$Sneak.stop()
+				$Run.stop()
+				if(!$Walk.is_playing()):
+					$Walk.play()
+					alertEnemies(walkAlertRadius)
 
 func input_action():
 	if(equipped.get_child(0).has_method("input_action")):
@@ -111,6 +141,8 @@ func _on_InteractBox_body_exited(body):
 		targetInteractable = null
 
 func takeDamage(damage):
+	$HealTimer.wait_time = timeToHeal
+	$HealTimer.start()
 	.takeDamage(damage)
 	get_node("UI/BloodSplatter").modulate.a = 1
 	$Camera2D.add_trauma(damage)
@@ -171,3 +203,12 @@ func percent_health() -> float:
 func alertEnemies(radius):
 	var alert = get_node("/root/GlobalVariables").alert.instance()
 	emit_signal("alert_enemies", alert, global_position, radius)
+
+
+func _on_HealTimer_timeout():
+	
+	if(health < maxHealth):
+		health += 1
+		$HealTimer.wait_time = timeToHeal
+		$HealTimer.start()
+	pass # Replace with function body.

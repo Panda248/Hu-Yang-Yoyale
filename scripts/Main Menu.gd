@@ -18,8 +18,10 @@ func _process(delta):
 	if(timer%60 == 0):
 		if($Title.modulate == Color(1,1,1)):
 			$Title.modulate = Color(0,0,0)
+			$Warning.modulate = Color(1,0,0)
 		elif($Title.modulate == Color(0,0,0)):
 			$Title.modulate = Color(1,1,1)
+			$Warning.modulate = Color(1,1,1)
 	if(zoomIn):
 		if(splashScreen.scale.x <= .535):
 			zoomIn = false
@@ -28,7 +30,6 @@ func _process(delta):
 		if(splashScreen.scale.x >= 1):
 			zoomIn = true
 		splashScreen.scale*=1.001
-		
 		
 	pass
 
