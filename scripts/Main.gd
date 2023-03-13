@@ -11,11 +11,9 @@ var playerInSafeZone = false
 
 func _ready():
 	$Player/UI.visible = true
-	$InteractableNPCs/InteractableNPC.connect("send_message", chatbox_manager, "send_chat")
 	$Player.connect("player_shot", bullet_manager, "bullet_shot");
 	$Player.connect("alert_enemies", alert_manager, "alertEnemies");
 	$Player.connect("death_screen", self, "game_over")
-	$Crate.connect("spawn_item", self, "spawn_item")
 
 func _process(delta):
 	pass
@@ -25,9 +23,6 @@ func game_over():
 	add_child(deathScreen)
 	get_tree().set_pause(true)
 
-func spawn_item(item : Item):
-	add_child(item)
-	item.connect("notify_picked_up", notification_manager, "notify")
 
 
 func _on_SafeZone_body_entered(body):
