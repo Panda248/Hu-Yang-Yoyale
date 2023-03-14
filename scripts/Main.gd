@@ -20,6 +20,10 @@ func loadCrates():
 	for crate in $Crates.get_children():
 		crate.connect("spawn_item", self, "spawn_item")
 
+func loadInteractNPC():
+	for npc in $InteractableNPCs.get_children():
+		npc.connect("start_dialog", $Dialogue, "startDialog")
+
 func _process(delta):
 	pass
 
