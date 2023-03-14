@@ -14,6 +14,11 @@ func _ready():
 	$Player.connect("player_shot", bullet_manager, "bullet_shot");
 	$Player.connect("alert_enemies", alert_manager, "alertEnemies");
 	$Player.connect("death_screen", self, "game_over")
+	loadCrates()
+
+func loadCrates():
+	for crate in $Crates.get_children():
+		crate.connect("spawn_item", self, "spawn_item")
 
 func _process(delta):
 	pass
@@ -23,6 +28,10 @@ func game_over():
 	add_child(deathScreen)
 	get_tree().set_pause(true)
 
+func spawn_item(item : Item):
+	print("hello")
+	add_child(item)
+	item.connect("notify_picked_up", get_node("%NotificationManager"), "notify")
 
 
 func _on_SafeZone_body_entered(body):
