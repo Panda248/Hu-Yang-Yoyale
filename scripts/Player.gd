@@ -37,9 +37,9 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if($Equipped.get_child(0) is Sniper):
-		$Camera2D.zoom = Vector2(.4,.4)
+		$Camera2D.targetZoom = Vector2(.4,.4)
 	else:
-		$Camera2D.zoom = Vector2(.25,.25)
+		$Camera2D.targetZoom = Vector2(.25,.25)
 	var _motion = Vector2();
 	
 	get_node("UI/ColorRect").color = Color(1,0,0,percent_health())

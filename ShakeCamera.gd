@@ -11,8 +11,8 @@ onready var maxOffsetVector = Vector2(maxOffset * screenShakeIntensity, maxOffse
 var trauma = 0.0  # Current shake strength.
 var trauma_power = 3  # Trauma exponent. Use [2, 3]
 var noise_y = 0
-
-
+var targetZoom = Vector2(0.4,0.4)
+var zoomSpeed = 5
 
 func _ready():
 	randomize()
@@ -24,6 +24,10 @@ func add_trauma(amount):
 	trauma = min(trauma + (amount * traumaMultiplier), 1.0)
 	
 func _process(delta):
+	if zoom != targetZoom:
+		if abs(targetZoom.x-zoom.x) < 0.001:
+			zoom = targetZoom
+		zoom += (targetZoom-zoom)*zoomSpeed*delta
 	if trauma:
 		trauma = max(trauma - traumaDecay * delta, 0)
 		shake()
