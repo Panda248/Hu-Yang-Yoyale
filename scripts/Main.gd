@@ -15,6 +15,7 @@ func _ready():
 	$Player.connect("alert_enemies", alert_manager, "alertEnemies");
 	$Player.connect("death_screen", self, "game_over")
 	loadCrates()
+	loadInteractNPC()
 
 func loadCrates():
 	for crate in $Crates.get_children():
