@@ -1,0 +1,21 @@
+{
+	"color": "#ffffffff",
+	"description": "",
+	"display_name": "Test",
+	"display_name_bool": true,
+	"id": "character-1678799213.json",
+	"mirror_portraits": false,
+	"name": "character-1678799213.json",
+	"nickname": "Mr. T",
+	"nickname_bool": true,
+	"offset_x": 0,
+	"offset_y": 0,
+	"portraits": [
+		{
+			"name": "Default",
+			"path": "res://icon.png"
+		}
+	],
+	"scale": 100,
+	"theme": ""
+}

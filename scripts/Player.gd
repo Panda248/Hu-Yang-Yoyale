@@ -48,6 +48,11 @@ func _process(delta):
 			heartbeat.play()
 			heartbeat.volume_db = 10 - 50 * health/maxHealth
 
+	if(curStamina >= maxStamina):
+		curStamina = maxStamina
+	else:
+		curStamina+=staminaRegeneration*delta*Engine.get_iterations_per_second()
+
 	look_at(get_global_mouse_position());
 	
 	input_movement(delta)
@@ -99,8 +104,6 @@ func input_movement(delta):
 			if(curStamina > maxStamina):
 				curStamina = maxStamina
 				canSprint = true
-			else:
-				curStamina+=staminaRegeneration*delta*Engine.get_iterations_per_second()
 			if(Input.is_action_pressed("game_sneak")):
 				$Run.stop()
 				$Walk.stop()
@@ -127,7 +130,6 @@ func input_action():
 			targetInteractable.interact()
 		else:
 			pick_up_nearby_items()
-			pass
 
 func _on_InteractBox_body_entered(body):
 	if(body.has_method("interact")):
@@ -206,7 +208,6 @@ func alertEnemies(radius):
 
 
 func _on_HealTimer_timeout():
-	
 	if(health < maxHealth):
 		health += 1
 		$HealTimer.wait_time = timeToHeal
