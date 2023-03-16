@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://FlashLight.gd" type="Script" id=1]
+[ext_resource path="res://res/exported/sprites/light.png" type="Texture" id=2]
+[ext_resource path="res://res/exported/sprites/flashlight.png" type="Texture" id=3]
+
+[sub_resource type="OccluderPolygon2D" id=1]
+polygon = PoolVector2Array( 38, -16, 43, -20, 364, -88, 24, -20, 15, -10, -50, -9, -50, 12, 14, 12, 22, 23, 43, 23, 364, 101, 41, 20, 38, 17 )
+
+[node name="FlashLight" type="Sprite"]
+scale = Vector2( 0.25, 0.25 )
+texture = ExtResource( 3 )
+script = ExtResource( 1 )
+currentClip = 1000
+clip = 1000
+fireRate = 1
+alertRadius = 0
+
+[node name="Light2D" type="Light2D" parent="."]
+position = Vector2( 44, 0 )
+texture = ExtResource( 2 )
+shadow_enabled = true
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+occluder = SubResource( 1 )

@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://res/exported/sound/heartbeat.wav" type="AudioStream" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://res/exported/sound/run.wav" type="AudioStream" id=9]
 [ext_resource path="res://Alert.tscn" type="PackedScene" id=10]
 [ext_resource path="res://res/exported/sound/walk.wav" type="AudioStream" id=11]
+[ext_resource path="res://FlashLight.tscn" type="PackedScene" id=12]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 14.0
@@ -72,6 +73,9 @@ anims/damageFlash = SubResource( 3 )
 
 [node name="Weapons" type="Node2D" parent="."]
 visible = false
+
+[node name="FlashLight" parent="Weapons" instance=ExtResource( 12 )]
+position = Vector2( 5, 12 )
 
 [node name="Equipped" type="Node2D" parent="."]
 show_behind_parent = true
