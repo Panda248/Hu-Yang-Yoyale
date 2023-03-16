@@ -19,7 +19,10 @@ alertRadius = 0
 [node name="Light2D" type="Light2D" parent="."]
 position = Vector2( 44, 0 )
 texture = ExtResource( 2 )
+range_height = 1.0
 shadow_enabled = true
+shadow_filter = 5
+shadow_filter_smooth = 1.0
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="."]
 occluder = SubResource( 1 )
