@@ -20,7 +20,6 @@ alertRadius = 0
 position = Vector2( 28, 0 )
 texture = ExtResource( 2 )
 texture_scale = 10.0
-energy = 0.5
 range_height = 1.0
 shadow_enabled = true
 
