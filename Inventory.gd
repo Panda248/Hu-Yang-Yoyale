@@ -1,4 +1,4 @@
-extends Node2D
+extends Control
 
 const SlotClass = preload("res://Slot.gd")
 onready var inventory_slots = $GridContainer
@@ -12,8 +12,6 @@ func _ready():
 func _process(delta):
 	if(Input.is_action_just_pressed("open_inv")):
 		visible = !visible
-	position = get_tree().current_scene.get_node("Player").position
-	position += Vector2(30, 30)
 	if(is_instance_valid(holding_item)):
 		holding_item.global_position = get_global_mouse_position()
 

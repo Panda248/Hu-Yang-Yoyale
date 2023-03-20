@@ -262,10 +262,6 @@ texture = ExtResource( 3 )
 [node name="Enemy" parent="." instance=ExtResource( 1 )]
 position = Vector2( 148, 51 )
 
-[node name="Inventory" parent="." instance=ExtResource( 18 )]
-process_priority = 1
-visible = false
-
 [node name="InteractableNPCs" type="Node2D" parent="."]
 
 [node name="InteractableNPC" parent="InteractableNPCs" instance=ExtResource( 10 )]
@@ -310,7 +306,7 @@ margin_left = -258.0
 margin_top = -151.0
 margin_right = 257.0
 margin_bottom = 151.0
-mouse_filter = 2
+mouse_filter = 1
 color = Color( 1, 1, 1, 0 )
 
 [node name="Health" type="Control" parent="Player/UI"]
@@ -385,6 +381,10 @@ custom_fonts/font = SubResource( 19 )
 text = "Stamina"
 align = 1
 valign = 1
+
+[node name="Inventory" parent="Player/UI" instance=ExtResource( 18 )]
+process_priority = 1
+visible = false
 
 [node name="Dialogue" type="CanvasLayer" parent="."]
 layer = 0

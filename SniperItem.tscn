@@ -14,6 +14,8 @@ weapon = ExtResource( 1 )
 weaponName = "Sniper"
 
 [node name="TextureRect" type="TextureRect" parent="."]
+margin_left = -40.0
+margin_top = -44.0
 margin_right = 40.0
 margin_bottom = 40.0
 
