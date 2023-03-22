@@ -1,14 +1,14 @@
 extends ProgressBar
 
 func _ready():
-	self.max_value = get_node("%Player").maxStamina
+	self.max_value = find_parent("Player").maxStamina
 
 
 func _process(delta):
-	self.value = get_node("%Player").curStamina
+	self.value = find_parent("Player").curStamina
 	if(ratio < 0.25):
 		get("custom_styles/fg").bg_color = Color(1,0,0)
 	else:
-		if(get_node("%Player").canSprint):
+		if(find_parent("Player").canSprint):
 			get("custom_styles/fg").bg_color = Color(0,0.16,1)
 

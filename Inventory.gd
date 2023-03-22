@@ -3,11 +3,27 @@ extends Control
 const SlotClass = preload("res://Slot.gd")
 onready var inventory_slots = $GridContainer
 var holding_item = null
+var playerNode 
 
 func _ready():
+	playerNode = find_parent("Player")
+	
 	for inv_slot in inventory_slots.get_children():
 		inv_slot.connect("gui_input", self, "slot_gui_input", [inv_slot])
 	
+
+func add_item_to_inventory(item) -> bool:
+	for slot in $GridContainer.get_children():
+		if(!is_instance_valid(slot.item)):
+			if(slot.has_method("add")):
+				slot.add(item)
+				return true
+	return false
+			
+	
+func drop_item_from_inventory(item):
+	
+	pass
 
 func _process(delta):
 	if(Input.is_action_just_pressed("open_inv")):
