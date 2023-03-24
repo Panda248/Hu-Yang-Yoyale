@@ -1,3 +1,4 @@
+class_name Fists
 extends Weapon
 
 func _enter_tree():

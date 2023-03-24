@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://scripts/AssaultRifle.gd" type="Script" id=1]
 [ext_resource path="res://res/exported/sprites/ak47top.png" type="Texture" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://res/exported/sprites/light.png" type="Texture" id=5]
 [ext_resource path="res://Bullet.tscn" type="PackedScene" id=6]
 [ext_resource path="res://res/exported/fonts/GajrajOne-Regular.ttf" type="DynamicFontData" id=7]
+[ext_resource path="res://Scope.tscn" type="PackedScene" id=8]
 
 [sub_resource type="DynamicFont" id=2]
 font_data = ExtResource( 7 )
@@ -59,3 +60,5 @@ light_mask = 2
 position = Vector2( 129, 0 )
 occluder = SubResource( 1 )
 light_mask = 2
+
+[node name="Scope" parent="." instance=ExtResource( 8 )]

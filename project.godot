@@ -99,6 +99,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://scripts/Entity.gd"
 }, {
+"base": "Weapon",
+"class": "Fists",
+"language": "GDScript",
+"path": "res://scripts/Fists.gd"
+}, {
 "base": "PanelContainer",
 "class": "HistoryRow",
 "language": "GDScript",
@@ -183,6 +188,7 @@ _global_script_class_icons={
 "DialogicUtil": "",
 "Enemy": "",
 "Entity": "",
+"Fists": "",
 "HistoryRow": "",
 "HitBox": "",
 "HurtBox": "",

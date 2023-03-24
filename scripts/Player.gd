@@ -36,11 +36,8 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if($Equipped.get_child(0) is Sniper):
-		$Camera2D.targetZoom = Vector2(.4,.4)
-	else:
+	if(!$Equipped.get_child(0).has_node("Scope")):
 		$Camera2D.targetZoom = Vector2(.25,.25)
-	var _motion = Vector2();
 	
 	get_node("UI/ColorRect").color = Color(1,0,0,percent_health())
 	if(health < maxHealth):
@@ -213,3 +210,6 @@ func _on_HealTimer_timeout():
 		$HealTimer.wait_time = timeToHeal
 		$HealTimer.start()
 	pass # Replace with function body.
+
+func setZoom(var zoom):
+	$Camera2D.targetZoom = Vector2(zoom,zoom)
