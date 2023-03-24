@@ -21,15 +21,25 @@ func add_item_to_inventory(item) -> bool:
 	return false
 			
 	
-func drop_item_from_inventory(item):
-	
-	pass
+func drop_holding_item():
+	if(is_instance_valid(holding_item)):
+		holding_item.global_position = find_parent("Player").global_position
+		find_parent("World").spawn_item(holding_item)
+
+func drop_inventory_slot_item(slot):
+		var item = slot.item
+		slot.remove()
+		item.global_position = find_parent("Player").global_position
+		find_parent("World").spawn_item(item)
+
 
 func _process(delta):
 	if(Input.is_action_just_pressed("open_inv")):
 		visible = !visible
 	if(is_instance_valid(holding_item)):
 		holding_item.global_position = get_global_mouse_position()
+	if(Input.is_action_just_pressed("game_primary_fire")):
+		drop_holding_item()
 
 func slot_gui_input(event: InputEvent, slot: SlotClass):
 	if event is InputEventMouseButton:
@@ -55,3 +65,8 @@ func slot_gui_input(event: InputEvent, slot: SlotClass):
 				holding_item = slot.item
 				holding_item.position = get_global_mouse_position()
 				slot.remove()
+	elif event is InputEventKey:
+		print ("oie")
+		if event.pressed && event.keycode == KEY_G:
+			print("nei nie")
+			drop_inventory_slot_item(slot)
