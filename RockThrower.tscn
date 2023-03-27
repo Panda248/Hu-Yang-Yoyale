@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=2]
 
-[ext_resource path="res://scripts/Pistol.gd" type="Script" id=1]
+[ext_resource path="res://scripts/RockThrower.gd" type="Script" id=1]
 [ext_resource path="res://res/exported/sprites/pistol.png" type="Texture" id=2]
 [ext_resource path="res://res/exported/sound/pistol shoot.wav" type="AudioStream" id=4]
 [ext_resource path="res://res/exported/sound/pistol reload.wav" type="AudioStream" id=5]
@@ -13,19 +13,13 @@ font_data = ExtResource( 7 )
 [sub_resource type="OccluderPolygon2D" id=1]
 polygon = PoolVector2Array( 44, -2, 48, -6, -16, -6, -16, 6, 48, 6, 44, 2 )
 
-[node name="Pistol" type="Sprite"]
+[node name="RockThrower" type="Sprite"]
+visible = false
 scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 2 )
 centered = false
 offset = Vector2( -15, -6 )
 script = ExtResource( 1 )
-damage = 2
-currentClip = 17
-clip = 17
-reloadTimeFrames = 260
-fireRate = 50
-knockbackMultiplier = 100
-weaponWeight = 1
 
 [node name="BarrelEnd" type="Position2D" parent="."]
 position = Vector2( 40, 0 )

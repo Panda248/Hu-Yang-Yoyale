@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=2]
+[gd_scene load_steps=55 format=2]
 
 [ext_resource path="res://Enemy.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Player.tscn" type="PackedScene" id=2]
@@ -33,7 +33,7 @@
 [ext_resource path="res://SniperItem.tscn" type="PackedScene" id=31]
 [ext_resource path="res://addons/dialogic/Dialog.tscn" type="PackedScene" id=32]
 [ext_resource path="res://scripts/DialogueManager.gd" type="Script" id=33]
-
+[ext_resource path="res://RockEnemy.tscn" type="PackedScene" id=34]
 
 [sub_resource type="StyleBoxFlat" id=14]
 bg_color = Color( 0.741176, 0, 0, 1 )
@@ -259,6 +259,8 @@ DeathScreen = ExtResource( 17 )
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 3 )
+
+[node name="Thrower" parent="." instance=ExtResource( 34 )]
 
 [node name="Enemy" parent="." instance=ExtResource( 1 )]
 position = Vector2( 148, 51 )

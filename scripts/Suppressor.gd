@@ -1,7 +1,9 @@
 extends Node2D
 
+onready var alertRadius;
+
 func _ready():
-	pass # Replace with function body.
+	alertRadius = 200;
 
 func attachmentModifier():
-	pass
+	get_parent().suppress(alertRadius)

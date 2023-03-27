@@ -1,6 +1,7 @@
 extends Weapon
+class_name Pistol
 
-export (PackedScene) var Bullet
+export (PackedScene) var Rock
 
 func get_class():
 	return "Pistol"
@@ -24,7 +25,7 @@ func input_action():
 func primaryFire():
 	if self.reloadAndShootDelay <= 0:
 		if(currentClip > 0):
-			var bullet_instance = Bullet.instance();
+			var bullet_instance = Rock.instance();
 			var target = get_global_mouse_position()
 			var direction_to_mouse = $BarrelEnd.global_position.direction_to(target).normalized();
 			$ShootSFX.play(0)

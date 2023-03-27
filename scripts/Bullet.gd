@@ -1,8 +1,9 @@
+class_name Rock
 extends Area2D
 
 var direction := Vector2.ZERO;
 
-export (int) var speed = 15;
+export (int) var speed = 5;
 var penetration = 0;
 onready var breakableMap : TileMap = get_node("/root/World/Destructibles")
 

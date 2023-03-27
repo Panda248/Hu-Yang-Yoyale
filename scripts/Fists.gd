@@ -1,4 +1,4 @@
-class_name Fists
+class_name ThrowRock
 extends Weapon
 
 func _enter_tree():
