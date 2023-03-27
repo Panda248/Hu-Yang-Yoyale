@@ -19,7 +19,7 @@ func pick_up(player):
 		queue_free()
 
 func player_has_self(player : Player):
-	var playerWeapons = player.get_weapons()
+	var playerWeapons = player.get_hotbar()
 	if playerWeapons.empty():
 		return null
 	for w in playerWeapons:

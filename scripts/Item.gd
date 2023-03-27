@@ -7,7 +7,7 @@ onready var radius = $CollisionShape2D.get_shape().radius
 onready var size = Vector2(radius*scale.x, radius*scale.y)
 
 var stack_size
-var item_name
+export var item_name = "baseItem"
 var item_type
 var item_quantity
 

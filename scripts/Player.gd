@@ -6,8 +6,8 @@ signal alert_enemies(alertRadius);
 signal interact(interactable);
 signal death_screen();
 
-onready var equipped = $Equipped
-onready var weapons = $Weapons
+onready var equipped = $Inventory/Equipped
+onready var hotbar = $Inventory/Hotbar
 onready var heartbeat = $HeartBeat
 
 export var maxStamina = 100
@@ -26,7 +26,7 @@ var direction;
 var targetInteractable
 var canHeal = false
 var canSprint = true
-
+var inventory = []
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -36,7 +36,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if($Equipped.get_child(0) is Sniper):
+	if(equipped.get_child(0) is Sniper):
 		$Camera2D.targetZoom = Vector2(.4,.4)
 	else:
 		$Camera2D.targetZoom = Vector2(.25,.25)
@@ -60,7 +60,7 @@ func _process(delta):
 	
 	
 	
-	var modifiedVelocity = (velocity - 40 * $Equipped.get_child(0).getWeight()) * (health+5)/15
+	var modifiedVelocity = (velocity - 40 * equipped.get_child(0).getWeight()) * (health+5)/15
 	
 	
 	move_and_slide(direction * modifiedVelocity * delta * Engine.get_iterations_per_second());
@@ -167,35 +167,35 @@ func pick_up_nearby_items() -> void:
 	pass
 
 func swap_weapon_left() -> void:
-	if(weapons.get_child_count() > 0):
-			var nextWeapon = weapons.get_child(0)
+	if(hotbar.get_child_count() > 0):
+			var nextWeapon = hotbar.get_child(0)
 			var prevWeapon = equipped.get_child(0)
 			equipped.remove_child(prevWeapon)
-			weapons.add_child(prevWeapon)
-			weapons.remove_child(nextWeapon)
+			hotbar.add_child(prevWeapon)
+			hotbar.remove_child(nextWeapon)
 			equipped.add_child(nextWeapon)
 			prevWeapon.set_owner(self)
 			nextWeapon.set_owner(self)
 
 func swap_weapon_right() -> void:
-	if(weapons.get_child_count() > 0):
-			var nextWeapon = weapons.get_child(weapons.get_child_count()-1)
+	if(hotbar.get_child_count() > 0):
+			var nextWeapon = hotbar.get_child(hotbar.get_child_count()-1)
 			var prevWeapon = equipped.get_child(0)
 			equipped.remove_child(prevWeapon)
-			weapons.add_child(prevWeapon)
-			weapons.remove_child(nextWeapon)
-			weapons.move_child(prevWeapon, 0)
+			hotbar.add_child(prevWeapon)
+			hotbar.remove_child(nextWeapon)
+			hotbar.move_child(prevWeapon, 0)
 			equipped.add_child(nextWeapon)
 			prevWeapon.set_owner(self)
 			nextWeapon.set_owner(self)
 
 func pick_up_weapon(weapon : Weapon):
-	weapons.add_child(weapon)
+	hotbar.add_child(weapon)
 	swap_weapon_right()
 	equipped.get_child(0).position += Vector2.DOWN * weaponOffset
 
-func get_weapons() -> Array:
-	var weaponArr = weapons.get_children()
+func get_hotbar() -> Array:
+	var weaponArr = hotbar.get_children()
 	weaponArr += equipped.get_children()
 	return weaponArr
 
