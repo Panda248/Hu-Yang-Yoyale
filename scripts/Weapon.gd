@@ -8,9 +8,10 @@ export var reloadTimeFrames : = 60
 export var fireRate := 10
 export var reserveClips := 2
 export var knockbackMultiplier := 0
-export var alertRadius := 1000
+onready var alertRadius := 1000
 export var shootTimeMS = 100
 onready var timer = self.shootTimeMS
+
 enum WEAPON_WEIGHT {
 	NONE = 0, LIGHT = 1, MEDIUM = 2, HEAVY = 3
 }
@@ -50,3 +51,6 @@ func reload():
 func alert():
 	if(owner.has_method("alertEnemies")):
 		owner.alertEnemies(alertRadius)
+
+func suppress(var rad):
+	alertRadius = rad;

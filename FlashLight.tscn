@@ -1,8 +1,9 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://FlashLight.gd" type="Script" id=1]
+[ext_resource path="res://scripts/FlashLight.gd" type="Script" id=1]
 [ext_resource path="res://res/exported/sprites/light.png" type="Texture" id=2]
 [ext_resource path="res://res/exported/sprites/flashlight.png" type="Texture" id=3]
+
 
 [sub_resource type="OccluderPolygon2D" id=1]
 polygon = PoolVector2Array( 32, -12, 32, -8, -8, 0, 32, 8, 36, 16, 36, 16, 44, 20, 44, 24, 24, 24, 12, 12, -52, 12, -52, -8, 12, -8, 24, -20, 44, -20, 36, -16 )

@@ -9,7 +9,6 @@ func get_class():
 
 func _process(delta):
 	._process(delta)
-	$Scope.attachmentModifier()
 	$Label.text = var2str(currentClip) + "/" + var2str(clip)
 	look_at(get_global_mouse_position())
 	if($MuzzleFlash.is_visible()):

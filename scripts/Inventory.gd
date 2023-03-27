@@ -1,6 +1,6 @@
 extends Control
 
-const SlotClass = preload("res://Slot.gd")
+const SlotClass = preload("res://scripts/Slot.gd")
 onready var inventory_slots = $GridContainer
 var holding_item = null
 
