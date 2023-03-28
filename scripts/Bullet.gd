@@ -2,6 +2,7 @@ class_name Bullet
 extends Area2D
 
 var direction := Vector2.ZERO;
+var totalDistanceTraveled = 0
 
 export (int) var speed = 5;
 var penetration = 0;
@@ -18,11 +19,17 @@ func _on_Bullet_body_shape_entered(body_rid: RID, body: Node, body_shape_index: 
 	
 
 func _physics_process(delta: float) -> void:
+	if (totalDistanceTraveled >= 100):
+		#explode()
+		queue_free()
 	if direction != Vector2.ZERO:
 		var velocity = direction * speed;
 		global_position += velocity;
+		totalDistanceTraveled += velocity.length()
 	
 func set_direction(direction: Vector2):
 	self.direction = direction;
 	look_at(position+direction)
-	
+
+func explode():
+	pass
