@@ -33,6 +33,7 @@ func remove_item_at_index(index):
 	inventoryGridArray[index] = null
 	emit_signal("update_UI_slot", index, null)
 	
+	
 func stack_item(stacker, stackee):
 	var stack_size = 99
 	var addable = stack_size - stackee.item_quantity
@@ -89,3 +90,7 @@ func get_hotbar() -> Array:
 	weaponArr += equipped.get_children()
 	return weaponArr
 
+func add_item_to_hotbar(item):
+	pass
+func remove_item_from_hotbar(item):
+	pass

@@ -9,3 +9,5 @@ func remove():
 
 func add(item):
 	item = item
+	$TextureRect.texture = item.find_node("Icon").texture
+	$Label.text = item.find_node("Quantity").text
