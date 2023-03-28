@@ -80,6 +80,7 @@ script = ExtResource( 3 )
 [node name="TextureRect" type="TextureRect" parent="GridContainer/Panel2"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+expand = true
 
 [node name="Label" type="Label" parent="GridContainer/Panel2"]
 anchor_left = 0.6
@@ -107,6 +108,7 @@ script = ExtResource( 3 )
 [node name="TextureRect" type="TextureRect" parent="GridContainer/Panel3"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+expand = true
 
 [node name="Label" type="Label" parent="GridContainer/Panel3"]
 anchor_left = 0.6
@@ -134,6 +136,7 @@ script = ExtResource( 3 )
 [node name="TextureRect" type="TextureRect" parent="GridContainer/Panel4"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+expand = true
 
 [node name="Label" type="Label" parent="GridContainer/Panel4"]
 anchor_left = 0.6
@@ -161,6 +164,7 @@ script = ExtResource( 3 )
 [node name="TextureRect" type="TextureRect" parent="GridContainer/Panel5"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+expand = true
 
 [node name="Label" type="Label" parent="GridContainer/Panel5"]
 anchor_left = 0.6
@@ -188,6 +192,7 @@ script = ExtResource( 3 )
 [node name="TextureRect" type="TextureRect" parent="GridContainer/Panel6"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+expand = true
 
 [node name="Label" type="Label" parent="GridContainer/Panel6"]
 anchor_left = 0.6
@@ -214,6 +219,7 @@ script = ExtResource( 3 )
 [node name="TextureRect" type="TextureRect" parent="GridContainer/Panel7"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+expand = true
 
 [node name="Label" type="Label" parent="GridContainer/Panel7"]
 anchor_left = 0.6
@@ -240,6 +246,7 @@ script = ExtResource( 3 )
 [node name="TextureRect" type="TextureRect" parent="GridContainer/Panel8"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+expand = true
 
 [node name="Label" type="Label" parent="GridContainer/Panel8"]
 anchor_left = 0.6
@@ -266,6 +273,7 @@ script = ExtResource( 3 )
 [node name="TextureRect" type="TextureRect" parent="GridContainer/Panel9"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+expand = true
 
 [node name="Label" type="Label" parent="GridContainer/Panel9"]
 anchor_left = 0.6
