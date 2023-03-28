@@ -261,6 +261,7 @@ DeathScreen = ExtResource( 17 )
 texture = ExtResource( 3 )
 
 [node name="Thrower" parent="." instance=ExtResource( 34 )]
+position = Vector2( -100, 0 )
 
 [node name="Enemy" parent="." instance=ExtResource( 1 )]
 position = Vector2( 148, 51 )
@@ -286,6 +287,7 @@ shadow_item_cull_mask = 4
 
 [node name="UI" type="CanvasLayer" parent="Player"]
 layer = 0
+visible = false
 script = ExtResource( 20 )
 
 [node name="Fog" type="TextureRect" parent="Player/UI"]

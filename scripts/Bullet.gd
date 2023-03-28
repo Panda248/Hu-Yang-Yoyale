@@ -1,4 +1,4 @@
-class_name Rock
+class_name Bullet
 extends Area2D
 
 var direction := Vector2.ZERO;
