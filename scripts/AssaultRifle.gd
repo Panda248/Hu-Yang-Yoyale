@@ -33,7 +33,7 @@ func primaryFire():
 			$MuzzleFlash.set_visible(true)
 			self.timer = self.shootTimeMS
 			alert()
-			get_parent().get_parent().emit_signal("player_shot", 
+			find_parent("Player").emit_signal("player_shot", 
 												bullet_instance,
 												$BarrelEnd.global_position, 
 												direction_to_mouse,

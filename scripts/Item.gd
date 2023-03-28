@@ -26,10 +26,10 @@ func _ready():
 	$Label.text = String(item_quantity)
 
 func pick_up(player: Player):
-	if(canInteract):
-		emit_signal("notify_picked_up", "picked up", global_position + Vector2.UP*messageOffsetY, 0.5)
-		queue_free()
-		
+	emit_signal("notify_picked_up", "picked up", global_position + Vector2.UP*messageOffsetY, 0.5)
+	get_parent().remove_child(self)
+	player.inventory.add_item(self)
+
 func add_items(quantity):
 	item_quantity += quantity
 	$Label.text = String(item_quantity)

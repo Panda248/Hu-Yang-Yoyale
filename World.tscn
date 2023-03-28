@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=2]
+[gd_scene load_steps=37 format=2]
 
 [ext_resource path="res://Enemy.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Player.tscn" type="PackedScene" id=2]
@@ -20,9 +20,6 @@
 [ext_resource path="res://res/stone.png" type="Texture" id=25]
 [ext_resource path="res://EnemySpawn.gd" type="Script" id=26]
 [ext_resource path="res://SafeZone.gd" type="Script" id=27]
-[ext_resource path="res://ARItem.tscn" type="PackedScene" id=28]
-[ext_resource path="res://PistolItem.tscn" type="PackedScene" id=29]
-[ext_resource path="res://SniperItem.tscn" type="PackedScene" id=31]
 [ext_resource path="res://addons/dialogic/Dialog.tscn" type="PackedScene" id=32]
 [ext_resource path="res://DialogueManager.gd" type="Script" id=33]
 
@@ -267,8 +264,7 @@ script = ExtResource( 11 )
 [node name="Crates" type="Node2D" parent="."]
 
 [node name="Crate" parent="Crates" instance=ExtResource( 12 )]
-position = Vector2( 330, 72 )
-itemScenes = [ ExtResource( 29 ), ExtResource( 28 ), ExtResource( 31 ) ]
+position = Vector2( 77, -84 )
 
 [node name="Crate2" parent="Crates" instance=ExtResource( 12 )]
 

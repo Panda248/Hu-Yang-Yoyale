@@ -6,8 +6,9 @@ signal alert_enemies(alertRadius);
 signal interact(interactable);
 signal death_screen();
 
-onready var equipped = $Inventory/Equipped
+onready var inventory = $Inventory
 onready var hotbar = $Inventory/Hotbar
+onready var equipped = $Inventory/Equipped
 onready var heartbeat = $HeartBeat
 
 export var maxStamina = 100
@@ -26,7 +27,6 @@ var direction;
 var targetInteractable
 var canHeal = false
 var canSprint = true
-var inventory = []
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -122,9 +122,9 @@ func input_action():
 	if(equipped.get_child(0).has_method("input_action")):
 		equipped.get_child(0).input_action()
 	if Input.is_action_just_pressed("game_switch_weapon_left"):
-		swap_weapon_left()
+		inventory.swap_weapon_left()
 	elif Input.is_action_just_pressed("game_switch_weapon_right"):
-		swap_weapon_right()
+		inventory.swap_weapon_right()
 	elif Input.is_action_just_pressed("game_interact"):
 		if(is_instance_valid(targetInteractable) and targetInteractable.canInteract):
 			targetInteractable.interact()
@@ -165,39 +165,14 @@ func pick_up_nearby_items() -> void:
 		if(area.has_method("pick_up")):
 			area.pick_up(self)
 	pass
-
-func swap_weapon_left() -> void:
-	if(hotbar.get_child_count() > 0):
-			var nextWeapon = hotbar.get_child(0)
-			var prevWeapon = equipped.get_child(0)
-			equipped.remove_child(prevWeapon)
-			hotbar.add_child(prevWeapon)
-			hotbar.remove_child(nextWeapon)
-			equipped.add_child(nextWeapon)
-			prevWeapon.set_owner(self)
-			nextWeapon.set_owner(self)
-
-func swap_weapon_right() -> void:
-	if(hotbar.get_child_count() > 0):
-			var nextWeapon = hotbar.get_child(hotbar.get_child_count()-1)
-			var prevWeapon = equipped.get_child(0)
-			equipped.remove_child(prevWeapon)
-			hotbar.add_child(prevWeapon)
-			hotbar.remove_child(nextWeapon)
-			hotbar.move_child(prevWeapon, 0)
-			equipped.add_child(nextWeapon)
-			prevWeapon.set_owner(self)
-			nextWeapon.set_owner(self)
-
+	
 func pick_up_weapon(weapon : Weapon):
 	hotbar.add_child(weapon)
-	swap_weapon_right()
+	inventory.swap_weapon_right()
 	equipped.get_child(0).position += Vector2.DOWN * weaponOffset
 
 func get_hotbar() -> Array:
-	var weaponArr = hotbar.get_children()
-	weaponArr += equipped.get_children()
-	return weaponArr
+	return inventory.get_hotbar()
 
 func percent_health() -> float:
 	return float(maxHealth-health)/float(maxHealth)
