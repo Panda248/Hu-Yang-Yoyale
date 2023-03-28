@@ -37,10 +37,9 @@ func pressed(slot: SlotClass):
 			holding_item = null
 	elif is_instance_valid(slot.item):
 		print("...")
-		
 		holding_item = slot.item
 		holding_item.position = get_global_mouse_position()
-		slot.remove()
+		playerNode.inventory.remove_item_at_index(slot_index)
 	pass
 
 func slot_gui_input(event: InputEvent, slot: SlotClass):

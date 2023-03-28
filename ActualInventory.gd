@@ -26,10 +26,10 @@ func add_item_at_index(item, index):
 
 func remove_item(item):
 	var index = inventoryGridArray.find(item)
-	remove_item_by_index(index)
+	remove_item_at_index(index)
 	pass
 	
-func remove_item_by_index(index):
+func remove_item_at_index(index):
 	inventoryGridArray[index] = null
 	emit_signal("update_UI_slot", index, null)
 	
