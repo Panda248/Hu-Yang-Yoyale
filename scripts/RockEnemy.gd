@@ -1,13 +1,7 @@
 extends NPC
 
-
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
 var playerInMeleeRange = false
 
-
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	$FOV/RayCast2D.cast_to = Vector2(maxViewDistance, 0)
 	pass # Replace with function body.
@@ -29,10 +23,7 @@ func _process(delta):
 			_investigate(delta)
 		ATTACK:
 			_chase(delta)
-			if randf() > 0.5:
-				get_node("RockThrower").primaryFire()
-			else:
-				get_node("RockThrower").primaryFire()
+			get_node("RockThrower").primaryFire()
 	pass
 
 func _chase(delta):
@@ -44,6 +35,7 @@ func _chase(delta):
 		destination = player.position
 		state = INVESTIGATE
 	pass
+
 func _investigate(delta):
 	slowly_rotate_to(destination, delta)
 	if(can_see_player()):
@@ -96,12 +88,13 @@ func can_see_player() -> bool:
 			return true
 	return false
 
+
 func raycast_sweep() -> void:
 	if(can_see_player()):
+		if (player.position.distance_to(self.position) < 100):
+			playerInMeleeRange = true;
 		if(playerInMeleeRange):
 			state = ATTACK
 			return
 		if state != ATTACK:
 			state = CHASE
-
-
