@@ -63,4 +63,5 @@ func slot_gui_input(event: InputEvent, slot: SlotClass):
 
 func _on_Inventory_update_UI_slot(slot, item):
 	$GridContainer.get_child(slot).item = item
+	
 
