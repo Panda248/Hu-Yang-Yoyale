@@ -83,6 +83,6 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 texture = ExtResource( 8 )
 
-[node name="Label" type="Label" parent="."]
+[node name="Quantity" type="Label" parent="."]
 margin_right = 40.0
 margin_bottom = 14.0
