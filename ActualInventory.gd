@@ -3,15 +3,19 @@ extends Node2D
 
 export var rows = 3
 export var cols = 3
+var equippedIndex = 0
 var size = rows*cols
 var inventoryGridArray = [];
+var hotbarArray = []
 onready var hotbar = $Hotbar
 onready var equipped = $Equipped
 onready var inventoryUI = get_parent().get_node("UI/Inventory")
 signal update_UI_slot(slot, item)
+signal update_Hotbar_slot(slot, item)
 
 func _ready():
 	inventoryGridArray.resize(size)
+	hotbarArray.resize(cols)
 
 func add_item(item):
 	for i in range(size):
@@ -20,6 +24,9 @@ func add_item(item):
 			return
 
 func add_item_at_index(item, index):
+	if(index_in_hotbar(index)):
+		print("hotbar")
+		add_item_to_hotbar_index(item, index-(cols*(rows-1)))
 	inventoryGridArray[index] = item
 	emit_signal("update_UI_slot", index ,item)
 	print(var2str(index) + var2str(item.item_name) + var2str(item.item_quantity))
@@ -30,6 +37,8 @@ func remove_item(item):
 	pass
 	
 func remove_item_at_index(index):
+	if(index_in_hotbar(index)):
+		remove_index_from_hotbar(index-(cols*(rows-1)))
 	inventoryGridArray[index] = null
 	emit_signal("update_UI_slot", index, null)
 	
@@ -63,27 +72,43 @@ func move_slot(slot_index, target_index):
 	move_item(inventoryGridArray[slot_index], target_index)
 
 func swap_weapon_left() -> void:
-	if(hotbar.get_child_count() > 0):
-			var nextWeapon = hotbar.get_child(0)
-			var prevWeapon = equipped.get_child(0)
-			equipped.remove_child(prevWeapon)
-			hotbar.add_child(prevWeapon)
-			hotbar.remove_child(nextWeapon)
-			equipped.add_child(nextWeapon)
-			prevWeapon.set_owner(self)
-			nextWeapon.set_owner(self)
+	if(equippedIndex == 0):
+		equippedIndex = cols-1
+	else:
+		equippedIndex-=1
+	equip(equippedIndex)
+	
 
 func swap_weapon_right() -> void:
-	if(hotbar.get_child_count() > 0):
-			var nextWeapon = hotbar.get_child(hotbar.get_child_count()-1)
-			var prevWeapon = equipped.get_child(0)
-			equipped.remove_child(prevWeapon)
-			hotbar.add_child(prevWeapon)
-			hotbar.remove_child(nextWeapon)
-			hotbar.move_child(prevWeapon, 0)
-			equipped.add_child(nextWeapon)
-			prevWeapon.set_owner(self)
-			nextWeapon.set_owner(self)
+	if(equippedIndex == cols-1):
+		equippedIndex = 0
+	else:
+		equippedIndex+=1
+	equip(equippedIndex)
+
+func equip(index):
+	if(hotbarArray[index]):
+		var prevWeapon = equipped.get_child(0)
+		equipped.remove_child(prevWeapon)
+		hotbar.add_child(prevWeapon)
+		var nextWeapon = hotbarArray[index]
+		hotbar.remove_child(nextWeapon)
+		equipped.add_child(nextWeapon)
+		find_parent("Player").equippedWeapon = nextWeapon.weaponInstance
+		nextWeapon.set_global_position(get_parent().global_position + Vector2.DOWN*get_parent().weaponOffset)
+	else:
+		equipFists()
+
+func equipFists():
+	if(is_instance_valid(get_node("Hotbar/Fists"))):
+		var fists = get_node("Hotbar/Fists")
+		print(var2str(fists))
+		var prevWeapon = equipped.get_child(0)
+		hotbar.remove_child(fists)
+		equipped.add_child(fists)
+		equipped.remove_child(prevWeapon)
+		hotbar.add_child(prevWeapon)
+	get_parent().equippedWeapon = equipped.get_child(0)
 
 func get_hotbar() -> Array:
 	var weaponArr = hotbar.get_children()
@@ -91,6 +116,25 @@ func get_hotbar() -> Array:
 	return weaponArr
 
 func add_item_to_hotbar(item):
+	for i in range(cols):
+		if(!hotbarArray[i]):
+			add_item_to_hotbar_index(item, i)
+			return
+
+func add_item_to_hotbar_index(item, index):
+	hotbar.add_child(item)
+	hotbar.move_child(item, index+1)
+	hotbarArray[index] = item
 	pass
-func remove_item_from_hotbar(item):
-	pass
+
+func remove_index_from_hotbar(index):
+	if(index == equippedIndex):
+		equipFists()
+	else:
+		hotbar.remove_child(hotbarArray[index])
+	hotbarArray[index] = null
+	
+
+
+func index_in_hotbar(index) -> bool:
+	return index+1 > cols*(rows-1)

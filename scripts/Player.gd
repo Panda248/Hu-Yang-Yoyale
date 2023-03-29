@@ -9,6 +9,7 @@ signal death_screen();
 onready var inventory = $Inventory
 onready var hotbar = $Inventory/Hotbar
 onready var equipped = $Inventory/Equipped
+onready var equippedWeapon = $Inventory/Equipped/Fists
 onready var heartbeat = $HeartBeat
 
 export var maxStamina = 100
@@ -36,7 +37,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if(equipped.get_child(0) is Sniper):
+	if(equippedWeapon is Sniper):
 		$Camera2D.targetZoom = Vector2(.4,.4)
 	else:
 		$Camera2D.targetZoom = Vector2(.25,.25)
@@ -60,7 +61,7 @@ func _process(delta):
 	
 	
 	
-	var modifiedVelocity = (velocity - 40 * equipped.get_child(0).getWeight()) * (health+5)/15
+	var modifiedVelocity = (velocity - 40 * equippedWeapon.getWeight()) * (health+5)/15
 	
 	
 	move_and_slide(direction * modifiedVelocity * delta * Engine.get_iterations_per_second());
@@ -119,8 +120,8 @@ func input_movement(delta):
 					alertEnemies(walkAlertRadius)
 
 func input_action():
-	if(equipped.get_child(0).has_method("input_action")):
-		equipped.get_child(0).input_action()
+	if(equippedWeapon.has_method("input_action")):
+		equippedWeapon.input_action()
 	if Input.is_action_just_pressed("game_switch_weapon_left"):
 		inventory.swap_weapon_left()
 	elif Input.is_action_just_pressed("game_switch_weapon_right"):
@@ -169,7 +170,7 @@ func pick_up_nearby_items() -> void:
 func pick_up_weapon(weapon : Weapon):
 	hotbar.add_child(weapon)
 	inventory.swap_weapon_right()
-	equipped.get_child(0).position += Vector2.DOWN * weaponOffset
+	equippedWeapon.position += Vector2.DOWN * weaponOffset
 
 func get_hotbar() -> Array:
 	return inventory.get_hotbar()

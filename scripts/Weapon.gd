@@ -48,5 +48,5 @@ func reload():
 	pass
 
 func alert():
-	if(owner.has_method("alertEnemies")):
-		owner.alertEnemies(alertRadius)
+	if(find_parent("Player").has_method("alertEnemies")):
+		find_parent("Player").alertEnemies(alertRadius)

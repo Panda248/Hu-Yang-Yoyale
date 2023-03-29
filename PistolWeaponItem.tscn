@@ -28,6 +28,7 @@ visible = false
 texture = ExtResource( 2 )
 offset = Vector2( 15, 0 )
 script = ExtResource( 7 )
+knockbackMultiplier = 100
 Bullet = ExtResource( 3 )
 
 [node name="SFX" type="Node2D" parent="WeaponInstance"]

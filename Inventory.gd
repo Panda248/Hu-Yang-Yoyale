@@ -6,12 +6,6 @@ var holding_item = null
 var playerNode 
 
 
-func has_item(item) -> bool:
-	for slot in $GridContainer.get_children():
-		if(!is_instance_valid(slot.item)):
-			if(slot.item == item):
-				return true
-	return false
 
 func _ready():
 	playerNode = find_parent("Player")
@@ -24,14 +18,23 @@ func _process(delta):
 	if(Input.is_action_just_pressed("open_inv")):
 		visible = !visible
 	if(is_instance_valid(holding_item)):
-		holding_item.global_position = get_global_mouse_position()
+		$HoldingItem.set_texture(holding_item.find_node("Icon").texture)
+		$HoldingItem.set_position(get_global_mouse_position() - $HoldingItem.rect_size/2)
+	else:
+		$HoldingItem.set_texture(null)
 
 func pressed(slot: SlotClass):
-	print(":/")
 	var slot_index = slot.get_index()
 	if is_instance_valid(holding_item):
 		if is_instance_valid(slot.item):
-			playerNode.inventory.stack_item(holding_item, slot.item)
+			if(holding_item.item_name == slot.item.item_name):
+				playerNode.inventory.stack_item(holding_item, slot.item)
+			else:
+				print("swapped")
+				var temp = slot.item
+				playerNode.inventory.add_item_at_index(holding_item, slot_index)
+				holding_item = temp
+				
 		else:
 			print("?")
 			playerNode.inventory.add_item_at_index(holding_item, slot_index)
