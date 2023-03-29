@@ -88,7 +88,6 @@ func can_see_player() -> bool:
 			return true
 	return false
 
-
 func raycast_sweep() -> void:
 	if(can_see_player()):
 		if (player.position.distance_to(self.position) < 100):

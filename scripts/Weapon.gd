@@ -54,3 +54,15 @@ func alert():
 
 func suppress(var rad):
 	alertRadius = rad;
+
+func getCurClip():
+	return currentClip
+	
+func getRemainingAmmo():
+	return reserveClips * clip
+
+func getMaxReloadTime():
+	return reloadTimeFrames
+
+func getRemainingReloadTime():
+	return reloadAndShootDelay

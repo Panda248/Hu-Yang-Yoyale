@@ -22,7 +22,6 @@ func primaryFire():
 		$ShootSFX.play(0)
 		$MuzzleFlash.set_visible(true)
 		timer = shootTimeMS
-		alert()
 		get_parent().get_parent().get_node("Player").emit_signal("player_shot", 
 											bullet_instance,
 											$BarrelEnd.global_position, 
