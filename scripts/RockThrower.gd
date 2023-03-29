@@ -4,11 +4,10 @@ class_name RockThrower
 export (PackedScene) var Bullet
 
 func get_class():
-	return "Pistol"
+	return "RockThrower"
 
 func _process(delta):
 	._process(delta)
-	$Label.text = var2str(currentClip) + "/" + var2str(clip)
 	look_at(get_parent().get_parent().get_node("Player").position)
 	if($MuzzleFlash.is_visible()):
 		timer-=delta*1000
@@ -29,6 +28,7 @@ func primaryFire():
 											$BarrelEnd.global_position, 
 											direction_to_mouse,
 											damage, knockbackMultiplier);
+		get_parent().get_node("Fists").primaryFire()
 		self.reloadAndShootDelay = fireRate
 
 

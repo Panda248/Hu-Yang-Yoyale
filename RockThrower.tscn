@@ -1,45 +1,26 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://scripts/RockThrower.gd" type="Script" id=1]
-[ext_resource path="res://res/exported/sprites/pistol.png" type="Texture" id=2]
 [ext_resource path="res://Rock.tscn" type="PackedScene" id=3]
-[ext_resource path="res://res/exported/sound/pistol shoot.wav" type="AudioStream" id=4]
-[ext_resource path="res://res/exported/sound/pistol reload.wav" type="AudioStream" id=5]
 [ext_resource path="res://res/exported/sprites/light.png" type="Texture" id=6]
-[ext_resource path="res://res/exported/fonts/GajrajOne-Regular.ttf" type="DynamicFontData" id=7]
-
-[sub_resource type="DynamicFont" id=2]
-font_data = ExtResource( 7 )
-
-[sub_resource type="OccluderPolygon2D" id=1]
-polygon = PoolVector2Array( 44, -2, 48, -6, -16, -6, -16, 6, 48, 6, 44, 2 )
 
 [node name="RockThrower" type="Sprite"]
 scale = Vector2( 0.5, 0.5 )
-texture = ExtResource( 2 )
 centered = false
 offset = Vector2( -15, -6 )
 script = ExtResource( 1 )
-fireRate = 200
+damage = 2
+fireRate = 300
+knockbackMultiplier = 1
 Bullet = ExtResource( 3 )
 
 [node name="BarrelEnd" type="Position2D" parent="."]
 position = Vector2( 40, 0 )
 
-[node name="Label" type="Label" parent="."]
-margin_right = 40.0
-margin_bottom = 14.0
-custom_fonts/font = SubResource( 2 )
-text = "Test"
-
 [node name="ShootSFX" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource( 4 )
-
-[node name="ReloadSFX" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource( 5 )
 
 [node name="MuzzleFlash" type="Light2D" parent="."]
-position = Vector2( 46, 0 )
+position = Vector2( 30, -24 )
 texture = ExtResource( 6 )
 texture_scale = 0.5
 color = Color( 0.866667, 1, 0.533333, 1 )
@@ -49,8 +30,3 @@ shadow_gradient_length = 300.0
 shadow_filter = 5
 shadow_filter_smooth = 64.0
 shadow_item_cull_mask = 3
-
-[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
-light_mask = 2
-occluder = SubResource( 1 )
-light_mask = 2
