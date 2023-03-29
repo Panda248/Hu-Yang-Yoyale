@@ -1,48 +1,56 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://res/exported/fonts/GajrajOne-Regular.ttf" type="DynamicFontData" id=1]
-[ext_resource path="res://Bullet.tscn" type="PackedScene" id=2]
-[ext_resource path="res://scripts/Pistol.gd" type="Script" id=3]
+[ext_resource path="res://Sniper.gd" type="Script" id=2]
+[ext_resource path="res://Bullet.tscn" type="PackedScene" id=3]
 [ext_resource path="res://res/exported/sprites/light.png" type="Texture" id=4]
 [ext_resource path="res://res/exported/sprites/kennys.png" type="Texture" id=5]
 [ext_resource path="res://res/exported/sound/pistol reload.wav" type="AudioStream" id=6]
 [ext_resource path="res://res/exported/sound/pistol shoot.wav" type="AudioStream" id=7]
 [ext_resource path="res://res/exported/sprites/awp.png" type="Texture" id=8]
+[ext_resource path="res://SniperWeaponItem.gd" type="Script" id=9]
 
 [sub_resource type="CircleShape2D" id=3]
 radius = 14.0
 
-[sub_resource type="OccluderPolygon2D" id=1]
-polygon = PoolVector2Array( 44, -2, 51, -6, -77, -17, -73, 31, 51, 19, 44, 10 )
-
 [sub_resource type="DynamicFont" id=2]
 font_data = ExtResource( 1 )
 
+[sub_resource type="OccluderPolygon2D" id=1]
+polygon = PoolVector2Array( 44, -2, 51, -6, -77, -17, -73, 31, 51, 19, 44, 10 )
+
 [node name="SniperWeaponItem" type="Area2D"]
+script = ExtResource( 9 )
+item_name = "Sniper"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 3 )
 
 [node name="WeaponInstance" type="Sprite" parent="."]
-scale = Vector2( 0.25, 0.25 )
+visible = false
+scale = Vector2( 0.2, 0.1 )
 texture = ExtResource( 5 )
 offset = Vector2( 100, 8 )
-script = ExtResource( 3 )
-knockbackMultiplier = 100
-Bullet = ExtResource( 2 )
+script = ExtResource( 2 )
+damage = 5
+knockbackMultiplier = 200
+ammo_type = "HEAVY"
+Bullet = ExtResource( 3 )
 
-[node name="SFX" type="Node2D" parent="WeaponInstance"]
+[node name="BarrelEnd" type="Position2D" parent="WeaponInstance"]
+position = Vector2( 356, 0 )
+__meta__ = {
+"_gizmo_extents_": 0.0
+}
 
-[node name="ShootSFX" type="AudioStreamPlayer2D" parent="WeaponInstance/SFX"]
-stream = ExtResource( 7 )
-volume_db = 24.0
+[node name="Label" type="Label" parent="WeaponInstance"]
+margin_top = 30.0
+margin_right = 40.0
+margin_bottom = 14.0
+custom_fonts/font = SubResource( 2 )
+text = "test"
 
-[node name="ReloadSFX" type="AudioStreamPlayer2D" parent="WeaponInstance/SFX"]
-stream = ExtResource( 6 )
-
-[node name="VFX" type="Node2D" parent="WeaponInstance"]
-
-[node name="MuzzleFlash" type="Light2D" parent="WeaponInstance/VFX"]
+[node name="MuzzleFlash" type="Light2D" parent="WeaponInstance"]
 visible = false
 position = Vector2( 356, 0 )
 texture = ExtResource( 4 )
@@ -54,27 +62,19 @@ shadow_enabled = true
 shadow_filter_smooth = 64.0
 shadow_item_cull_mask = 3
 
-[node name="LightOccluder2D" type="LightOccluder2D" parent="WeaponInstance/VFX"]
+[node name="LightOccluder2D" type="LightOccluder2D" parent="WeaponInstance"]
 visible = false
 light_mask = 2
 position = Vector2( 304, -8 )
 occluder = SubResource( 1 )
 light_mask = 2
 
-[node name="Attachments" type="Node2D" parent="WeaponInstance"]
+[node name="ShootSFX" type="AudioStreamPlayer2D" parent="WeaponInstance"]
+stream = ExtResource( 7 )
+volume_db = 24.0
 
-[node name="BarrelEnd2" type="Position2D" parent="WeaponInstance"]
-position = Vector2( 356, 0 )
-__meta__ = {
-"_gizmo_extents_": 0.0
-}
-
-[node name="Label2" type="Label" parent="WeaponInstance"]
-margin_top = 30.0
-margin_right = 40.0
-margin_bottom = 14.0
-custom_fonts/font = SubResource( 2 )
-text = "test"
+[node name="ReloadSFX" type="AudioStreamPlayer2D" parent="WeaponInstance"]
+stream = ExtResource( 6 )
 
 [node name="Icon" type="TextureRect" parent="."]
 margin_left = -16.0

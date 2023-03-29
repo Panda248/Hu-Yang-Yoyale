@@ -41,7 +41,9 @@ func pressed(slot: SlotClass):
 	var slot_index = slot.get_index()
 	if is_instance_valid(holding_item):
 		if is_instance_valid(slot.item):
-			if(holding_item.item_name == slot.item.item_name):
+			if(slot.item.item_type == "WEAPON" and holding_item.item_type == "AMMO"):
+				playerNode.inventory.refill_ammo(slot.item, holding_item)
+			elif(holding_item.item_name == slot.item.item_name):
 				playerNode.inventory.stack_item(holding_item, slot.item)
 			else:
 				print("swapped")

@@ -29,6 +29,6 @@ func expired() -> bool:
 	return self.alertCircle.shape.radius > maxRadius
 
 func _on_Alert_body_entered(body):
-	if(body is Enemy):
+	if(body.has_method("alert")):
 		body.alert(position)
 	pass # Replace with function body.

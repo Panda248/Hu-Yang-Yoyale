@@ -10,6 +10,7 @@ export var reserveClips := 2
 export var knockbackMultiplier := 0
 export var alertRadius := 1000
 export var shootTimeMS = 100
+export var ammo_type = "LIGHT"
 onready var timer = self.shootTimeMS
 enum WEAPON_WEIGHT {
 	NONE = 0, LIGHT = 1, MEDIUM = 2, HEAVY = 3
@@ -49,6 +50,9 @@ func reload():
 
 func suppress(value):
 	alertRadius-=value
+
+func add_mags(value):
+	reserveClips += value
 
 func alert():
 	if(is_instance_valid(find_parent("Player"))):

@@ -162,7 +162,7 @@ _global_script_classes=[ {
 "base": "Weapon",
 "class": "Sniper",
 "language": "GDScript",
-"path": "res://scripts/Sniper.gd"
+"path": "res://Sniper.gd"
 }, {
 "base": "Node2D",
 "class": "Weapon",

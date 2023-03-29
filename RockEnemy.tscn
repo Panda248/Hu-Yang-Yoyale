@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://scripts/RockEnemy.gd" type="Script" id=1]
 [ext_resource path="res://scripts/HurtBox.gd" type="Script" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://res/exported/fonts/GajrajOne.tres" type="DynamicFont" id=4]
 [ext_resource path="res://RockThrower.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Fists.tscn" type="PackedScene" id=6]
+[ext_resource path="res://res/bloodflash.png" type="Texture" id=7]
 
 [sub_resource type="CircleShape2D" id=1]
 
@@ -93,7 +94,16 @@ occluder = SubResource( 6 )
 [node name="Fists" parent="." instance=ExtResource( 6 )]
 position = Vector2( 10, 0 )
 
+[node name="alert" type="Sprite" parent="."]
+visible = false
+position = Vector2( -5, -49 )
+scale = Vector2( 0.05, 0.05 )
+texture = ExtResource( 7 )
+
+[node name="alertTimer" type="Timer" parent="."]
+
 [connection signal="body_entered" from="FOV" to="." method="_on_FOV_body_entered"]
 [connection signal="body_exited" from="FOV" to="." method="_on_FOV_body_exited"]
 [connection signal="body_entered" from="Range" to="." method="_on_Range_body_entered"]
 [connection signal="body_exited" from="Range" to="." method="_on_Range_body_exited"]
+[connection signal="timeout" from="alertTimer" to="." method="_on_alertTimer_timeout"]

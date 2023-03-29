@@ -140,8 +140,11 @@ func remove_index_from_hotbar(index):
 		hotbar.remove_child(hotbarArray[index])
 	hotbarArray[index] = null
 	emit_signal("update_Hotbar_slot", index, null)
-	
 
+func refill_ammo(weapon, ammo):
+	if(weapon.weaponInstance.ammo_type == ammo.item_name):
+		weapon.weaponInstance.add_mags(ammo.item_quantity)
+		ammo = null
 
 func index_in_hotbar(index) -> bool:
 	return index+1 > cols*(rows-1)
