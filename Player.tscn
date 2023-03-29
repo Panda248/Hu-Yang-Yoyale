@@ -279,6 +279,8 @@ margin_right = 791.36
 margin_bottom = 952.0
 grow_horizontal = 2
 
+[connection signal="update_Hotbar_equipped" from="Inventory" to="UI/Hotbar" method="_on_Inventory_update_Hotbar_equipped"]
+[connection signal="update_Hotbar_slot" from="Inventory" to="UI/Hotbar" method="_on_Inventory_update_Hotbar_slot"]
 [connection signal="update_UI_slot" from="Inventory" to="UI/Inventory" method="_on_Inventory_update_UI_slot"]
 [connection signal="body_entered" from="InteractBox" to="." method="_on_InteractBox_body_entered"]
 [connection signal="body_exited" from="InteractBox" to="." method="_on_InteractBox_body_exited"]

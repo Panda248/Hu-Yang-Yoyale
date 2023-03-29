@@ -131,7 +131,7 @@ knockbackDirection = Vector2( 1, 0 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
 modulate = Color( 1, 1, 1, 0.207843 )
-position = Vector2( 12, 10 )
+position = Vector2( 12, -10 )
 shape = SubResource( 8 )
 disabled = true
 

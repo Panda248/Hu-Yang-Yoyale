@@ -43,6 +43,7 @@ margin_bottom = 14.0
 
 [node name="WeaponInstance" type="Sprite" parent="."]
 visible = false
+scale = Vector2( 0.25, 0.25 )
 texture = ExtResource( 9 )
 offset = Vector2( 50, 2 )
 script = ExtResource( 2 )

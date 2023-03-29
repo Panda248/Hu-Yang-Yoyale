@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://PistolWeaponItem.gd" type="Script" id=1]
 [ext_resource path="res://res/exported/sprites/pistol.png" type="Texture" id=2]
@@ -19,12 +19,15 @@ font_data = ExtResource( 9 )
 [sub_resource type="CircleShape2D" id=1]
 radius = 14.0
 
+[sub_resource type="DynamicFont" id=7]
+
 [node name="PistolWeaponItem" type="Area2D"]
 script = ExtResource( 1 )
 item_name = "Pistol"
 
 [node name="WeaponInstance" type="Sprite" parent="."]
 visible = false
+scale = Vector2( 0.25, 0.25 )
 texture = ExtResource( 2 )
 offset = Vector2( 15, 0 )
 script = ExtResource( 7 )
@@ -87,3 +90,4 @@ texture = ExtResource( 8 )
 [node name="Quantity" type="Label" parent="."]
 margin_right = 40.0
 margin_bottom = 14.0
+custom_fonts/font = SubResource( 7 )

@@ -12,6 +12,7 @@ onready var equipped = $Equipped
 onready var inventoryUI = get_parent().get_node("UI/Inventory")
 signal update_UI_slot(slot, item)
 signal update_Hotbar_slot(slot, item)
+signal update_Hotbar_equipped(index)
 
 func _ready():
 	inventoryGridArray.resize(size)
@@ -98,6 +99,7 @@ func equip(index):
 		nextWeapon.set_global_position(get_parent().global_position + Vector2.DOWN*get_parent().weaponOffset)
 	else:
 		equipFists()
+	emit_signal("update_Hotbar_equipped", index)
 
 func equipFists():
 	if(is_instance_valid(get_node("Hotbar/Fists"))):
@@ -119,12 +121,14 @@ func add_item_to_hotbar(item):
 	for i in range(cols):
 		if(!hotbarArray[i]):
 			add_item_to_hotbar_index(item, i)
+			
 			return
 
 func add_item_to_hotbar_index(item, index):
 	hotbar.add_child(item)
 	hotbar.move_child(item, index+1)
 	hotbarArray[index] = item
+	emit_signal("update_Hotbar_slot", index, item)
 	pass
 
 func remove_index_from_hotbar(index):
@@ -133,6 +137,7 @@ func remove_index_from_hotbar(index):
 	else:
 		hotbar.remove_child(hotbarArray[index])
 	hotbarArray[index] = null
+	emit_signal("update_Hotbar_slot", index, null)
 	
 
 
