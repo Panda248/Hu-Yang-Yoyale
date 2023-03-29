@@ -26,6 +26,9 @@ func loadInteractNPC():
 		npc.connect("start_dialog", $Dialogue, "startDialog")
 
 func _process(delta):
+	if(Input.is_action_just_pressed("pause")):
+		$PauseScreen.visible = true
+		get_tree().set_pause(true)
 	pass
 
 func game_over():

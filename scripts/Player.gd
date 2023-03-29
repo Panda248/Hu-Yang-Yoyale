@@ -6,8 +6,10 @@ signal alert_enemies(alertRadius);
 signal interact(interactable);
 signal death_screen();
 
-onready var equipped = $Equipped
-onready var weapons = $Weapons
+onready var inventory = $Inventory
+onready var hotbar = $Inventory/Hotbar
+onready var equipped = $Inventory/Equipped
+onready var equippedWeapon = $Inventory/Equipped/Fists
 onready var heartbeat = $HeartBeat
 
 export var maxStamina = 100
@@ -27,7 +29,6 @@ var targetInteractable
 var canHeal = false
 var canSprint = true
 
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	direction = Vector2(0,0);
@@ -36,10 +37,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if($Equipped.get_child(0) is Sniper):
-		$Camera2D.targetZoom = Vector2(.4,.4)
-	else:
-		$Camera2D.targetZoom = Vector2(.25,.25)
+	
 	var _motion = Vector2();
 	
 	get_node("UI/ColorRect").color = Color(1,0,0,percent_health())
@@ -60,7 +58,7 @@ func _process(delta):
 	
 	
 	
-	var modifiedVelocity = (velocity - 40 * $Equipped.get_child(0).getWeight()) * (health+5)/15
+	var modifiedVelocity = (velocity - 40 * equippedWeapon.getWeight()) * (health+5)/15
 	
 	
 	move_and_slide(direction * modifiedVelocity * delta * Engine.get_iterations_per_second());
@@ -119,12 +117,12 @@ func input_movement(delta):
 					alertEnemies(walkAlertRadius)
 
 func input_action():
-	if(equipped.get_child(0).has_method("input_action")):
-		equipped.get_child(0).input_action()
+	if(equippedWeapon.has_method("input_action")):
+		equippedWeapon.input_action()
 	if Input.is_action_just_pressed("game_switch_weapon_left"):
-		swap_weapon_left()
+		inventory.swap_weapon_left()
 	elif Input.is_action_just_pressed("game_switch_weapon_right"):
-		swap_weapon_right()
+		inventory.swap_weapon_right()
 	elif Input.is_action_just_pressed("game_interact"):
 		if(is_instance_valid(targetInteractable) and targetInteractable.canInteract):
 			targetInteractable.interact()
@@ -165,39 +163,14 @@ func pick_up_nearby_items() -> void:
 		if(area.has_method("pick_up")):
 			area.pick_up(self)
 	pass
-
-func swap_weapon_left() -> void:
-	if(weapons.get_child_count() > 0):
-			var nextWeapon = weapons.get_child(0)
-			var prevWeapon = equipped.get_child(0)
-			equipped.remove_child(prevWeapon)
-			weapons.add_child(prevWeapon)
-			weapons.remove_child(nextWeapon)
-			equipped.add_child(nextWeapon)
-			prevWeapon.set_owner(self)
-			nextWeapon.set_owner(self)
-
-func swap_weapon_right() -> void:
-	if(weapons.get_child_count() > 0):
-			var nextWeapon = weapons.get_child(weapons.get_child_count()-1)
-			var prevWeapon = equipped.get_child(0)
-			equipped.remove_child(prevWeapon)
-			weapons.add_child(prevWeapon)
-			weapons.remove_child(nextWeapon)
-			weapons.move_child(prevWeapon, 0)
-			equipped.add_child(nextWeapon)
-			prevWeapon.set_owner(self)
-			nextWeapon.set_owner(self)
-
+	
 func pick_up_weapon(weapon : Weapon):
-	weapons.add_child(weapon)
-	swap_weapon_right()
-	equipped.get_child(0).position += Vector2.DOWN * weaponOffset
+	hotbar.add_child(weapon)
+	inventory.swap_weapon_right()
+	equippedWeapon.position += Vector2.DOWN * weaponOffset
 
-func get_weapons() -> Array:
-	var weaponArr = weapons.get_children()
-	weaponArr += equipped.get_children()
-	return weaponArr
+func get_hotbar() -> Array:
+	return inventory.get_hotbar()
 
 func percent_health() -> float:
 	return float(maxHealth-health)/float(maxHealth)
@@ -206,6 +179,8 @@ func alertEnemies(radius):
 	var alert = get_node("/root/GlobalVariables").alert.instance()
 	emit_signal("alert_enemies", alert, global_position, radius)
 
+func setZoom(value):
+	$Camera2D.targetZoom = Vector2(value,value)
 
 func _on_HealTimer_timeout():
 	if(health < maxHealth):

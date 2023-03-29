@@ -82,6 +82,8 @@ func alert(position):
 	if(state != ATTACK or state != CHASE):
 		destination = position
 		state = INVESTIGATE
+		$alertTimer.start()
+		$alert.visible = true
 	
 
 func can_see_player() -> bool:
@@ -106,3 +108,8 @@ func raycast_sweep() -> void:
 			state = CHASE
 
 
+
+
+func _on_alertTimer_timeout():
+	$alert.visible = false;
+	pass # Replace with function body.

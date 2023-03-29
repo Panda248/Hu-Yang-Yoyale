@@ -1,28 +1,16 @@
-extends Panel
+extends Button
 
-var ItemClass = preload("res://Item.tscn")
 var item = null
 
-
-
-func _process(delta):
-	pass
-
 func remove():
-	print("reoved")
-	remove_child(item)
-	var inventoryNode = find_parent("Inventory")
-	inventoryNode.add_child(item)
 	item = null
+	$TextureRect.set_texture(null)
+	$Label.set_text("")
 
-func add(new_item):
-	print("sdf")
-	item = new_item
-	if(new_item.find_parent("Inventory")):
-		var inventoryNode = find_parent("Inventory")
-		inventoryNode.remove_child(new_item)
+func set_item(i):
+	item = i
+	if(is_instance_valid(i)):
+		$TextureRect.set_texture(i.find_node("Icon").get_texture())
+		$Label.set_text(i.find_node("Quantity").get_text())
 	else:
-		var parent = new_item.get_parent()
-		parent.remove_child(new_item)
-	add_child(item)
-	item.global_position = rect_global_position + rect_size*rect_scale/4
+		remove()

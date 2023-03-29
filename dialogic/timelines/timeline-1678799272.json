@@ -28,10 +28,10 @@
 
 			],
 			"portrait": "",
-			"question": "Stupid rat"
+			"question": "dumb rat"
 		},
 		{
-			"choice": "f*** you",
+			"choice": "Thats mean!",
 			"condition": "",
 			"definition": "",
 			"event_id": "dialogic_011",

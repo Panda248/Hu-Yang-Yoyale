@@ -10,6 +10,7 @@ export var reserveClips := 2
 export var knockbackMultiplier := 0
 export var alertRadius := 1000
 export var shootTimeMS = 100
+export var ammo_type = "LIGHT"
 onready var timer = self.shootTimeMS
 enum WEAPON_WEIGHT {
 	NONE = 0, LIGHT = 1, MEDIUM = 2, HEAVY = 3
@@ -47,6 +48,13 @@ func secondaryFire():
 func reload():
 	pass
 
+func suppress(value):
+	alertRadius-=value
+
+func add_mags(value):
+	reserveClips += value
+
 func alert():
-	if(owner.has_method("alertEnemies")):
-		owner.alertEnemies(alertRadius)
+	if(is_instance_valid(find_parent("Player"))):
+		if(find_parent("Player").has_method("alertEnemies")):
+			find_parent("Player").alertEnemies(alertRadius)

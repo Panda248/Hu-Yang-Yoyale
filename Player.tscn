@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=2]
+[gd_scene load_steps=36 format=2]
 
 [ext_resource path="res://scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://res/exported/sound/heartbeat.wav" type="AudioStream" id=2]
@@ -11,7 +11,7 @@
 [ext_resource path="res://res/exported/sound/run.wav" type="AudioStream" id=9]
 [ext_resource path="res://Alert.tscn" type="PackedScene" id=10]
 [ext_resource path="res://res/exported/sound/walk.wav" type="AudioStream" id=11]
-[ext_resource path="res://FlashLight.tscn" type="PackedScene" id=12]
+[ext_resource path="res://AttachmentSystem.tscn" type="PackedScene" id=12]
 [ext_resource path="res://scripts/HealthBar.gd" type="Script" id=13]
 [ext_resource path="res://UI.gd" type="Script" id=14]
 [ext_resource path="res://scripts/StaminaBar.gd" type="Script" id=15]
@@ -20,6 +20,9 @@
 [ext_resource path="res://res/exported/sprites/light.png" type="Texture" id=18]
 [ext_resource path="res://res/exported/fonts/GajrajOne-Regular.ttf" type="DynamicFontData" id=19]
 [ext_resource path="res://Inventory.tscn" type="PackedScene" id=20]
+[ext_resource path="res://ActualInventory.gd" type="Script" id=21]
+[ext_resource path="res://Hotbar.tscn" type="PackedScene" id=22]
+[ext_resource path="res://Ammo.gd" type="Script" id=23]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 14.0
@@ -75,6 +78,14 @@ border_width_top = 10
 border_width_bottom = 10
 border_color = Color( 0, 0, 0, 1 )
 
+[sub_resource type="DynamicFont" id=11]
+size = 48
+font_data = ExtResource( 19 )
+
+[sub_resource type="DynamicFont" id=12]
+size = 27
+font_data = ExtResource( 19 )
+
 [node name="Player" type="KinematicBody2D"]
 script = ExtResource( 1 )
 velocity = 100
@@ -109,16 +120,16 @@ shape = SubResource( 2 )
 [node name="damageFlash" type="AnimationPlayer" parent="."]
 anims/damageFlash = SubResource( 3 )
 
-[node name="Weapons" type="Node2D" parent="."]
+[node name="Inventory" type="Node2D" parent="."]
+script = ExtResource( 21 )
+
+[node name="Hotbar" type="Node2D" parent="Inventory"]
 visible = false
 
-[node name="FlashLight" parent="Weapons" instance=ExtResource( 12 )]
-position = Vector2( 5, 12 )
-
-[node name="Equipped" type="Node2D" parent="."]
+[node name="Equipped" type="Node2D" parent="Inventory"]
 show_behind_parent = true
 
-[node name="Fists" parent="Equipped" instance=ExtResource( 3 )]
+[node name="Fists" parent="Inventory/Equipped" instance=ExtResource( 3 )]
 modulate = Color( 0.913725, 0.709804, 0.639216, 1 )
 position = Vector2( 6, 0 )
 
@@ -266,10 +277,61 @@ text = "Stamina"
 align = 1
 valign = 1
 
+[node name="Ammo" type="Control" parent="UI"]
+anchor_left = 0.78
+anchor_top = 0.835
+anchor_right = 0.891
+anchor_bottom = 0.908
+margin_left = 0.400146
+margin_top = 54.2001
+margin_right = 0.0802002
+margin_bottom = 46.2401
+script = ExtResource( 23 )
+
+[node name="Label" type="Label" parent="UI/Ammo"]
+margin_left = 130.0
+margin_top = -31.0001
+margin_right = 256.0
+margin_bottom = 40.9999
+custom_fonts/font = SubResource( 11 )
+text = "TEST"
+
+[node name="clips" type="Label" parent="UI/Ammo"]
+margin_left = 4.99988
+margin_top = -8.00006
+margin_right = 87.9999
+margin_bottom = 33.9999
+custom_fonts/font = SubResource( 12 )
+text = "test"
+
+[node name="reload" type="ProgressBar" parent="UI/Ammo"]
+visible = false
+margin_left = 125.0
+margin_top = 39.9999
+margin_right = 249.0
+margin_bottom = 53.9999
+percent_visible = false
+
+[node name="AttachmentSystem" parent="UI" instance=ExtResource( 12 )]
+margin_left = 568.0
+margin_top = 9.0
+margin_right = -8.0
+margin_bottom = -207.0
+
 [node name="Inventory" parent="UI" instance=ExtResource( 20 )]
 process_priority = 1
 visible = false
 
+[node name="Hotbar" parent="UI" instance=ExtResource( 22 )]
+margin_left = 792.0
+margin_top = 952.0
+margin_right = 791.36
+margin_bottom = 952.0
+grow_horizontal = 2
+
+[connection signal="update_Hotbar_equipped" from="Inventory" to="UI/Hotbar" method="_on_Inventory_update_Hotbar_equipped"]
+[connection signal="update_Hotbar_slot" from="Inventory" to="UI/Hotbar" method="_on_Inventory_update_Hotbar_slot"]
+[connection signal="update_UI_slot" from="Inventory" to="UI/Inventory" method="_on_Inventory_update_UI_slot"]
 [connection signal="body_entered" from="InteractBox" to="." method="_on_InteractBox_body_entered"]
 [connection signal="body_exited" from="InteractBox" to="." method="_on_InteractBox_body_exited"]
 [connection signal="timeout" from="HealTimer" to="." method="_on_HealTimer_timeout"]

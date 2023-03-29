@@ -1,6 +1,7 @@
 extends Area2D
 
 onready var enemy = preload("res://Enemy.tscn")
+onready var thrower = preload("res://RockEnemy.tscn")
 export var period : int = 10
 export var randomnError : int = 2
 
@@ -17,7 +18,10 @@ func spawnEnemy():
 	var spawnPoint = Vector2(rand_range(0, $CollisionShape2D.shape.extents.x*2), rand_range(0, $CollisionShape2D.shape.extents.y*2))
 	var enemyCandidate = null
 	while enemyCandidate == null:
-		enemyCandidate = enemy.instance()
+		if randf() > 0.8:
+			enemyCandidate = enemy.instance()
+		else:
+			enemyCandidate = thrower.instance()
 		enemyCandidate.position = spawnPoint
 		#later create detection to stop enemies from spawning on eachother
 		get_node("/root/World").add_child(enemyCandidate)

@@ -1,0 +1,88 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://ARWeaponItem.gd" type="Script" id=1]
+[ext_resource path="res://scripts/AssaultRifle.gd" type="Script" id=2]
+[ext_resource path="res://res/exported/fonts/GajrajOne-Regular.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://res/exported/sound/pistol reload.wav" type="AudioStream" id=4]
+[ext_resource path="res://res/exported/sound/pistol shoot.wav" type="AudioStream" id=5]
+[ext_resource path="res://res/exported/sprites/light.png" type="Texture" id=6]
+[ext_resource path="res://res/exported/sprites/ak47.png" type="Texture" id=7]
+[ext_resource path="res://Bullet.tscn" type="PackedScene" id=8]
+[ext_resource path="res://res/exported/sprites/ak47top.png" type="Texture" id=9]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 14.0
+
+[sub_resource type="DynamicFont" id=2]
+font_data = ExtResource( 3 )
+
+[sub_resource type="OccluderPolygon2D" id=3]
+polygon = PoolVector2Array( 44, -2, 48, -6, -16, -6, -16, 6, 48, 6, 44, 2 )
+
+[node name="ARWeaponItem" type="Area2D"]
+script = ExtResource( 1 )
+item_name = "AK-47"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+modulate = Color( 1, 1, 1, 0.133333 )
+shape = SubResource( 1 )
+
+[node name="Icon" type="TextureRect" parent="."]
+margin_left = -16.0
+margin_top = -16.0
+margin_right = 112.0
+margin_bottom = 112.0
+rect_scale = Vector2( 0.25, 0.25 )
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource( 7 )
+
+[node name="Quantity" type="Label" parent="."]
+margin_right = 40.0
+margin_bottom = 14.0
+
+[node name="WeaponInstance" type="Sprite" parent="."]
+visible = false
+scale = Vector2( 0.25, 0.25 )
+texture = ExtResource( 9 )
+offset = Vector2( 50, 2 )
+script = ExtResource( 2 )
+currentClip = 20
+clip = 20
+knockbackMultiplier = 100
+ammo_type = "HEAVY"
+Bullet = ExtResource( 8 )
+
+[node name="BarrelEnd" type="Position2D" parent="WeaponInstance"]
+position = Vector2( 174, 0 )
+
+[node name="Label" type="Label" parent="WeaponInstance"]
+margin_top = 14.0
+margin_right = 40.0
+margin_bottom = 24.0
+custom_fonts/font = SubResource( 2 )
+text = "test"
+
+[node name="ShootSFX" type="AudioStreamPlayer2D" parent="WeaponInstance"]
+stream = ExtResource( 5 )
+
+[node name="ReloadSFX" type="AudioStreamPlayer2D" parent="WeaponInstance"]
+stream = ExtResource( 4 )
+
+[node name="MuzzleFlash" type="Light2D" parent="WeaponInstance"]
+position = Vector2( 176, 0 )
+texture = ExtResource( 6 )
+texture_scale = 0.5
+color = Color( 0.866667, 1, 0.533333, 1 )
+range_item_cull_mask = 3
+shadow_enabled = true
+shadow_gradient_length = 300.0
+shadow_filter = 5
+shadow_filter_smooth = 64.0
+shadow_item_cull_mask = 3
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="WeaponInstance"]
+light_mask = 2
+position = Vector2( 129, 0 )
+occluder = SubResource( 3 )
+light_mask = 2
