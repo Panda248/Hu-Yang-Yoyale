@@ -3,6 +3,11 @@ class_name WeaponItem
 
 onready var weaponInstance = $WeaponInstance
 
+func _ready():
+	item_type = "WEAPON"
+	item_quantity = 1;
+	if item_type == "WEAPON":
+		stack_size = 1;
 
 func pick_up(player: Player):
 	.pick_up(player)
