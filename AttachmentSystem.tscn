@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://res/exported/fonts/GajrajOne-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://res/exported/sprites/inventory.png" type="Texture" id=2]
 [ext_resource path="res://AttachmentSystem.gd" type="Script" id=3]
 [ext_resource path="res://res/exported/sprites/slot.png" type="Texture" id=4]
+[ext_resource path="res://Slot.gd" type="Script" id=5]
 
 [sub_resource type="DynamicFont" id=1]
 size = 48
@@ -29,9 +30,11 @@ margin_left = 246.0
 margin_top = 44.0
 margin_right = 348.0
 margin_bottom = 140.0
+mouse_filter = 1
 icon = ExtResource( 4 )
+script = ExtResource( 5 )
 
-[node name="Label" type="Label" parent="ScopeBut"]
+[node name="Title" type="Label" parent="ScopeBut"]
 anchor_left = 0.252
 anchor_right = 0.437
 margin_left = 110.0
@@ -42,17 +45,25 @@ custom_fonts/font = SubResource( 1 )
 text = "Scope"
 
 [node name="TextureRect" type="TextureRect" parent="ScopeBut"]
+margin_right = 104.0
+margin_bottom = 96.0
+expand = true
+
+[node name="Label" type="Label" parent="ScopeBut"]
+visible = false
 margin_right = 40.0
-margin_bottom = 40.0
+margin_bottom = 14.0
 
 [node name="SuppressBut" type="Button" parent="."]
 margin_left = 477.0
 margin_top = 253.0
 margin_right = 579.0
 margin_bottom = 349.0
+mouse_filter = 1
 icon = ExtResource( 4 )
+script = ExtResource( 5 )
 
-[node name="Label" type="Label" parent="SuppressBut"]
+[node name="Title" type="Label" parent="SuppressBut"]
 anchor_left = 0.252
 anchor_right = 0.437
 margin_left = 110.0
@@ -63,8 +74,14 @@ custom_fonts/font = SubResource( 1 )
 text = "Suppressor"
 
 [node name="TextureRect" type="TextureRect" parent="SuppressBut"]
+margin_right = 104.0
+margin_bottom = 99.0
+expand = true
+
+[node name="Label" type="Label" parent="SuppressBut"]
+visible = false
 margin_right = 40.0
-margin_bottom = 40.0
+margin_bottom = 14.0
 
 [node name="Weapon" type="Panel" parent="."]
 margin_left = 161.0

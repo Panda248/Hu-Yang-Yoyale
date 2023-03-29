@@ -37,10 +37,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if(equippedWeapon is Sniper):
-		$Camera2D.targetZoom = Vector2(.4,.4)
-	else:
-		$Camera2D.targetZoom = Vector2(.25,.25)
+	
 	var _motion = Vector2();
 	
 	get_node("UI/ColorRect").color = Color(1,0,0,percent_health())
@@ -182,6 +179,8 @@ func alertEnemies(radius):
 	var alert = get_node("/root/GlobalVariables").alert.instance()
 	emit_signal("alert_enemies", alert, global_position, radius)
 
+func setZoom(value):
+	$Camera2D.targetZoom = Vector2(value,value)
 
 func _on_HealTimer_timeout():
 	if(health < maxHealth):

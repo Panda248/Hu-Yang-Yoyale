@@ -47,6 +47,10 @@ func secondaryFire():
 func reload():
 	pass
 
+func suppress(value):
+	alertRadius-=value
+
 func alert():
-	if(find_parent("Player").has_method("alertEnemies")):
-		find_parent("Player").alertEnemies(alertRadius)
+	if(is_instance_valid(find_parent("Player"))):
+		if(find_parent("Player").has_method("alertEnemies")):
+			find_parent("Player").alertEnemies(alertRadius)

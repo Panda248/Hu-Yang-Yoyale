@@ -8,7 +8,10 @@ var attachmentSystem
 
 func set_holding_item(i):
 	holding_item = i
-	$HoldingItem.texture = i.texture
+	if(i):
+		$HoldingItem.set_texture(holding_item.find_node("Icon").texture)
+	else:
+		$HoldingItem.set_texture(null)
 
 func _ready():
 	playerNode = find_parent("Player")

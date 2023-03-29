@@ -25,3 +25,8 @@ func player_has_self(player : Player):
 		if w.get_class() == weaponInstance.get_class():
 			return w
 	return null
+
+func add_attachment(item):
+	weaponInstance.add_child(item)
+	item.attachmentModifier()
+	pass

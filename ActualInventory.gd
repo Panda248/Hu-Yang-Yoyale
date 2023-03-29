@@ -62,7 +62,7 @@ func stack_item_by_index(stackerIndex, stackeeIndex):
 
 func move_item(item, slot_index):
 	if(slot_index):
-		if item.itemName == inventoryGridArray[slot_index].itemName:
+		if item.item_name == inventoryGridArray[slot_index].item_name:
 			stack_item(item, inventoryGridArray[slot_index])
 	else:
 		remove_item(item)
@@ -89,14 +89,17 @@ func swap_weapon_right() -> void:
 
 func equip(index):
 	if(hotbarArray[index]):
-		var prevWeapon = equipped.get_child(0)
-		equipped.remove_child(prevWeapon)
-		hotbar.add_child(prevWeapon)
-		var nextWeapon = hotbarArray[index]
-		hotbar.remove_child(nextWeapon)
-		equipped.add_child(nextWeapon)
-		find_parent("Player").equippedWeapon = nextWeapon.weaponInstance
-		nextWeapon.set_global_position(get_parent().global_position + Vector2.DOWN*get_parent().weaponOffset)
+		if(hotbarArray[index].item_type == "WEAPON"):
+			var prevWeapon = equipped.get_child(0)
+			equipped.remove_child(prevWeapon)
+			hotbar.add_child(prevWeapon)
+			var nextWeapon = hotbarArray[index]
+			hotbar.remove_child(nextWeapon)
+			equipped.add_child(nextWeapon)
+			find_parent("Player").equippedWeapon = nextWeapon.weaponInstance
+			if(find_parent("Player").equippedWeapon is Sniper):
+				get_parent().get_node("Camera2D").targetZoom = Vector2(.4,.4)
+			nextWeapon.set_global_position(get_parent().global_position + Vector2.DOWN*get_parent().weaponOffset)
 	else:
 		equipFists()
 	emit_signal("update_Hotbar_equipped", index)
@@ -104,7 +107,6 @@ func equip(index):
 func equipFists():
 	if(is_instance_valid(get_node("Hotbar/Fists"))):
 		var fists = get_node("Hotbar/Fists")
-		print(var2str(fists))
 		var prevWeapon = equipped.get_child(0)
 		hotbar.remove_child(fists)
 		equipped.add_child(fists)
@@ -126,7 +128,7 @@ func add_item_to_hotbar(item):
 
 func add_item_to_hotbar_index(item, index):
 	hotbar.add_child(item)
-	hotbar.move_child(item, index+1)
+	hotbar.move_child(item, index)
 	hotbarArray[index] = item
 	emit_signal("update_Hotbar_slot", index, item)
 	pass

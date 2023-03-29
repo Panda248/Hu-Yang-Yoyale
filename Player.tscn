@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=2]
+[gd_scene load_steps=35 format=2]
 
 [ext_resource path="res://scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://res/exported/sound/heartbeat.wav" type="AudioStream" id=2]
@@ -22,6 +22,7 @@
 [ext_resource path="res://Inventory.tscn" type="PackedScene" id=20]
 [ext_resource path="res://ActualInventory.gd" type="Script" id=21]
 [ext_resource path="res://Hotbar.tscn" type="PackedScene" id=22]
+[ext_resource path="res://Ammo.gd" type="Script" id=23]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 14.0
@@ -76,6 +77,10 @@ border_width_left = 10
 border_width_top = 10
 border_width_bottom = 10
 border_color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="DynamicFont" id=11]
+size = 48
+font_data = ExtResource( 19 )
 
 [node name="Player" type="KinematicBody2D"]
 script = ExtResource( 1 )
@@ -268,8 +273,34 @@ text = "Stamina"
 align = 1
 valign = 1
 
+[node name="Ammo" type="Control" parent="UI"]
+anchor_left = 0.78
+anchor_top = 0.835
+anchor_right = 0.891
+anchor_bottom = 0.908
+margin_left = 0.400146
+margin_top = 54.2001
+margin_right = 0.0802002
+margin_bottom = 46.2401
+script = ExtResource( 23 )
+
+[node name="Label" type="Label" parent="UI/Ammo"]
+margin_left = 130.0
+margin_top = -31.0001
+margin_right = 256.0
+margin_bottom = 40.9999
+custom_fonts/font = SubResource( 11 )
+text = "TEST"
+
+[node name="AttachmentSystem" parent="UI" instance=ExtResource( 12 )]
+margin_left = 568.0
+margin_top = 9.0
+margin_right = -8.0
+margin_bottom = -207.0
+
 [node name="Inventory" parent="UI" instance=ExtResource( 20 )]
 process_priority = 1
+visible = false
 
 [node name="Hotbar" parent="UI" instance=ExtResource( 22 )]
 margin_left = 792.0
@@ -277,12 +308,6 @@ margin_top = 952.0
 margin_right = 791.36
 margin_bottom = 952.0
 grow_horizontal = 2
-
-[node name="AttachmentSystem" parent="UI" instance=ExtResource( 12 )]
-margin_left = 949.0
-margin_top = 5.0
-margin_right = -2.0
-margin_bottom = -608.0
 
 [connection signal="update_Hotbar_equipped" from="Inventory" to="UI/Hotbar" method="_on_Inventory_update_Hotbar_equipped"]
 [connection signal="update_Hotbar_slot" from="Inventory" to="UI/Hotbar" method="_on_Inventory_update_Hotbar_slot"]
