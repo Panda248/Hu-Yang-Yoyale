@@ -131,6 +131,8 @@ func add_item_to_hotbar_index(item, index):
 	hotbar.move_child(item, index)
 	hotbarArray[index] = item
 	emit_signal("update_Hotbar_slot", index, item)
+	if equippedIndex == index:
+		equip(index)
 	pass
 
 func remove_index_from_hotbar(index):
