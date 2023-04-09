@@ -18,6 +18,7 @@ func _ready():
 	attachmentSystem = playerNode.find_node("AttachmentSystem")
 	for inv_slot in inventory_slots.get_children():
 		inv_slot.connect("pressed", self, "pressed", [inv_slot])
+		inv_slot.focus_mode = FOCUS_NONE
 		
 
 func _process(delta):
@@ -56,7 +57,7 @@ func pressed(slot: SlotClass):
 			playerNode.inventory.add_item_at_index(holding_item, slot_index)
 			holding_item = null
 	elif is_instance_valid(slot.item):
-		print("...")
+		print("coming from inventory.gd")
 		
 		holding_item = slot.item
 		holding_item.position = get_global_mouse_position()

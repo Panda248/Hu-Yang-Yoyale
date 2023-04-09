@@ -30,7 +30,9 @@ margin_left = 246.0
 margin_top = 44.0
 margin_right = 348.0
 margin_bottom = 140.0
+focus_mode = 0
 mouse_filter = 1
+enabled_focus_mode = 0
 icon = ExtResource( 4 )
 script = ExtResource( 5 )
 
@@ -59,7 +61,9 @@ margin_left = 477.0
 margin_top = 253.0
 margin_right = 579.0
 margin_bottom = 349.0
+focus_mode = 0
 mouse_filter = 1
+enabled_focus_mode = 0
 icon = ExtResource( 4 )
 script = ExtResource( 5 )
 
