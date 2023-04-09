@@ -21,7 +21,6 @@ polygon = PoolVector2Array( 44, -2, 48, -6, -16, -6, -16, 6, 48, 6, 44, 2 )
 
 [node name="ARWeaponItem" type="Area2D"]
 script = ExtResource( 1 )
-item_name = "AK-47"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 modulate = Color( 1, 1, 1, 0.133333 )

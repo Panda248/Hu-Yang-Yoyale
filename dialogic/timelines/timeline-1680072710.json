@@ -1,0 +1,79 @@
+{
+	"events": [
+		{
+			"animation": "[Default]",
+			"animation_length": 0,
+			"change_mirror_portrait": false,
+			"change_z_index": false,
+			"character": "character-1678799213.json",
+			"event_id": "dialogic_002",
+			"mirror_portrait": false,
+			"portrait": "Default",
+			"portrait_definition": "",
+			"position": {
+				"0": false,
+				"1": true,
+				"2": false,
+				"3": false,
+				"4": false
+			},
+			"type": 0,
+			"z_index": 0
+		},
+		{
+			"character": "character-1678799213.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "I've been trapped in this maze for days"
+		},
+		{
+			"character": "character-1678799213.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Please send some help"
+		},
+		{
+			"character": "character-1678799213.json",
+			"event_id": "dialogic_010",
+			"options": [
+
+			],
+			"portrait": "",
+			"question": "I'm being held here against my will by those evil developers!!!"
+		},
+		{
+			"choice": "Oh no!!!",
+			"condition": "",
+			"definition": "",
+			"event_id": "dialogic_011",
+			"value": ""
+		},
+		{
+			"character": "character-1678799213.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Please tell them to free me!!!"
+		},
+		{
+			"choice": "Not my problem",
+			"condition": "",
+			"definition": "",
+			"event_id": "dialogic_011",
+			"value": ""
+		},
+		{
+			"character": "character-1678799213.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "You're so cruel T-T"
+		},
+		{
+			"event_id": "dialogic_013"
+		}
+	],
+	"metadata": {
+		"dialogic-version": "1.4.5",
+		"file": "timeline-1680072710.json",
+		"name": "timeline-1680072710"
+	}
+}
