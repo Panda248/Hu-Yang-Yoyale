@@ -28,5 +28,6 @@ color_ramp = SubResource( 2 )
 amount = 10
 explosiveness = 0.4
 randomness = 1.0
+local_coords = false
 process_material = SubResource( 3 )
 texture = ExtResource( 1 )
