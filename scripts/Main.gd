@@ -1,5 +1,6 @@
 extends Node2D
 
+onready var globalVariables = get_node("/root/GlobalVariables")
 
 onready var bullet_manager = $BulletManager;
 onready var alert_manager = $AlertManager;
@@ -26,6 +27,7 @@ func loadInteractNPC():
 		npc.connect("start_dialog", $Dialogue, "startDialog")
 
 func _process(delta):
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), globalVariables.volume)
 	if(Input.is_action_just_pressed("pause")):
 		$PauseScreen.visible = true
 		get_tree().set_pause(true)
