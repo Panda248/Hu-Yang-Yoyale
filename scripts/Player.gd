@@ -117,8 +117,9 @@ func input_movement(delta):
 					alertEnemies(walkAlertRadius)
 
 func input_action():
-	if(equippedWeapon.has_method("input_action")):
-		equippedWeapon.input_action()
+	if(!get_node("UI/Inventory").visible):
+		if(equippedWeapon.has_method("input_action")):
+			equippedWeapon.input_action()
 	if Input.is_action_just_pressed("game_switch_weapon_left"):
 		inventory.swap_weapon_left()
 	elif Input.is_action_just_pressed("game_switch_weapon_right"):
