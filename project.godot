@@ -19,15 +19,15 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://scripts/AssaultRifle.gd"
 }, {
-"base": "Area2D",
-"class": "Bullet",
-"language": "GDScript",
-"path": "res://scripts/Bullet.gd"
-}, {
 "base": "Label",
 "class": "ChatBox",
 "language": "GDScript",
 "path": "res://scripts/Chatbox.gd"
+}, {
+"base": "Item",
+"class": "Consumable",
+"language": "GDScript",
+"path": "res://Consumable.gd"
 }, {
 "base": "StaticBody2D",
 "class": "Crate",
@@ -144,6 +144,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://scripts/Notification.gd"
 }, {
+"base": "Weapon",
+"class": "Pistol",
+"language": "GDScript",
+"path": "res://scripts/Pistol.gd"
+}, {
 "base": "Entity",
 "class": "Player",
 "language": "GDScript",
@@ -164,11 +169,6 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Sniper.gd"
 }, {
-"base": "Weapon",
-"class": "ThrowRock",
-"language": "GDScript",
-"path": "res://scripts/Fists.gd"
-}, {
 "base": "Node2D",
 "class": "Weapon",
 "language": "GDScript",
@@ -182,8 +182,8 @@ _global_script_classes=[ {
 _global_script_class_icons={
 "Alert": "",
 "AssaultRifle": "",
-"Bullet": "",
 "ChatBox": "",
+"Consumable": "",
 "Crate": "",
 "DTS": "",
 "DamageNumber": "",
@@ -207,11 +207,11 @@ _global_script_class_icons={
 "MainMenu": "",
 "NPC": "",
 "Notification": "",
+"Pistol": "",
 "Player": "",
 "Rock": "",
 "RockThrower": "",
 "Sniper": "",
-"ThrowRock": "",
 "Weapon": "",
 "WeaponItem": ""
 }
