@@ -13,10 +13,14 @@ item_name = "Health Potion"
 modulate = Color( 1, 1, 1, 0.101961 )
 shape = SubResource( 1 )
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="Icon" type="TextureRect" parent="."]
 margin_left = -10.0
 margin_top = -10.0
 margin_right = 10.0
 margin_bottom = 10.0
 texture = ExtResource( 2 )
 expand = true
+
+[node name="Quantity" type="Label" parent="."]
+margin_right = 40.0
+margin_bottom = 14.0

@@ -27,7 +27,6 @@ func loadInteractNPC():
 		npc.connect("start_dialog", $Dialogue, "startDialog")
 
 func _process(delta):
-	print(globalVariables.volume)
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), globalVariables.volume)
 	if(Input.is_action_just_pressed("pause")):
 		$PauseScreen.visible = true

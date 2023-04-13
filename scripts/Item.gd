@@ -38,3 +38,5 @@ func remove_items(quantity):
 	item_quantity -= quantity
 	$Quantity.text = String(item_quantity)
 
+func getWeight():
+	return 1

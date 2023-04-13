@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=2]
+[gd_scene load_steps=46 format=2]
 
 [ext_resource path="res://Enemy.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Player.tscn" type="PackedScene" id=2]
@@ -28,6 +28,7 @@
 [ext_resource path="res://EnemySpawn.gd" type="Script" id=26]
 [ext_resource path="res://SafeZone.gd" type="Script" id=27]
 [ext_resource path="res://HeavyAmmo.tscn" type="PackedScene" id=28]
+[ext_resource path="res://HealthPotion.tscn" type="PackedScene" id=29]
 [ext_resource path="res://DialogueManager.gd" type="Script" id=33]
 [ext_resource path="res://RockEnemy.tscn" type="PackedScene" id=34]
 
@@ -291,7 +292,7 @@ itemScenes = [ ExtResource( 9 ), ExtResource( 4 ), ExtResource( 20 ), ExtResourc
 
 [node name="Crate2" parent="Crates" instance=ExtResource( 12 )]
 position = Vector2( -76, -9 )
-itemScenes = [ ExtResource( 24 ) ]
+itemScenes = [ ExtResource( 24 ), ExtResource( 29 ) ]
 
 [node name="Crate3" parent="Crates" instance=ExtResource( 12 )]
 position = Vector2( 90, -12 )
