@@ -16,8 +16,8 @@ func pick_up(player: Player):
 	$Quantity.visible = false
 	$Sprite.visible = true
 
-func attachmentModifier():
+func attachmentModifier(weapon):
 	find_parent("Player").setZoom(zoomValue);
 	global_position = get_parent().global_position + (Vector2.RIGHT*5)
 func reset():
-	find_parent("Player").setZoom(.25)
+	find_parent("Player").resetZoom()

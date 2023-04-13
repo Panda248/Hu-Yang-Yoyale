@@ -7,6 +7,13 @@ func _process(delta):
 func set_weapon(w):
 	weapon = w
 	$Weapon/TextureRect.set_texture(w.find_node("Icon").texture)
+	$ScopeBut.remove()
+	$SuppressBut.remove()
+	for attachment in w.get_attachments():
+		if(attachment.item_name == "SCOPE"):
+			$ScopeBut.set_item(attachment)
+		elif(attachment.item_name == "SUPPRESSOR"):
+			$SuppressBut.set_item(attachment)
 
 func set_holding_item(i):
 	holding_item = i
@@ -19,7 +26,7 @@ func _on_ScopeBut_pressed():
 			$ScopeBut.set_item(holding_item)
 	else:
 		if($ScopeBut.item):
-			$ScopeBut.item.reset()
+			$ScopeBut.item.reset(weapon)
 			holding_item = $ScopeBut.item
 			$ScopeBut.remove()
 			find_parent("Player").get_node("UI/Inventory").set_holding_item(holding_item)
@@ -34,7 +41,7 @@ func _on_SuppressBut_pressed():
 			$SuppressBut.set_item(holding_item)
 	else:
 		if($SuppressBut.item):
-			$SuppressBut.item.reset()
+			$SuppressBut.item.reset(weapon)
 			holding_item = $SuppressBut.item
 			$SuppressBut.remove()
 			find_parent("Player").get_node("UI/Inventory").set_holding_item(holding_item)

@@ -14,6 +14,7 @@ signal update_UI_slot(slot, item)
 signal update_Hotbar_slot(slot, item)
 signal update_Hotbar_equipped(index)
 
+
 func _ready():
 	inventoryGridArray.resize(size)
 	hotbarArray.resize(cols)
@@ -100,6 +101,7 @@ func equip(index):
 			if(find_parent("Player").equippedWeapon is Sniper):
 				get_parent().get_node("Camera2D").targetZoom = Vector2(.4,.4)
 			nextWeapon.set_global_position(get_parent().global_position + Vector2.DOWN*get_parent().weaponOffset)
+			
 	else:
 		equipFists()
 	emit_signal("update_Hotbar_equipped", index)

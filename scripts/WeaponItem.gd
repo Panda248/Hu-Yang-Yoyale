@@ -28,5 +28,16 @@ func player_has_self(player : Player):
 
 func add_attachment(item):
 	weaponInstance.add_child(item)
-	item.attachmentModifier()
+	item.attachmentModifier(self)
 	pass
+
+func remove_attachment(item):
+	pass
+
+func get_attachments():
+	var attachments = []
+	for child in get_children():
+		if child is Item:
+			if child.item_type == "ATTACHMENTS":
+				attachments.append(child)
+	return attachments

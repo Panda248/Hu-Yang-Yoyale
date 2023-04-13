@@ -22,6 +22,7 @@ export var sneakAlertRadius = 25
 export var walkAlertRadius = 50
 export var runAlertRadius = 300
 export var timeToHeal = 3
+export var defaultZoom = 0.25
 export  (PackedScene) var Alert
 var curStamina = maxStamina
 var direction;
@@ -182,6 +183,9 @@ func alertEnemies(radius):
 
 func setZoom(value):
 	$Camera2D.targetZoom = Vector2(value,value)
+
+func resetZoom():
+	$Camera2D.targetZoom = Vector2(defaultZoom, defaultZoom)
 
 func _on_HealTimer_timeout():
 	if(health < maxHealth):

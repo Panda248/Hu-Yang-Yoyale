@@ -8,10 +8,11 @@ export var reloadTimeFrames : = 60
 export var fireRate := 10
 export var reserveClips := 2
 export var knockbackMultiplier := 0
-export var alertRadius := 1000
+export var defaultAlertRadius := 1000
 export var shootTimeMS = 100
 export var ammo_type = "LIGHT"
 onready var timer = self.shootTimeMS
+var alertRadius = defaultAlertRadius
 enum WEAPON_WEIGHT {
 	NONE = 0, LIGHT = 1, MEDIUM = 2, HEAVY = 3
 }
@@ -49,7 +50,10 @@ func reload():
 	pass
 
 func suppress(value):
-	alertRadius-=value
+	alertRadius*=value
+
+func resetSuppress():
+	alertRadius = defaultAlertRadius
 
 func add_mags(value):
 	reserveClips += value
