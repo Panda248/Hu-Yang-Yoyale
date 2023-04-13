@@ -15,7 +15,7 @@ func _process(delta):
 	globalVariables.screenShakeIntensity = $ScreenShake/Slider.value
 	globalVariables.volume = $Volume/Slider.value
 	$ScreenShake/Visualizer.text = var2str(globalVariables.screenShakeIntensity)
-	$Volume/Visualizer.text = var2str(globalVariables.volume)
+	$Volume/Visualizer.text = var2str(100+globalVariables.volume * 10/4)
 	pass
 
 func exit():
