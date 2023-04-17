@@ -37,6 +37,8 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	if (health > maxHealth):
+		health = maxHealth
 	
 	var _motion = Vector2();
 	
@@ -118,7 +120,7 @@ func input_movement(delta):
 
 func input_action():
 	if(!get_node("UI/Inventory").visible):
-		if(equippedWeapon.has_method("input_action")):
+		if(weakref(equippedWeapon).get_ref() and equippedWeapon.has_method("input_action")):
 			equippedWeapon.input_action()
 	if Input.is_action_just_pressed("game_switch_weapon_left"):
 		inventory.swap_weapon_left()
