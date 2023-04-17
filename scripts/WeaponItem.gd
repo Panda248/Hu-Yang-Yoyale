@@ -9,7 +9,7 @@ func _ready():
 	if item_type == "WEAPON":
 		stack_size = 1;
 
-func pick_up(player: Player):
+func pick_up(player):
 	.pick_up(player)
 	monitorable = false
 	monitoring = false
