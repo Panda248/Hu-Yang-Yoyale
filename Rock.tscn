@@ -16,7 +16,7 @@ height = 0.0
 offsets = PoolRealArray( 0.23871, 0.470968, 0.767742, 1 )
 colors = PoolColorArray( 0.679688, 0.679688, 0.679688, 1, 0.537613, 0.415194, 0.415194, 1, 0.519531, 0.381531, 0.381531, 1, 1, 1, 1, 1 )
 
-[sub_resource type="GradientTexture" id=4]
+[sub_resource type="GradientTexture" id=7]
 gradient = SubResource( 3 )
 
 [sub_resource type="ParticlesMaterial" id=5]
@@ -35,7 +35,7 @@ orbit_velocity = 0.0
 orbit_velocity_random = 0.0
 linear_accel = -24.04
 radial_accel = 8.92
-color_ramp = SubResource( 4 )
+color_ramp = SubResource( 7 )
 
 [node name="Rock" type="KinematicBody2D"]
 scale = Vector2( 0.25, 0.25 )

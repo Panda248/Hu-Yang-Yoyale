@@ -10,17 +10,20 @@ var stack_size
 export var item_name = "baseItem"
 var item_type
 var item_quantity
+var weight
 
 signal notify_picked_up(message, position, scale)
 
 func _ready():
 	item_type = "AMMO"
 	item_quantity = 1;
+	weight = 0
 	if item_type == "WEAPON":
 		stack_size = 1;
 	if item_type == "AMMO":
 		stack_size = 99;
-		
+	if item_type == "ARMOUR":
+		stack_size = 1;
 	if stack_size == 1:
 		$Label.visible = false
 	$Quantity.text = String(item_quantity)
@@ -39,4 +42,4 @@ func remove_items(quantity):
 	$Quantity.text = String(item_quantity)
 
 func getWeight():
-	return 1
+	return weight

@@ -8,7 +8,8 @@ func _ready():
 
 func use():
 	player.health += healthGain
-	queue_free()
+	
+	find_parent("Inventory").remove_item(self)
 	pass 
 
 func input_action():
