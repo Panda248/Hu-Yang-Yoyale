@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=2]
+[gd_scene load_steps=37 format=2]
 
 [ext_resource path="res://scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://res/exported/sound/heartbeat.wav" type="AudioStream" id=2]
@@ -23,6 +23,7 @@
 [ext_resource path="res://ActualInventory.gd" type="Script" id=21]
 [ext_resource path="res://Hotbar.tscn" type="PackedScene" id=22]
 [ext_resource path="res://Ammo.gd" type="Script" id=23]
+[ext_resource path="res://HealthParticle.tscn" type="PackedScene" id=24]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 14.0
@@ -47,31 +48,6 @@ tracks/0/keys = {
 
 [sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 20, 25 )
-
-[sub_resource type="Gradient" id=13]
-offsets = PoolRealArray( 0.23871, 0.470968, 0.767742, 1 )
-colors = PoolColorArray( 0.679688, 0.679688, 0.679688, 1, 0.537613, 0.415194, 0.415194, 1, 0.519531, 0.381531, 0.381531, 1, 1, 1, 1, 1 )
-
-[sub_resource type="GradientTexture" id=7]
-gradient = SubResource( 13 )
-
-[sub_resource type="ParticlesMaterial" id=14]
-lifetime_randomness = 0.18
-emission_shape = 1
-emission_sphere_radius = 21.76
-flag_disable_z = true
-direction = Vector3( 1, 1, 1 )
-spread = 153.71
-gravity = Vector3( 0, 0, 0 )
-initial_velocity = 99.51
-initial_velocity_random = 1.0
-angular_velocity = 85.54
-angular_velocity_random = 0.26
-orbit_velocity = 0.0
-orbit_velocity_random = 0.0
-linear_accel = -24.04
-radial_accel = 8.92
-color_ramp = SubResource( 7 )
 
 [sub_resource type="StyleBoxFlat" id=5]
 bg_color = Color( 0.741176, 0, 0, 1 )
@@ -205,10 +181,8 @@ shadow_item_cull_mask = 4
 
 [node name="Effects" type="Node2D" parent="."]
 
-[node name="HealFX" type="Particles2D" parent="Effects"]
-visible = false
-amount = 10
-process_material = SubResource( 14 )
+[node name="HealFX" parent="Effects" instance=ExtResource( 24 )]
+local_coords = true
 
 [node name="UI" type="CanvasLayer" parent="."]
 layer = 0
