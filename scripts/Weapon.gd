@@ -55,7 +55,6 @@ func suppress(value):
 func resetSuppress():
 	alertRadius = defaultAlertRadius
 
-
 func add_mags(value):
 	reserveClips += value
 

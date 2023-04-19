@@ -11,6 +11,7 @@ onready var hotbar = $Inventory/Hotbar
 onready var equipped = $Inventory/Equipped
 onready var equippedWeapon = $Inventory/Equipped/Fists
 onready var heartbeat = $HeartBeat
+onready var gear = $Inventory/Gear
 
 export var maxStamina = 100
 export var staminaConsumption = .5
@@ -22,6 +23,8 @@ export var sneakAlertRadius = 25
 export var walkAlertRadius = 50
 export var runAlertRadius = 300
 export var timeToHeal = 3
+
+export var totalShield = 0;
 export var defaultZoom = 0.25
 export  (PackedScene) var Alert
 var curStamina = maxStamina
@@ -38,6 +41,9 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	#shield_remaining()
+	if (health > maxHealth):
+		health = maxHealth
 	
 	var _motion = Vector2();
 	
@@ -119,7 +125,7 @@ func input_movement(delta):
 
 func input_action():
 	if(!get_node("UI/Inventory").visible):
-		if(equippedWeapon.has_method("input_action")):
+		if(weakref(equippedWeapon).get_ref() and equippedWeapon.has_method("input_action")):
 			equippedWeapon.input_action()
 	if Input.is_action_just_pressed("game_switch_weapon_left"):
 		inventory.swap_weapon_left()
@@ -166,13 +172,23 @@ func pick_up_nearby_items() -> void:
 			area.pick_up(self)
 	pass
 	
-func pick_up_weapon(weapon : Weapon):
+func pick_up_weapon(weapon):
 	hotbar.add_child(weapon)
 	inventory.swap_weapon_right()
 	equippedWeapon.position += Vector2.DOWN * weaponOffset
 
 func get_hotbar() -> Array:
 	return inventory.get_hotbar()
+
+func get_gear() -> Array:
+	return gear
+
+func shield_remaining() -> float:
+	var shield = 0;
+	for obj in get_gear():
+		shield += obj.get_shield()
+	totalShield = shield
+	return shield
 
 func percent_health() -> float:
 	return float(maxHealth-health)/float(maxHealth)
@@ -193,3 +209,10 @@ func _on_HealTimer_timeout():
 		$HealTimer.wait_time = timeToHeal
 		$HealTimer.start()
 	pass # Replace with function body.
+
+func healFX():
+	var timer = 0
+	timer += 1
+	if (timer < 30):
+		$Effects/HealFX.visible = true
+	
