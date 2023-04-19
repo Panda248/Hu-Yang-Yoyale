@@ -14,13 +14,10 @@ signal update_UI_slot(slot, item)
 signal update_Hotbar_slot(slot, item)
 signal update_Hotbar_equipped(index)
 
+
 func _ready():
 	inventoryGridArray.resize(size)
 	hotbarArray.resize(cols)
-
-func _process(delta):
-	
-	pass
 
 func add_item(item):
 	for i in range(size):
@@ -93,19 +90,18 @@ func swap_weapon_right() -> void:
 
 func equip(index):
 	if(hotbarArray[index]):
-		var prevWeapon = equipped.get_child(0)
-		equipped.remove_child(prevWeapon)
-		hotbar.add_child(prevWeapon)
-		var nextWeapon = hotbarArray[index]
-		hotbar.remove_child(nextWeapon)
-		equipped.add_child(nextWeapon)
 		if(hotbarArray[index].item_type == "WEAPON"):
+			var prevWeapon = equipped.get_child(0)
+			equipped.remove_child(prevWeapon)
+			hotbar.add_child(prevWeapon)
+			var nextWeapon = hotbarArray[index]
+			hotbar.remove_child(nextWeapon)
+			equipped.add_child(nextWeapon)
 			find_parent("Player").equippedWeapon = nextWeapon.weaponInstance
 			if(find_parent("Player").equippedWeapon is Sniper):
 				get_parent().get_node("Camera2D").targetZoom = Vector2(.4,.4)
 			nextWeapon.set_global_position(get_parent().global_position + Vector2.DOWN*get_parent().weaponOffset)
-		elif(hotbarArray[index].item_type == "CONSUMABLE"):
-			find_parent("Player").equippedWeapon = nextWeapon
+			
 	else:
 		equipFists()
 	emit_signal("update_Hotbar_equipped", index)

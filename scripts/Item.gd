@@ -25,7 +25,7 @@ func _ready():
 		$Label.visible = false
 	$Quantity.text = String(item_quantity)
 
-func pick_up(player: Player):
+func pick_up(player):
 	emit_signal("notify_picked_up", "picked up", global_position + Vector2.UP*messageOffsetY, 0.5)
 	get_parent().remove_child(self)
 	player.inventory.add_item(self)
