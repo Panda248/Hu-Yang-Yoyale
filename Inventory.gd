@@ -68,4 +68,5 @@ func pressed(slot: SlotClass):
 func _on_Inventory_update_UI_slot(slot, item):
 	$GridContainer.get_child(slot).set_item(item)
 	
+	
 

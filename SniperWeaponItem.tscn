@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://res/exported/fonts/GajrajOne-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Sniper.gd" type="Script" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://res/exported/sound/pistol shoot.wav" type="AudioStream" id=7]
 [ext_resource path="res://res/exported/sprites/awp.png" type="Texture" id=8]
 [ext_resource path="res://SniperWeaponItem.gd" type="Script" id=9]
+[ext_resource path="res://Scope.tscn" type="PackedScene" id=10]
 
 [sub_resource type="CircleShape2D" id=3]
 radius = 14.0
@@ -25,6 +26,20 @@ item_name = "Sniper"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 3 )
+
+[node name="Icon" type="TextureRect" parent="."]
+margin_left = -16.0
+margin_top = -16.0
+margin_right = 112.0
+margin_bottom = 112.0
+rect_scale = Vector2( 0.25, 0.25 )
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource( 8 )
+
+[node name="Quantity" type="Label" parent="."]
+margin_right = 40.0
+margin_bottom = 14.0
 
 [node name="WeaponInstance" type="Sprite" parent="."]
 visible = false
@@ -76,16 +91,8 @@ volume_db = 24.0
 [node name="ReloadSFX" type="AudioStreamPlayer2D" parent="WeaponInstance"]
 stream = ExtResource( 6 )
 
-[node name="Icon" type="TextureRect" parent="."]
-margin_left = -16.0
-margin_top = -16.0
-margin_right = 112.0
-margin_bottom = 112.0
-rect_scale = Vector2( 0.25, 0.25 )
-size_flags_horizontal = 4
-size_flags_vertical = 4
-texture = ExtResource( 8 )
+[node name="Attachments" type="Node2D" parent="."]
+visible = false
 
-[node name="Quantity" type="Label" parent="."]
-margin_right = 40.0
-margin_bottom = 14.0
+[node name="BaseScope" parent="Attachments" instance=ExtResource( 10 )]
+visible = false

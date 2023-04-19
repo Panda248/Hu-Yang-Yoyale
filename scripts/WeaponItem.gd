@@ -6,8 +6,7 @@ onready var weaponInstance = $WeaponInstance
 func _ready():
 	item_type = "WEAPON"
 	item_quantity = 1;
-	if item_type == "WEAPON":
-		stack_size = 1;
+	stack_size = 1;
 
 func pick_up(player):
 	.pick_up(player)
@@ -15,9 +14,10 @@ func pick_up(player):
 	monitoring = false
 	$Icon.visible = false
 	$Quantity.visible = false
+	$Attachments.visible = true
 	weaponInstance.visible = true
 
-func player_has_self(player : Player):
+func player_has_self(player):
 	var playerWeapons = player.get_hotbar()
 	if playerWeapons.empty():
 		return null
@@ -27,17 +27,14 @@ func player_has_self(player : Player):
 	return null
 
 func add_attachment(item):
-	weaponInstance.add_child(item)
+	$Attachments.add_child(item)
 	item.attachmentModifier(self)
 	pass
 
 func remove_attachment(item):
+	item.reset(self)
+	$Attachments.remove_child(item)
 	pass
 
 func get_attachments():
-	var attachments = []
-	for child in get_children():
-		if child is Item:
-			if child.item_type == "ATTACHMENTS":
-				attachments.append(child)
-	return attachments
+	return $Attachments.get_children()
