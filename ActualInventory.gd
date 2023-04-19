@@ -98,8 +98,6 @@ func equip(index):
 		equipped.add_child(nextWeapon)
 		if(hotbarArray[index].item_type == "WEAPON"):
 			find_parent("Player").equippedWeapon = nextWeapon.weaponInstance
-			if(find_parent("Player").equippedWeapon is Sniper):
-				get_parent().get_node("Camera2D").targetZoom = Vector2(.4,.4)
 			nextWeapon.set_global_position(get_parent().global_position + Vector2.DOWN*get_parent().weaponOffset)
 		else:
 			find_parent("Player").equippedWeapon = nextWeapon
@@ -115,6 +113,7 @@ func equipFists():
 		equipped.add_child(fists)
 		equipped.remove_child(prevWeapon)
 		hotbar.add_child(prevWeapon)
+	find_parent("Player").resetZoom()
 	get_parent().equippedWeapon = equipped.get_child(0)
 
 func get_hotbar() -> Array:

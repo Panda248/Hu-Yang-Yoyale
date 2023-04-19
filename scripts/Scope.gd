@@ -8,7 +8,7 @@ func _ready():
 	item_type = "ATTACHMENT"
 	zoomValue = 0.5;
 
-func pick_up(player: Player):
+func pick_up(player):
 	.pick_up(player)
 	monitorable = false
 	monitoring = false
@@ -19,5 +19,5 @@ func pick_up(player: Player):
 func attachmentModifier(weapon):
 	find_parent("Player").setZoom(zoomValue);
 	global_position = get_parent().global_position + (Vector2.RIGHT*5)
-func reset():
+func reset(weapon):
 	find_parent("Player").resetZoom()

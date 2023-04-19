@@ -8,7 +8,7 @@ func _ready():
 	item_type = "ATTACHMENT"
 	suppressReducer = 0.5;
 
-func pick_up(player: Player):
+func pick_up(player):
 	.pick_up(player)
 	monitorable = false
 	monitoring = false
@@ -19,7 +19,8 @@ func pick_up(player: Player):
 func attachmentModifier(weapon):
 	weapon.weaponInstance.suppress(suppressReducer)
 	weapon.find_node("ShootSFX").set_stream(load("res://res/exported/sound/silencedshoot.wav"))
-	global_position = get_parent().find_node("BarrelEnd").global_position
+	var barrelEndPosition = weapon.find_node("BarrelEnd").position
+	position = barrelEndPosition
 func reset(weapon):
 	weapon.weaponInstance.resetSuppress()
 	weapon.find_node("ShootSFX").set_stream(load("res://res/exported/sound/pistol shoot.wav"))
