@@ -172,7 +172,7 @@ func pick_up_nearby_items() -> void:
 			area.pick_up(self)
 	pass
 	
-func pick_up_weapon(weapon : Weapon):
+func pick_up_weapon(weapon):
 	hotbar.add_child(weapon)
 	inventory.swap_weapon_right()
 	equippedWeapon.position += Vector2.DOWN * weaponOffset

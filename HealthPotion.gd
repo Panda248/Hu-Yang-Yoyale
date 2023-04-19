@@ -8,7 +8,6 @@ func _ready():
 
 func use():
 	player.health += healthGain
-	
 	find_parent("Inventory").remove_item(self)
 	pass 
 
