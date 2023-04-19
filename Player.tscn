@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=2]
+[gd_scene load_steps=40 format=2]
 
 [ext_resource path="res://scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://res/exported/sound/heartbeat.wav" type="AudioStream" id=2]
@@ -23,6 +23,7 @@
 [ext_resource path="res://ActualInventory.gd" type="Script" id=21]
 [ext_resource path="res://Hotbar.tscn" type="PackedScene" id=22]
 [ext_resource path="res://Ammo.gd" type="Script" id=23]
+[ext_resource path="res://res/exported/sprites/grayparticle1.png" type="Texture" id=24]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 14.0
@@ -48,6 +49,31 @@ tracks/0/keys = {
 [sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 20, 25 )
 
+[sub_resource type="Gradient" id=13]
+offsets = PoolRealArray( 0.23871, 0.470968, 0.767742, 1 )
+colors = PoolColorArray( 0.679688, 0.679688, 0.679688, 1, 0.537613, 0.415194, 0.415194, 1, 0.519531, 0.381531, 0.381531, 1, 1, 1, 1, 1 )
+
+[sub_resource type="GradientTexture" id=7]
+gradient = SubResource( 13 )
+
+[sub_resource type="ParticlesMaterial" id=14]
+lifetime_randomness = 0.18
+emission_shape = 1
+emission_sphere_radius = 21.76
+flag_disable_z = true
+direction = Vector3( 1, 1, 1 )
+spread = 153.71
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 99.51
+initial_velocity_random = 1.0
+angular_velocity = 85.54
+angular_velocity_random = 0.26
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+linear_accel = -24.04
+radial_accel = 8.92
+color_ramp = SubResource( 7 )
+
 [sub_resource type="StyleBoxFlat" id=5]
 bg_color = Color( 0.741176, 0, 0, 1 )
 border_width_left = 10
@@ -58,7 +84,7 @@ border_color = Color( 0, 0, 0, 1 )
 [sub_resource type="StyleBoxFlat" id=6]
 bg_color = Color( 0.6, 0.6, 0.6, 0 )
 
-[sub_resource type="StyleBoxFlat" id=7]
+[sub_resource type="StyleBoxFlat" id=15]
 bg_color = Color( 1, 0.317647, 0.317647, 1 )
 border_width_top = 10
 border_width_bottom = 10
@@ -126,6 +152,8 @@ script = ExtResource( 21 )
 [node name="Hotbar" type="Node2D" parent="Inventory"]
 visible = false
 
+[node name="Gear" type="Node2D" parent="Inventory"]
+
 [node name="Equipped" type="Node2D" parent="Inventory"]
 show_behind_parent = true
 
@@ -175,6 +203,15 @@ range_height = 10.0
 shadow_enabled = true
 shadow_gradient_length = 1.0
 shadow_item_cull_mask = 4
+
+[node name="Effects" type="Node" parent="."]
+
+[node name="HealFX" type="Particles2D" parent="Effects"]
+visible = false
+amount = 10
+preprocess = 44.04
+process_material = SubResource( 14 )
+texture = ExtResource( 24 )
 
 [node name="UI" type="CanvasLayer" parent="."]
 layer = 0
@@ -230,7 +267,7 @@ script = ExtResource( 13 )
 show_behind_parent = true
 anchor_right = 1.0
 anchor_bottom = 1.0
-custom_styles/fg = SubResource( 7 )
+custom_styles/fg = SubResource( 15 )
 custom_styles/bg = SubResource( 8 )
 value = 60.0
 percent_visible = false
