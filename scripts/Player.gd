@@ -42,6 +42,8 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	#shield_remaining()
+	effectManager()
+	
 	if (health > maxHealth):
 		health = maxHealth
 	
@@ -206,13 +208,19 @@ func resetZoom():
 func _on_HealTimer_timeout():
 	if(health < maxHealth):
 		health += 1
+		healFX()
 		$HealTimer.wait_time = timeToHeal
 		$HealTimer.start()
 	pass # Replace with function body.
 
+var healTimer = 30;
+
 func healFX():
-	var timer = 0
-	timer += 1
-	if (timer < 30):
+	healTimer = 0
+
+func effectManager():
+	healTimer += 1
+	if (healTimer < 30):
 		$Effects/HealFX.visible = true
-	
+	else:
+		$Effects/HealFX.visible = false
