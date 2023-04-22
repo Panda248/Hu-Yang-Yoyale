@@ -22,6 +22,6 @@ func spawnEnemy():
 			enemyCandidate = enemy.instance()
 		else:
 			enemyCandidate = thrower.instance()
-		enemyCandidate.position = spawnPoint
+		enemyCandidate.global_position = spawnPoint - global_position
 		#later create detection to stop enemies from spawning on eachother
 		get_node("/root/World").add_child(enemyCandidate)

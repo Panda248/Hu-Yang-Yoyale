@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://FlashLight.gd" type="Script" id=1]
 [ext_resource path="res://res/exported/sprites/light.png" type="Texture" id=2]
@@ -7,21 +7,35 @@
 [sub_resource type="OccluderPolygon2D" id=1]
 polygon = PoolVector2Array( 32, -12, 32, -8, -8, 0, 32, 8, 36, 16, 36, 16, 44, 20, 44, 24, 24, 24, 12, 12, -52, 12, -52, -8, 12, -8, 24, -20, 44, -20, 36, -16 )
 
-[node name="FlashLight" type="Sprite"]
+[sub_resource type="CircleShape2D" id=2]
+
+[node name="FlashLight" type="Area2D"]
 scale = Vector2( 0.25, 0.25 )
-texture = ExtResource( 3 )
 script = ExtResource( 1 )
 currentClip = 1000
 clip = 1000
 fireRate = 1
-alertRadius = 0
 
-[node name="Light2D" type="Light2D" parent="."]
+[node name="weaponInstance" type="Sprite" parent="."]
+texture = ExtResource( 3 )
+
+[node name="Light2D" type="Light2D" parent="weaponInstance"]
 position = Vector2( 28, 0 )
 texture = ExtResource( 2 )
 texture_scale = 10.0
 range_height = 1.0
 shadow_enabled = true
 
-[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+[node name="LightOccluder2D" type="LightOccluder2D" parent="weaponInstance"]
 occluder = SubResource( 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 2 )
+
+[node name="Icon" type="TextureRect" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="Quantity" type="Label" parent="."]
+margin_right = 40.0
+margin_bottom = 14.0

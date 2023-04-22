@@ -44,5 +44,9 @@ func remove_attachment(item):
 	$Attachments.remove_child(item)
 	pass
 
+func apply_attachments():
+	for attachment in get_attachments():
+		attachment.attachmentModifier(weaponInstance)
+
 func get_attachments():
 	return $Attachments.get_children()

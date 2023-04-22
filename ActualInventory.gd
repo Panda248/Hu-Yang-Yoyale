@@ -99,6 +99,7 @@ func equip(index):
 		if(hotbarArray[index].item_type == "WEAPON"):
 			find_parent("Player").equippedWeapon = nextWeapon.weaponInstance
 			nextWeapon.set_global_position(get_parent().global_position + Vector2.DOWN*get_parent().weaponOffset)
+			nextWeapon.apply_attachments()
 		else:
 			find_parent("Player").equippedWeapon = nextWeapon
 	else:

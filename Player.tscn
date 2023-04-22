@@ -186,6 +186,7 @@ local_coords = true
 
 [node name="UI" type="CanvasLayer" parent="."]
 layer = 0
+visible = false
 script = ExtResource( 14 )
 
 [node name="Fog" type="TextureRect" parent="UI"]
@@ -336,6 +337,7 @@ rect_scale = Vector2( 1.3, 1.3 )
 
 [node name="Inventory" parent="UI" instance=ExtResource( 20 )]
 process_priority = 1
+visible = false
 margin_left = 716.0
 margin_top = 579.0
 margin_right = -704.0
