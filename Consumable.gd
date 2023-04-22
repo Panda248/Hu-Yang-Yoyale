@@ -17,5 +17,9 @@ func pick_up(player1):
 	monitoring = false
 	pass
 
+func changeToItemMode():
+	monitorable = true
+	monitoring = true
+
 func use():
 	pass

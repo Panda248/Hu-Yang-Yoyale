@@ -17,6 +17,14 @@ func pick_up(player):
 	$Attachments.visible = true
 	weaponInstance.visible = true
 
+func changeToItemMode():
+	monitorable = true
+	monitoring = true
+	$Icon.visible = true
+	$Quantity.visible = true
+	$Attachments.visible = false
+	weaponInstance.visible = false
+
 func player_has_self(player):
 	var playerWeapons = player.get_hotbar()
 	if playerWeapons.empty():

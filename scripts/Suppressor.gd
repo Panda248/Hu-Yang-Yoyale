@@ -15,7 +15,14 @@ func pick_up(player):
 	$Icon.visible = false
 	$Quantity.visible = false
 	$Sprite.visible = true
-	
+
+func changeToItemMode():
+	monitorable = true
+	monitoring = true
+	$Icon.visible = true
+	$Quantity.visible = true
+	$Sprite.visible = false
+
 func attachmentModifier(weapon):
 	weapon.weaponInstance.suppress(suppressReducer)
 	weapon.find_node("ShootSFX").set_stream(load("res://res/exported/sound/silencedshoot.wav"))

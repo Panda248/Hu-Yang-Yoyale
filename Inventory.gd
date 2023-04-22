@@ -43,8 +43,10 @@ func _process(delta):
 func pressed(slot: SlotClass):
 	if slot == drop:
 		if is_instance_valid(holding_item):
-			holding_item.position = find_parent("Player").position
+			holding_item.global_position = find_parent("Player").global_position
+			holding_item.changeToItemMode()
 			find_parent("World").spawn_item(holding_item)
+			
 			holding_item = null
 		pass
 	else:

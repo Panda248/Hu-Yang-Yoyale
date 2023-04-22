@@ -14,6 +14,10 @@ var weight
 
 signal notify_picked_up(message, position, scale)
 
+func changeToItemMode():
+	pass
+
+
 func _ready():
 	item_type = "AMMO"
 	item_quantity = 1;

@@ -16,6 +16,13 @@ func pick_up(player):
 	$Quantity.visible = false
 	$Sprite.visible = true
 
+func changeToItemMode():
+	monitorable = true
+	monitoring = true
+	$Icon.visible = true
+	$Quantity.visible = true
+	$Sprite.visible = false
+
 func attachmentModifier(weapon):
 	find_parent("Player").setZoom(zoomValue);
 	global_position = get_parent().global_position + (Vector2.RIGHT*5)

@@ -20,6 +20,13 @@ func pick_up(player: Player):
 	$Quantity.visible = false
 	armourInstance.visible = true
 
+func changeToItemMode():
+	monitorable = true
+	monitoring = true
+	$Icon.visible = true
+	$Quantity.visible = true
+	armourInstance.visible = false
+
 func player_has_self(player : Player):
 	var playerGear = player.get_gear()
 	if playerGear.empty():
