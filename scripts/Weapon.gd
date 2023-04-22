@@ -13,6 +13,7 @@ export var shootTimeMS = 100
 export var ammo_type = "LIGHT"
 onready var timer = self.shootTimeMS
 var alertRadius = defaultAlertRadius
+var attachment_blacklist = []
 enum WEAPON_WEIGHT {
 	NONE = 0, LIGHT = 1, MEDIUM = 2, HEAVY = 3
 }
@@ -36,6 +37,9 @@ func _process(delta):
 
 func getWeight():
 	return weaponWeight;
+
+func getAttachmentBlacklist():
+	return attachment_blacklist
 
 func input_action():
 	pass

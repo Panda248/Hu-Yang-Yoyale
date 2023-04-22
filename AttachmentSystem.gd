@@ -8,17 +8,22 @@ func set_weapon(w):
 	print("setting weapon")
 	weapon = w
 	$Weapon/TextureRect.set_texture(w.find_node("Icon").texture)
+	$ScopeBut.show()
+	$SuppressBut.show()
 	$ScopeBut.remove()
 	$SuppressBut.remove()
-	for attachment in w.get_attachments():
+	for attachment in weapon.get_attachments():
 		if(attachment.item_name == "SCOPE"):
 			print(attachment.item_name)
 			$ScopeBut.set_item(attachment)
 		elif(attachment.item_name == "SUPPRESSOR"):
 			print(attachment.item_name)
 			$SuppressBut.set_item(attachment)
-			
-
+	for attachment in weapon.weaponInstance.getAttachmentBlacklist():
+		if(attachment == "SCOPE"):
+			$ScopeBut.hide()
+		if(attachment == "SUPPRESSOR"):
+			$SuppressBut.hide()
 func set_holding_item(i):
 	holding_item = i
 

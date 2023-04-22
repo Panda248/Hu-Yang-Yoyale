@@ -27,3 +27,6 @@ margin_left = -15.0
 margin_top = -15.0
 margin_right = 15.0
 margin_bottom = 15.0
+
+[node name="ArmourInstance" type="Sprite" parent="."]
+visible = false
