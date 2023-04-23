@@ -9,7 +9,9 @@ var inventoryGridArray = [];
 var hotbarArray = []
 onready var hotbar = $Hotbar
 onready var equipped = $Equipped
+onready var gear = $Gear
 onready var inventoryUI = get_parent().get_node("UI/Inventory")
+onready var player = find_parent("Player")
 signal update_UI_slot(slot, item)
 signal update_Hotbar_slot(slot, item)
 signal update_Hotbar_equipped(index)
@@ -154,6 +156,20 @@ func refill_ammo(weapon, ammo):
 	if(weapon.weaponInstance.ammo_type == ammo.item_name):
 		weapon.weaponInstance.add_mags(ammo.item_quantity)
 		ammo = null
+
+func add_gear(item):
+	gear.add_child(item)
+	player.totalShield += item.get_shield()
+	player.curShield += item.get_shield()
+	item.position = player.position
+	item.global_position = player.global_position
+
+func remove_gear(item):
+	player.totalShield -= item.get_shield()
+	if(player.curShield > player.totalShield):
+		player.curShield = player.totalShield
+	gear.remove_child(item)
+	pass
 
 func index_in_hotbar(index) -> bool:
 	return index+1 > cols*(rows-1)

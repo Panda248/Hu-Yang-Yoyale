@@ -17,7 +17,6 @@ func _physics_process(delta):
 
 func takeDamage(damage : int):
 	get_node("damageFlash").play("damageFlash")
-	emit_signal("emit_damage_number", damage, position)
 	health -= damage
 	
 func takeKnockback(hitbox : HitBox):

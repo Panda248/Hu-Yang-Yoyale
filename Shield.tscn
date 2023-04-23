@@ -30,7 +30,9 @@ reserveClips = 0
 ammo_type = "NONE"
 weaponWeight = 2
 
-[node name="Attachments" type="Node2D" parent="."]
+[node name="Attachments" type="Node2D" parent="WeaponInstance"]
+position = Vector2( -32, -24 )
+scale = Vector2( 2, 2 )
 
 [node name="Icon" type="TextureRect" parent="."]
 margin_left = -16.0

@@ -32,7 +32,6 @@ func _process(delta):
 	if(Input.is_action_just_pressed("pause")):
 		$PauseScreen.visible = true
 		get_tree().set_pause(true)
-	print(var2str(night))
 	day_night()
 	
 	pass

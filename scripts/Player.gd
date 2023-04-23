@@ -25,6 +25,7 @@ export var runAlertRadius = 300
 export var timeToHeal = 3
 
 export var totalShield = 0;
+export var curShield = 0;
 export var defaultZoom = .4
 export var dayZoom = .4
 export var nightZoom = .25
@@ -47,7 +48,7 @@ func _ready():
 func _process(delta):
 	#shield_remaining()
 	effectManager()
-	print(var2str(defaultZoom))
+
 	if (health > maxHealth):
 		health = maxHealth
 	
@@ -157,7 +158,14 @@ func _on_InteractBox_body_exited(body):
 func takeDamage(damage):
 	$HealTimer.wait_time = timeToHeal
 	$HealTimer.start()
-	.takeDamage(damage)
+	var remainingDamage = damage
+	if(curShield > 0):
+		remainingDamage -= curShield
+		curShield -= damage
+		print(var2str(curShield))
+		if(curShield < 0):
+			curShield = 0
+	health-=remainingDamage
 	get_node("UI/BloodSplatter").modulate.a = 1
 	$Camera2D.add_trauma(damage)
 
@@ -190,7 +198,7 @@ func get_hotbar() -> Array:
 	return inventory.get_hotbar()
 
 func get_gear() -> Array:
-	return gear
+	return gear.get_children()
 
 func shield_remaining() -> float:
 	var shield = 0;

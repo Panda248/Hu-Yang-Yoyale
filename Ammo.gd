@@ -14,6 +14,8 @@ func _process(delta):
 				$reload.max_value = player.equippedWeapon.reloadAndShootDelay
 				first = false
 			$reload.value = $reload.max_value - player.equippedWeapon.reloadAndShootDelay
+		else:
+			$reload.visible = false
 	elif(player.equippedWeapon is Consumable):
 		$Label.text = var2str(player.equippedWeapon.item_quantity)
 		$clips.text = ""
