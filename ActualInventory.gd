@@ -100,8 +100,10 @@ func equip(index):
 			find_parent("Player").equippedWeapon = nextWeapon.weaponInstance
 			nextWeapon.set_global_position(get_parent().global_position + Vector2.DOWN*get_parent().weaponOffset)
 			nextWeapon.apply_attachments()
-		else:
+		elif(hotbarArray[index].item_type == "CONSUMABLE"):
 			find_parent("Player").equippedWeapon = nextWeapon
+		else:
+			equipFists()
 	else:
 		equipFists()
 	emit_signal("update_Hotbar_equipped", index)
