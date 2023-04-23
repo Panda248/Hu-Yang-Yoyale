@@ -25,7 +25,9 @@ export var runAlertRadius = 300
 export var timeToHeal = 3
 
 export var totalShield = 0;
-export var defaultZoom = 0.25
+export var defaultZoom = .4
+export var dayZoom = .4
+export var nightZoom = .25
 export  (PackedScene) var Alert
 var curStamina = maxStamina
 var direction;
@@ -37,6 +39,7 @@ var canSprint = true
 func _ready():
 	direction = Vector2(0,0);
 	$UI.show()
+	resetZoom()
 	pass # Replace with function body.
 
 
@@ -44,7 +47,7 @@ func _ready():
 func _process(delta):
 	#shield_remaining()
 	effectManager()
-	
+	print(var2str(defaultZoom))
 	if (health > maxHealth):
 		health = maxHealth
 	
@@ -171,8 +174,11 @@ func closest_node(node1, node2) -> Node:
 func pick_up_nearby_items() -> void:
 	var overlappingAreas = $InteractBox.get_overlapping_areas()
 	for area in overlappingAreas:
-		if(area.has_method("pick_up")):
-			area.pick_up(self)
+		if (availableInventory() > 0):
+			if(area.has_method("pick_up")):
+				area.pick_up(self)
+		else:
+			find_parent("World").find_node("NotificationManager").notify("No Space", global_position, .5)
 	pass
 	
 func pick_up_weapon(weapon):
@@ -219,9 +225,19 @@ var healTimer = 30;
 func healFX():
 	healTimer = 0
 
+func availableInventory():
+	return 9 - $Inventory.return_filled_inventory()
+
 func effectManager():
 	healTimer += 1
 	if (healTimer < 30):
 		$Effects/HealFX.visible = true
 	else:
 		$Effects/HealFX.visible = false
+
+func dayNightZoom(night):
+	if(night):
+		defaultZoom = nightZoom
+	else:
+		defaultZoom = dayZoom
+	resetZoom()

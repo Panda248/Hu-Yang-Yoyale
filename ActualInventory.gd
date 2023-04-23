@@ -157,3 +157,10 @@ func refill_ammo(weapon, ammo):
 
 func index_in_hotbar(index) -> bool:
 	return index+1 > cols*(rows-1)
+
+func return_filled_inventory():
+	var i = 0
+	for item in inventoryGridArray:
+		if(item):
+			i+=1
+	return i

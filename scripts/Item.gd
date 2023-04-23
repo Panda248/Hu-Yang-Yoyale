@@ -37,6 +37,7 @@ func pick_up(player):
 	get_parent().remove_child(self)
 	player.inventory.add_item(self)
 
+
 func add_items(quantity):
 	item_quantity += quantity
 	$Quantity.text = String(item_quantity)

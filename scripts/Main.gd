@@ -32,7 +32,7 @@ func _process(delta):
 	if(Input.is_action_just_pressed("pause")):
 		$PauseScreen.visible = true
 		get_tree().set_pause(true)
-	print(var2str($Nighttime.color.r))
+	print(var2str(night))
 	day_night()
 	
 	pass
@@ -63,11 +63,11 @@ func _on_SafeZone_body_exited(body):
 
 
 func day_night():
-	if(night and $Nighttime.color.r < 1):
+	if(!night and $Nighttime.color.r < 1):
 		$Nighttime.color.r+=timeChange
 		$Nighttime.color.b+=timeChange
 		$Nighttime.color.g+=timeChange
-	if (!night and $Nighttime.color.r > 0):
+	if (night and $Nighttime.color.r > 0):
 		$Nighttime.color.r-=timeChange
 		$Nighttime.color.b-=timeChange
 		$Nighttime.color.g-=timeChange
@@ -75,4 +75,5 @@ func day_night():
 
 func _on_DNTimer_timeout():
 	night = !night
+	$Player.dayNightZoom(night)
 	pass # Replace with function body.
