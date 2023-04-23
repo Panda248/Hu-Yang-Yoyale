@@ -6,9 +6,10 @@ onready var bullet_manager = $BulletManager;
 onready var alert_manager = $AlertManager;
 onready var chatbox_manager = $ChatBoxManager
 onready var notification_manager = $NotificationManager
-export (PackedScene) var Enemy
 export (PackedScene) var DeathScreen;
 var playerInSafeZone = false
+var timeChange = .01
+var night = false
 
 func _ready():
 	$Player/UI.visible = true
@@ -31,6 +32,9 @@ func _process(delta):
 	if(Input.is_action_just_pressed("pause")):
 		$PauseScreen.visible = true
 		get_tree().set_pause(true)
+	print(var2str($Nighttime.color.r))
+	day_night()
+	
 	pass
 
 func game_over():
@@ -53,4 +57,22 @@ func _on_SafeZone_body_entered(body):
 func _on_SafeZone_body_exited(body):
 	if body is Player:
 		playerInSafeZone = false
+	pass # Replace with function body.
+
+
+
+
+func day_night():
+	if(night and $Nighttime.color.r < 1):
+		$Nighttime.color.r+=timeChange
+		$Nighttime.color.b+=timeChange
+		$Nighttime.color.g+=timeChange
+	if (!night and $Nighttime.color.r > 0):
+		$Nighttime.color.r-=timeChange
+		$Nighttime.color.b-=timeChange
+		$Nighttime.color.g-=timeChange
+
+
+func _on_DNTimer_timeout():
+	night = !night
 	pass # Replace with function body.

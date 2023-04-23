@@ -41,7 +41,7 @@ func getWeight():
 func getAttachmentBlacklist():
 	return attachment_blacklist
 
-func input_action():
+func input_action(): 
 	pass
 
 func primaryFire():

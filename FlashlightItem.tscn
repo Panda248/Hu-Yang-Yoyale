@@ -1,0 +1,56 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://res/exported/sprites/light.png" type="Texture" id=1]
+[ext_resource path="res://FlashlightItem.gd" type="Script" id=2]
+[ext_resource path="res://res/exported/sprites/flashlightitem.png" type="Texture" id=3]
+[ext_resource path="res://FlashLight.gd" type="Script" id=4]
+[ext_resource path="res://res/exported/sprites/flashlight.png" type="Texture" id=5]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 13.0
+
+[sub_resource type="OccluderPolygon2D" id=2]
+polygon = PoolVector2Array( 32, -12, 32, -8, 0, -4, -8, 0, 0, 4, 32, 8, 36, 16, 36, 16, 44, 20, 44, 24, 24, 24, 16, 12, -48, 12, -48, -8, 12, -8, 24, -20, 44, -20, 36, -16 )
+
+[node name="WeaponItem" type="Area2D"]
+script = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="Icon" type="TextureRect" parent="."]
+margin_left = -16.0
+margin_top = -16.0
+margin_right = 112.0
+margin_bottom = 112.0
+rect_scale = Vector2( 0.25, 0.25 )
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource( 3 )
+
+[node name="Quantity" type="Label" parent="."]
+margin_right = 40.0
+margin_bottom = 14.0
+
+[node name="WeaponInstance" type="Sprite" parent="."]
+visible = false
+scale = Vector2( 0.25, 0.25 )
+texture = ExtResource( 5 )
+script = ExtResource( 4 )
+currentClip = 0
+clip = 0
+fireRate = 0
+reserveClips = 0
+ammo_type = "NONE"
+
+[node name="Light2D" type="Light2D" parent="WeaponInstance"]
+position = Vector2( 28, 0 )
+texture = ExtResource( 1 )
+texture_scale = 10.0
+range_height = 1.0
+shadow_enabled = true
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="WeaponInstance"]
+occluder = SubResource( 2 )
+
+[node name="Attachments" type="Node2D" parent="WeaponInstance"]

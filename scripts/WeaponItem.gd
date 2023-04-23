@@ -2,6 +2,7 @@ extends Item
 class_name WeaponItem
 
 onready var weaponInstance = $WeaponInstance
+onready var attachments = $WeaponInstance/Attachments
 
 func _ready():
 	item_type = "WEAPON"
@@ -14,7 +15,6 @@ func pick_up(player):
 	monitoring = false
 	$Icon.visible = false
 	$Quantity.visible = false
-	$Attachments.visible = true
 	weaponInstance.visible = true
 
 func changeToItemMode():
@@ -22,7 +22,6 @@ func changeToItemMode():
 	monitoring = true
 	$Icon.visible = true
 	$Quantity.visible = true
-	$Attachments.visible = false
 	weaponInstance.visible = false
 
 func player_has_self(player):
@@ -35,18 +34,23 @@ func player_has_self(player):
 	return null
 
 func add_attachment(item):
-	$Attachments.add_child(item)
+	attachments.add_child(item)
 	item.attachmentModifier(weaponInstance)
 	pass
 
 func remove_attachment(item):
-	item.reset(self)
-	$Attachments.remove_child(item)
+	item.reset(weaponInstance)
+	attachments.remove_child(item)
 	pass
+
+func refresh_attachments():
+	for attachment in get_attachments():
+		attachment.reset(weaponInstance)
+		attachment.attachmentModifier(weaponInstance)
 
 func apply_attachments():
 	for attachment in get_attachments():
 		attachment.attachmentModifier(weaponInstance)
 
 func get_attachments():
-	return $Attachments.get_children()
+	return attachments.get_children()

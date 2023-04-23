@@ -34,6 +34,7 @@ tracks/0/keys = {
 }
 
 [sub_resource type="OccluderPolygon2D" id=6]
+cull_mode = 1
 polygon = PoolVector2Array( -8, -8, -2, -11, 2, -11, 8, -8, 11, -2, 11, 2, 8, 8, 2, 11, -2, 11, -8, 8, -11, 3, -11, -2 )
 
 [node name="Enemy" type="KinematicBody2D"]

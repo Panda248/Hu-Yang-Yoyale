@@ -172,7 +172,9 @@ stream = ExtResource( 11 )
 [node name="Light2D" type="Light2D" parent="."]
 scale = Vector2( 9.75, 9.46875 )
 texture = ExtResource( 18 )
-texture_scale = 0.2
+offset = Vector2( 0, 2.5 )
+texture_scale = 0.1
+color = Color( 0.905882, 1, 0.560784, 1 )
 energy = 0.5
 range_height = 10.0
 shadow_enabled = true
@@ -190,6 +192,7 @@ visible = false
 script = ExtResource( 14 )
 
 [node name="Fog" type="TextureRect" parent="UI"]
+visible = false
 modulate = Color( 0.2, 0.2, 0.2, 1 )
 margin_right = 1920.0
 margin_bottom = 1080.0

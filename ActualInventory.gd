@@ -89,6 +89,7 @@ func swap_weapon_right() -> void:
 	equip(equippedIndex)
 
 func equip(index):
+	find_parent("Player").resetZoom()
 	if(hotbarArray[index]):
 		var prevWeapon = equipped.get_child(0)
 		equipped.remove_child(prevWeapon)
@@ -97,9 +98,10 @@ func equip(index):
 		hotbar.remove_child(nextWeapon)
 		equipped.add_child(nextWeapon)
 		if(hotbarArray[index].item_type == "WEAPON"):
+			find_parent("Player").resetZoom()
 			find_parent("Player").equippedWeapon = nextWeapon.weaponInstance
 			nextWeapon.set_global_position(get_parent().global_position + Vector2.DOWN*get_parent().weaponOffset)
-			nextWeapon.apply_attachments()
+			nextWeapon.refresh_attachments()
 		elif(hotbarArray[index].item_type == "CONSUMABLE"):
 			find_parent("Player").equippedWeapon = nextWeapon
 		else:
