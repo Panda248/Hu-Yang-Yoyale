@@ -207,20 +207,44 @@ func resetZoom():
 
 func _on_HealTimer_timeout():
 	if(health < maxHealth):
-		health += 1
-		healFX()
-		$HealTimer.wait_time = timeToHeal
-		$HealTimer.start()
-	pass # Replace with function body.
+		if (decayTimer > 400):
+			health += 1
+			healFX()
+			$HealTimer.wait_time = timeToHeal
+			$HealTimer.start()
+	pass
 
 var healTimer = 30;
+var poisonTimer = 300;
+var decayTimer = 400;
 
 func healFX():
 	healTimer = 0
 
+func poisonFX():
+	poisonTimer = 0;
+
+func decayFX():
+	decayTimer = 0;
+
+func decayed():
+	pass
+
 func effectManager():
 	healTimer += 1
+	poisonTimer += 1
+	decayTimer += 1
 	if (healTimer < 30):
 		$Effects/HealFX.visible = true
 	else:
 		$Effects/HealFX.visible = false
+	if (poisonTimer < 300):
+		$Effects/PoisonFX.visible = true
+		if (poisonTimer % 100 == 0):
+			takeDamage(0.5)
+	else:
+		$Effects/PoisonFX.visible = false
+	if (decayTimer < 400):
+		$Effects/DecayFX.visible = true
+	else:
+		$Effects/DecayFX.visible = false

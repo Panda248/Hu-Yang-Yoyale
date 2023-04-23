@@ -1,0 +1,39 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://scripts/Scythe.gd" type="Script" id=1]
+[ext_resource path="res://res/exported/sprites/scythe.png" type="Texture" id=2]
+[ext_resource path="res://Slash.tscn" type="PackedScene" id=3]
+[ext_resource path="res://res/exported/sprites/light.png" type="Texture" id=6]
+
+[node name="Scythe" type="Sprite"]
+rotation = -0.147569
+scale = Vector2( 0.3, 0.3 )
+centered = false
+offset = Vector2( -15, -6 )
+script = ExtResource( 1 )
+damage = 5
+fireRate = 500
+weaponPen = 3
+Bullet = ExtResource( 3 )
+
+[node name="BarrelEnd" type="Position2D" parent="."]
+position = Vector2( 40, 0 )
+
+[node name="ShootSFX" type="AudioStreamPlayer2D" parent="."]
+
+[node name="MuzzleFlash" type="Light2D" parent="."]
+position = Vector2( 30, -24 )
+texture = ExtResource( 6 )
+texture_scale = 0.5
+color = Color( 0.866667, 1, 0.533333, 1 )
+range_item_cull_mask = 3
+shadow_enabled = true
+shadow_gradient_length = 300.0
+shadow_filter = 5
+shadow_filter_smooth = 64.0
+shadow_item_cull_mask = 3
+
+[node name="Sprite" type="Sprite" parent="."]
+rotation = 2.70594
+scale = Vector2( 0.7, 0.7 )
+texture = ExtResource( 2 )
