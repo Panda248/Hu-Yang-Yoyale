@@ -100,8 +100,13 @@ texture = ExtResource( 6 )
 
 [node name="alertTimer" type="Timer" parent="."]
 
+[node name="attackTimer" type="Timer" parent="."]
+process_mode = 0
+one_shot = true
+
 [connection signal="body_entered" from="FOV" to="." method="_on_FOV_body_entered"]
 [connection signal="body_exited" from="FOV" to="." method="_on_FOV_body_exited"]
 [connection signal="body_entered" from="Range" to="." method="_on_Range_body_entered"]
 [connection signal="body_exited" from="Range" to="." method="_on_Range_body_exited"]
 [connection signal="timeout" from="alertTimer" to="." method="_on_alertTimer_timeout"]
+[connection signal="timeout" from="attackTimer" to="." method="_on_attackTimer_timeout"]

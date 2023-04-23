@@ -36,7 +36,7 @@ func player_has_self(player):
 
 func add_attachment(item):
 	$Attachments.add_child(item)
-	item.attachmentModifier(self)
+	item.attachmentModifier(weaponInstance)
 	pass
 
 func remove_attachment(item):

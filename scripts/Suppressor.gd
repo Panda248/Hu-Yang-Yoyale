@@ -6,7 +6,7 @@ func _ready():
 	._ready()
 	item_name = "SUPPRESSOR"
 	item_type = "ATTACHMENT"
-	suppressReducer = 0.5;
+	suppressReducer = 0.3;
 
 func pick_up(player):
 	.pick_up(player)
@@ -24,10 +24,10 @@ func changeToItemMode():
 	$Sprite.visible = false
 
 func attachmentModifier(weapon):
-	weapon.weaponInstance.suppress(suppressReducer)
+	weapon.suppress(suppressReducer)
 	weapon.find_node("ShootSFX").set_stream(load("res://res/exported/sound/silencedshoot.wav"))
-	var barrelEndPosition = weapon.find_node("BarrelEnd").position
-	position = barrelEndPosition
+	var barrelEndPosition = weapon.find_node("BarrelEnd").global_position
+	global_position = barrelEndPosition
 func reset(weapon):
 	weapon.weaponInstance.resetSuppress()
 	weapon.find_node("ShootSFX").set_stream(load("res://res/exported/sound/pistol shoot.wav"))
