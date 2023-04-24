@@ -88,6 +88,7 @@ script = ExtResource( 6 )
 __meta__ = {
 "_edit_use_anchors_": true
 }
+bossBar = true
 
 [node name="ProgressBar" type="ProgressBar" parent="Health/HealthBar"]
 show_behind_parent = true

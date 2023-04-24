@@ -28,10 +28,10 @@
 
 			],
 			"portrait": "",
-			"question": "dumb rat"
+			"question": "What are you doing?!?!"
 		},
 		{
-			"choice": "Thats mean!",
+			"choice": "What?",
 			"condition": "",
 			"definition": "",
 			"event_id": "dialogic_011",
@@ -41,41 +41,29 @@
 			"character": "character-1678799213.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": ":("
+			"text": "You destroyed my barrier!"
 		},
 		{
-			"animation": "[Default]",
-			"animation_length": 0,
-			"animation_wait": true,
-			"change_mirror_portrait": false,
-			"change_z_index": false,
-			"character": "",
-			"event_id": "dialogic_002",
-			"mirror_portrait": false,
+			"character": "character-1678799213.json",
+			"event_id": "dialogic_010",
+			"options": [
+
+			],
 			"portrait": "",
-			"portrait_definition": "",
-			"position": {
-				"0": false,
-				"1": false,
-				"2": false,
-				"3": false,
-				"4": false
-			},
-			"type": 1,
-			"z_index": 0
+			"question": "Now I'm going to die..."
 		},
 		{
-			"choice": ":(",
+			"choice": "I'm...sorry?",
 			"condition": "",
 			"definition": "",
 			"event_id": "dialogic_011",
 			"value": ""
 		},
 		{
-			"character": "",
+			"character": "character-1678799213.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": ">:)"
+			"text": "Go away"
 		},
 		{
 			"animation": "[Default]",
@@ -83,7 +71,7 @@
 			"animation_wait": true,
 			"change_mirror_portrait": false,
 			"change_z_index": false,
-			"character": "",
+			"character": "character-1678799213.json",
 			"event_id": "dialogic_002",
 			"mirror_portrait": false,
 			"portrait": "",
@@ -97,6 +85,9 @@
 			},
 			"type": 1,
 			"z_index": 0
+		},
+		{
+			"event_id": "dialogic_013"
 		},
 		{
 			"event_id": "dialogic_013"
