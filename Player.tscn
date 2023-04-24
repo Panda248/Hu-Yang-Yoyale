@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=2]
+[gd_scene load_steps=46 format=2]
 
 [ext_resource path="res://scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://res/exported/sound/heartbeat.wav" type="AudioStream" id=2]
@@ -28,6 +28,7 @@
 [ext_resource path="res://ArmorBar.gd" type="Script" id=26]
 [ext_resource path="res://res/exported/sprites/inputs/Keyboard & Mouse/Dark/Q_Key_Dark.png" type="Texture" id=27]
 [ext_resource path="res://res/exported/sprites/inputs/Keyboard & Mouse/Dark/E_Key_Dark.png" type="Texture" id=28]
+[ext_resource path="res://res/exported/sprites/inputs/Keyboard & Mouse/Dark/Space_Key_Dark.png" type="Texture" id=29]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 14.0
@@ -252,7 +253,6 @@ texture = null
 
 [node name="UI" type="CanvasLayer" parent="."]
 layer = 0
-visible = false
 script = ExtResource( 14 )
 
 [node name="Fog" type="TextureRect" parent="UI"]
@@ -279,6 +279,13 @@ margin_right = 226.0
 margin_bottom = 150.0
 mouse_filter = 1
 color = Color( 0.321569, 0.321569, 0.321569, 1 )
+
+[node name="InventoryIcon" type="TextureRect" parent="UI"]
+margin_left = 912.0
+margin_top = 829.0
+margin_right = 1012.0
+margin_bottom = 929.0
+texture = ExtResource( 29 )
 
 [node name="Armour" type="Control" parent="UI"]
 anchor_top = 0.6
@@ -455,6 +462,7 @@ expand = true
 
 [node name="Inventory" parent="UI" instance=ExtResource( 20 )]
 process_priority = 1
+visible = false
 margin_left = 716.0
 margin_top = 579.0
 margin_right = -704.0

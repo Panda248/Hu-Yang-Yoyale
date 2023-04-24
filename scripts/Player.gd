@@ -281,11 +281,11 @@ func effectManager():
 		$Effects/DecayFX.visible = false
 	if (speedTimer < 1000):
 		$Effects/SpeedFX.visible = true
-		defaultZoom = 0.60
+		setZoom(0.6)
 		velocity = 130;
 	else:
 		$Effects/SpeedFX.visible = false
-		defaultZoom = 0.27
+		resetZoom()
 		velocity = 100;
 
 func dayNightZoom(night):

@@ -54,6 +54,6 @@ func reload():
 		currentClip = clip
 		reserveClips -= 1
 		self.reloadAndShootDelay = reloadTimeFrames
-		$Reload.play("reload")
+		#$Reload.play("reload")
 		find_node("ReloadSFX").play(0)
 		

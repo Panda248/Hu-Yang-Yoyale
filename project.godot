@@ -24,11 +24,6 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://scripts/AssaultRifle.gd"
 }, {
-"base": "Area2D",
-"class": "Bullet",
-"language": "GDScript",
-"path": "res://scripts/Bullet.gd"
-}, {
 "base": "Label",
 "class": "ChatBox",
 "language": "GDScript",
@@ -154,6 +149,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://scripts/Notification.gd"
 }, {
+"base": "Weapon",
+"class": "Pistol",
+"language": "GDScript",
+"path": "res://scripts/Pistol.gd"
+}, {
 "base": "Entity",
 "class": "Player",
 "language": "GDScript",
@@ -204,11 +204,6 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Sniper.gd"
 }, {
-"base": "Weapon",
-"class": "ThrowRock",
-"language": "GDScript",
-"path": "res://scripts/Fists.gd"
-}, {
 "base": "Node2D",
 "class": "Weapon",
 "language": "GDScript",
@@ -223,7 +218,6 @@ _global_script_class_icons={
 "Alert": "",
 "ArmourItem": "",
 "AssaultRifle": "",
-"Bullet": "",
 "ChatBox": "",
 "Consumable": "",
 "Crate": "",
@@ -249,6 +243,7 @@ _global_script_class_icons={
 "MainMenu": "",
 "NPC": "",
 "Notification": "",
+"Pistol": "",
 "Player": "",
 "PoisonBlower": "",
 "PoisonBubble": "",
@@ -259,7 +254,6 @@ _global_script_class_icons={
 "Scythe": "",
 "Slash": "",
 "Sniper": "",
-"ThrowRock": "",
 "Weapon": "",
 "WeaponItem": ""
 }
