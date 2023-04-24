@@ -26,10 +26,12 @@ export var runAlertRadius = 300
 export var timeToHeal = 3
 
 export var totalShield = 0;
+
 export var curShield = 0;
 export var defaultZoom = .4
 export var dayZoom = .4
 export var nightZoom = .25
+
 export  (PackedScene) var Alert
 var curStamina = maxStamina
 var direction;
@@ -224,26 +226,61 @@ func resetZoom():
 
 func _on_HealTimer_timeout():
 	if(health < maxHealth):
-		health += 1
-		healFX()
-		$HealTimer.wait_time = timeToHeal
-		$HealTimer.start()
-	pass # Replace with function body.
+		if (decayTimer > 400):
+			health += 1
+			healFX()
+			$HealTimer.wait_time = timeToHeal
+			$HealTimer.start()
+	pass
 
 var healTimer = 30;
+var poisonTimer = 300;
+var decayTimer = 400;
+var speedTimer = 1000;
 
 func healFX():
 	healTimer = 0
 
+func poisonFX():
+	poisonTimer = 0;
+
+func decayFX():
+	decayTimer = 0;
+
+func speedFX():
+	speedTimer = 0;
+  
 func availableInventory():
 	return 9 - $Inventory.return_filled_inventory()
 
 func effectManager():
 	healTimer += 1
+	poisonTimer += 1
+	decayTimer += 1
+	speedTimer += 1
 	if (healTimer < 30):
 		$Effects/HealFX.visible = true
 	else:
 		$Effects/HealFX.visible = false
+	if (poisonTimer < 300):
+		$Effects/PoisonFX.visible = true
+		if (poisonTimer % 100 == 0):
+			takeDamage(0.5)
+			health -= 0.5
+	else:
+		$Effects/PoisonFX.visible = false
+	if (decayTimer < 400):
+		$Effects/DecayFX.visible = true
+	else:
+		$Effects/DecayFX.visible = false
+	if (speedTimer < 1000):
+		$Effects/SpeedFX.visible = true
+		defaultZoom = 0.60
+		velocity = 130;
+	else:
+		$Effects/SpeedFX.visible = false
+		defaultZoom = 0.27
+		velocity = 100;
 
 func dayNightZoom(night):
 	if(night):

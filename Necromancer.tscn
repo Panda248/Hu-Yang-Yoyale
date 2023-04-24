@@ -1,10 +1,10 @@
 [gd_scene load_steps=15 format=2]
 
-[ext_resource path="res://scripts/RockEnemy.gd" type="Script" id=1]
+[ext_resource path="res://scripts/Necromancer.gd" type="Script" id=1]
 [ext_resource path="res://scripts/HurtBox.gd" type="Script" id=2]
-[ext_resource path="res://res/exported/sprites/rockzombie.png" type="Texture" id=3]
+[ext_resource path="res://res/exported/sprites/necomancer.png" type="Texture" id=3]
 [ext_resource path="res://res/exported/fonts/GajrajOne.tres" type="DynamicFont" id=4]
-[ext_resource path="res://RockThrower.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Scythe.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Fists.tscn" type="PackedScene" id=6]
 [ext_resource path="res://res/exported/sprites/alert.png" type="Texture" id=7]
 
@@ -17,22 +17,6 @@ radius = 100.0
 
 [sub_resource type="CircleShape2D" id=4]
 radius = 25.0
-
-[sub_resource type="Animation" id=5]
-resource_name = "damageFlash"
-length = 0.1
-tracks/0/type = "value"
-tracks/0/path = NodePath("Body:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ Color( 1, 0, 0, 1 ), Color( 1, 1, 1, 1 ) ]
-}
 
 [sub_resource type="Animation" id=7]
 resource_name = "damageFlash"
@@ -50,25 +34,39 @@ tracks/0/keys = {
 "values": [ Color( 0.054902, 0.992157, 0.968627, 1 ), Color( 1, 1, 1, 1 ) ]
 }
 
+[sub_resource type="Animation" id=5]
+resource_name = "damageFlash"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Body:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ Color( 1, 0, 0, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+
 [sub_resource type="OccluderPolygon2D" id=6]
-cull_mode = 1
 polygon = PoolVector2Array( -8, -8, -2, -11, 2, -11, 8, -8, 11, -2, 11, 2, 8, 8, 2, 11, -2, 11, -8, 8, -11, 3, -11, -2 )
 
-[node name="RockEnemy" type="KinematicBody2D"]
+[node name="Necromancer" type="KinematicBody2D"]
 script = ExtResource( 1 )
 velocity = 60
-rotationSpeedDegrees = 80
-angleOfVisionDegrees = 120
-
-[node name="RockThrower" parent="." instance=ExtResource( 5 )]
-damage = 3
+maxHealth = 20
+rotationSpeedDegrees = 90
+angleOfVisionDegrees = 110
 
 [node name="Body" type="CollisionShape2D" parent="."]
-modulate = Color( 1, 0, 0, 1 )
+modulate = Color( 0.054902, 0.992157, 0.968627, 1 )
 shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="Body"]
-scale = Vector2( 0.755848, 0.749218 )
+position = Vector2( -1, -7 )
+scale = Vector2( 0.3, 0.3 )
 texture = ExtResource( 3 )
 
 [node name="HurtBox" type="Area2D" parent="."]
@@ -97,12 +95,11 @@ cast_to = Vector2( 0, 0 )
 modulate = Color( 1, 1, 1, 0.145098 )
 shape = SubResource( 4 )
 
+[node name="freeze" type="AnimationPlayer" parent="."]
+anims/damageFlash = SubResource( 7 )
+
 [node name="damageFlash" type="AnimationPlayer" parent="."]
 anims/damageFlash = SubResource( 5 )
-
-[node name="freeze" type="AnimationPlayer" parent="."]
-root_node = NodePath("../damageFlash")
-anims/damageFlash = SubResource( 7 )
 
 [node name="Label" type="Label" parent="."]
 visible = false
@@ -113,8 +110,12 @@ custom_fonts/font = ExtResource( 4 )
 [node name="LightOccluder2D" type="LightOccluder2D" parent="."]
 occluder = SubResource( 6 )
 
+[node name="Scythe" parent="." instance=ExtResource( 5 )]
+position = Vector2( 11, 1 )
+
 [node name="Fists" parent="." instance=ExtResource( 6 )]
-position = Vector2( 10, 0 )
+modulate = Color( 0.356863, 0.384314, 0.215686, 1 )
+position = Vector2( 11, 0 )
 
 [node name="alert" type="Sprite" parent="."]
 visible = false
@@ -124,8 +125,19 @@ texture = ExtResource( 7 )
 
 [node name="alertTimer" type="Timer" parent="."]
 
+[node name="spawnTimer" type="Timer" parent="."]
+wait_time = 10.0
+autostart = true
+
+[node name="teleportTimer" type="Timer" parent="."]
+wait_time = 3.0
+autostart = true
+
 [connection signal="body_entered" from="FOV" to="." method="_on_FOV_body_entered"]
 [connection signal="body_exited" from="FOV" to="." method="_on_FOV_body_exited"]
 [connection signal="body_entered" from="Range" to="." method="_on_Range_body_entered"]
 [connection signal="body_exited" from="Range" to="." method="_on_Range_body_exited"]
 [connection signal="timeout" from="alertTimer" to="." method="_on_alertTimer_timeout"]
+[connection signal="timeout" from="spawnTimer" to="." method="_on_spawnTimer_timeout"]
+[connection signal="timeout" from="teleportTimer" to="." method="_on_teleportTimer_timeout"]
+[connection signal="timeout" from="teleportTimer" to="." method="_on_spawnTimer_timeout"]
