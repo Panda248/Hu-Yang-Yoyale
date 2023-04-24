@@ -24,48 +24,17 @@ func _process(delta):
 			_investigate(delta)
 		ATTACK:
 			_chase(delta)
-			get_node("PoisonThrower").primaryFire()
+			get_node("PoisonBlower").primaryFire()
 	pass
 
-var jumping
-var peaked
-
-func jump():
-	get_node("Body/Sprite").texture = load("res://res/exported/sprites/frogjump.png")
-	jumping = true
-	peaked = false
-
 func _chase(delta):
-	if(can_see_player()):
-		if (!jumping):
-			slowly_rotate_to(player, delta)
-			velocity = 50
-		else:
-			velocity = 75
-			if (get_node("Body/Sprite").scale.x < 0.35 && !peaked):
-				get_node("Body/Sprite").scale += Vector2(0.001, 0.001)
-			if (get_node("Body/Sprite").scale.x >= 0.35):
-				peaked = true;
-			if (peaked && get_node("Body/Sprite").scale.x > 0.25):
-				get_node("Body/Sprite").scale -= Vector2(0.001, 0.001);
-			if (peaked && get_node("Body/Sprite").scale.x == 0.25):
-				jumping = false
-				get_node("Body/Sprite").texture = load("res://res/exported/sprites/frog.png")
-		move_forward(delta)
-	else:
-		destination = player.position
-		state = INVESTIGATE
+	destination = player.position
+	state = INVESTIGATE
 	pass
 
 func _investigate(delta):
-	slowly_rotate_to(destination, delta)
 	if(can_see_player()):
 		state = CHASE
-		pass
-	if(abs(get_angle_to(destination)) < deg2rad(10)):
-		motion = move_and_slide((destination - position).normalized() * velocity * delta * Engine.get_iterations_per_second())
-	if position.distance_to(destination) < 10:
-		state = IDLE
 	pass
 
 func _on_FOV_body_entered(body):
@@ -125,6 +94,3 @@ func _on_alertTimer_timeout():
 	$alert.visible = false
 	pass # Replace with function body.
 
-
-func _on_jumpTimer_timeout():
-	jump()

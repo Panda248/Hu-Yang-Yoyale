@@ -1,11 +1,11 @@
-class_name PoisonDart
+class_name PoisonBubble
 extends KinematicBody2D
 
 var direction := Vector2.ZERO;
 var totalDistanceTraveled = 0
 var totalTimeAlive = 0
 
-export (int) var speed = 5;
+export (int) var speed = 1;
 var penetration = 0;
 onready var breakableMap : TileMap = get_node("/root/World/Destructibles")
 	
@@ -13,20 +13,20 @@ var almostDead = false
 
 func _physics_process(delta: float) -> void:
 	totalTimeAlive += 1
-	#explode()
 	if (totalDistanceTraveled >= 1500 || totalTimeAlive > 400):
 		queue_free()
 	if (totalTimeAlive > 330):
 		modulate.a *= 0.9
 	if direction != Vector2.ZERO:
 		var velocity = direction * speed;
+		velocity *= 0.99
 		#$Explosion/Particles2D.amount = ;
 		var collision_info = move_and_collide(velocity);
 		if collision_info:
 			if (collision_info.get_collider() == find_parent("World").find_node("Player")):
 				find_parent("World").find_node("Player").poisonFX()
 			speed = 0
-			totalTimeAlive = 330
+			totalTimeAlive = 400
 			velocity = velocity.bounce(collision_info.normal)
 		totalDistanceTraveled += velocity.length()
 	

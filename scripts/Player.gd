@@ -25,7 +25,7 @@ export var runAlertRadius = 300
 export var timeToHeal = 3
 
 export var totalShield = 0;
-export var defaultZoom = 0.25
+export var defaultZoom = 0.27
 export  (PackedScene) var Alert
 var curStamina = maxStamina
 var direction;
@@ -217,6 +217,7 @@ func _on_HealTimer_timeout():
 var healTimer = 30;
 var poisonTimer = 300;
 var decayTimer = 400;
+var speedTimer = 1000;
 
 func healFX():
 	healTimer = 0
@@ -227,13 +228,14 @@ func poisonFX():
 func decayFX():
 	decayTimer = 0;
 
-func decayed():
-	pass
+func speedFX():
+	speedTimer = 0;
 
 func effectManager():
 	healTimer += 1
 	poisonTimer += 1
 	decayTimer += 1
+	speedTimer += 1
 	if (healTimer < 30):
 		$Effects/HealFX.visible = true
 	else:
@@ -242,9 +244,18 @@ func effectManager():
 		$Effects/PoisonFX.visible = true
 		if (poisonTimer % 100 == 0):
 			takeDamage(0.5)
+			health -= 0.5
 	else:
 		$Effects/PoisonFX.visible = false
 	if (decayTimer < 400):
 		$Effects/DecayFX.visible = true
 	else:
 		$Effects/DecayFX.visible = false
+	if (speedTimer < 1000):
+		$Effects/SpeedFX.visible = true
+		defaultZoom = 0.60
+		velocity = 130;
+	else:
+		$Effects/SpeedFX.visible = false
+		defaultZoom = 0.27
+		velocity = 100;

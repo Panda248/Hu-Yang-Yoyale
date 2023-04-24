@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://PoisonThrower.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scripts/HurtBox.gd" type="Script" id=2]
@@ -34,6 +34,22 @@ tracks/0/keys = {
 "values": [ Color( 1, 0, 0, 1 ), Color( 1, 1, 1, 1 ) ]
 }
 
+[sub_resource type="Animation" id=7]
+resource_name = "damageFlash"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Body:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ Color( 0.054902, 0.992157, 0.968627, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+
 [sub_resource type="OccluderPolygon2D" id=6]
 polygon = PoolVector2Array( -17, -18, -15, -17, -7, -22, 5, -22, 10, -21, 14, -11, 12, -22, 15, -24, 18, -26, 23, -26, 28, -24, 30, -21, 25, -15, 24, -8, 24, -6, 23, -5, 23, -1, 21, -2, 23, 0, 24, 1, 24, 8, 22, 9, 24, 11, 25, 14, 27, 14, 27, 16, 25, 16, 27, 18, 26, 26, 15, 26, 7, 20, 1, 20, -7, 20, -13, 26, -25, 26, -25, 25, -26, 24, -27, 14, -25, 12, -24, 10, -25, 7, -24, 2, -23, 1, -23, -5, -25, -7, -26, -16, -30, -20, -31, -25, -19, -27, -12, -21 )
 
@@ -48,6 +64,7 @@ position = Vector2( 13, 0 )
 fireRate = 300
 
 [node name="Body" type="CollisionShape2D" parent="."]
+modulate = Color( 0.054902, 0.992157, 0.968627, 1 )
 shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="Body"]
@@ -85,6 +102,9 @@ shape = SubResource( 4 )
 [node name="damageFlash" type="AnimationPlayer" parent="."]
 anims/damageFlash = SubResource( 5 )
 
+[node name="freeze" type="AnimationPlayer" parent="."]
+anims/damageFlash = SubResource( 7 )
+
 [node name="Label" type="Label" parent="."]
 visible = false
 margin_right = 40.0
@@ -104,8 +124,13 @@ texture = ExtResource( 7 )
 
 [node name="alertTimer" type="Timer" parent="."]
 
+[node name="jumpTimer" type="Timer" parent="."]
+wait_time = 6.0
+autostart = true
+
 [connection signal="body_entered" from="FOV" to="." method="_on_FOV_body_entered"]
 [connection signal="body_exited" from="FOV" to="." method="_on_FOV_body_exited"]
 [connection signal="body_entered" from="Range" to="." method="_on_Range_body_entered"]
 [connection signal="body_exited" from="Range" to="." method="_on_Range_body_exited"]
 [connection signal="timeout" from="alertTimer" to="." method="_on_alertTimer_timeout"]
+[connection signal="timeout" from="jumpTimer" to="." method="_on_jumpTimer_timeout"]

@@ -9,6 +9,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	._process(delta)
 	if _dead():
 		queue_free()
 	raycast_sweep()
@@ -28,6 +29,14 @@ func _process(delta):
 
 func teleport():
 	pass
+
+func summon():
+	randomize()
+	var zombies = [rock, normal]
+	var spawn = zombies[randi()% zombies.size()].instance()
+	
+	spawn.position = Vector2(self.position.x + rand_range(-100, 100), self.position.y + rand_range(-100, 100))
+	find_parent("World").add_child(spawn)
 
 func _chase(delta):
 	if(can_see_player()):
@@ -106,3 +115,16 @@ func raycast_sweep() -> void:
 func _on_alertTimer_timeout():
 	$alert.visible = false
 	pass # Replace with function body.
+
+var rock = preload("res://RockEnemy.tscn")
+var normal = preload("res://Enemy.tscn")
+
+func _on_spawnTimer_timeout():
+	summon()
+	pass
+	
+func _on_teleportTimer_timeout():
+	print(self.position.distance_to(find_parent("World").find_node("Player").position))
+	if (self.position.distance_to(find_parent("World").find_node("Player").position) < 100):
+		self.position += Vector2(rand_range(-100, 100), rand_range(-100, 100))
+	pass 
