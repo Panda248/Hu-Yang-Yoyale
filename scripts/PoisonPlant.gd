@@ -26,7 +26,7 @@ func _process(delta):
 			_investigate(delta)
 		ATTACK:
 			_chase(delta)
-			if ($attackTimer.time_left == 0.1):
+			if ($attackTimer.time_left < 0.1):
 				get_node("PoisonBlower").primaryFire()
 				get_node("PoisonBlower2").primaryFire()
 				get_node("PoisonBlower3").primaryFire()
