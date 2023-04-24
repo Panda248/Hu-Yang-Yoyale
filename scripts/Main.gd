@@ -14,6 +14,7 @@ var night = false
 func _ready():
 	$Player/UI.visible = true
 	$Player.connect("player_shot", bullet_manager, "bullet_shot");
+	$Player.connect("player_project", bullet_manager, "proj_shot");
 	$Player.connect("alert_enemies", alert_manager, "alertEnemies");
 	$Player.connect("death_screen", self, "game_over")
 	loadCrates()

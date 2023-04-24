@@ -1,0 +1,45 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://FreezePotionItem.gd" type="Script" id=1]
+[ext_resource path="res://res/exported/sprites/freeze.png" type="Texture" id=2]
+[ext_resource path="res://FreezePotion.gd" type="Script" id=3]
+[ext_resource path="res://res/exported/sprites/freezeprojectile.png" type="Texture" id=4]
+[ext_resource path="res://FreezeProjectile.tscn" type="PackedScene" id=5]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 14.0
+
+[node name="FreezePotionItem" type="Area2D"]
+script = ExtResource( 1 )
+item_name = "Freeze Potion"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+modulate = Color( 1, 1, 1, 0.133333 )
+shape = SubResource( 1 )
+
+[node name="Icon" type="TextureRect" parent="."]
+margin_left = -16.0
+margin_top = -16.0
+margin_right = 112.0
+margin_bottom = 112.0
+rect_scale = Vector2( 0.25, 0.25 )
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource( 2 )
+expand = true
+
+[node name="Quantity" type="Label" parent="."]
+margin_right = 40.0
+margin_bottom = 14.0
+
+[node name="WeaponInstance" type="Sprite" parent="."]
+visible = false
+rotation = 1.5708
+scale = Vector2( 0.25, 0.25 )
+texture = ExtResource( 4 )
+script = ExtResource( 3 )
+potion = ExtResource( 5 )
+
+[node name="Attachments" type="Node2D" parent="WeaponInstance"]
+visible = false
+scale = Vector2( 4, 4 )

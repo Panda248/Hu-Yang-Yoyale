@@ -7,6 +7,8 @@ export var velocity := 50
 export var maxHealth := 10
 export var health : int = maxHealth
 var knockback = Vector2.ZERO
+var frozen = false
+var frozen_duration = 0
 
 func _ready():
 	connect("emit_damage_number", get_tree().current_scene.get_node("DmgNumberManager"), "spawn_damage_number")
@@ -14,6 +16,11 @@ func _ready():
 func _physics_process(delta):
 	knockback = knockback.move_toward(Vector2.ZERO, 200*delta)
 	knockback = move_and_slide(knockback)
+	if(frozen):
+		if(frozen_duration == 0):
+			frozen = false
+		else:
+			frozen_duration-=1
 
 func takeDamage(damage : int):
 	get_node("damageFlash").play("damageFlash")
@@ -24,6 +31,12 @@ func takeKnockback(hitbox : HitBox):
 	
 func _dead() ->bool:
 	return health <= 0
+
+func freeze():
+	print("freeze!")
+	frozen = true
+	frozen_duration = 180
+	pass
 
 func move_forward(delta):
 	move_and_slide(Vector2(velocity*delta*60,0).rotated(global_rotation))

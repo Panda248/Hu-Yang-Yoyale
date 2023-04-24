@@ -19,29 +19,30 @@ func _ready():
 func _process(delta):
 	if _dead():
 		queue_free()
-	raycast_sweep()
-	get_node("Label").text = var2str(state)
-	
-	#State machine
-	match state:
-		CHASE:
-			if(get_parent().playerInSafeZone):
-				state = IDLE
-				pass
-			_chase(delta)
-		INVESTIGATE:
-			_investigate(delta)
-		ATTACK:
-			_chase(delta)
+	if(!frozen):
+		raycast_sweep()
+		get_node("Label").text = var2str(state)
+		
+		#State machine
+		match state:
+			CHASE:
+				if(get_parent().playerInSafeZone):
+					state = IDLE
+					pass
+				_chase(delta)
+			INVESTIGATE:
+				_investigate(delta)
+			ATTACK:
+				_chase(delta)
 
-			if(canAttack):
-				canAttack = false
-				$attackTimer.start(attackCooldown)
-				if randf() > 0.5:
-					get_node("Fists").primaryFire()
-				else:
-					get_node("Fists").secondaryFire()
-	pass
+				if(canAttack):
+					canAttack = false
+					$attackTimer.start(attackCooldown)
+					if randf() > 0.5:
+						get_node("Fists").primaryFire()
+					else:
+						get_node("Fists").secondaryFire()
+
 
 func _chase(delta):
 	if(can_see_player()):

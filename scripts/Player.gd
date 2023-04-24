@@ -2,6 +2,7 @@ extends Entity
 class_name Player
 
 signal player_shot(bullet, position, direction);
+signal player_project(projetile);
 signal alert_enemies(alertRadius);
 signal interact(interactable);
 signal death_screen();
@@ -46,40 +47,41 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	#shield_remaining()
-	effectManager()
-
-	if (health > maxHealth):
-		health = maxHealth
-	
-	var _motion = Vector2();
-	
-	get_node("UI/ColorRect").color = Color(1,0,0,percent_health())
-	if(health < maxHealth):
-		if(!heartbeat.is_playing()):
-			heartbeat.play()
-			heartbeat.volume_db = 10 - 50 * health/maxHealth
-
-	if(curStamina >= maxStamina):
-		curStamina = maxStamina
-	else:
-		curStamina+=staminaRegeneration*delta*Engine.get_iterations_per_second()
-
-	look_at(get_global_mouse_position());
-	
-	input_movement(delta)
-	input_action()
-	
-	
-	
-	var modifiedVelocity = (velocity - 40 * equippedWeapon.getWeight()) * (health+5)/15
-	
-	
-	move_and_slide(direction * modifiedVelocity * delta * Engine.get_iterations_per_second());
-	
 	if _dead():
-		emit_signal("death_screen")
-	pass
+			emit_signal("death_screen")
+	if(!frozen):
+		#shield_remaining()
+		effectManager()
+
+		if (health > maxHealth):
+			health = maxHealth
+		
+		var _motion = Vector2();
+		
+		get_node("UI/ColorRect").color = Color(1,0,0,percent_health())
+		if(health < maxHealth):
+			if(!heartbeat.is_playing()):
+				heartbeat.play()
+				heartbeat.volume_db = 10 - 50 * health/maxHealth
+
+		if(curStamina >= maxStamina):
+			curStamina = maxStamina
+		else:
+			curStamina+=staminaRegeneration*delta*Engine.get_iterations_per_second()
+
+		look_at(get_global_mouse_position());
+		
+		input_movement(delta)
+		input_action()
+		
+		
+		
+		var modifiedVelocity = (velocity - 40 * equippedWeapon.getWeight()) * (health+5)/15
+		
+		
+		move_and_slide(direction * modifiedVelocity * delta * Engine.get_iterations_per_second());
+		
+		
 
 func input_movement(delta):
 	if(Input.is_action_pressed("ui_left")):
