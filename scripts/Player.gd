@@ -53,6 +53,8 @@ func _process(delta):
 			emit_signal("death_screen")
 	if(!frozen):
 		#shield_remaining()
+		$InteractIndicator.global_rotation = 0
+		
 		effectManager()
 
 		if (health > maxHealth):
@@ -153,11 +155,13 @@ func _on_InteractBox_body_entered(body):
 		if(closest_node(body, targetInteractable) == body):
 			targetInteractable = body
 			targetInteractable.canInteract = true
+			$InteractIndicator.visible = true
 	
 func _on_InteractBox_body_exited(body):
 	if(targetInteractable == body):
 		targetInteractable.canInteract = false
 		targetInteractable = null
+		$InteractIndicator.visible = false
 
 func takeDamage(damage):
 	$HealTimer.wait_time = timeToHeal

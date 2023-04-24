@@ -21,10 +21,11 @@ func interact():
 func _process(delta):
 	if(canInteract):
 		slowly_rotate_to(player, delta*4)
-		$Indicator.set_visible(true);
+		#$Indicator.set_visible(true);
 	else:
+		pass
 		#emit_signal("delete_message", chatbox)
-		$Indicator.set_visible(false);
+		#$Indicator.set_visible(false);
 	pass
 
 
