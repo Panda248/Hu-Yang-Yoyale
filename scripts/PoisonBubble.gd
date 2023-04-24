@@ -19,7 +19,7 @@ func _physics_process(delta: float) -> void:
 		modulate.a *= 0.9
 	if direction != Vector2.ZERO:
 		var velocity = direction * speed;
-		velocity *= 0.99
+		speed *= 0.99
 		#$Explosion/Particles2D.amount = ;
 		var collision_info = move_and_collide(velocity);
 		if collision_info:
