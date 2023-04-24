@@ -6,6 +6,8 @@ func _ready():
 	$FOV/RayCast2D.cast_to = Vector2(maxViewDistance, 0)
 	pass # Replace with function body.
 
+func get_class_name():
+	return "PoisonPlant"
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -24,10 +26,17 @@ func _process(delta):
 			_investigate(delta)
 		ATTACK:
 			_chase(delta)
-			get_node("PoisonBlower").primaryFire()
+			if ($attackTimer.time_left == 0.1):
+				get_node("PoisonBlower").primaryFire()
+				get_node("PoisonBlower2").primaryFire()
+				get_node("PoisonBlower3").primaryFire()
+				get_node("PoisonBlower4").primaryFire()
+				
 	pass
 
 func _chase(delta):
+	if(can_see_player()):
+		slowly_rotate_to(player, delta)
 	destination = player.position
 	state = INVESTIGATE
 	pass
@@ -94,3 +103,6 @@ func _on_alertTimer_timeout():
 	$alert.visible = false
 	pass # Replace with function body.
 
+func _on_attackTimer_timeout():
+	pass
+		

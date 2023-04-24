@@ -33,7 +33,7 @@
 [ext_resource path="res://KevlarItem.tscn" type="PackedScene" id=31]
 [ext_resource path="res://HelmetItem.tscn" type="PackedScene" id=32]
 [ext_resource path="res://DialogueManager.gd" type="Script" id=33]
-[ext_resource path="res://Necromancer.tscn" type="PackedScene" id=34]
+[ext_resource path="res://PoisonPlant.tscn" type="PackedScene" id=34]
 [ext_resource path="res://tilesetRules.gd" type="Script" id=35]
 [ext_resource path="res://res/sand.png" type="Texture" id=36]
 [ext_resource path="res://res/water.tres" type="Texture" id=37]
@@ -313,9 +313,9 @@ unique_name_in_owner = true
 collision_layer = 5
 collision_mask = 5
 
-[node name="Necromancer" parent="." instance=ExtResource( 34 )]
-
 [node name="PoisonEnemy" parent="." instance=ExtResource( 38 )]
+
+[node name="PoisonPlant" parent="." instance=ExtResource( 34 )]
 
 [node name="Crates" type="Node2D" parent="."]
 

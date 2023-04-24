@@ -66,6 +66,7 @@ shape = SubResource( 2 )
 [node name="Explosion" type="Node2D" parent="."]
 
 [node name="Particles2D" type="Particles2D" parent="Explosion"]
+visible = false
 modulate = Color( 0.356863, 1, 0.372549, 1 )
 amount = 10
 preprocess = 44.04

@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://res/exported/sprites/poisonplant.png" type="Texture" id=1]
 [ext_resource path="res://scripts/HurtBox.gd" type="Script" id=2]
@@ -34,37 +34,33 @@ tracks/0/keys = {
 "values": [ Color( 1, 0, 0, 1 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=7]
-resource_name = "damageFlash"
-length = 0.1
-tracks/0/type = "value"
-tracks/0/path = NodePath("Body:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ Color( 0.054902, 0.992157, 0.968627, 1 ), Color( 1, 1, 1, 1 ) ]
-}
-
 [sub_resource type="OccluderPolygon2D" id=6]
 polygon = PoolVector2Array( -6.00007, -20, 3.99993, -20, 11.9999, -26, 17.9999, -28.0001, 21.9999, -16.0001, 28, -10.0001, 28, -2.0001, 24.0001, 17.9999, 20.0001, 21.9999, 15, 26, 6.00009, 24, 4.00007, 18, -11.9999, 18, -21.9999, 16.0001, -28, 8.0001, -28, -5.9999, -24.0001, -13.9999, -10.0001, -14 )
 
 [node name="PoisonPlant" type="KinematicBody2D"]
 script = ExtResource( 3 )
+rotationSpeedDegrees = 80
 angleOfVisionDegrees = 360
 maxViewDistance = 150.0
 
 [node name="PoisonBlower" parent="." instance=ExtResource( 5 )]
-position = Vector2( 0, -18 )
+position = Vector2( 18, -3 )
+
+[node name="PoisonBlower2" parent="." instance=ExtResource( 5 )]
+position = Vector2( 18, 3 )
+
+[node name="PoisonBlower3" parent="." instance=ExtResource( 5 )]
+position = Vector2( 17, 8 )
+
+[node name="PoisonBlower4" parent="." instance=ExtResource( 5 )]
+position = Vector2( 17, -9 )
 
 [node name="Body" type="CollisionShape2D" parent="."]
+modulate = Color( 0.054902, 0.992157, 0.968627, 1 )
 shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="Body"]
+rotation = 1.5708
 scale = Vector2( 0.25, 0.25 )
 texture = ExtResource( 1 )
 
@@ -99,9 +95,6 @@ shape = SubResource( 4 )
 [node name="damageFlash" type="AnimationPlayer" parent="."]
 anims/damageFlash = SubResource( 5 )
 
-[node name="freeze" type="AnimationPlayer" parent="."]
-anims/damageFlash = SubResource( 7 )
-
 [node name="Label" type="Label" parent="."]
 visible = false
 margin_right = 40.0
@@ -109,7 +102,7 @@ margin_bottom = 14.0
 custom_fonts/font = ExtResource( 4 )
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="."]
-rotation = 1.5708
+rotation = 3.14159
 scale = Vector2( 0.5, 0.5 )
 occluder = SubResource( 6 )
 
@@ -121,8 +114,13 @@ texture = ExtResource( 7 )
 
 [node name="alertTimer" type="Timer" parent="."]
 
+[node name="attackTimer" type="Timer" parent="."]
+wait_time = 3.0
+autostart = true
+
 [connection signal="body_entered" from="FOV" to="." method="_on_FOV_body_entered"]
 [connection signal="body_exited" from="FOV" to="." method="_on_FOV_body_exited"]
 [connection signal="body_entered" from="Range" to="." method="_on_Range_body_entered"]
 [connection signal="body_exited" from="Range" to="." method="_on_Range_body_exited"]
 [connection signal="timeout" from="alertTimer" to="." method="_on_alertTimer_timeout"]
+[connection signal="timeout" from="attackTimer" to="." method="_on_attackTimer_timeout"]
