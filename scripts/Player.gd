@@ -2,6 +2,7 @@ extends Entity
 class_name Player
 
 signal player_shot(bullet, position, direction);
+signal player_project(projetile);
 signal alert_enemies(alertRadius);
 signal interact(interactable);
 signal death_screen();
@@ -25,7 +26,12 @@ export var runAlertRadius = 300
 export var timeToHeal = 3
 
 export var totalShield = 0;
-export var defaultZoom = 0.27
+
+export var curShield = 0;
+export var defaultZoom = .4
+export var dayZoom = .4
+export var nightZoom = .25
+
 export  (PackedScene) var Alert
 var curStamina = maxStamina
 var direction;
@@ -36,45 +42,48 @@ var canSprint = true
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	direction = Vector2(0,0);
+	$UI.show()
+	resetZoom()
 	pass # Replace with function body.
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	#shield_remaining()
-	effectManager()
-	
-	if (health > maxHealth):
-		health = maxHealth
-	
-	var _motion = Vector2();
-	
-	get_node("UI/ColorRect").color = Color(1,0,0,percent_health())
-	if(health < maxHealth):
-		if(!heartbeat.is_playing()):
-			heartbeat.play()
-			heartbeat.volume_db = 10 - 50 * health/maxHealth
-
-	if(curStamina >= maxStamina):
-		curStamina = maxStamina
-	else:
-		curStamina+=staminaRegeneration*delta*Engine.get_iterations_per_second()
-
-	look_at(get_global_mouse_position());
-	
-	input_movement(delta)
-	input_action()
-	
-	
-	
-	var modifiedVelocity = (velocity - 40 * equippedWeapon.getWeight()) * (health+5)/15
-	
-	
-	move_and_slide(direction * modifiedVelocity * delta * Engine.get_iterations_per_second());
-	
 	if _dead():
-		emit_signal("death_screen")
-	pass
+			emit_signal("death_screen")
+	if(!frozen):
+		#shield_remaining()
+		effectManager()
+
+		if (health > maxHealth):
+			health = maxHealth
+		
+		var _motion = Vector2();
+		
+		get_node("UI/ColorRect").color = Color(1,0,0,percent_health())
+		if(health < maxHealth):
+			if(!heartbeat.is_playing()):
+				heartbeat.play()
+				heartbeat.volume_db = 10 - 50 * health/maxHealth
+
+		if(curStamina >= maxStamina):
+			curStamina = maxStamina
+		else:
+			curStamina+=staminaRegeneration*delta*Engine.get_iterations_per_second()
+
+		look_at(get_global_mouse_position());
+		
+		input_movement(delta)
+		input_action()
+		
+		
+		
+		var modifiedVelocity = (velocity - 40 * equippedWeapon.getWeight()) * (health+5)/15
+		
+		
+		move_and_slide(direction * modifiedVelocity * delta * Engine.get_iterations_per_second());
+		
+		
 
 func input_movement(delta):
 	if(Input.is_action_pressed("ui_left")):
@@ -153,7 +162,14 @@ func _on_InteractBox_body_exited(body):
 func takeDamage(damage):
 	$HealTimer.wait_time = timeToHeal
 	$HealTimer.start()
-	.takeDamage(damage)
+	var remainingDamage = damage
+	if(curShield > 0):
+		remainingDamage -= curShield
+		curShield -= damage
+		print(var2str(curShield))
+		if(curShield < 0):
+			curShield = 0
+	health-=remainingDamage
 	get_node("UI/BloodSplatter").modulate.a = 1
 	$Camera2D.add_trauma(damage)
 
@@ -170,8 +186,11 @@ func closest_node(node1, node2) -> Node:
 func pick_up_nearby_items() -> void:
 	var overlappingAreas = $InteractBox.get_overlapping_areas()
 	for area in overlappingAreas:
-		if(area.has_method("pick_up")):
-			area.pick_up(self)
+		if (availableInventory() > 0):
+			if(area.has_method("pick_up")):
+				area.pick_up(self)
+		else:
+			find_parent("World").find_node("NotificationManager").notify("No Space", global_position, .5)
 	pass
 	
 func pick_up_weapon(weapon):
@@ -183,7 +202,7 @@ func get_hotbar() -> Array:
 	return inventory.get_hotbar()
 
 func get_gear() -> Array:
-	return gear
+	return gear.get_children()
 
 func shield_remaining() -> float:
 	var shield = 0;
@@ -230,6 +249,9 @@ func decayFX():
 
 func speedFX():
 	speedTimer = 0;
+  
+func availableInventory():
+	return 9 - $Inventory.return_filled_inventory()
 
 func effectManager():
 	healTimer += 1
@@ -259,3 +281,10 @@ func effectManager():
 		$Effects/SpeedFX.visible = false
 		defaultZoom = 0.27
 		velocity = 100;
+
+func dayNightZoom(night):
+	if(night):
+		defaultZoom = nightZoom
+	else:
+		defaultZoom = dayZoom
+	resetZoom()

@@ -17,4 +17,5 @@ func bullet_shot(bullet, position, direction, damage, knockbackMultiplier):
 	bullet.get_node("HitBox").knockbackDirection = bullet.get_node("HitBox").knockbackDirection.rotated(direction.angle())
 	bullet.global_position = position;
 	bullet.set_direction(direction);
-
+func proj_shot(projectile):
+	add_child(projectile)

@@ -3,7 +3,7 @@ class_name ArmourItem
 
 onready var armourInstance = $ArmourInstance
 
-var shield = 0
+export var shield = 0
 var movementPenalty = 0
 var armourType
 

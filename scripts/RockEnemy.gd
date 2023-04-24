@@ -12,20 +12,21 @@ func _process(delta):
 	._process(delta)
 	if _dead():
 		queue_free()
-	raycast_sweep()
-	get_node("Label").text = var2str(state)
-	if(get_parent().playerInSafeZone):
-		state = IDLE
-	#State machine
-	match state:
-		CHASE:
-			_chase(delta)
-		INVESTIGATE:
-			_investigate(delta)
-		ATTACK:
-			_chase(delta)
-			get_node("RockThrower").primaryFire()
-	pass
+	if !frozen:
+		raycast_sweep()
+		get_node("Label").text = var2str(state)
+		if(get_parent().playerInSafeZone):
+			state = IDLE
+		#State machine
+		match state:
+			CHASE:
+				_chase(delta)
+			INVESTIGATE:
+				_investigate(delta)
+			ATTACK:
+				_chase(delta)
+				get_node("RockThrower").primaryFire()
+		
 
 func _chase(delta):
 	if(can_see_player()):

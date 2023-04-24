@@ -9,10 +9,6 @@ func get_class():
 func _process(delta):
 	._process(delta)
 	look_at(get_parent().get_parent().get_node("Player").position)
-	if($MuzzleFlash.is_visible()):
-		timer-=delta*1000
-		if(timer <= 0):
-			$MuzzleFlash.set_visible(false)
 
 func primaryFire():
 	if self.reloadAndShootDelay <= 0:
@@ -20,7 +16,6 @@ func primaryFire():
 		var target = get_parent().get_parent().get_node("Player").position
 		var direction_to_mouse = $BarrelEnd.global_position.direction_to(target).normalized();
 		$ShootSFX.play(0)
-		$MuzzleFlash.set_visible(true)
 		timer = shootTimeMS
 		get_parent().get_parent().get_node("Player").emit_signal("player_shot", 
 											bullet_instance,

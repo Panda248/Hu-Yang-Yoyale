@@ -6,7 +6,8 @@ extends NPC
 # var a = 2
 # var b = "text"
 var playerInMeleeRange = false
-
+export var attackCooldown = 1
+var canAttack = true
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -19,23 +20,30 @@ func _process(delta):
 	._process(delta)
 	if _dead():
 		queue_free()
-	raycast_sweep()
-	get_node("Label").text = var2str(state)
-	if(get_parent().playerInSafeZone):
-		state = IDLE
-	#State machine
-	match state:
-		CHASE:
-			_chase(delta)
-		INVESTIGATE:
-			_investigate(delta)
-		ATTACK:
-			_chase(delta)
-			if randf() > 0.5:
-				get_node("Fists").primaryFire()
-			else:
-				get_node("Fists").secondaryFire()
-	pass
+	if(!frozen):
+		raycast_sweep()
+		get_node("Label").text = var2str(state)
+		
+		#State machine
+		match state:
+			CHASE:
+				if(get_parent().playerInSafeZone):
+					state = IDLE
+					pass
+				_chase(delta)
+			INVESTIGATE:
+				_investigate(delta)
+			ATTACK:
+				_chase(delta)
+
+				if(canAttack):
+					canAttack = false
+					$attackTimer.start(attackCooldown)
+					if randf() > 0.5:
+						get_node("Fists").primaryFire()
+					else:
+						get_node("Fists").secondaryFire()
+
 
 func _chase(delta):
 	if(can_see_player()):
@@ -102,15 +110,22 @@ func can_see_player() -> bool:
 
 func raycast_sweep() -> void:
 	if(can_see_player()):
-		if(playerInMeleeRange):
-			state = ATTACK
-			return
 		if state != ATTACK:
 			state = CHASE
+			print("chasing")
+			pass
+		if(playerInMeleeRange):
+			state = ATTACK
+			print("attacking")
 
 
 
 
 func _on_alertTimer_timeout():
 	$alert.visible = false;
+	pass # Replace with function body.
+
+
+func _on_attackTimer_timeout():
+	canAttack = true
 	pass # Replace with function body.

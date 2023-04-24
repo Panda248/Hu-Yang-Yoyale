@@ -6,6 +6,7 @@ onready var drop = $Drop
 var holding_item = null
 var playerNode 
 var attachmentSystem
+var armorSystem
 
 func set_holding_item(i):
 	holding_item = i
@@ -17,6 +18,7 @@ func set_holding_item(i):
 func _ready():
 	playerNode = find_parent("Player")
 	attachmentSystem = playerNode.find_node("AttachmentSystem")
+	armorSystem = playerNode.find_node("ArmourSystem")
 	for inv_slot in inventory_slots.get_children():
 		inv_slot.connect("pressed", self, "pressed", [inv_slot])
 		inv_slot.focus_mode = FOCUS_NONE
@@ -33,7 +35,7 @@ func _process(delta):
 			attachmentSystem.set_holding_item(holding_item)
 	else:
 		attachmentSystem.visible = false
-		
+	armorSystem.set_holding_item(holding_item)
 	if(is_instance_valid(holding_item)):
 		$HoldingItem.set_texture(holding_item.find_node("Icon").texture)
 		$HoldingItem.set_position(get_global_mouse_position() - $HoldingItem.rect_size/2 - get_position())
