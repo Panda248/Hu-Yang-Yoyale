@@ -7,7 +7,11 @@ func _ready():
 	$ProgressBar.max_value = self.max_value * 100
 	$ProgressBar.value = $ProgressBar.max_value
 
+var parent_rotation 
+
 func _process(delta):
+	parent_rotation = get_owner().rotation
+	set_rotation(-parent_rotation);
 	self.value = get_owner().health
 	if($ProgressBar.value != self.value*100):
 		$ProgressBar.value -= ($ProgressBar.value - self.value*100)*animationSpeed

@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://scripts/Necromancer.gd" type="Script" id=1]
 [ext_resource path="res://scripts/HurtBox.gd" type="Script" id=2]
@@ -7,6 +7,24 @@
 [ext_resource path="res://Scythe.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Fists.tscn" type="PackedScene" id=6]
 [ext_resource path="res://res/exported/sprites/alert.png" type="Texture" id=7]
+[ext_resource path="res://res/exported/fonts/GajrajOne-Regular.ttf" type="DynamicFontData" id=8]
+[ext_resource path="res://scripts/HealthBar.gd" type="Script" id=9]
+
+[sub_resource type="StyleBoxFlat" id=8]
+bg_color = Color( 1, 0, 0, 0 )
+
+[sub_resource type="StyleBoxFlat" id=9]
+bg_color = Color( 1, 0.317647, 0.317647, 1 )
+border_width_top = 10
+border_width_bottom = 10
+border_color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="StyleBoxFlat" id=10]
+bg_color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="DynamicFont" id=11]
+size = 36
+font_data = ExtResource( 8 )
 
 [sub_resource type="CircleShape2D" id=1]
 
@@ -57,9 +75,59 @@ polygon = PoolVector2Array( -8, -8, -2, -11, 2, -11, 8, -8, 11, -2, 11, 2, 8, 8,
 script = ExtResource( 1 )
 velocity = 60
 maxHealth = 120
+health = 120
 rotationSpeedDegrees = 90
 angleOfVisionDegrees = 110
 maxViewDistance = 400.0
+
+[node name="Health" type="Control" parent="."]
+anchor_top = 0.7
+anchor_right = 0.3
+anchor_bottom = 0.9
+
+[node name="ColorRect" type="ColorRect" parent="Health"]
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.8
+color = Color( 0, 0, 0, 1 )
+
+[node name="HealthBar" type="ProgressBar" parent="Health"]
+anchor_bottom = 0.5
+margin_left = -100.0
+margin_top = -78.0
+margin_right = 100.0
+margin_bottom = -58.0
+custom_styles/bg = SubResource( 8 )
+value = 50.0
+percent_visible = false
+script = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="ProgressBar" type="ProgressBar" parent="Health/HealthBar"]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_styles/fg = SubResource( 9 )
+custom_styles/bg = SubResource( 10 )
+value = 60.0
+percent_visible = false
+
+[node name="HealthLabel" type="Label" parent="Health"]
+anchor_left = 0.01
+anchor_top = 0.3
+anchor_right = 0.01
+anchor_bottom = 0.5
+margin_left = -110.0
+margin_top = -119.0
+margin_right = 189.0
+margin_bottom = -65.0
+rect_scale = Vector2( 0.75, 0.75 )
+custom_fonts/font = SubResource( 11 )
+text = "NECROMANCER"
+align = 1
+valign = 1
 
 [node name="Body" type="CollisionShape2D" parent="."]
 modulate = Color( 0.054902, 0.992157, 0.968627, 1 )
