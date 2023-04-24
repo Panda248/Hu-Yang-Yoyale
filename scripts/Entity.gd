@@ -13,6 +13,10 @@ var frozen_duration = 0
 func _ready():
 	connect("emit_damage_number", get_tree().current_scene.get_node("DmgNumberManager"), "spawn_damage_number")
 
+func _process(delta):
+	freezeTimer+= 1;
+	freezeManager()
+
 func _physics_process(delta):
 	knockback = knockback.move_toward(Vector2.ZERO, 200*delta)
 	knockback = move_and_slide(knockback)
@@ -25,7 +29,17 @@ func _physics_process(delta):
 func takeDamage(damage : int):
 	get_node("damageFlash").play("damageFlash")
 	health -= damage
-	
+
+var freezeTimer = 300
+
+func freezeFX():
+	freezeTimer = 0;
+
+func freezeManager():
+	if (freezeTimer < 300):
+		get_node("freeze").play("freeze")
+		velocity = 0;
+
 func takeKnockback(hitbox : HitBox):
 	knockback = hitbox.knockbackDirection * hitbox.knockbackMultiplier
 	
