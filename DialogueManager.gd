@@ -1,5 +1,6 @@
 extends CanvasLayer
 
 func startDialog(name : String):
-	var dialog = Dialogic.start(name)
-	add_child(dialog)
+	if(!get_children()):
+		var dialog = Dialogic.start(name)
+		add_child(dialog)

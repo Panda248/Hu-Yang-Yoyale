@@ -293,8 +293,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 custom_styles/fg = SubResource( 17 )
 custom_styles/bg = SubResource( 8 )
-step = 65.357
-value = 60.0
+value = 65.357
 percent_visible = false
 
 [node name="ArmorLabel" type="Label" parent="UI/Armour"]

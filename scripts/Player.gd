@@ -166,6 +166,8 @@ func takeDamage(damage):
 	if(curShield > 0):
 		remainingDamage -= curShield
 		curShield -= damage
+		if(remainingDamage < 0):
+			remainingDamage = 0
 		print(var2str(curShield))
 		if(curShield < 0):
 			curShield = 0
