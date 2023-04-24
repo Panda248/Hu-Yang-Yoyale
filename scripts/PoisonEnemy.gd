@@ -19,12 +19,17 @@ func _process(delta):
 	#State machine
 	match state:
 		CHASE:
-			_chase(delta)
+			spinShot()
 		INVESTIGATE:
 			_investigate(delta)
 		ATTACK:
-			_chase(delta)
-			get_node("PoisonThrower").primaryFire()
+			if (player.position.distance_to(self.position) < 150):
+				spinShot()
+				get_node("PoisonThrower").primaryFire()
+			else:
+				get_node("PoisonThrower").fireRate = 300;
+				_chase(delta)
+				get_node("PoisonThrower").primaryFire()
 	pass
 
 var jumping
@@ -35,13 +40,24 @@ func jump():
 	jumping = true
 	peaked = false
 
+var rotationdegrees = 0
+
+func spinShot():
+	get_node("PoisonThrower").fireRate = 2;
+	
+	rotationdegrees += 0.1
+	print(rotation_degrees)
+	rotationdegrees = clamp(rotationdegrees, 0, 360)
+	global_rotation = rotationdegrees
+	pass
+
 func _chase(delta):
 	if(can_see_player()):
 		if (!jumping):
 			slowly_rotate_to(player, delta)
-			velocity = 50
+			velocity = 100
 		else:
-			velocity = 75
+			velocity = 150
 			if (get_node("Body/Sprite").scale.x < 0.35 && !peaked):
 				get_node("Body/Sprite").scale += Vector2(0.001, 0.001)
 			if (get_node("Body/Sprite").scale.x >= 0.35):

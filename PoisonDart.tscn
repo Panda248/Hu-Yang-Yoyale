@@ -40,6 +40,7 @@ color_ramp = SubResource( 7 )
 [node name="PoisonDart" type="KinematicBody2D"]
 scale = Vector2( 0.25, 0.25 )
 script = ExtResource( 1 )
+speed = 7
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2( 0.259836, 0.259836 )
@@ -65,6 +66,7 @@ shape = SubResource( 2 )
 [node name="Explosion" type="Node2D" parent="."]
 
 [node name="Particles2D" type="Particles2D" parent="Explosion"]
+visible = false
 modulate = Color( 0.0470588, 0.752941, 0.0666667, 1 )
 amount = 10
 preprocess = 44.04

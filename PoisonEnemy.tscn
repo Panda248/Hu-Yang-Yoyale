@@ -16,7 +16,7 @@ radius = 11.0454
 radius = 100.0
 
 [sub_resource type="CircleShape2D" id=4]
-radius = 17.0294
+radius = 37.054
 
 [sub_resource type="Animation" id=5]
 resource_name = "damageFlash"
@@ -39,12 +39,15 @@ polygon = PoolVector2Array( -17, -18, -15, -17, -7, -22, 5, -22, 10, -21, 14, -1
 
 [node name="PoisonEnemy" type="KinematicBody2D"]
 script = ExtResource( 5 )
-maxHealth = 5
-rotationSpeedDegrees = 90
-angleOfVisionDegrees = 80
+velocity = 100
+maxHealth = 200
+rotationSpeedDegrees = 100
+angleOfVisionDegrees = 110
+maxViewDistance = 300.0
 
 [node name="PoisonThrower" parent="." instance=ExtResource( 1 )]
-position = Vector2( 13, 0 )
+position = Vector2( 39, 0 )
+damage = 2
 fireRate = 300
 
 [node name="Body" type="CollisionShape2D" parent="."]
@@ -52,7 +55,7 @@ modulate = Color( 0.054902, 0.992157, 0.968627, 1 )
 shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="Body"]
-scale = Vector2( 0.25, 0.25 )
+scale = Vector2( 0.75, 0.75 )
 texture = ExtResource( 3 )
 
 [node name="HurtBox" type="Area2D" parent="."]
@@ -95,7 +98,7 @@ custom_fonts/font = ExtResource( 4 )
 [node name="LightOccluder2D" type="LightOccluder2D" parent="."]
 visible = false
 rotation = 1.5708
-scale = Vector2( 0.5, 0.5 )
+scale = Vector2( 1.5, 1.5 )
 occluder = SubResource( 6 )
 
 [node name="alert" type="Sprite" parent="."]
