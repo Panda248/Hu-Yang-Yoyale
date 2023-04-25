@@ -24,7 +24,7 @@
 			"character": "character-1678799213.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "They say the eyes are the windows to the soul..."
+			"text": "You really want to go in there?"
 		},
 		{
 			"character": "character-1678799213.json",
@@ -33,10 +33,10 @@
 
 			],
 			"portrait": "",
-			"question": "But what about computers?"
+			"question": "You really shouldn't. Theres a huge frog!"
 		},
 		{
-			"choice": "I'm sorry?",
+			"choice": "Frog?",
 			"condition": "",
 			"definition": "",
 			"event_id": "dialogic_011",
@@ -46,20 +46,19 @@
 			"character": "character-1678799213.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "Ah nothing, just muttering to myself"
-		},
-		{
-			"choice": "Well obviously it's the windows",
-			"condition": "",
-			"definition": "",
-			"event_id": "dialogic_011",
-			"value": ""
+			"text": "That thing will shower you in poison darts"
 		},
 		{
 			"character": "character-1678799213.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "haha! you are funny!"
+			"text": "My friend kenny went in there and died!"
+		},
+		{
+			"character": "character-1678799213.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "That bastard!"
 		},
 		{
 			"event_id": "dialogic_013"
@@ -68,6 +67,6 @@
 	"metadata": {
 		"dialogic-version": "1.4.5",
 		"file": "timeline-1680072514.json",
-		"name": "ho"
+		"name": "Frog"
 	}
 }

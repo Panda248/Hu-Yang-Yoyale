@@ -24,13 +24,13 @@
 			"character": "character-1678799213.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "I've been trapped in this maze for days"
+			"text": "Hey!"
 		},
 		{
 			"character": "character-1678799213.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "Please send some help"
+			"text": "Watch out!"
 		},
 		{
 			"character": "character-1678799213.json",
@@ -39,10 +39,10 @@
 
 			],
 			"portrait": "",
-			"question": "I'm being held here against my will by those evil developers!!!"
+			"question": "Theres so many zombies here!"
 		},
 		{
-			"choice": "Oh no!!!",
+			"choice": "zombies?",
 			"condition": "",
 			"definition": "",
 			"event_id": "dialogic_011",
@@ -52,10 +52,16 @@
 			"character": "character-1678799213.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "Please tell them to free me!!!"
+			"text": "Yeah!"
 		},
 		{
-			"choice": "Not my problem",
+			"character": "character-1678799213.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "You gotta arm yourself man"
+		},
+		{
+			"choice": "The fog",
 			"condition": "",
 			"definition": "",
 			"event_id": "dialogic_011",
@@ -65,7 +71,17 @@
 			"character": "character-1678799213.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "You're so cruel T-T"
+			"text": "thefogiscomingthefogiscomingthefogiscomingthefogiscomingthefogiscomingthefogiscomingthefogiscomingthefogiscomingthefogiscomingthefogiscomingthefogiscomingthefogiscomingthefogiscomingthefogiscomingthefogiscomingthefogiscomingthefogiscomingthefogiscomingthefogiscomingthefogiscomingthefogiscomingthefogiscomingthefogiscomingthefogiscomingthefogiscoming"
+		},
+		{
+			"character": "character-1678799213.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "save me"
+		},
+		{
+			"change_scene": "res://Death.tscn",
+			"event_id": "dialogic_041"
 		},
 		{
 			"event_id": "dialogic_013"
@@ -74,6 +90,6 @@
 	"metadata": {
 		"dialogic-version": "1.4.5",
 		"file": "timeline-1680072710.json",
-		"name": "timeline-1680072710"
+		"name": "intro"
 	}
 }

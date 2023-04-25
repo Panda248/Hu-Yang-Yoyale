@@ -434,22 +434,23 @@ pause_mode = 1
 
 [node name="InteractableNPC" parent="InteractableNPCs" instance=ExtResource( 10 )]
 position = Vector2( 330, -44 )
-message = "Enter the Maze if you DARE"
+dialogeTimeline = "intro"
 
 [node name="InteractableNPC2" parent="InteractableNPCs" instance=ExtResource( 10 )]
-position = Vector2( 109, -401 )
-dialogeTimeline = "timeline-1680070535.json"
+position = Vector2( 597, -1545 )
+dialogeTimeline = "Frog"
 
 [node name="InteractableNPC3" parent="InteractableNPCs" instance=ExtResource( 10 )]
 position = Vector2( 1026, -987 )
+dialogeTimeline = "bunker"
 
 [node name="InteractableNPC4" parent="InteractableNPCs" instance=ExtResource( 10 )]
 position = Vector2( -357, -1341 )
-dialogeTimeline = "timeline-1680072615.json"
+dialogeTimeline = "Necro"
 
 [node name="InteractableNPC5" parent="InteractableNPCs" instance=ExtResource( 10 )]
-position = Vector2( 29, -2215 )
-dialogeTimeline = "timeline-1680072514.json"
+position = Vector2( -185, 111 )
+dialogeTimeline = "review"
 
 [connection signal="timeout" from="DNTimer" to="." method="_on_DNTimer_timeout"]
 [connection signal="timeout" from="enemyspawn/Timer" to="enemyspawn" method="_on_Timer_timeout"]

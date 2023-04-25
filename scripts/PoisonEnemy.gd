@@ -59,13 +59,13 @@ func _chase(delta):
 			velocity = 100
 		else:
 			velocity = 150
-			if (get_node("Body/Sprite").scale.x < 0.35 && !peaked):
+			if (get_node("Body/Sprite").scale.x < 0.85 && !peaked):
 				get_node("Body/Sprite").scale += Vector2(0.001, 0.001)
-			if (get_node("Body/Sprite").scale.x >= 0.35):
+			if (get_node("Body/Sprite").scale.x >= 0.85):
 				peaked = true;
-			if (peaked && get_node("Body/Sprite").scale.x > 0.25):
+			if (peaked && get_node("Body/Sprite").scale.x > 0.65):
 				get_node("Body/Sprite").scale -= Vector2(0.001, 0.001);
-			if (peaked && get_node("Body/Sprite").scale.x == 0.25):
+			if (peaked && get_node("Body/Sprite").scale.x == 0.65):
 				jumping = false
 				get_node("Body/Sprite").texture = load("res://res/exported/sprites/frog.png")
 		move_forward(delta)

@@ -27,20 +27,32 @@
 
 			],
 			"portrait": "",
-			"question": "What do you think these things are?"
+			"question": "Hey don't go into the desert!"
 		},
 		{
-			"choice": "uhhh....zombies?",
+			"choice": "Why?",
 			"condition": "",
 			"definition": "",
 			"event_id": "dialogic_011",
 			"value": ""
 		},
 		{
-			"character": "",
+			"character": "character-1678799213.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "NO WAY! Don't you know zombies don't exist!?"
+			"text": "Theres a Necromancer"
+		},
+		{
+			"character": "character-1678799213.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "It summons throwers and slashes at you"
+		},
+		{
+			"character": "character-1678799213.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Be careful! Those slashes are toxic!"
 		},
 		{
 			"event_id": "dialogic_013"
@@ -49,6 +61,6 @@
 	"metadata": {
 		"dialogic-version": "1.4.5",
 		"file": "timeline-1680072615.json",
-		"name": "hi"
+		"name": "Necro"
 	}
 }
