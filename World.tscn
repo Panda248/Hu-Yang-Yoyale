@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=2]
+[gd_scene load_steps=59 format=2]
 
 [ext_resource path="res://FlashlightItem.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Player.tscn" type="PackedScene" id=2]
@@ -38,12 +38,19 @@
 [ext_resource path="res://res/sand.png" type="Texture" id=36]
 [ext_resource path="res://res/water.tres" type="Texture" id=37]
 [ext_resource path="res://PoisonEnemy.tscn" type="PackedScene" id=38]
+[ext_resource path="res://Enemy.tscn" type="PackedScene" id=39]
+[ext_resource path="res://RockEnemy.tscn" type="PackedScene" id=40]
+[ext_resource path="res://Necromancer.tscn" type="PackedScene" id=41]
+[ext_resource path="res://SpeedPotion.tscn" type="PackedScene" id=42]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 172, 81.5 )
+extents = Vector2( 470, 563.875 )
+
+[sub_resource type="RectangleShape2D" id=24]
+extents = Vector2( 668, 668.25 )
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 500, 161 )
+extents = Vector2( 131, 160 )
 
 [sub_resource type="OccluderPolygon2D" id=13]
 polygon = PoolVector2Array( 0, 0, 64, 0, 64, 64, 0, 64 )
@@ -314,13 +321,30 @@ collision_layer = 5
 collision_mask = 5
 
 [node name="PoisonPlant" parent="." instance=ExtResource( 34 )]
+position = Vector2( 206, -1485 )
+
+[node name="PoisonPlant2" parent="." instance=ExtResource( 34 )]
+position = Vector2( 1118, -1408 )
+
+[node name="PoisonPlant3" parent="." instance=ExtResource( 34 )]
+position = Vector2( 274, -1166 )
+
+[node name="PoisonPlant4" parent="." instance=ExtResource( 34 )]
+position = Vector2( 449, -661 )
+
+[node name="PoisonPlant5" parent="." instance=ExtResource( 34 )]
+position = Vector2( -278, -735 )
+
+[node name="Necromancer" parent="." instance=ExtResource( 41 )]
+position = Vector2( -1271, -1482 )
 
 [node name="PoisonEnemy" parent="." instance=ExtResource( 38 )]
+position = Vector2( 919, -1838 )
 
 [node name="Crates" type="Node2D" parent="."]
 
 [node name="Crate" parent="Crates" instance=ExtResource( 12 )]
-position = Vector2( 77, -84 )
+position = Vector2( 203, -147 )
 itemScenes = [ ExtResource( 9 ), ExtResource( 4 ), ExtResource( 20 ), ExtResource( 18 ), ExtResource( 3 ) ]
 
 [node name="Crate2" parent="Crates" instance=ExtResource( 12 )]
@@ -329,7 +353,7 @@ itemScenes = [ ExtResource( 24 ), ExtResource( 29 ), ExtResource( 32 ), ExtResou
 
 [node name="Crate3" parent="Crates" instance=ExtResource( 12 )]
 position = Vector2( 90, -12 )
-itemScenes = [ ExtResource( 23 ), ExtResource( 28 ), ExtResource( 1 ) ]
+itemScenes = [ ExtResource( 23 ), ExtResource( 28 ), ExtResource( 1 ), ExtResource( 42 ) ]
 
 [node name="BulletManager" type="Node2D" parent="."]
 script = ExtResource( 5 )
@@ -350,15 +374,28 @@ script = ExtResource( 15 )
 DamageNumber = ExtResource( 16 )
 
 [node name="enemyspawn" type="Area2D" parent="."]
-position = Vector2( 203, -27 )
+position = Vector2( 368, -1020 )
 script = ExtResource( 26 )
+enemies = [ ExtResource( 39 ) ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="enemyspawn"]
 modulate = Color( 1, 0, 0, 0.184314 )
-position = Vector2( -200, 384 )
 shape = SubResource( 1 )
 
 [node name="Timer" type="Timer" parent="enemyspawn"]
+wait_time = 5.0
+autostart = true
+
+[node name="enemyspawn2" type="Area2D" parent="."]
+position = Vector2( -1171, -1770 )
+script = ExtResource( 26 )
+enemies = [ ExtResource( 40 ) ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="enemyspawn2"]
+modulate = Color( 1, 0, 0, 0.184314 )
+shape = SubResource( 24 )
+
+[node name="Timer" type="Timer" parent="enemyspawn2"]
 wait_time = 5.0
 autostart = true
 
@@ -368,7 +405,7 @@ script = ExtResource( 27 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SafeZone"]
 modulate = Color( 0.356863, 1, 0.486275, 0.301961 )
-position = Vector2( -112, -2087 )
+position = Vector2( 1036, -775 )
 shape = SubResource( 2 )
 
 [node name="PauseScreen" parent="." instance=ExtResource( 21 )]
@@ -416,3 +453,4 @@ dialogeTimeline = "timeline-1680072514.json"
 
 [connection signal="timeout" from="DNTimer" to="." method="_on_DNTimer_timeout"]
 [connection signal="timeout" from="enemyspawn/Timer" to="enemyspawn" method="_on_Timer_timeout"]
+[connection signal="timeout" from="enemyspawn2/Timer" to="enemyspawn2" method="_on_Timer_timeout"]

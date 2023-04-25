@@ -45,7 +45,6 @@ angleOfVisionDegrees = 90
 maxViewDistance = 200.0
 
 [node name="Body" type="CollisionShape2D" parent="."]
-modulate = Color( 1, 0, 0, 1 )
 shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="Body"]

@@ -6,7 +6,7 @@ func _ready():
 	._ready()
 	item_name = "SCOPE"
 	item_type = "ATTACHMENT"
-	zoomValue = 0.5;
+	zoomValue = 0.8;
 
 func pick_up(player):
 	.pick_up(player)

@@ -12,6 +12,7 @@ var trauma = 0.0  # Current shake strength.
 var trauma_power = 3  # Trauma exponent. Use [2, 3]
 var noise_y = 0
 var targetZoom = Vector2(0.5,0.5)
+var zoomMultiplier = 1
 var zoomSpeed = 5
 
 func _ready():
@@ -25,9 +26,9 @@ func add_trauma(amount):
 	
 func _process(delta):
 	if zoom != targetZoom:
-		if abs(targetZoom.x-zoom.x) < 0.001:
-			zoom = targetZoom
-		zoom += (targetZoom-zoom)*zoomSpeed*delta
+		if abs(targetZoom.x*zoomMultiplier-zoom.x) < 0.001:
+			zoom = targetZoom*zoomMultiplier
+		zoom += (targetZoom*zoomMultiplier-zoom)*zoomSpeed*delta
 	if trauma:
 		trauma = max(trauma - traumaDecay * delta, 0)
 		shake()

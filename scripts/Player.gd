@@ -29,6 +29,7 @@ export var totalShield = 0;
 
 export var curShield = 0;
 export var defaultZoom = .4
+var tempZoom = defaultZoom
 export var dayZoom = .4
 export var nightZoom = .25
 
@@ -225,7 +226,11 @@ func alertEnemies(radius):
 	emit_signal("alert_enemies", alert, global_position, radius)
 
 func setZoom(value):
+	tempZoom = $Camera2D.targetZoom.x
 	$Camera2D.targetZoom = Vector2(value,value)
+
+func scaleZoom(value):
+	$Camera2D.zoomMultiplier=value
 
 func resetZoom():
 	$Camera2D.targetZoom = Vector2(defaultZoom, defaultZoom)
@@ -254,6 +259,7 @@ func decayFX():
 	decayTimer = 0;
 
 func speedFX():
+	scaleZoom(1.5)
 	speedTimer = 0;
   
 func availableInventory():
@@ -266,26 +272,32 @@ func effectManager():
 	speedTimer += 1
 	if (healTimer < 30):
 		$Effects/HealFX.visible = true
+		$Effects/HealFX.emitting = true
 	else:
 		$Effects/HealFX.visible = false
+		$Effects/HealFX.emitting = false
 	if (poisonTimer < 300):
 		$Effects/PoisonFX.visible = true
+		$Effects/PoisonFX.emitting = true
 		if (poisonTimer % 100 == 0):
 			takeDamage(0.5)
 			health -= 0.5
 	else:
 		$Effects/PoisonFX.visible = false
+		$Effects/PoisonFX.emitting = false
 	if (decayTimer < 400):
 		$Effects/DecayFX.visible = true
 	else:
 		$Effects/DecayFX.visible = false
+		$Effects/DecayFX.emitting = false
 	if (speedTimer < 1000):
 		$Effects/SpeedFX.visible = true
-		setZoom(0.6)
-		velocity = 130;
+		$Effects/SpeedFX.emitting = true
+		velocity = 150;
 	else:
+		scaleZoom(1)
 		$Effects/SpeedFX.visible = false
-		resetZoom()
+		$Effects/SpeedFX.emitting = false
 		velocity = 100;
 
 func dayNightZoom(night):

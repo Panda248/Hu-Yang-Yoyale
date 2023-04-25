@@ -1,5 +1,6 @@
 extends Area2D
 
+export (Array, PackedScene) var enemies
 onready var enemy = preload("res://Enemy.tscn")
 onready var thrower = preload("res://RockEnemy.tscn")
 export var period : int = 10
@@ -15,13 +16,11 @@ func _on_Timer_timeout():
 
 func spawnEnemy():
 	randomize()
-	var spawnPoint = Vector2(rand_range(0, $CollisionShape2D.shape.extents.x*2), rand_range(0, $CollisionShape2D.shape.extents.y*2))
+	var spawnPoint = Vector2(rand_range(0, $CollisionShape2D.shape.extents.x), rand_range(0, $CollisionShape2D.shape.extents.y))
 	var enemyCandidate = null
 	while enemyCandidate == null:
-		if randf() > 0.8:
-			enemyCandidate = enemy.instance()
-		else:
-			enemyCandidate = thrower.instance()
-		enemyCandidate.global_position = spawnPoint - global_position
+		enemyCandidate = enemies[randi()%enemies.size()].instance()
+
+		enemyCandidate.global_position = spawnPoint + global_position
 		#later create detection to stop enemies from spawning on eachother
 		get_node("/root/World").add_child(enemyCandidate)
