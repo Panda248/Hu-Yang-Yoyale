@@ -102,7 +102,7 @@ func equip(index):
 		if(hotbarArray[index].item_type == "WEAPON"):
 			find_parent("Player").resetZoom()
 			find_parent("Player").equippedWeapon = nextWeapon.weaponInstance
-			nextWeapon.set_global_position(get_parent().global_position + Vector2.DOWN*get_parent().weaponOffset)
+			nextWeapon.set_global_position(get_parent().global_position + Vector2.DOWN.rotated(get_parent().rotation)*get_parent().weaponOffset)
 			nextWeapon.refresh_attachments()
 		elif(hotbarArray[index].item_type == "CONSUMABLE"):
 			find_parent("Player").equippedWeapon = nextWeapon
