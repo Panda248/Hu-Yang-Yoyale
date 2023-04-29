@@ -13,7 +13,7 @@ var almostDead = false
 
 func _physics_process(delta: float) -> void:
 	totalTimeAlive += 1
-	if (totalDistanceTraveled >= 1500 || totalTimeAlive > 300):
+	if (totalDistanceTraveled >= 1500 || totalTimeAlive >= 300):
 		queue_free()
 	if (totalTimeAlive > 230):
 		modulate.a *= 0.9
@@ -23,11 +23,13 @@ func _physics_process(delta: float) -> void:
 		#$Explosion/Particles2D.amount = ;
 		var collision_info = move_and_collide(velocity);
 		if collision_info:
-			if (collision_info.get_collider() == find_parent("World").find_node("Player")):
+			if (find_parent("World").find_node("Player").is_a_parent_of(collision_info.get_collider_shape())):
 				find_parent("World").find_node("Player").poisonFX()
+				queue_free()
 			speed = 0
 			totalTimeAlive = 300
 			velocity = velocity.bounce(collision_info.normal)
+			
 		totalDistanceTraveled += velocity.length()
 	
 func set_direction(direction: Vector2):

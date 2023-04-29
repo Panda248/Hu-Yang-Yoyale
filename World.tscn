@@ -309,6 +309,9 @@ points = PoolVector2Array( 0, 0, 64, 0, 64, 64, 0, 64 )
 script = ExtResource( 6 )
 DeathScreen = ExtResource( 17 )
 
+[node name="PistolWeaponItem" parent="." instance=ExtResource( 4 )]
+position = Vector2( 82, -3 )
+
 [node name="DNTimer" type="Timer" parent="."]
 wait_time = 60.0
 autostart = true
@@ -344,15 +347,15 @@ position = Vector2( 919, -1838 )
 [node name="Crates" type="Node2D" parent="."]
 
 [node name="Crate" parent="Crates" instance=ExtResource( 12 )]
-position = Vector2( 203, -147 )
-itemScenes = [ ExtResource( 9 ), ExtResource( 4 ), ExtResource( 20 ), ExtResource( 18 ), ExtResource( 3 ) ]
+position = Vector2( 1111, -929 )
+itemScenes = [ ExtResource( 9 ), ExtResource( 20 ), ExtResource( 18 ), ExtResource( 3 ) ]
 
 [node name="Crate2" parent="Crates" instance=ExtResource( 12 )]
-position = Vector2( -76, -9 )
+position = Vector2( 1048, -1100 )
 itemScenes = [ ExtResource( 24 ), ExtResource( 29 ), ExtResource( 32 ), ExtResource( 31 ), ExtResource( 30 ) ]
 
 [node name="Crate3" parent="Crates" instance=ExtResource( 12 )]
-position = Vector2( 90, -12 )
+position = Vector2( 1118, -1106 )
 itemScenes = [ ExtResource( 23 ), ExtResource( 28 ), ExtResource( 1 ), ExtResource( 42 ) ]
 
 [node name="BulletManager" type="Node2D" parent="."]
@@ -400,6 +403,7 @@ wait_time = 5.0
 autostart = true
 
 [node name="SafeZone" type="Area2D" parent="."]
+visible = false
 position = Vector2( 22, -255 )
 script = ExtResource( 27 )
 

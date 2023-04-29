@@ -14,7 +14,7 @@ func primaryFire():
 	direction = direction.normalized()
 	var projectile = potion.instance()
 	projectile.direction = direction
-	projectile.global_position = global_position + Vector2.UP.rotated(global_rotation)*50
+	projectile.global_position = global_position + Vector2.UP.rotated(global_rotation)*70
 	find_parent("Player").emit_signal("player_project", projectile)
 	find_parent("Inventory").remove_item(get_parent())
 	pass
