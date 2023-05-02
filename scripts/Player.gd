@@ -63,7 +63,8 @@ func _process(delta):
 		
 		var _motion = Vector2();
 		
-		get_node("UI/ColorRect").color = Color(1,0,0,percent_health())
+		var bloodSplatter = clamp(percent_health(), 0, 0.5)
+		get_node("UI/ColorRect").color = Color(1,0,0, bloodSplatter)
 		if(health < maxHealth):
 			if(!heartbeat.is_playing()):
 				heartbeat.play()
@@ -177,7 +178,7 @@ func takeDamage(damage):
 		if(curShield < 0):
 			curShield = 0
 	health-=remainingDamage
-	get_node("UI/BloodSplatter").modulate.a = 1
+	get_node("UI/BloodSplatter").modulate.a = 0.1
 	$Camera2D.add_trauma(damage)
 
 func closest_node(node1, node2) -> Node:
