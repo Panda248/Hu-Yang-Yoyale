@@ -63,7 +63,7 @@ func _process(delta):
 		
 		var _motion = Vector2();
 		
-		var bloodSplatter = clamp(percent_health(), 0, 0.5)
+		var bloodSplatter = clamp(percent_health(), 0, 0.4)
 		get_node("UI/ColorRect").color = Color(1,0,0, bloodSplatter)
 		if(health < maxHealth):
 			if(!heartbeat.is_playing()):

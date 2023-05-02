@@ -16,6 +16,9 @@ signal update_UI_slot(slot, item)
 signal update_Hotbar_slot(slot, item)
 signal update_Hotbar_equipped(index)
 
+var lightAmmo
+var mediumAmmo
+var heavyAmmo
 
 func _ready():
 	inventoryGridArray.resize(size)
