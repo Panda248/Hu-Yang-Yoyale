@@ -25,10 +25,16 @@ func _ready():
 	hotbarArray.resize(cols)
 
 func add_item(item):
-	for i in range(size):
-		if(!inventoryGridArray[i]):
-			add_item_at_index(item, i)
-			return
+	if(get_hotbar().size() > 3):
+		for i in range(size):
+			if(!inventoryGridArray[i]):
+				add_item_at_index(item, i)
+				return
+	else:
+		for i in range(3):
+			if(!inventoryGridArray[i+6]):
+				add_item_at_index(item,i+6)
+				return
 
 func add_item_at_index(item, index):
 	if(index_in_hotbar(index)):

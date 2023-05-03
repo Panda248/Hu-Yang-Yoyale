@@ -64,7 +64,7 @@ func _process(delta):
 		var _motion = Vector2();
 		
 		var bloodSplatter = clamp(percent_health(), 0, 0.4)
-		get_node("UI/ColorRect").color = Color(1,0,0, bloodSplatter)
+		get_node("UI/ColorRect").color = Color(1,0,0, bloodSplatter - 0.05)
 		if(health < maxHealth):
 			if(!heartbeat.is_playing()):
 				heartbeat.play()
@@ -73,7 +73,7 @@ func _process(delta):
 		if(curStamina >= maxStamina):
 			curStamina = maxStamina
 		else:
-			curStamina+=staminaRegeneration*delta*Engine.get_iterations_per_second()
+			curStamina+=staminaRegeneration*delta*60
 
 		look_at(get_global_mouse_position());
 		
@@ -85,7 +85,7 @@ func _process(delta):
 		var modifiedVelocity = (velocity - 40 * equippedWeapon.getWeight()) * (health+5)/15
 		
 		
-		move_and_slide(direction * modifiedVelocity * delta * Engine.get_iterations_per_second());
+		move_and_slide(direction * modifiedVelocity * delta * 60);
 		
 		
 

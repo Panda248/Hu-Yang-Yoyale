@@ -141,7 +141,6 @@ smoothing_enabled = true
 script = ExtResource( 8 )
 
 [node name="Body" type="CollisionShape2D" parent="."]
-modulate = Color( 1, 0, 0, 1 )
 self_modulate = Color( 0, 0, 0, 0 )
 scale = Vector2( 1.00233, 1 )
 shape = SubResource( 1 )
