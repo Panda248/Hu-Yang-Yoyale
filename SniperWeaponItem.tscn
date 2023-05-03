@@ -45,7 +45,9 @@ texture = ExtResource( 5 )
 offset = Vector2( 100, 8 )
 script = ExtResource( 2 )
 damage = 5
-knockbackMultiplier = 200
+reloadTimeFrames = 180
+fireRate = 60
+knockbackMultiplier = 1000
 ammo_type = "HEAVY"
 Bullet = ExtResource( 3 )
 

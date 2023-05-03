@@ -40,5 +40,3 @@ func _on_Rock_body_shape_entered(body_rid, body, body_shape_index, local_shape_i
 		var collidedTilePos = breakableMap.world_to_map(global_position)
 		var collidedTileIndex = breakableMap.get_cell(collidedTilePos.x, collidedTilePos.y)
 		breakableMap.set_cell(collidedTilePos.x, collidedTilePos.y, collidedTileIndex-1)
-	if(penetration <= 0):
-		queue_free()
