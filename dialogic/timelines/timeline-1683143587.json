@@ -25,6 +25,14 @@
 			"event_id": "dialogic_001",
 			"portrait": "",
 			"text": "Welcome to the shop"
+		},
+		{
+			"event_id": "dialogic_022",
+			"transition_duration": 1
+		},
+		{
+			"emit_signal": "open_shop",
+			"event_id": "dialogic_040"
 		}
 	],
 	"metadata": {

@@ -18,7 +18,7 @@ func _process(delta):
 	freezeManager()
 
 func _physics_process(delta):
-	knockback = knockback.move_toward(Vector2.ZERO, 200*delta)
+	knockback = knockback.move_toward(Vector2.ZERO, 200)
 	knockback = move_and_slide(knockback)
 	if(frozen):
 		if(frozen_duration == 0):
@@ -53,4 +53,4 @@ func freeze():
 	pass
 
 func move_forward(delta):
-	move_and_slide(Vector2(velocity*delta*60,0).rotated(global_rotation))
+	move_and_slide(Vector2(velocity,0).rotated(global_rotation))

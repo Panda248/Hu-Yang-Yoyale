@@ -5,13 +5,14 @@ onready var enemy = preload("res://Enemy.tscn")
 onready var thrower = preload("res://RockEnemy.tscn")
 export var period : int = 10
 export var randomnError : int = 2
-
-
+onready var world = find_parent("World")
 
 func _on_Timer_timeout():
 	$Timer.wait_time = period + (randf()*randomnError*2 - randomnError)
 	$Timer.start()
-	spawnEnemy()
+	
+	if(world.enemies.size() > world.entityCap):
+		spawnEnemy()
 	pass # Replace with function body.
 
 func spawnEnemy():

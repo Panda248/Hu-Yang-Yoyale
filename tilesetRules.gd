@@ -3,7 +3,7 @@ extends TileSet
 
 const GRASS = 3
 const WALL = 2
-const SAND = 5
+const SAND = 7
 
 var binds = {
 	GRASS:[WALL],

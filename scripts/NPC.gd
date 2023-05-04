@@ -31,7 +31,7 @@ func slowly_rotate_to(target, delta):
 	var targetPosition = (target if target is Vector2 else target.global_position)
 	var direction = global_position.direction_to(targetPosition)
 	var angleTo = direction.angle()
-	var maxRotation = deg2rad(rotationSpeedDegrees) * delta
+	var maxRotation = deg2rad(rotationSpeedDegrees)
 	angleTo = lerp_angle(global_rotation, angleTo, 1.0)
 	angleTo = clamp(angleTo, global_rotation - maxRotation, global_rotation + maxRotation)
 	global_rotation = angleTo

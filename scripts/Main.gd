@@ -6,7 +6,9 @@ onready var bullet_manager = $BulletManager;
 onready var alert_manager = $AlertManager;
 onready var chatbox_manager = $ChatBoxManager
 onready var notification_manager = $NotificationManager
+var enemies = []
 export (PackedScene) var DeathScreen;
+export var entityCap = 100
 var playerInSafeZone = false
 var timeChange = .01
 var night = false

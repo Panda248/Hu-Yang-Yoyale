@@ -61,7 +61,7 @@ func _investigate(delta):
 		state = CHASE
 		pass
 	if(abs(get_angle_to(destination)) < deg2rad(10)):
-		motion = move_and_slide((destination - position).normalized() * velocity * delta * Engine.get_iterations_per_second())
+		motion = move_and_slide((destination - position).normalized() * velocity)
 	if position.distance_to(destination) < 10:
 		state = IDLE
 	pass
