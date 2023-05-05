@@ -56,6 +56,8 @@ func _process(delta):
 		#shield_remaining()
 		$InteractIndicator.global_rotation = 0
 		
+		$InteractIndicator.visible = interactables_nearby()
+		
 		effectManager()
 
 		if (health > maxHealth):
@@ -157,13 +159,12 @@ func _on_InteractBox_body_entered(body):
 		if(closest_node(body, targetInteractable) == body):
 			targetInteractable = body
 			targetInteractable.canInteract = true
-			$InteractIndicator.visible = true
 	
 func _on_InteractBox_body_exited(body):
 	if(targetInteractable == body):
 		targetInteractable.canInteract = false
 		targetInteractable = null
-		$InteractIndicator.visible = false
+
 
 func takeDamage(damage):
 	$HealTimer.wait_time = timeToHeal
@@ -200,7 +201,18 @@ func pick_up_nearby_items() -> void:
 		else:
 			find_parent("World").find_node("NotificationManager").notify("No Space", global_position, .5)
 	pass
-	
+
+func interactables_nearby() -> bool:
+	var overlappingAreas = $InteractBox.get_overlapping_areas()
+	var overlappingBodies = $InteractBox.get_overlapping_bodies()
+	for area in overlappingAreas:
+		if(area.has_method("pick_up")):
+			return true
+	for body in overlappingBodies:
+		if(body.has_method("interact")):
+			return true
+	return false
+
 func pick_up_weapon(weapon):
 	hotbar.add_child(weapon)
 	inventory.swap_weapon_right()
