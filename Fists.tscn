@@ -122,7 +122,6 @@ reloadTimeFrames = 30
 fireRate = 30
 reserveClips = -1
 knockbackMultiplier = 100
-alertRadius = 100
 weaponPen = 0
 
 [node name="HitBox" type="Area2D" parent="."]
@@ -141,12 +140,12 @@ anims/attackRight = SubResource( 5 )
 
 [node name="RightFist" type="Sprite" parent="."]
 position = Vector2( 0, 10 )
-scale = Vector2( 0.403271, 0.383996 )
+scale = Vector2( 0.1, 0.1 )
 texture = ExtResource( 3 )
 
 [node name="LeftFist" type="Sprite" parent="."]
 position = Vector2( 0, -10 )
-scale = Vector2( 0.4, 0.4 )
+scale = Vector2( 0.1, 0.1 )
 texture = ExtResource( 3 )
 
 [node name="Label" type="Label" parent="."]
