@@ -24,9 +24,9 @@ export var sneakAlertRadius = 25
 export var walkAlertRadius = 50
 export var runAlertRadius = 300
 export var timeToHeal = 3
-export var lightBullets = 0
-export var heavyBullets = 0
-export var shells = 0
+export var lightBullets : int = 0
+export var heavyBullets : int = 0
+export var shells : int = 0
 
 export var totalShield = 0;
 
