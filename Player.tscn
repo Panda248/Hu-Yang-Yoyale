@@ -254,7 +254,6 @@ local_coords = true
 texture = ExtResource( 31 )
 
 [node name="UI" type="CanvasLayer" parent="."]
-layer = 3
 visible = false
 script = ExtResource( 14 )
 
