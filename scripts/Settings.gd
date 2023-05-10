@@ -5,6 +5,7 @@ onready var globalVariables = get_node("/root/GlobalVariables")
 func _ready():
 	$ScreenShake/Slider.value = globalVariables.screenShakeIntensity
 	$Volume/Slider.value = globalVariables.volume
+	$FullScreen/CheckButton.pressed = OS.window_fullscreen
 	pass # Replace with function body.
 
 

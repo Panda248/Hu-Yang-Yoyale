@@ -314,6 +314,7 @@ autostart = true
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
 unique_name_in_owner = true
+z_as_relative = false
 collision_layer = 5
 collision_mask = 5
 
@@ -460,10 +461,6 @@ tile_set = SubResource( 22 )
 format = 1
 tile_data = PoolIntArray( -1179634, 3, 0, -1114098, 3, 0, -1048562, 3, 0, -983026, 3, 0 )
 
-[node name="Dialogue" type="CanvasLayer" parent="."]
-layer = 0
-script = ExtResource( 33 )
-
 [node name="InteractableNPCs" type="Node2D" parent="."]
 pause_mode = 1
 
@@ -486,6 +483,10 @@ dialogeTimeline = "Necro"
 [node name="InteractableNPC5" parent="InteractableNPCs" instance=ExtResource( 10 )]
 position = Vector2( -185, 111 )
 dialogeTimeline = "review"
+
+[node name="Dialogue" type="CanvasLayer" parent="."]
+layer = 2
+script = ExtResource( 33 )
 
 [connection signal="timeout" from="DNTimer" to="." method="_on_DNTimer_timeout"]
 [connection signal="timeout" from="enemyspawn/Timer" to="enemyspawn" method="_on_Timer_timeout"]
