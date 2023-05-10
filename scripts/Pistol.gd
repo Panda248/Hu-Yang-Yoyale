@@ -48,12 +48,3 @@ func primaryFire():
 
 func secondaryFire():
 	pass
-
-func reload():
-	if (currentClip < clip && self.reloadAndShootDelay <= 0 && reserveClips > 0):
-		currentClip = clip
-		reserveClips -= 1
-		self.reloadAndShootDelay = reloadTimeFrames
-		#$Reload.play("reload")
-		find_node("ReloadSFX").play(0)
-		

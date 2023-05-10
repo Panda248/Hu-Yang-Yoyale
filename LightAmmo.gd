@@ -1,12 +1,11 @@
 extends Item
 
+export var amount = 10
+
 func _ready():
 	._ready()
 	item_name = "LIGHT"
 
 func pick_up(player: Player):
-	.pick_up(player)
-	monitorable = false
-	monitoring = false
-	$Icon.visible = false
-	$Quantity.visible = false
+	player.addAmmo(amount, item_name)
+	queue_free()

@@ -51,7 +51,15 @@ func secondaryFire():
 	pass
 
 func reload():
-	pass
+	if (currentClip < clip && self.reloadAndShootDelay <= 0 && find_parent("Player").getAmmo(ammo_type) > 0):
+		if(find_parent("Player").getAmmo(ammo_type) < clip):
+			currentClip = find_parent("Player").getAmmo(ammo_type)
+			find_parent("Player").clearAmmo(ammo_type)
+		else:
+			currentClip = clip
+			find_parent("Player").removeAmmo(clip, ammo_type)
+		self.reloadAndShootDelay = reloadTimeFrames
+		$ReloadSFX.play(0)
 
 func suppress(value):
 	alertRadius*=value

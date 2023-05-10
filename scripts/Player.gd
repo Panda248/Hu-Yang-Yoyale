@@ -322,3 +322,32 @@ func dayNightZoom(night):
 	else:
 		defaultZoom = dayZoom
 	resetZoom()
+func addAmmo(amt, type):
+	match type:
+		"LIGHT":
+			lightBullets+=amt
+		"HEAVY":
+			heavyBullets+=amt
+		"SHOTGUN":
+			shells+=amt
+
+func getAmmo(type):
+	match type:
+		"LIGHT":
+			return lightBullets
+		"HEAVY":
+			return heavyBullets
+		"SHOTGUN":
+			return shells
+
+func clearAmmo(type):
+	match type:
+		"LIGHT":
+			lightBullets = 0
+		"Heavy":
+			heavyBullets = 0
+		"SHOTGUN":
+			heavyBullets = 0
+
+func removeAmmo(amt, type):
+	addAmmo(-amt, type)
