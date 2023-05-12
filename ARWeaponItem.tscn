@@ -47,7 +47,7 @@ script = ExtResource( 2 )
 currentClip = 20
 clip = 20
 knockbackMultiplier = 100
-ammo_type = "HEAVY"
+ammo_type = "MEDIUM"
 Bullet = ExtResource( 8 )
 
 [node name="BarrelEnd" type="Position2D" parent="WeaponInstance"]

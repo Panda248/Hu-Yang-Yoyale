@@ -7,7 +7,10 @@ func get_class():
 	return "PoisonThrower"
 
 func _process(delta):
-	._process(delta)
+	if(self.reloadAndShootDelay > 0):
+		self.reloadAndShootDelay-= delta*60
+	elif(currentClip == 0):
+		currentClip = clip
 	#look_at(get_parent().get_parent().get_node("Player").position)
 
 func primaryFire():

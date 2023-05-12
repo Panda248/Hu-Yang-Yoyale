@@ -25,6 +25,7 @@ export var walkAlertRadius = 50
 export var runAlertRadius = 300
 export var timeToHeal = 3
 export var lightBullets : int = 0
+export var mediumBullets : int = 0
 export var heavyBullets : int = 0
 export var shells : int = 0
 
@@ -326,6 +327,8 @@ func addAmmo(amt, type):
 	match type:
 		"LIGHT":
 			lightBullets+=amt
+		"MEDIUM":
+			mediumBullets+=amt
 		"HEAVY":
 			heavyBullets+=amt
 		"SHOTGUN":
@@ -335,6 +338,8 @@ func getAmmo(type):
 	match type:
 		"LIGHT":
 			return lightBullets
+		"MEDIUM":
+			return mediumBullets
 		"HEAVY":
 			return heavyBullets
 		"SHOTGUN":
@@ -344,7 +349,9 @@ func clearAmmo(type):
 	match type:
 		"LIGHT":
 			lightBullets = 0
-		"Heavy":
+		"MEDIUM":
+			mediumBullets = 0
+		"HEAVY":
 			heavyBullets = 0
 		"SHOTGUN":
 			heavyBullets = 0
