@@ -1,47 +1,48 @@
 [gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://Slot.gd" type="Script" id=1]
-[ext_resource path="res://res/exported/sprites/slot.png" type="Texture" id=2]
-[ext_resource path="res://res/exported/sprites/inventory.png" type="Texture" id=3]
-[ext_resource path="res://res/exported/fonts/GajrajOne-Regular.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://ShopSystem.gd" type="Script" id=2]
+[ext_resource path="res://res/exported/fonts/GajrajOne-Regular.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://res/exported/sprites/inventory.png" type="Texture" id=4]
+[ext_resource path="res://res/exported/sprites/slot.png" type="Texture" id=5]
 
 [sub_resource type="DynamicFont" id=1]
 size = 48
-font_data = ExtResource( 4 )
+font_data = ExtResource( 3 )
 
-[node name="Shop System" type="Control"]
+[node name="ShopSystem" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+script = ExtResource( 2 )
 
 [node name="TextureRect" type="TextureRect" parent="."]
 anchor_left = 0.2
 anchor_top = 0.2
 anchor_right = 0.8
 anchor_bottom = 0.8
-texture = ExtResource( 3 )
+texture = ExtResource( 4 )
 expand = true
 
 [node name="LightAmmo" type="Button" parent="."]
-margin_left = 23.0
-margin_top = 176.0
-margin_right = 125.0
-margin_bottom = 272.0
+margin_left = 500.0
+margin_top = 300.0
+margin_right = 602.0
+margin_bottom = 396.0
 focus_mode = 0
 mouse_filter = 1
 enabled_focus_mode = 0
-icon = ExtResource( 2 )
-script = ExtResource( 1 )
+icon = ExtResource( 5 )
 
 [node name="Title" type="Label" parent="LightAmmo"]
 anchor_left = 0.252
 anchor_right = 0.437
-margin_left = -5.704
+margin_left = -13.704
 margin_top = 92.0
-margin_right = 193.296
-margin_bottom = 164.0
+margin_right = 201.426
+margin_bottom = 239.0
 rect_scale = Vector2( 0.5, 0.5 )
 custom_fonts/font = SubResource( 1 )
-text = "Vest"
+text = "Light 
+Ammo"
 
 [node name="TextureRect" type="TextureRect" parent="LightAmmo"]
 margin_right = 104.0
@@ -53,26 +54,26 @@ margin_right = 40.0
 margin_bottom = 14.0
 
 [node name="HeavyAmmo" type="Button" parent="."]
-margin_left = 23.0
-margin_top = 176.0
-margin_right = 125.0
-margin_bottom = 272.0
+margin_left = 700.0
+margin_top = 300.0
+margin_right = 802.0
+margin_bottom = 396.0
 focus_mode = 0
 mouse_filter = 1
 enabled_focus_mode = 0
-icon = ExtResource( 2 )
-script = ExtResource( 1 )
+icon = ExtResource( 5 )
 
 [node name="Title" type="Label" parent="HeavyAmmo"]
 anchor_left = 0.252
 anchor_right = 0.437
-margin_left = -5.704
+margin_left = -18.704
 margin_top = 92.0
-margin_right = 193.296
-margin_bottom = 164.0
+margin_right = 206.426
+margin_bottom = 239.0
 rect_scale = Vector2( 0.5, 0.5 )
 custom_fonts/font = SubResource( 1 )
-text = "Vest"
+text = "Heavy 
+Ammo"
 
 [node name="TextureRect" type="TextureRect" parent="HeavyAmmo"]
 margin_right = 104.0
@@ -84,26 +85,26 @@ margin_right = 40.0
 margin_bottom = 14.0
 
 [node name="HealthPotion" type="Button" parent="."]
-margin_left = 23.0
-margin_top = 176.0
-margin_right = 125.0
-margin_bottom = 272.0
+margin_left = 900.0
+margin_top = 300.0
+margin_right = 1002.0
+margin_bottom = 396.0
 focus_mode = 0
 mouse_filter = 1
 enabled_focus_mode = 0
-icon = ExtResource( 2 )
-script = ExtResource( 1 )
+icon = ExtResource( 5 )
 
 [node name="Title" type="Label" parent="HealthPotion"]
 anchor_left = 0.252
 anchor_right = 0.437
-margin_left = -5.704
+margin_left = -19.704
 margin_top = 92.0
-margin_right = 193.296
-margin_bottom = 164.0
+margin_right = 207.426
+margin_bottom = 239.0
 rect_scale = Vector2( 0.5, 0.5 )
 custom_fonts/font = SubResource( 1 )
-text = "Vest"
+text = "Health
+Potion"
 
 [node name="TextureRect" type="TextureRect" parent="HealthPotion"]
 margin_right = 104.0
@@ -115,26 +116,26 @@ margin_right = 40.0
 margin_bottom = 14.0
 
 [node name="SpeedPotion" type="Button" parent="."]
-margin_left = 23.0
-margin_top = 176.0
-margin_right = 125.0
-margin_bottom = 272.0
+margin_left = 1100.0
+margin_top = 300.0
+margin_right = 1202.0
+margin_bottom = 396.0
 focus_mode = 0
 mouse_filter = 1
 enabled_focus_mode = 0
-icon = ExtResource( 2 )
-script = ExtResource( 1 )
+icon = ExtResource( 5 )
 
 [node name="Title" type="Label" parent="SpeedPotion"]
 anchor_left = 0.252
 anchor_right = 0.437
-margin_left = -5.704
+margin_left = -16.704
 margin_top = 92.0
-margin_right = 193.296
-margin_bottom = 164.0
+margin_right = 204.426
+margin_bottom = 239.0
 rect_scale = Vector2( 0.5, 0.5 )
 custom_fonts/font = SubResource( 1 )
-text = "Vest"
+text = "Speed
+Potion"
 
 [node name="TextureRect" type="TextureRect" parent="SpeedPotion"]
 margin_right = 104.0
@@ -146,26 +147,26 @@ margin_right = 40.0
 margin_bottom = 14.0
 
 [node name="FreezePotion" type="Button" parent="."]
-margin_left = 23.0
-margin_top = 176.0
-margin_right = 125.0
-margin_bottom = 272.0
+margin_left = 1300.0
+margin_top = 300.0
+margin_right = 1402.0
+margin_bottom = 396.0
 focus_mode = 0
 mouse_filter = 1
 enabled_focus_mode = 0
-icon = ExtResource( 2 )
-script = ExtResource( 1 )
+icon = ExtResource( 5 )
 
 [node name="Title" type="Label" parent="FreezePotion"]
 anchor_left = 0.252
 anchor_right = 0.437
-margin_left = -5.704
+margin_left = -19.704
 margin_top = 92.0
-margin_right = 193.296
-margin_bottom = 164.0
+margin_right = 207.426
+margin_bottom = 239.0
 rect_scale = Vector2( 0.5, 0.5 )
 custom_fonts/font = SubResource( 1 )
-text = "Vest"
+text = "Freeze
+Potion"
 
 [node name="TextureRect" type="TextureRect" parent="FreezePotion"]
 margin_right = 104.0
@@ -175,3 +176,9 @@ expand = true
 [node name="Label" type="Label" parent="FreezePotion"]
 margin_right = 40.0
 margin_bottom = 14.0
+
+[connection signal="pressed" from="LightAmmo" to="." method="_on_LightAmmo_pressed"]
+[connection signal="pressed" from="HeavyAmmo" to="." method="_on_HeavyAmmo_pressed"]
+[connection signal="pressed" from="HealthPotion" to="." method="_on_HealthPotion_pressed"]
+[connection signal="pressed" from="SpeedPotion" to="." method="_on_SpeedPotion_pressed"]
+[connection signal="pressed" from="FreezePotion" to="." method="_on_FreezePotion_pressed"]

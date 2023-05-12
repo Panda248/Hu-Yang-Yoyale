@@ -466,7 +466,7 @@ pause_mode = 1
 
 [node name="InteractableNPC" parent="InteractableNPCs" instance=ExtResource( 10 )]
 position = Vector2( 330, -44 )
-dialogeTimeline = "intro"
+dialogeTimeline = "shop"
 
 [node name="InteractableNPC2" parent="InteractableNPCs" instance=ExtResource( 10 )]
 position = Vector2( 597, -1545 )
