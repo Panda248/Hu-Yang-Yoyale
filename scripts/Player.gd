@@ -24,6 +24,9 @@ export var sneakAlertRadius = 25
 export var walkAlertRadius = 50
 export var runAlertRadius = 300
 export var timeToHeal = 3
+export var lightBullets : int = 0
+export var heavyBullets : int = 0
+export var shells : int = 0
 
 export var totalShield = 0;
 
@@ -319,3 +322,32 @@ func dayNightZoom(night):
 	else:
 		defaultZoom = dayZoom
 	resetZoom()
+func addAmmo(amt, type):
+	match type:
+		"LIGHT":
+			lightBullets+=amt
+		"HEAVY":
+			heavyBullets+=amt
+		"SHOTGUN":
+			shells+=amt
+
+func getAmmo(type):
+	match type:
+		"LIGHT":
+			return lightBullets
+		"HEAVY":
+			return heavyBullets
+		"SHOTGUN":
+			return shells
+
+func clearAmmo(type):
+	match type:
+		"LIGHT":
+			lightBullets = 0
+		"Heavy":
+			heavyBullets = 0
+		"SHOTGUN":
+			heavyBullets = 0
+
+func removeAmmo(amt, type):
+	addAmmo(-amt, type)

@@ -37,6 +37,7 @@ texture = ExtResource( 8 )
 [node name="Quantity" type="Label" parent="."]
 margin_right = 40.0
 margin_bottom = 14.0
+mouse_filter = 1
 
 [node name="WeaponInstance" type="Sprite" parent="."]
 visible = false

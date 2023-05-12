@@ -29,12 +29,27 @@ custom_fonts/font = SubResource( 1 )
 text = "Paused"
 align = 1
 
-[node name="Button" type="Button" parent="."]
+[node name="ResumeButton" type="Button" parent="."]
+pause_mode = 2
 margin_left = 431.0
 margin_top = 578.0
 margin_right = 1534.0
 margin_bottom = 671.0
+focus_mode = 0
 custom_fonts/font = SubResource( 2 )
+enabled_focus_mode = 0
 text = "RESUME"
 
-[connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
+[node name="ExitButton" type="Button" parent="."]
+pause_mode = 2
+margin_left = 431.0
+margin_top = 678.0
+margin_right = 1534.0
+margin_bottom = 771.0
+focus_mode = 0
+custom_fonts/font = SubResource( 2 )
+enabled_focus_mode = 0
+text = "Exit To Menu"
+
+[connection signal="pressed" from="ResumeButton" to="." method="_on_ResumeButton_pressed"]
+[connection signal="pressed" from="ExitButton" to="." method="_on_ExitButton_pressed"]

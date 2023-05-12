@@ -1,4 +1,4 @@
-[gd_scene load_steps=59 format=2]
+[gd_scene load_steps=62 format=2]
 
 [ext_resource path="res://FlashlightItem.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Player.tscn" type="PackedScene" id=2]
@@ -42,6 +42,9 @@
 [ext_resource path="res://RockEnemy.tscn" type="PackedScene" id=40]
 [ext_resource path="res://Necromancer.tscn" type="PackedScene" id=41]
 [ext_resource path="res://SpeedPotion.tscn" type="PackedScene" id=42]
+[ext_resource path="res://res/exported/sprites/inputs/Keyboard & Mouse/Dark/Q_Key_Dark.png" type="Texture" id=43]
+[ext_resource path="res://res/exported/sprites/inputs/Keyboard & Mouse/Dark/E_Key_Dark.png" type="Texture" id=44]
+[ext_resource path="res://res/exported/sprites/inputs/Keyboard & Mouse/Dark/Space_Key_Dark.png" type="Texture" id=45]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 470, 563.875 )
@@ -311,23 +314,29 @@ autostart = true
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
 unique_name_in_owner = true
+z_as_relative = false
 collision_layer = 5
 collision_mask = 5
 
 [node name="PoisonPlant" parent="." instance=ExtResource( 34 )]
 position = Vector2( 206, -1485 )
+rotation = -1.5708
 
 [node name="PoisonPlant2" parent="." instance=ExtResource( 34 )]
 position = Vector2( 1118, -1408 )
+rotation = -1.5708
 
 [node name="PoisonPlant3" parent="." instance=ExtResource( 34 )]
 position = Vector2( 274, -1166 )
+rotation = -1.5708
 
 [node name="PoisonPlant4" parent="." instance=ExtResource( 34 )]
 position = Vector2( 449, -661 )
+rotation = -1.5708
 
 [node name="PoisonPlant5" parent="." instance=ExtResource( 34 )]
 position = Vector2( -278, -735 )
+rotation = -1.5708
 
 [node name="Necromancer" parent="." instance=ExtResource( 41 )]
 position = Vector2( -1271, -1482 )
@@ -360,6 +369,7 @@ script = ExtResource( 11 )
 
 [node name="NotificationManager" type="Node2D" parent="."]
 unique_name_in_owner = true
+z_index = 5
 script = ExtResource( 13 )
 Notification = ExtResource( 14 )
 
@@ -406,6 +416,37 @@ shape = SubResource( 2 )
 [node name="PauseScreen" parent="." instance=ExtResource( 21 )]
 visible = false
 
+[node name="InventoryIcon" type="TextureRect" parent="PauseScreen"]
+margin_left = 912.0
+margin_top = 829.0
+margin_right = 1012.0
+margin_bottom = 929.0
+texture = ExtResource( 45 )
+
+[node name="Q" type="TextureRect" parent="PauseScreen"]
+anchor_left = 0.38
+anchor_top = 0.85
+anchor_right = 0.38
+anchor_bottom = 0.85
+margin_left = -52.0
+margin_top = 46.0
+margin_right = 23.0
+margin_bottom = 121.0
+texture = ExtResource( 43 )
+expand = true
+
+[node name="E" type="TextureRect" parent="PauseScreen"]
+anchor_left = 0.44
+anchor_top = 0.85
+anchor_right = 0.44
+anchor_bottom = 0.85
+margin_left = 322.0
+margin_top = 47.0
+margin_right = 397.0
+margin_bottom = 122.0
+texture = ExtResource( 44 )
+expand = true
+
 [node name="Ground" type="TileMap" parent="."]
 show_behind_parent = true
 rotation = 0.0024753
@@ -419,10 +460,6 @@ unique_name_in_owner = true
 tile_set = SubResource( 22 )
 format = 1
 tile_data = PoolIntArray( -1179634, 3, 0, -1114098, 3, 0, -1048562, 3, 0, -983026, 3, 0 )
-
-[node name="Dialogue" type="CanvasLayer" parent="."]
-layer = 0
-script = ExtResource( 33 )
 
 [node name="InteractableNPCs" type="Node2D" parent="."]
 pause_mode = 1
@@ -446,6 +483,10 @@ dialogeTimeline = "Necro"
 [node name="InteractableNPC5" parent="InteractableNPCs" instance=ExtResource( 10 )]
 position = Vector2( -185, 111 )
 dialogeTimeline = "review"
+
+[node name="Dialogue" type="CanvasLayer" parent="."]
+layer = 2
+script = ExtResource( 33 )
 
 [connection signal="timeout" from="DNTimer" to="." method="_on_DNTimer_timeout"]
 [connection signal="timeout" from="enemyspawn/Timer" to="enemyspawn" method="_on_Timer_timeout"]
