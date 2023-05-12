@@ -27,6 +27,7 @@ export var timeToHeal = 3
 export var lightBullets : int = 0
 export var heavyBullets : int = 0
 export var shells : int = 0
+export var rottenFlesh : int = 0
 
 export var totalShield = 0;
 
@@ -339,6 +340,12 @@ func getAmmo(type):
 			return heavyBullets
 		"SHOTGUN":
 			return shells
+
+func addFlesh(amt):
+	rottenFlesh += amt;
+
+func getFlesh():
+	return rottenFlesh
 
 func clearAmmo(type):
 	match type:

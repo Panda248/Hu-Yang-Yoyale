@@ -26,6 +26,8 @@ func _ready():
 		stack_size = 1;
 	if item_type == "AMMO":
 		stack_size = 99;
+	if item_type == "FLESH":
+		stack_size = 10000;
 	if item_type == "ARMOUR":
 		stack_size = 1;
 	if stack_size == 1:
