@@ -181,8 +181,9 @@ show_behind_parent = true
 z_index = 1
 
 [node name="Fists" parent="Inventory/Equipped" instance=ExtResource( 3 )]
-modulate = Color( 0.913725, 0.709804, 0.639216, 1 )
+modulate = Color( 1, 0.858824, 0.803922, 1 )
 position = Vector2( 6, 0 )
+z_index = -1
 
 [node name="Listener2D" type="Listener2D" parent="."]
 current = true
