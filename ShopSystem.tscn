@@ -1,9 +1,19 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=16 format=2]
 
+[ext_resource path="res://addons/dialogic/Documentation/Theme/DocumentationH4.tres" type="DynamicFont" id=1]
 [ext_resource path="res://ShopSystem.gd" type="Script" id=2]
 [ext_resource path="res://res/exported/fonts/GajrajOne-Regular.ttf" type="DynamicFontData" id=3]
 [ext_resource path="res://res/exported/sprites/inventory.png" type="Texture" id=4]
 [ext_resource path="res://res/exported/sprites/slot.png" type="Texture" id=5]
+[ext_resource path="res://addons/dialogic/Documentation/Theme/DocumentationH1.tres" type="DynamicFont" id=6]
+[ext_resource path="res://addons/dialogic/Documentation/Theme/DocumentationH2.tres" type="DynamicFont" id=7]
+[ext_resource path="res://res/exported/sprites/lightAmmo.png" type="Texture" id=8]
+[ext_resource path="res://res/exported/sprites/sniperAmmo.png" type="Texture" id=9]
+[ext_resource path="res://res/exported/sprites/shotgunAmmo.png" type="Texture" id=10]
+[ext_resource path="res://res/exported/sprites/heavyAmmo.png" type="Texture" id=11]
+[ext_resource path="res://res/exported/sprites/freeze.png" type="Texture" id=12]
+[ext_resource path="res://res/exported/sprites/healingsyringe.png" type="Texture" id=13]
+[ext_resource path="res://res/exported/sprites/speed.png" type="Texture" id=14]
 
 [sub_resource type="DynamicFont" id=1]
 size = 48
@@ -15,12 +25,35 @@ anchor_bottom = 1.0
 script = ExtResource( 2 )
 
 [node name="TextureRect" type="TextureRect" parent="."]
-anchor_left = 0.2
-anchor_top = 0.2
-anchor_right = 0.8
-anchor_bottom = 0.8
+anchor_left = 0.204
+anchor_top = 0.13
+anchor_right = 0.804
+anchor_bottom = 0.753
+margin_left = 0.319977
+margin_top = -0.400009
+margin_right = 0.319946
+margin_bottom = -0.240051
 texture = ExtResource( 4 )
 expand = true
+
+[node name="Label" type="Label" parent="."]
+margin_left = 913.0
+margin_top = 578.0
+margin_right = 1330.0
+margin_bottom = 668.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = ExtResource( 6 )
+text = "ROTTEN FLESH: 2 = $1 
+YOU HAVE: "
+
+[node name="Money" type="Label" parent="."]
+margin_left = 1206.0
+margin_top = 650.0
+margin_right = 1344.0
+margin_bottom = 734.0
+custom_colors/font_color = Color( 0.576471, 1, 0.831373, 1 )
+custom_fonts/font = ExtResource( 6 )
+text = "$"
 
 [node name="LightAmmo" type="Button" parent="."]
 margin_left = 500.0
@@ -36,9 +69,9 @@ icon = ExtResource( 5 )
 anchor_left = 0.252
 anchor_right = 0.437
 margin_left = -13.704
-margin_top = 92.0
+margin_top = 95.0
 margin_right = 201.426
-margin_bottom = 239.0
+margin_bottom = 242.0
 rect_scale = Vector2( 0.5, 0.5 )
 custom_fonts/font = SubResource( 1 )
 text = "Light 
@@ -47,11 +80,53 @@ Ammo"
 [node name="TextureRect" type="TextureRect" parent="LightAmmo"]
 margin_right = 104.0
 margin_bottom = 96.0
+texture = ExtResource( 8 )
 expand = true
 
 [node name="Label" type="Label" parent="LightAmmo"]
-margin_right = 40.0
-margin_bottom = 14.0
+margin_left = 110.0
+margin_top = -42.0
+margin_right = 150.0
+margin_bottom = 71.0
+custom_fonts/font = ExtResource( 1 )
+text = "$2"
+
+[node name="MediumAmmo" type="Button" parent="."]
+margin_left = 500.0
+margin_top = 600.0
+margin_right = 602.0
+margin_bottom = 696.0
+focus_mode = 0
+mouse_filter = 1
+enabled_focus_mode = 0
+icon = ExtResource( 5 )
+
+[node name="Title" type="Label" parent="MediumAmmo"]
+anchor_left = 0.252
+anchor_right = 0.437
+margin_left = -28.704
+margin_top = 95.0
+margin_right = 186.426
+margin_bottom = 242.0
+rect_scale = Vector2( 0.5, 0.5 )
+custom_fonts/font = SubResource( 1 )
+text = "Medium
+Ammo"
+
+[node name="TextureRect" type="TextureRect" parent="MediumAmmo"]
+margin_right = 104.0
+margin_bottom = 96.0
+texture = ExtResource( 11 )
+expand = true
+
+[node name="Label2" type="Label" parent="MediumAmmo"]
+margin_left = 110.0
+margin_top = -42.0
+margin_right = 150.0
+margin_bottom = 71.0
+custom_fonts/font = ExtResource( 1 )
+text = "$4
+"
 
 [node name="HeavyAmmo" type="Button" parent="."]
 margin_left = 700.0
@@ -66,10 +141,10 @@ icon = ExtResource( 5 )
 [node name="Title" type="Label" parent="HeavyAmmo"]
 anchor_left = 0.252
 anchor_right = 0.437
-margin_left = -18.704
-margin_top = 92.0
-margin_right = 206.426
-margin_bottom = 239.0
+margin_left = -22.704
+margin_top = 95.0
+margin_right = 202.426
+margin_bottom = 242.0
 rect_scale = Vector2( 0.5, 0.5 )
 custom_fonts/font = SubResource( 1 )
 text = "Heavy 
@@ -78,11 +153,52 @@ Ammo"
 [node name="TextureRect" type="TextureRect" parent="HeavyAmmo"]
 margin_right = 104.0
 margin_bottom = 96.0
+texture = ExtResource( 9 )
 expand = true
 
 [node name="Label" type="Label" parent="HeavyAmmo"]
-margin_right = 40.0
-margin_bottom = 14.0
+margin_left = 110.0
+margin_top = -42.0
+margin_right = 150.0
+margin_bottom = 71.0
+custom_fonts/font = ExtResource( 1 )
+text = "$10"
+
+[node name="Shells" type="Button" parent="."]
+margin_left = 700.0
+margin_top = 600.0
+margin_right = 802.0
+margin_bottom = 696.0
+focus_mode = 0
+mouse_filter = 1
+enabled_focus_mode = 0
+icon = ExtResource( 5 )
+
+[node name="Title" type="Label" parent="Shells"]
+anchor_left = 0.252
+anchor_right = 0.437
+margin_left = -17.704
+margin_top = 95.0
+margin_right = 197.426
+margin_bottom = 242.0
+rect_scale = Vector2( 0.5, 0.5 )
+custom_fonts/font = SubResource( 1 )
+text = "Shells
+"
+
+[node name="TextureRect" type="TextureRect" parent="Shells"]
+margin_right = 104.0
+margin_bottom = 96.0
+texture = ExtResource( 10 )
+expand = true
+
+[node name="Label" type="Label" parent="Shells"]
+margin_left = 110.0
+margin_top = -42.0
+margin_right = 150.0
+margin_bottom = 71.0
+custom_fonts/font = ExtResource( 1 )
+text = "$8"
 
 [node name="HealthPotion" type="Button" parent="."]
 margin_left = 900.0
@@ -98,9 +214,9 @@ icon = ExtResource( 5 )
 anchor_left = 0.252
 anchor_right = 0.437
 margin_left = -19.704
-margin_top = 92.0
+margin_top = 95.0
 margin_right = 207.426
-margin_bottom = 239.0
+margin_bottom = 242.0
 rect_scale = Vector2( 0.5, 0.5 )
 custom_fonts/font = SubResource( 1 )
 text = "Health
@@ -109,11 +225,16 @@ Potion"
 [node name="TextureRect" type="TextureRect" parent="HealthPotion"]
 margin_right = 104.0
 margin_bottom = 96.0
+texture = ExtResource( 13 )
 expand = true
 
 [node name="Label" type="Label" parent="HealthPotion"]
-margin_right = 40.0
-margin_bottom = 14.0
+margin_left = 110.0
+margin_top = -42.0
+margin_right = 150.0
+margin_bottom = 71.0
+custom_fonts/font = ExtResource( 1 )
+text = "$10"
 
 [node name="SpeedPotion" type="Button" parent="."]
 margin_left = 1100.0
@@ -129,9 +250,9 @@ icon = ExtResource( 5 )
 anchor_left = 0.252
 anchor_right = 0.437
 margin_left = -16.704
-margin_top = 92.0
+margin_top = 95.0
 margin_right = 204.426
-margin_bottom = 239.0
+margin_bottom = 242.0
 rect_scale = Vector2( 0.5, 0.5 )
 custom_fonts/font = SubResource( 1 )
 text = "Speed
@@ -140,11 +261,16 @@ Potion"
 [node name="TextureRect" type="TextureRect" parent="SpeedPotion"]
 margin_right = 104.0
 margin_bottom = 96.0
+texture = ExtResource( 14 )
 expand = true
 
 [node name="Label" type="Label" parent="SpeedPotion"]
-margin_right = 40.0
-margin_bottom = 14.0
+margin_left = 110.0
+margin_top = -42.0
+margin_right = 150.0
+margin_bottom = 71.0
+custom_fonts/font = ExtResource( 1 )
+text = "$10"
 
 [node name="FreezePotion" type="Button" parent="."]
 margin_left = 1300.0
@@ -160,9 +286,9 @@ icon = ExtResource( 5 )
 anchor_left = 0.252
 anchor_right = 0.437
 margin_left = -19.704
-margin_top = 92.0
+margin_top = 95.0
 margin_right = 207.426
-margin_bottom = 239.0
+margin_bottom = 242.0
 rect_scale = Vector2( 0.5, 0.5 )
 custom_fonts/font = SubResource( 1 )
 text = "Freeze
@@ -171,14 +297,44 @@ Potion"
 [node name="TextureRect" type="TextureRect" parent="FreezePotion"]
 margin_right = 104.0
 margin_bottom = 96.0
+texture = ExtResource( 12 )
 expand = true
 
 [node name="Label" type="Label" parent="FreezePotion"]
-margin_right = 40.0
-margin_bottom = 14.0
+margin_left = 110.0
+margin_top = -42.0
+margin_right = 150.0
+margin_bottom = 71.0
+custom_fonts/font = ExtResource( 1 )
+text = "$10"
+
+[node name="Title" type="Label" parent="."]
+margin_left = 816.0
+margin_top = 184.0
+margin_right = 1096.0
+margin_bottom = 266.0
+custom_colors/font_color = Color( 0.14902, 0.827451, 0.937255, 1 )
+custom_fonts/font = ExtResource( 7 )
+text = "THE SHOP"
+
+[node name="Button" type="Button" parent="."]
+margin_left = 1470.0
+margin_top = 138.0
+margin_right = 1544.0
+margin_bottom = 213.0
+custom_colors/font_color_disabled = Color( 1, 0.32549, 0.32549, 1 )
+custom_colors/font_color_focus = Color( 1, 0, 0, 1 )
+custom_colors/font_color = Color( 1, 0.313726, 0.313726, 1 )
+custom_colors/font_color_hover = Color( 1, 0.231373, 0.231373, 1 )
+custom_colors/font_color_pressed = Color( 1, 0, 0, 1 )
+custom_fonts/font = ExtResource( 6 )
+text = "X"
 
 [connection signal="pressed" from="LightAmmo" to="." method="_on_LightAmmo_pressed"]
+[connection signal="pressed" from="MediumAmmo" to="." method="_on_MediumAmmo_pressed"]
 [connection signal="pressed" from="HeavyAmmo" to="." method="_on_HeavyAmmo_pressed"]
+[connection signal="pressed" from="Shells" to="." method="_on_Shells_pressed"]
 [connection signal="pressed" from="HealthPotion" to="." method="_on_HealthPotion_pressed"]
 [connection signal="pressed" from="SpeedPotion" to="." method="_on_SpeedPotion_pressed"]
 [connection signal="pressed" from="FreezePotion" to="." method="_on_FreezePotion_pressed"]
+[connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]

@@ -464,7 +464,7 @@ tile_data = PoolIntArray( -1179634, 3, 0, -1114098, 3, 0, -1048562, 3, 0, -98302
 [node name="InteractableNPCs" type="Node2D" parent="."]
 pause_mode = 1
 
-[node name="InteractableNPC" parent="InteractableNPCs" instance=ExtResource( 10 )]
+[node name="Shopkeeper" parent="InteractableNPCs" instance=ExtResource( 10 )]
 position = Vector2( 330, -44 )
 dialogeTimeline = "shop"
 

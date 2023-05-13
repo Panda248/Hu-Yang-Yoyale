@@ -28,7 +28,7 @@ export var lightBullets : int = 0
 export var mediumBullets : int = 0
 export var heavyBullets : int = 0
 export var shells : int = 0
-export var rottenFlesh : int = 0
+export var rottenFlesh : int = 10
 
 export var totalShield = 0;
 
@@ -283,6 +283,9 @@ func speedFX():
 func availableInventory():
 	return 9 - $Inventory.return_filled_inventory()
 
+func addItem(item):
+	$Inventory.add_item(item)
+
 func effectManager():
 	healTimer += 1
 	poisonTimer += 1
@@ -324,6 +327,7 @@ func dayNightZoom(night):
 	else:
 		defaultZoom = dayZoom
 	resetZoom()
+
 func addAmmo(amt, type):
 	match type:
 		"LIGHT":

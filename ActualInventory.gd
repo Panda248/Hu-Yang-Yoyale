@@ -35,6 +35,7 @@ func add_item(item):
 			if(!inventoryGridArray[i+6]):
 				add_item_at_index(item,i+6)
 				return
+				
 
 func add_item_at_index(item, index):
 	if(index_in_hotbar(index)):

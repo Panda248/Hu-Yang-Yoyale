@@ -39,6 +39,9 @@ func pick_up(player):
 	get_parent().remove_child(self)
 	player.inventory.add_item(self)
 
+func spawn(player):
+	emit_signal("notify_picked_up", "picked up", global_position + Vector2.UP*messageOffsetY, 0.5)
+	player.inventory.add_item(self)
 
 func add_items(quantity):
 	item_quantity += quantity
