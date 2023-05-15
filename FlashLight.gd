@@ -3,6 +3,9 @@ extends Weapon
 func _ready():
 	attachment_blacklist = ["SCOPE", "SUPPRESSOR"]
 
+func _process(delta):
+	pass
+
 func primaryFire():
 	$Light2D.visible = !$Light2D.visible 
 func input_action():
