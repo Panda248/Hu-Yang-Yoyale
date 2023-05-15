@@ -15,16 +15,14 @@ var shellCost = 12
 var potionCost = 20
 
 func _ready():
-	var newDialog = Dialogic.start("shop")
-	add_child(newDialog)
-	newDialog.connect("dialogic_signal", self, 'dialogic_signal_event')
+	pass
 	
 
 func _process(delta):
 	player = find_parent("Player")
 	fleshCount = player.getFlesh()
 	$Money.text = "$" + str(fleshCount/2)
-	if (player.global_position.distance_to(find_parent("World").find_node("Shopkeeper").global_position) > 50):
+	if (player.global_position.distance_to(find_parent("World").find_node("Shopkeeper").global_position) > 100):
 		self.visible = false
 	
 func dialogic_signal_event(arg):
