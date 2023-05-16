@@ -56,5 +56,8 @@ func freeze():
 	frozen_duration = 180
 	pass
 
+func die():
+	pass
+
 func move_forward(delta):
 	move_and_slide(Vector2(velocity,0).rotated(global_rotation))

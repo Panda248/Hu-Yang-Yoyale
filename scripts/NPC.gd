@@ -1,15 +1,18 @@
 extends Entity
 class_name NPC
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
+export var fleshMin = 2
+export var fleshMax= 5
+export var dropsFlesh = false
 export var rotationSpeedDegrees := 30
 export var angleOfVisionDegrees := 30
 export var maxViewDistance := 800.0
 export var angleBetweenRaysDegrees := 5.0
+
 onready var angleOfVision := deg2rad(angleOfVisionDegrees)
 onready var angleBetweenRays := deg2rad(angleBetweenRaysDegrees)
+onready var flesh = load("res://RottenFlesh.tscn")
+onready var fleshCount = rand_range(fleshMin,fleshMax)
 
 enum	{
 	IDLE, CHASE, INVESTIGATE, ATTACK
@@ -37,3 +40,12 @@ func slowly_rotate_to(target, delta):
 	global_rotation = angleTo
 	pass
 
+func takeDamage(amt):
+	.takeDamage(amt)
+	if _dead() and dropsFlesh:
+		dropFlesh()
+
+func dropFlesh():
+	var fleshInstance = flesh.instance()
+	for i in range(fleshCount):
+		find_parent("World").spawn_item(fleshInstance)
