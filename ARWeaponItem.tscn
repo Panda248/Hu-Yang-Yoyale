@@ -47,7 +47,7 @@ script = ExtResource( 2 )
 currentClip = 20
 clip = 20
 knockbackMultiplier = 450
-selfKnockback = 2000
+selfKnockback = 1500
 ammo_type = "MEDIUM"
 Bullet = ExtResource( 8 )
 
