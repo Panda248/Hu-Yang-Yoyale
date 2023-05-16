@@ -48,7 +48,8 @@ script = ExtResource( 2 )
 damage = 5
 reloadTimeFrames = 180
 fireRate = 60
-knockbackMultiplier = 1000
+knockbackMultiplier = 500
+selfKnockback = 3000
 ammo_type = "HEAVY"
 Bullet = ExtResource( 3 )
 

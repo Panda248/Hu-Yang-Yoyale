@@ -21,7 +21,7 @@ offset = Vector2( 50, 2 )
 script = ExtResource( 1 )
 currentClip = 30
 reloadTimeFrames = 240
-knockbackMultiplier = 200
+knockbackMultiplier = 3000
 weaponWeight = 1
 Bullet = ExtResource( 6 )
 

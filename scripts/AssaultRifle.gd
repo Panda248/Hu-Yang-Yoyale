@@ -38,6 +38,7 @@ func primaryFire():
 												$BarrelEnd.global_position, 
 												direction_to_mouse,
 												damage, knockbackMultiplier);
+			find_parent("Player").knockback(find_parent("Player").global_rotation, selfKnockback*-0.5)
 			currentClip -= 1
 			if(self.currentClip > 0):
 				self.reloadAndShootDelay = fireRate

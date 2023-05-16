@@ -18,7 +18,7 @@ func _process(delta):
 	freezeManager()
 
 func _physics_process(delta):
-	knockback = knockback.move_toward(Vector2.ZERO, 200)
+	knockback = knockback.move_toward(Vector2.ZERO, 100)
 	knockback = move_and_slide(knockback)
 	if(frozen):
 		if(frozen_duration == 0):
@@ -42,6 +42,10 @@ func freezeManager():
 
 func takeKnockback(hitbox : HitBox):
 	knockback = hitbox.knockbackDirection * hitbox.knockbackMultiplier
+	
+func knockback(theta, magnitude):
+	knockback = Vector2(magnitude, 0).rotated(theta)
+	pass
 	
 func _dead() ->bool:
 	return health <= 0
