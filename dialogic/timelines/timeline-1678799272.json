@@ -22,72 +22,69 @@
 			"z_index": 0
 		},
 		{
+			"character": "character-1678799213.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Hello! Welcome to Hu Yang Yoyale."
+		},
+		{
+			"character": "",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "You have been dropped on an island with many monsters that will try to kill you."
+		},
+		{
+			"character": "",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "When night falls, they will get faster."
+		},
+		{
+			"character": "",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Stock up on weapons and items as much as you can, or you won't survive long."
+		},
+		{
+			"character": "",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Beside you is a pistol. \nUse it to enter the bunker on your right."
+		},
+		{
 			"character": "",
 			"event_id": "dialogic_010",
 			"options": [
 
 			],
 			"portrait": "",
-			"question": "What are you doing?!?!"
+			"question": "Are you ready?"
 		},
 		{
-			"choice": "What?",
+			"choice": "Yes",
 			"condition": "",
 			"definition": "",
 			"event_id": "dialogic_011",
 			"value": ""
 		},
 		{
-			"character": "character-1678799213.json",
+			"character": "",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "You destroyed my barrier!"
+			"text": "Great, good luck."
 		},
 		{
-			"character": "character-1678799213.json",
-			"event_id": "dialogic_010",
-			"options": [
-
-			],
-			"portrait": "",
-			"question": "Now I'm going to die..."
-		},
-		{
-			"choice": "I'm...sorry?",
+			"choice": "No",
 			"condition": "",
 			"definition": "",
 			"event_id": "dialogic_011",
 			"value": ""
 		},
 		{
-			"character": "character-1678799213.json",
+			"character": "",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "Go away"
-		},
-		{
-			"animation": "[Default]",
-			"animation_length": 0,
-			"animation_wait": true,
-			"change_mirror_portrait": false,
-			"change_z_index": false,
-			"character": "character-1678799213.json",
-			"event_id": "dialogic_002",
-			"mirror_portrait": false,
-			"portrait": "",
-			"portrait_definition": "",
-			"position": {
-				"0": false,
-				"1": false,
-				"2": false,
-				"3": false,
-				"4": false
-			},
-			"type": 1,
-			"z_index": 0
-		},
-		{
-			"event_id": "dialogic_013"
+			"text": "Too bad."
 		},
 		{
 			"event_id": "dialogic_013"
