@@ -71,7 +71,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.1 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ Color( 0.054902, 0.992157, 0.968627, 1 ), Color( 1, 1, 1, 1 ) ]
+"values": [ Color( 0.054902, 0.992157, 0.968627, 1 ), Color( 0.423529, 0.796078, 1, 1 ) ]
 }
 
 [sub_resource type="RectangleShape2D" id=4]
@@ -145,6 +145,7 @@ smoothing_enabled = true
 script = ExtResource( 8 )
 
 [node name="Body" type="CollisionShape2D" parent="."]
+modulate = Color( 0.054902, 0.992157, 0.968627, 1 )
 self_modulate = Color( 0, 0, 0, 0 )
 scale = Vector2( 1.00233, 1 )
 shape = SubResource( 1 )

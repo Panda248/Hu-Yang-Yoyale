@@ -36,7 +36,7 @@ export var curShield = 0;
 export var defaultZoom = .4
 var tempZoom = defaultZoom
 export var dayZoom = .4
-export var nightZoom = .25
+export var nightZoom = .3
 
 export  (PackedScene) var Alert
 var curStamina = maxStamina
@@ -324,8 +324,10 @@ func effectManager():
 func dayNightZoom(night):
 	if(night):
 		defaultZoom = nightZoom
+		$Light2D.show()
 	else:
 		defaultZoom = dayZoom
+		$Light2D.hide()
 	resetZoom()
 
 func addAmmo(amt, type):
@@ -369,3 +371,6 @@ func clearAmmo(type):
 
 func removeAmmo(amt, type):
 	addAmmo(-amt, type)
+
+func removeFlesh(amt):
+	addFlesh(-amt)

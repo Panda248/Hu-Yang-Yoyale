@@ -4,7 +4,7 @@ func _ready():
 	attachment_blacklist = ["SCOPE", "SUPPRESSOR"]
 
 func _process(delta):
-	pass
+	return
 
 func primaryFire():
 	$Light2D.visible = !$Light2D.visible 
