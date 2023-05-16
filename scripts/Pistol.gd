@@ -19,6 +19,7 @@ func _process(delta):
 func input_action():
 	if Input.is_action_just_pressed("game_primary_fire"):
 		primaryFire()
+
 	elif Input.is_action_just_pressed("reload"):
 		reload()
 	pass
@@ -39,6 +40,7 @@ func primaryFire():
 												direction_to_mouse,
 												damage, knockbackMultiplier);
 			currentClip -= 1
+			find_parent("Player").knockback(find_parent("Player").global_rotation, selfKnockback*-0.5)
 			if(self.currentClip > 0):
 				self.reloadAndShootDelay = fireRate
 				

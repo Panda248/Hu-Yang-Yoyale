@@ -8,6 +8,7 @@ export var reloadTimeFrames : = 60
 export var fireRate := 10
 export var reserveClips := 2
 export var knockbackMultiplier := 0
+export var selfKnockback := 0
 export var defaultAlertRadius := 1000
 export var shootTimeMS = 100
 export var ammo_type = "LIGHT"

@@ -24,7 +24,7 @@ func _process(delta):
 		INVESTIGATE:
 			_investigate(delta)
 		ATTACK:
-			if (player.position.distance_to(self.position) < 150):
+			if (player.position.distance_to(self.position) < 300):
 				spinShot()
 				get_node("PoisonThrower").primaryFire()
 			else:
