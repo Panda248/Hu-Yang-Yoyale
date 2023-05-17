@@ -1,4 +1,4 @@
-[gd_scene load_steps=65 format=2]
+[gd_scene load_steps=64 format=2]
 
 [ext_resource path="res://FlashlightItem.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Player.tscn" type="PackedScene" id=2]
@@ -41,7 +41,6 @@
 [ext_resource path="res://Enemy.tscn" type="PackedScene" id=39]
 [ext_resource path="res://RockEnemy.tscn" type="PackedScene" id=40]
 [ext_resource path="res://Necromancer.tscn" type="PackedScene" id=41]
-[ext_resource path="res://SpeedPotion.tscn" type="PackedScene" id=42]
 [ext_resource path="res://res/exported/sprites/inputs/Keyboard & Mouse/Dark/Q_Key_Dark.png" type="Texture" id=43]
 [ext_resource path="res://res/exported/sprites/inputs/Keyboard & Mouse/Dark/E_Key_Dark.png" type="Texture" id=44]
 [ext_resource path="res://res/exported/sprites/inputs/Keyboard & Mouse/Dark/Space_Key_Dark.png" type="Texture" id=45]
@@ -375,7 +374,7 @@ itemScenes = [ ExtResource( 24 ), ExtResource( 29 ), ExtResource( 32 ), ExtResou
 
 [node name="Crate3" parent="Crates" instance=ExtResource( 12 )]
 position = Vector2( 761, 335 )
-itemScenes = [ ExtResource( 23 ), ExtResource( 28 ), ExtResource( 1 ), ExtResource( 42 ) ]
+itemScenes = [ ExtResource( 23 ), ExtResource( 28 ), ExtResource( 1 ), ExtResource( 29 ), ExtResource( 29 ) ]
 
 [node name="BulletManager" type="Node2D" parent="."]
 script = ExtResource( 5 )

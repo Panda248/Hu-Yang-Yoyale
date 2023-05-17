@@ -47,9 +47,10 @@ func pressed(slot: SlotClass):
 		if is_instance_valid(holding_item):
 			holding_item.global_position = find_parent("Player").global_position
 			holding_item.changeToItemMode()
-			find_parent("World").spawn_item(holding_item)
-			
+			var drop = holding_item
 			holding_item = null
+			find_parent("World").spawn_item(drop)
+
 		pass
 	else:
 		var slot_index = slot.get_index()

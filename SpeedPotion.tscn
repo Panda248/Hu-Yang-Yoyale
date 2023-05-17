@@ -8,6 +8,7 @@
 
 [node name="SpeedPotion" type="Area2D"]
 script = ExtResource( 2 )
+item_name = "speedPotion"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 modulate = Color( 1, 1, 1, 0.101961 )

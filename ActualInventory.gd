@@ -27,15 +27,19 @@ func _ready():
 func add_item(item):
 	if(get_hotbar().size() > 3):
 		for i in range(size):
+			
 			if(!inventoryGridArray[i]):
 				add_item_at_index(item, i)
 				return
+			elif(inventoryGridArray[i].item_name == item.item_name):
+				stack_item(item, inventoryGridArray[i])
 	else:
 		for i in range(3):
 			if(!inventoryGridArray[i+6]):
 				add_item_at_index(item,i+6)
 				return
-				
+			elif(inventoryGridArray[i+6].item_name == item.item_name):
+				stack_item(item, inventoryGridArray[i])
 
 func add_item_at_index(item, index):
 	if(index_in_hotbar(index)):

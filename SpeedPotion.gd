@@ -2,11 +2,13 @@ extends Consumable
 
 func _ready():
 	._ready()
-	item_quantity = 1;
+	stack_size = 1;
 
 func use():
 	player.speedFX()
-	find_parent("Inventory").remove_item(self)
+	item_quantity-=1
+	if(item_quantity == 0):
+		find_parent("Inventory").remove_item(self)
 	$Sound.play()
 	pass 
 

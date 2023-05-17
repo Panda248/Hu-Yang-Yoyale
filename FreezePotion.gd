@@ -16,5 +16,7 @@ func primaryFire():
 	projectile.direction = direction
 	projectile.global_position = global_position + Vector2.UP.rotated(global_rotation)*70
 	find_parent("Player").emit_signal("player_project", projectile)
-	find_parent("Inventory").remove_item(get_parent())
+	get_parent().item_quantity-=1
+	if(get_parent().item_quantity == 0):
+		find_parent("Inventory").remove_item(get_parent())
 	pass
