@@ -69,6 +69,7 @@ script = ExtResource( 5 )
 velocity = 100
 maxHealth = 200
 health = 200
+dropsFlesh = true
 rotationSpeedDegrees = 100
 angleOfVisionDegrees = 110
 maxViewDistance = 300.0

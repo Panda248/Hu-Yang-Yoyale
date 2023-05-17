@@ -10,9 +10,10 @@ onready var world = find_parent("World")
 func _on_Timer_timeout():
 	$Timer.wait_time = period + (randf()*randomnError*2 - randomnError)
 	$Timer.start()
-	
-	if(world.enemies.size() > world.entityCap):
+	print("HELLO?!?!?")
+	if(world.enemies.size() < world.entityCap):
 		spawnEnemy()
+		print("spawned enemy")
 	pass # Replace with function body.
 
 func spawnEnemy():

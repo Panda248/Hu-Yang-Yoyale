@@ -146,7 +146,7 @@ func input_movement(delta):
 					alertEnemies(walkAlertRadius)
 
 func input_action():
-	if(!get_node("UI/Inventory").visible and get_parent().find_node("Dialogue").get_child_count()==0):
+	if(!$UI/Inventory.visible and get_parent().find_node("Dialogue").get_child_count()==0 and !$UI/ShopSystem.visible):
 		if(weakref(equippedWeapon).get_ref() and equippedWeapon.has_method("input_action")):
 			equippedWeapon.input_action()
 	if Input.is_action_just_pressed("game_switch_weapon_left"):

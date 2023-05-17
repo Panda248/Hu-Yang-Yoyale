@@ -52,8 +52,8 @@
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 786.5, 517.5 )
 
-[sub_resource type="CapsuleShape2D" id=24]
-radius = 637.0
+[sub_resource type="RectangleShape2D" id=24]
+extents = Vector2( 620.5, 517 )
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 131, 160 )
@@ -396,6 +396,20 @@ Notification = ExtResource( 14 )
 script = ExtResource( 15 )
 DamageNumber = ExtResource( 16 )
 
+[node name="enemyspawn3" type="Area2D" parent="."]
+position = Vector2( 368, -1020 )
+script = ExtResource( 26 )
+enemies = [ ExtResource( 39 ) ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="enemyspawn3"]
+modulate = Color( 1, 0, 0, 0.184314 )
+position = Vector2( -70.5, -528.5 )
+shape = SubResource( 1 )
+
+[node name="Timer" type="Timer" parent="enemyspawn3"]
+wait_time = 5.0
+autostart = true
+
 [node name="enemyspawn" type="Area2D" parent="."]
 position = Vector2( 368, -1020 )
 script = ExtResource( 26 )
@@ -403,11 +417,11 @@ enemies = [ ExtResource( 39 ) ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="enemyspawn"]
 modulate = Color( 1, 0, 0, 0.184314 )
-position = Vector2( -70.5, -528.5 )
+position = Vector2( -74, 526 )
 shape = SubResource( 1 )
 
 [node name="Timer" type="Timer" parent="enemyspawn"]
-wait_time = 5.0
+wait_time = 3.0
 autostart = true
 
 [node name="enemyspawn2" type="Area2D" parent="."]
@@ -417,7 +431,7 @@ enemies = [ ExtResource( 40 ) ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="enemyspawn2"]
 modulate = Color( 1, 0, 0, 0.184314 )
-position = Vector2( 0, 5 )
+position = Vector2( 16.5, -62 )
 shape = SubResource( 24 )
 
 [node name="Timer" type="Timer" parent="enemyspawn2"]
@@ -662,5 +676,6 @@ position = Vector2( 893, -75 )
 script = ExtResource( 47 )
 
 [connection signal="timeout" from="DNTimer" to="." method="_on_DNTimer_timeout"]
+[connection signal="timeout" from="enemyspawn3/Timer" to="enemyspawn3" method="_on_Timer_timeout"]
 [connection signal="timeout" from="enemyspawn/Timer" to="enemyspawn" method="_on_Timer_timeout"]
 [connection signal="timeout" from="enemyspawn2/Timer" to="enemyspawn2" method="_on_Timer_timeout"]
