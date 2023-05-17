@@ -39,6 +39,7 @@ polygon = PoolVector2Array( -6.00007, -20, 3.99993, -20, 11.9999, -26, 17.9999, 
 
 [node name="PoisonPlant" type="KinematicBody2D"]
 script = ExtResource( 3 )
+dropsFlesh = true
 rotationSpeedDegrees = 80
 angleOfVisionDegrees = 360
 maxViewDistance = 150.0

@@ -46,9 +46,17 @@ func game_over():
 
 func spawn_item(item : Item):
 	print("hello")
+	if(item.get_parent()):
+		item.get_parent().remove_child(item)
 	add_child(item)
 	item.connect("notify_picked_up", get_node("%NotificationManager"), "notify")
 
+func spawn_item_at_pos(item, position):
+	if(item.get_parent()):
+		item.get_parent().remove_child(item)
+	add_child(item)
+	item.set_position(position)
+	item.connect("notify_picked_up", get_node("%NotificationManager"), "notify")
 
 func _on_SafeZone_body_entered(body):
 	if body is Player:

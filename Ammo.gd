@@ -13,6 +13,9 @@ func _process(delta):
 		$HeavyCount/Label.text = var2str(player.heavyBullets)
 	if(int($ShellCount/Label.text) != player.shells):
 		$ShellCount/Label.text = var2str(player.shells)
+	if(int($FleshCount/Label.text) != player.rottenFlesh):
+		$FleshCount/Label.text = var2str(player.rottenFlesh)
+		
 	if(player.equippedWeapon is Weapon):
 		if(player.equippedWeapon.get_name() == "Fists"):
 			$Label.text = ""

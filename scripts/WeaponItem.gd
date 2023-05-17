@@ -6,23 +6,22 @@ onready var attachments = $WeaponInstance/Attachments
 
 func _ready():
 	item_type = "WEAPON"
-	item_quantity = 1;
 	stack_size = 1;
 
 func pick_up(player):
 	.pick_up(player)
 	monitorable = false
 	monitoring = false
-	$Icon.visible = false
-	$Quantity.visible = false
-	weaponInstance.visible = true
+	$Icon.hide()
+	$Quantity.hide()
+	weaponInstance.show()
 
 func changeToItemMode():
 	monitorable = true
 	monitoring = true
-	$Icon.visible = true
-	$Quantity.visible = true
-	weaponInstance.visible = false
+	$Icon.show()
+	$Quantity.show()
+	weaponInstance.hide()
 
 func player_has_self(player):
 	var playerWeapons = player.get_hotbar()

@@ -49,6 +49,7 @@ damage = 5
 reloadTimeFrames = 180
 fireRate = 60
 knockbackMultiplier = 1000
+selfKnockback = 1000
 ammo_type = "HEAVY"
 Bullet = ExtResource( 3 )
 

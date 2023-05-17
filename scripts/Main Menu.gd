@@ -9,6 +9,8 @@ var  zoomIn : bool = true
 onready var timer = 0
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	if(randf() > 0.9):
+		$SplashScreen.texture = load("res://res/exported/sprites/kid named finger.png")
 	pass # Replace with function body.
 
 

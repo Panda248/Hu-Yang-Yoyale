@@ -46,7 +46,7 @@ func takeDamage(amt):
 		dropFlesh()
 
 func dropFlesh():
-	var fleshInstance = flesh.instance()
 	for i in range(fleshCount):
+		var fleshInstance = flesh.instance()
 		fleshInstance.global_position = self.global_position+ Vector2(rand_range(-20,20), rand_range(-20,20))
 		find_parent("World").spawn_item(fleshInstance)

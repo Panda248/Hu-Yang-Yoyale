@@ -9,6 +9,8 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	if(health <= 0):
+		get_tree().change_scene_to(load("res://Win.tscn"))
 	$Health/HealthBar/HealthLabel.set_rotation(-rotation)
 	._process(delta)
 	if _dead():
@@ -131,3 +133,5 @@ func _on_teleportTimer_timeout():
 	if (self.position.distance_to(find_parent("World").find_node("Player").position) < 100):
 		self.position += Vector2(rand_range(-100, 100), rand_range(-100, 100))
 	pass 
+
+

@@ -165,6 +165,7 @@ custom_fonts/font = ExtResource( 1 )
 text = "$16"
 
 [node name="Shells" type="Button" parent="."]
+visible = false
 margin_left = 700.0
 margin_top = 600.0
 margin_right = 802.0
@@ -333,7 +334,6 @@ text = "X"
 [connection signal="pressed" from="LightAmmo" to="." method="_on_LightAmmo_pressed"]
 [connection signal="pressed" from="MediumAmmo" to="." method="_on_MediumAmmo_pressed"]
 [connection signal="pressed" from="HeavyAmmo" to="." method="_on_HeavyAmmo_pressed"]
-[connection signal="pressed" from="Shells" to="." method="_on_Shells_pressed"]
 [connection signal="pressed" from="HealthPotion" to="." method="_on_HealthPotion_pressed"]
 [connection signal="pressed" from="SpeedPotion" to="." method="_on_SpeedPotion_pressed"]
 [connection signal="pressed" from="FreezePotion" to="." method="_on_FreezePotion_pressed"]

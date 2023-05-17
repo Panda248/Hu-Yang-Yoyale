@@ -16,7 +16,7 @@
 radius = 100.0
 
 [sub_resource type="CircleShape2D" id=4]
-radius = 11.0
+radius = 29.0172
 
 [sub_resource type="Animation" id=5]
 resource_name = "damageFlash"
@@ -94,6 +94,7 @@ margin_bottom = 14.0
 custom_fonts/font = ExtResource( 4 )
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+visible = false
 occluder = SubResource( 6 )
 
 [node name="alert" type="Sprite" parent="."]

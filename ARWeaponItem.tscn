@@ -46,8 +46,10 @@ offset = Vector2( 50, 2 )
 script = ExtResource( 2 )
 currentClip = 20
 clip = 20
+reloadTimeFrames = 120
+fireRate = 20
 knockbackMultiplier = 450
-selfKnockback = 1500
+selfKnockback = 900
 ammo_type = "MEDIUM"
 Bullet = ExtResource( 8 )
 

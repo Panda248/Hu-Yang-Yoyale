@@ -24,7 +24,6 @@ func _process(delta):
 	if(!frozen):
 		raycast_sweep()
 		get_node("Label").text = var2str(state)
-		
 		#State machine
 		match state:
 			CHASE:
@@ -36,14 +35,15 @@ func _process(delta):
 				_investigate(delta)
 			ATTACK:
 				_chase(delta)
-
 				if(canAttack):
 					canAttack = false
 					$attackTimer.start(attackCooldown)
 					if randf() > 0.5:
-						get_node("Fists").primaryFire()
+						print("bro fuck you")
+						$Fists.primaryFire()
 					else:
-						get_node("Fists").secondaryFire()
+						print("bro fuck you")
+						$Fists.secondaryFire()
 
 
 func _chase(delta):
@@ -117,7 +117,7 @@ func raycast_sweep() -> void:
 			pass
 		if(playerInMeleeRange):
 			state = ATTACK
-			print("attacking")
+			
 
 func _on_alertTimer_timeout():
 	$alert.visible = false;
@@ -125,6 +125,7 @@ func _on_alertTimer_timeout():
 
 
 func _on_attackTimer_timeout():
+	print("fuck i hate this")
 	canAttack = true
 	pass # Replace with function body.
 

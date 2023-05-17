@@ -5,10 +5,11 @@
 [ext_resource path="res://res/sounds/drinking.ogg" type="AudioStream" id=3]
 
 [sub_resource type="CircleShape2D" id=1]
+radius = 8.51469
 
 [node name="HealthPotion" type="Area2D"]
 script = ExtResource( 1 )
-item_name = "Health Potion"
+item_name = "healthPotion"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 modulate = Color( 1, 1, 1, 0.101961 )

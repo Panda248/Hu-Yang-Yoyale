@@ -30,6 +30,8 @@ var shotTimeStamp = fireRate*-1
 var reloadAndShootDelay = 0
 
 func _process(delta):
+	if(self.reloadAndShootDelay > 0):
+		self.reloadAndShootDelay-= delta*60
 	if(find_parent("Player")):
 		if(self.reloadAndShootDelay > 0):
 				self.reloadAndShootDelay-= delta*60
@@ -56,13 +58,14 @@ func secondaryFire():
 	pass
 
 func reload():
-	if (currentClip < clip && self.reloadAndShootDelay <= 0 && find_parent("Player").getAmmo(ammo_type) > 0):
-		if(find_parent("Player").getAmmo(ammo_type) < clip):
-			currentClip = find_parent("Player").getAmmo(ammo_type)
+	var clipDif = clip-currentClip
+	if (clipDif>0 && self.reloadAndShootDelay <= 0 && find_parent("Player").getAmmo(ammo_type) > 0):
+		if(find_parent("Player").getAmmo(ammo_type) < clipDif):
+			currentClip += find_parent("Player").getAmmo(ammo_type)
 			find_parent("Player").clearAmmo(ammo_type)
 		else:
 			currentClip = clip
-			find_parent("Player").removeAmmo(clip, ammo_type)
+			find_parent("Player").removeAmmo(clipDif, ammo_type)
 		self.reloadAndShootDelay = reloadTimeFrames
 		$ReloadSFX.play(0)
 

@@ -31,10 +31,9 @@ align = 1
 
 [node name="ResumeButton" type="Button" parent="."]
 pause_mode = 2
-margin_left = 431.0
-margin_top = 578.0
-margin_right = 1534.0
-margin_bottom = 671.0
+margin_left = 700.0
+margin_top = 150.0
+margin_right = 1200.0
 focus_mode = 0
 custom_fonts/font = SubResource( 2 )
 enabled_focus_mode = 0
@@ -42,10 +41,10 @@ text = "RESUME"
 
 [node name="ExitButton" type="Button" parent="."]
 pause_mode = 2
-margin_left = 431.0
-margin_top = 678.0
-margin_right = 1534.0
-margin_bottom = 771.0
+margin_left = 700.0
+margin_top = 250.0
+margin_right = 1200.0
+margin_bottom = 350.0
 focus_mode = 0
 custom_fonts/font = SubResource( 2 )
 enabled_focus_mode = 0

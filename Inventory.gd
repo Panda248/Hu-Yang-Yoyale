@@ -45,13 +45,9 @@ func _process(delta):
 func pressed(slot: SlotClass):
 	if slot == drop:
 		if is_instance_valid(holding_item):
-			holding_item.global_position = find_parent("Player").global_position
 			holding_item.changeToItemMode()
-			var drop = holding_item
+			find_parent("World").spawn_item_at_pos(holding_item, find_parent("Player").position)
 			holding_item = null
-			find_parent("World").spawn_item(drop)
-
-		pass
 	else:
 		var slot_index = slot.get_index()
 		if is_instance_valid(holding_item):

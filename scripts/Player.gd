@@ -30,7 +30,7 @@ export var lightBullets : int = 0
 export var mediumBullets : int = 0
 export var heavyBullets : int = 0
 export var shells : int = 0
-export var rottenFlesh : int = 10
+export var rottenFlesh : int = 0
 
 export var totalShield = 0;
 
