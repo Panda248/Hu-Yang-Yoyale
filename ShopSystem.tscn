@@ -44,7 +44,7 @@ margin_right = 1330.0
 margin_bottom = 668.0
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_fonts/font = ExtResource( 6 )
-text = "ROTTEN FLESH: 2 = $1 
+text = "I love rotten flesh
 YOU HAVE: "
 
 [node name="Money" type="Label" parent="."]
@@ -54,7 +54,6 @@ margin_right = 1344.0
 margin_bottom = 734.0
 custom_colors/font_color = Color( 0.576471, 1, 0.831373, 1 )
 custom_fonts/font = ExtResource( 6 )
-text = "$"
 
 [node name="LightAmmo" type="Button" parent="."]
 margin_left = 500.0

@@ -21,7 +21,7 @@ func _ready():
 func _process(delta):
 	player = find_parent("Player")
 	fleshCount = player.getFlesh()
-	$Money.text = "$" + str(fleshCount/2)
+	$Money.text = str(fleshCount)
 	if (player.global_position.distance_to(find_parent("World").find_node("Shopkeeper").global_position) > 100):
 		self.visible = false
 	

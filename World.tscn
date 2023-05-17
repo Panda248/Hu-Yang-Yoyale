@@ -418,7 +418,6 @@ enemies = [ ExtResource( 39 ) ]
 [node name="CollisionShape2D" type="CollisionShape2D" parent="enemyspawn"]
 modulate = Color( 1, 0, 0, 0.184314 )
 position = Vector2( -74, 526 )
-
 shape = SubResource( 1 )
 
 [node name="Timer" type="Timer" parent="enemyspawn"]

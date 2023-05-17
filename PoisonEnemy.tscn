@@ -40,9 +40,10 @@ radius = 64.4981
 radius = 68.2642
 
 [sub_resource type="CircleShape2D" id=2]
-radius = 80.0
+radius = 100.0
 
 [sub_resource type="CircleShape2D" id=13]
+radius = 60.0333
 
 [sub_resource type="Animation" id=5]
 resource_name = "damageFlash"
