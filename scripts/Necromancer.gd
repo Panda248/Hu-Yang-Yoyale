@@ -123,6 +123,7 @@ var normal = preload("res://Enemy.tscn")
 func _on_spawnTimer_timeout():
 	if (self.position.distance_to(find_parent("World").find_node("Player").position) < 700):
 		summon()
+		$Sound.play()
 	pass
 	
 func _on_teleportTimer_timeout():

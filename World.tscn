@@ -361,7 +361,7 @@ rotation = -1.5708
 position = Vector2( -1271, -1482 )
 
 [node name="PoisonEnemy" parent="." instance=ExtResource( 38 )]
-position = Vector2( -251, -1843 )
+position = Vector2( -310, -1811 )
 
 [node name="Crates" type="Node2D" parent="."]
 
@@ -403,7 +403,7 @@ enemies = [ ExtResource( 39 ) ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="enemyspawn"]
 modulate = Color( 1, 0, 0, 0.184314 )
-position = Vector2( -70.5, -528.5 )
+position = Vector2( -71, -550 )
 shape = SubResource( 1 )
 
 [node name="Timer" type="Timer" parent="enemyspawn"]

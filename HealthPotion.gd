@@ -10,6 +10,7 @@ func use():
 	player.health += healthGain
 	player.healFX()
 	find_parent("Inventory").remove_item(self)
+	$Sound.play()
 	pass 
 
 func input_action():

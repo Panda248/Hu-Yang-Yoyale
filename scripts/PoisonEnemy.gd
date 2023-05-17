@@ -20,7 +20,7 @@ func _process(delta):
 	#State machine
 	match state:
 		CHASE:
-			spinShot()
+			_chase(delta)
 		INVESTIGATE:
 			_investigate(delta)
 		ATTACK:
@@ -40,6 +40,8 @@ func jump():
 	get_node("Body/Sprite").texture = load("res://res/exported/sprites/frogjump.png")
 	jumping = true
 	peaked = false
+	if (self.position.distance_to(find_parent("World").find_node("Player").position) < 700):
+		$Sound.play()
 
 var rotationdegrees = 0
 

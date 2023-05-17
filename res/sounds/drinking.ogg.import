@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/drinking.ogg-e594e6595427ec1264e0f4c35fd98f45.oggstr"
+
+[deps]
+
+source_file="res://res/sounds/drinking.ogg"
+dest_files=[ "res://.import/drinking.ogg-e594e6595427ec1264e0f4c35fd98f45.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

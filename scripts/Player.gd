@@ -12,6 +12,8 @@ onready var hotbar = $Inventory/Hotbar
 onready var equipped = $Inventory/Equipped
 onready var equippedWeapon = $Inventory/Equipped/Fists
 onready var heartbeat = $HeartBeat
+onready var run = $Run
+onready var walk = $Walk
 onready var gear = $Inventory/Gear
 
 export var maxStamina = 100
@@ -90,8 +92,7 @@ func _process(delta):
 		
 		
 		var modifiedVelocity = (velocity - 40 * equippedWeapon.getWeight()) * (health+5)/15
-		
-		
+			
 		move_and_slide(direction * modifiedVelocity);
 		
 		
@@ -114,6 +115,7 @@ func input_movement(delta):
 	direction = direction.normalized();
 	if(direction == Vector2.ZERO):
 		$Run.stop()
+		$Walk.stop()
 		$Sneak.stop()
 	else:
 		if(Input.is_action_pressed("game_run") and canSprint):
