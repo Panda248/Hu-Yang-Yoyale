@@ -89,7 +89,7 @@ margin_top = -42.0
 margin_right = 150.0
 margin_bottom = 71.0
 custom_fonts/font = ExtResource( 1 )
-text = "$2"
+text = "$4"
 
 [node name="MediumAmmo" type="Button" parent="."]
 margin_left = 500.0
@@ -125,7 +125,7 @@ margin_top = -42.0
 margin_right = 150.0
 margin_bottom = 71.0
 custom_fonts/font = ExtResource( 1 )
-text = "$4
+text = "$8
 "
 
 [node name="HeavyAmmo" type="Button" parent="."]
@@ -162,7 +162,7 @@ margin_top = -42.0
 margin_right = 150.0
 margin_bottom = 71.0
 custom_fonts/font = ExtResource( 1 )
-text = "$10"
+text = "$16"
 
 [node name="Shells" type="Button" parent="."]
 margin_left = 700.0
@@ -198,7 +198,7 @@ margin_top = -42.0
 margin_right = 150.0
 margin_bottom = 71.0
 custom_fonts/font = ExtResource( 1 )
-text = "$8"
+text = "$12"
 
 [node name="HealthPotion" type="Button" parent="."]
 margin_left = 900.0
@@ -234,7 +234,7 @@ margin_top = -42.0
 margin_right = 150.0
 margin_bottom = 71.0
 custom_fonts/font = ExtResource( 1 )
-text = "$10"
+text = "$20"
 
 [node name="SpeedPotion" type="Button" parent="."]
 margin_left = 1100.0
@@ -270,7 +270,7 @@ margin_top = -42.0
 margin_right = 150.0
 margin_bottom = 71.0
 custom_fonts/font = ExtResource( 1 )
-text = "$10"
+text = "$20"
 
 [node name="FreezePotion" type="Button" parent="."]
 margin_left = 1300.0
@@ -306,7 +306,7 @@ margin_top = -42.0
 margin_right = 150.0
 margin_bottom = 71.0
 custom_fonts/font = ExtResource( 1 )
-text = "$10"
+text = "$20"
 
 [node name="Title" type="Label" parent="."]
 margin_left = 816.0
