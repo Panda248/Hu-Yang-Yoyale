@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://res/exported/fonts/GajrajOne.tres" type="DynamicFont" id=1]
 [ext_resource path="res://scripts/Main Menu.gd" type="Script" id=2]
@@ -14,10 +14,6 @@ font_data = ExtResource( 4 )
 [sub_resource type="DynamicFont" id=4]
 font_data = ExtResource( 4 )
 
-[sub_resource type="DynamicFont" id=1]
-size = 24
-font_data = ExtResource( 4 )
-
 [node name="Main Menu" type="CanvasLayer"]
 layer = 2
 offset = Vector2( -50, -100 )
@@ -31,7 +27,7 @@ scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 3 )
 
 [node name="Title" type="Label" parent="."]
-modulate = Color( 0, 0, 0, 1 )
+modulate = Color( 1, 0.247059, 0.247059, 1 )
 anchor_left = 0.275
 anchor_top = -1.0
 anchor_right = 0.275
@@ -78,16 +74,6 @@ margin_right = 94.0
 margin_bottom = 101.0
 custom_fonts/font = SubResource( 4 )
 text = "QUIT"
-
-[node name="Warning" type="Label" parent="."]
-margin_left = 109.5
-margin_top = 282.0
-margin_right = 288.5
-margin_bottom = 357.0
-rect_rotation = -25.9792
-custom_fonts/font = SubResource( 1 )
-text = "WARNING!!!
-JUMPSCARE!!!"
 
 [connection signal="pressed" from="CenterContainer/VBoxContainer/Play" to="." method="_on_Play_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/Settings" to="." method="_on_Settings_pressed"]

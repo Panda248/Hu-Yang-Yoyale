@@ -8,9 +8,9 @@
 [ext_resource path="res://res/exported/sound/sneak.wav" type="AudioStream" id=6]
 [ext_resource path="res://res/exported/sprites/inputs/Keyboard & Mouse/Dark/F_Key_Dark.png" type="Texture" id=7]
 [ext_resource path="res://ShakeCamera.gd" type="Script" id=8]
-[ext_resource path="res://res/exported/sound/run.wav" type="AudioStream" id=9]
+[ext_resource path="res://res/sounds/realwalking.ogg" type="AudioStream" id=9]
 [ext_resource path="res://Alert.tscn" type="PackedScene" id=10]
-[ext_resource path="res://res/exported/sound/walk.wav" type="AudioStream" id=11]
+[ext_resource path="res://res/sounds/walking.ogg" type="AudioStream" id=11]
 [ext_resource path="res://AttachmentSystem.tscn" type="PackedScene" id=12]
 [ext_resource path="res://scripts/HealthBar.gd" type="Script" id=13]
 [ext_resource path="res://UI.gd" type="Script" id=14]
@@ -209,15 +209,16 @@ texture = ExtResource( 7 )
 stream = ExtResource( 2 )
 
 [node name="Run" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 9 )
-volume_db = 10.0
+stream = ExtResource( 11 )
+volume_db = 2.0
 
 [node name="Sneak" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 6 )
 volume_db = 5.0
 
 [node name="Walk" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource( 11 )
+stream = ExtResource( 9 )
+volume_db = 2.0
 
 [node name="HealTimer" type="Timer" parent="."]
 

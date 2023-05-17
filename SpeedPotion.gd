@@ -7,6 +7,7 @@ func _ready():
 func use():
 	player.speedFX()
 	find_parent("Inventory").remove_item(self)
+	$Sound.play()
 	pass 
 
 func input_action():

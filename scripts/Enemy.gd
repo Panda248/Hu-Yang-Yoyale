@@ -119,9 +119,6 @@ func raycast_sweep() -> void:
 			state = ATTACK
 			print("attacking")
 
-
-
-
 func _on_alertTimer_timeout():
 	$alert.visible = false;
 	pass # Replace with function body.
@@ -130,3 +127,8 @@ func _on_alertTimer_timeout():
 func _on_attackTimer_timeout():
 	canAttack = true
 	pass # Replace with function body.
+
+
+func _on_soundTimer_timeout():
+	if (self.position.distance_to(find_parent("World").find_node("Player").position) < 700):
+		$Sound.play()

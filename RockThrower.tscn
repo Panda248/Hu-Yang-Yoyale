@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://scripts/RockThrower.gd" type="Script" id=1]
+[ext_resource path="res://res/sounds/shot.ogg" type="AudioStream" id=2]
 [ext_resource path="res://Rock.tscn" type="PackedScene" id=3]
 
 [node name="RockThrower" type="Sprite"]
@@ -17,3 +18,4 @@ Bullet = ExtResource( 3 )
 position = Vector2( 40, 0 )
 
 [node name="ShootSFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 2 )
