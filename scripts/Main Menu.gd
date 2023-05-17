@@ -22,14 +22,14 @@ func _process(delta):
 		elif($Title.modulate == Color(0,0,0)):
 			$Title.modulate = Color(1,1,1)
 			$Warning.modulate = Color(1,1,1)
-	if(zoomIn):
-		if(splashScreen.scale.x <= .535):
-			zoomIn = false
-		splashScreen.scale*=.999
-	else:
-		if(splashScreen.scale.x >= 1):
-			zoomIn = true
-		splashScreen.scale*=1.001
+#	if(zoomIn):
+#		if(splashScreen.scale.x <= .535):
+#			zoomIn = false
+#		splashScreen.scale*=.999
+#	else:
+#		if(splashScreen.scale.x >= 1):
+#			zoomIn = true
+#		splashScreen.scale*=1.001
 		
 	pass
 

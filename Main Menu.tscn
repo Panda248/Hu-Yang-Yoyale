@@ -1,9 +1,18 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://res/exported/fonts/GajrajOne.tres" type="DynamicFont" id=1]
 [ext_resource path="res://scripts/Main Menu.gd" type="Script" id=2]
-[ext_resource path="res://res/exported/sprites/kid named finger.png" type="Texture" id=3]
+[ext_resource path="res://res/exported/sprites/newsplash.png" type="Texture" id=3]
 [ext_resource path="res://res/exported/fonts/GajrajOne-Regular.ttf" type="DynamicFontData" id=4]
+
+[sub_resource type="DynamicFont" id=2]
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=3]
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=4]
+font_data = ExtResource( 4 )
 
 [sub_resource type="DynamicFont" id=1]
 size = 24
@@ -17,16 +26,20 @@ transform = Transform2D( 2, 0, 0, 2, -50, -100 )
 script = ExtResource( 2 )
 
 [node name="SplashScreen" type="Sprite" parent="."]
-position = Vector2( 513, 314 )
-scale = Vector2( 0.6, 0.7 )
+position = Vector2( 505, 320 )
+scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 3 )
 
 [node name="Title" type="Label" parent="."]
 modulate = Color( 0, 0, 0, 1 )
-anchor_left = 0.15
-anchor_top = 0.15
-anchor_right = 0.15
-anchor_bottom = 0.2
+anchor_left = 0.275
+anchor_top = -1.0
+anchor_right = 0.275
+anchor_bottom = -1.0
+margin_left = -248.4
+margin_top = 1175.0
+margin_right = -234.0
+margin_bottom = 1247.0
 custom_fonts/font = ExtResource( 1 )
 text = "HU YANG YOYALE"
 
@@ -34,42 +47,43 @@ text = "HU YANG YOYALE"
 anchor_top = 0.2
 anchor_right = 0.5
 anchor_bottom = 0.5
+margin_top = 122.0
 margin_right = 40.0
-margin_bottom = 40.0
+margin_bottom = 41.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
-margin_left = 369.0
-margin_top = 61.0
-margin_right = 630.0
-margin_bottom = 303.0
+margin_left = 453.0
+margin_top = 71.0
+margin_right = 547.0
+margin_bottom = 172.0
 
 [node name="Play" type="Button" parent="CenterContainer/VBoxContainer"]
-margin_right = 261.0
-margin_bottom = 78.0
-custom_fonts/font = ExtResource( 1 )
+margin_right = 94.0
+margin_bottom = 31.0
+custom_fonts/font = SubResource( 2 )
 text = "PLAY"
 
 [node name="Settings" type="Button" parent="CenterContainer/VBoxContainer"]
-margin_top = 82.0
-margin_right = 261.0
-margin_bottom = 160.0
+margin_top = 35.0
+margin_right = 94.0
+margin_bottom = 66.0
 grow_horizontal = 2
 grow_vertical = 2
-custom_fonts/font = ExtResource( 1 )
+custom_fonts/font = SubResource( 3 )
 text = "SETTINGS"
 
 [node name="Quit" type="Button" parent="CenterContainer/VBoxContainer"]
-margin_top = 164.0
-margin_right = 261.0
-margin_bottom = 242.0
-custom_fonts/font = ExtResource( 1 )
+margin_top = 70.0
+margin_right = 94.0
+margin_bottom = 101.0
+custom_fonts/font = SubResource( 4 )
 text = "QUIT"
 
 [node name="Warning" type="Label" parent="."]
-margin_left = 47.0
-margin_top = 171.0
-margin_right = 226.0
-margin_bottom = 246.0
+margin_left = 109.5
+margin_top = 282.0
+margin_right = 288.5
+margin_bottom = 357.0
 rect_rotation = -25.9792
 custom_fonts/font = SubResource( 1 )
 text = "WARNING!!!
